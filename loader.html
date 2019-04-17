@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loader</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .loader {
+            border: 10px solid rgb(44, 43, 43);
+            padding: 40px;
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            border-top: 10px solid rgb(243, 105, 90);
+            border-bottom: 10px solid rgb(25, 98, 233);
+            position: absolute;
+            top: 40%;
+            left: 45%;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        .outerloader {
+            background-color: rgb(44, 43, 43);
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            transition-duration: 1s;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                border-top-color: rgb(25, 98, 233);
+                border-bottom-color: rgb(243, 105, 90);
+            }
+
+            70% {
+                border-bottom-color: rgb(25, 98, 233);
+                border-top-color: rgb(243, 105, 90);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="loader" class="outerloader">
+        <div class="loader"></div>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam optio iste sit corporis assumenda quam nobis
+        voluptate maxime quia aperiam, rem hic dolorem ut excepturi sint deserunt, velit natus cumque sed
+        reprehenderit. Dolorem iure et totam earum cum aperiam necessitatibus impedit commodi atque vitae explicabo
+        asperiores soluta alias delectus in, aliquam illo rerum quia ex quis quas tempore? Tempore consectetur
+        incidunt id perferendis veniam quas, enim reprehenderit, voluptatum accusantium magni veritatis nobis
+        numquam assumenda repellat sapiente animi quo culpa praesentium aperiam asperiores natus non fugiat dolores?
+        Soluta quidem voluptatem autem impedit? Quisquam voluptates ab maiores provident libero? Dolore voluptates</p>
+
+    <button>Click me</button>
+
+    <script>
+        var loader = document.getElementById("loader");
+        setTimeout(() => {
+            loader.style.zIndex = "-1";
+            loader.style.opacity = "0";
+        }, 1000);
+    </script>
+</body>
+
+</html>
