@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+}
+/* ----------------------------------------------- LOADER ------ --------------------------------------------*/
+.loader {
+    border: 10px solid rgb(44, 43, 43);
+    padding: 40px;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border-top: 10px solid rgb(243, 105, 90);
+    border-bottom: 10px solid rgb(25, 98, 233);
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+.loaderContainer {
+    background-color: rgb(44, 43, 43);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    transition-duration: 1s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        border-top-color: rgb(25, 98, 233);
+        border-bottom-color: rgb(243, 105, 90);
+    }
+
+    70% {
+        border-bottom-color: rgb(25, 98, 233);
+        border-top-color: rgb(243, 105, 90);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ----------------------------------------------- LOADER  ------------------------------------------------*/
+/* ----------------------------------------------- Buttons- ---------------------------------------------- */
+
+
+
+
+
+/* ----------------------------------------------- Buttons- ---------------------------------------------- */
