@@ -1,7 +1,20 @@
 * {
     margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+a{
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+body{
+    background-color: rgb(77, 76, 76);
+}
+
 /* ----------------------------------------------- LOADER ------ --------------------------------------------*/
+
 .loader {
     border: 10px solid rgb(44, 43, 43);
     padding: 40px;
@@ -50,7 +63,11 @@
 /* ----------------------------------------------- Buttons- ---------------------------------------------- */
 
 
-
+btn {
+    padding: 4px 10px;
+    margin: 1px;
+    background-color: rgb(99, 33, 33);
+}
 
 
 /* ----------------------------------------------- Buttons- ---------------------------------------------- */
