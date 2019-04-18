@@ -98,22 +98,22 @@ var pJS = function(tag_id, params){
           enable: false,
           mode: 'push'
         },
-        resize: true
+        resize: false
       },
       modes: {
         grab:{
-          distance: 100,
+          distance: 0,
           line_linked:{
             opacity: 1
           }
         },
         bubble:{
-          distance: 200,
+          distance: 0,
           size: 80,
           duration: 0.4
         },
         repulse:{
-          distance: 200,
+          distance: 0,
           duration: 0.4
         },
         push:{

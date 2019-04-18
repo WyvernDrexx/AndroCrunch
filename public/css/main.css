@@ -66,7 +66,28 @@ hr {
   position: relative;
   background: transparent;
 }
-
+.blog-post{
+  background-color: #404140;
+  padding: 10px;
+}
+/* .row .col-sm .card{
+  width: 100%;
+  align-self: center;
+} */
+.card{
+  transition-duration: 0.4s;
+}
+.blog-post h2{
+  color: white;
+  padding: 6px;
+  border-left: 4px solid #1e8a54;
+}
+.card:hover{
+  box-shadow:0 4px 8px 0 rgb(8, 8, 8), 0 6px 15px 0 rgba(32, 32, 32);
+}
+.card img{
+  height: 25rem;
+}
 .navbar-brand {
   background-color: #1e8a54;
   border-radius: 4px;
@@ -108,7 +129,6 @@ hr {
   padding: 0;
   border-left: 4px solid rebeccapurple;
   border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(80, 79, 79, 0.2), 0 6px 15px 0 rgba(32, 32, 32, 0.19);
 }
 
 
@@ -166,12 +186,15 @@ hr {
   .column-css {
     border: none;
   }
+
 }
 
 @media only screen and (max-width: 768px) {
   .display-4 {
     font-size: 3em ;
   }
+
+  
 
   .titlecontent {
     padding-top: 7px;
@@ -190,5 +213,11 @@ hr {
 
   .box {
     width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 576) {
+  .card img{
+    height: auto;
   }
 }

@@ -2,7 +2,7 @@ const server = require("./imports/express");
 const PORT = process.env.PORT || 3000;
 
 server.get("/", (req, res) => {
-    req.flash("success", "Welcome to AndroCrunch Website!")
+    // req.flash("success", "Welcome to AndroCrunch Website!")
     res.render("index");
 });
 
