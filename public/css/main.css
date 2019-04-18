@@ -86,8 +86,7 @@ body {
   border-bottom-left-radius: 200px;
   background-image: url("/imgs/bg.jpg");
   background-size: cover;
-  background-attachment: fixed;
-  transition-duration: 2s;
+  transition-duration: 0.5s;
 }
 
 .mid-section .row div * {
