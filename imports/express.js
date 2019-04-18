@@ -32,6 +32,7 @@ server.use((req, res, next) => {
     res.locals.loggedUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
+    res.locals.warning = req.flash("warning");
     next();
 });
 
