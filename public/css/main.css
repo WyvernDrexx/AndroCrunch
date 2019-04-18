@@ -85,6 +85,7 @@ body {
   border-top-right-radius: 200px;
   border-bottom-left-radius: 200px;
   background-image: url("/imgs/bg.jpg");
+  background-attachment: fixed;
   background-size: cover;
   transition-duration: 0.5s;
 }

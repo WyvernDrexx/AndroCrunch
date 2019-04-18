@@ -70,10 +70,10 @@ win.scroll(function (event) {
 
 });
 
-var parallax = document.getElementById("parallax");
-window.addEventListener("scroll", ()=>{
-  var offset = window.pageYOffset;
-  parallax.style.backgroundPositionY = offset * 0.99 + "px";
-});
+// var parallax = document.getElementById("parallax");
+// window.addEventListener("scroll", ()=>{
+//   var offset = window.pageYOffset;
+//   parallax.style.backgroundPositionY = offset * 0.99 + "px";
+// });
 
 
