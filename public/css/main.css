@@ -33,7 +33,7 @@ body {
   animation: come-in 0.8s ease forwards;
 }
 .come-in:nth-child(odd) {
-  animation-duration: 1s; /* So they look staggered */
+  animation-duration: 0.5s; /* So they look staggered */
 }
 
 @keyframes come-in {
