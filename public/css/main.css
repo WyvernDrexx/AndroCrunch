@@ -1,197 +1,194 @@
- * {
-   transition: 0.5s;
- }
+* {
+  transition: 0.5s;
+}
 
- body {
-   background-color: #0e1111;
-   opacity: 0;
-   transition-duration: 1s;
-   animation: fadeIn 1s linear 0.7s 1 forwards;
- }
+body {
+  background-color: #0e1111;
+  opacity: 0;
+  transition-duration: 1s;
+  animation: fadeIn 1s linear 0.7s 1 forwards;
+}
 
- footer {
-   position: relative;
-   padding: 5rem;
-   text-align: center;
- }
+footer {
+  position: relative;
+  padding: 5rem;
+  text-align: center;
+}
 
- nav {
-   background-color: #0e1111 !important;
- }
+nav {
+  background-color: #0e1111 !important;
+}
 
- footer p {
-   font-size: 2rem;
-   margin-bottom: 0;
+footer p {
+  font-size: 2rem;
+  margin-bottom: 0;
 
- }
+}
 
- hr {
-   background-color: #404140;
- }
+hr {
+  background-color: #404140;
+}
 
- .logo {
-   width: 40px;
-   height: auto;
- }
+.logo {
+  width: 40px;
+  height: auto;
+}
 
- .head {
-   width: 100%;
-   padding-bottom: 3rem;
-   border-radius: 0;
-   padding-left: 10%;
-   background: transparent;
- }
+.head {
+  width: 100%;
+  padding-bottom: 3rem;
+  border-radius: 0;
+  padding-left: 10%;
+  background: transparent;
+}
 
- .titlecontent {
-   padding-left: 50px;
-   padding-top: 45px;
-   font-weight: bold;
- }
+.titlecontent {
+  padding-left: 50px;
+  padding-top: 45px;
+  font-weight: bold;
+}
 
- .bg-black {
-   background-color: #0e1111;
- }
+.bg-black {
+  background-color: #0e1111;
+}
 
- .come-in {
-   transform: translateY(150px);
-   animation: come-in 0.8s ease forwards;
- }
+.come-in {
+  transform: translateY(150px);
+  animation: come-in 0.8s ease forwards;
+}
 
- .come-in:nth-child(odd) {
-   animation-duration: 0.5s;
-   /* So they look staggered */
- }
+.come-in:nth-child(odd) {
+  animation-duration: 0.5s;
+  /* So they look staggered */
+}
 
- .part {
-   position: relative;
-   background: transparent;
- }
+.part {
+  position: relative;
+  background: transparent;
+}
 
- .navbar-brand {
-   background-color: #1e8a54;
-   border-radius: 4px;
-   padding-left: 7px;
-   padding-right: 7px;
- }
+.navbar-brand {
+  background-color: #1e8a54;
+  border-radius: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
 
- .box {
-   width: 19rem;
-   height: 17rem;
-   padding: 10px;
-   padding-top: 20px;
-   border: 16px solid #ffdd03;
-   position: absolute;
-   z-index: -1;
- }
+.box {
+  width: 19rem;
+  height: 17rem;
+  padding: 10px;
+  padding-top: 20px;
+  border: 16px solid #ffdd03;
+  position: absolute;
+  z-index: -1;
+}
 
- .lead {
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-   font-weight: 400;
- }
-
-
- .separator {
-   margin: 3rem 0;
- }
-
- #particles-js {
-   background-color: #0e1111;
-   color: #fc2d26;
-   position: absolute;
-   width: 100%;
-   height: 100%;
-   z-index: -10;
- }
-
- .section {
-   color: white;
-   padding: 0;
-   border-left: 4px solid rebeccapurple;
-   border-radius: 4px;
-   box-shadow: 0 4px 8px 0 rgba(80, 79, 79, 0.2), 0 6px 15px 0 rgba(32, 32, 32, 0.19);
- }
+.lead {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
 
 
- .section.wallpapers {
-   border-left: 4px solid #ac2674;
- }
+.separator {
+  margin: 3rem 0;
+}
 
- .section.ringtones {
-   border-left: 4px solid rgb(153, 138, 51);
- }
+#particles-js {
+  background-color: #0e1111;
+  color: #fc2d26;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
 
- .section:hover {
-   border-left-color: brown;
- }
-
- .games .jumbotron {
-   background-image: linear-gradient(to right, rgb(30, 31, 31), rgb(77, 75, 75));
- }
-
- .wallpapers .jumbotron {
-   position: relative;
-   background-image: linear-gradient(to right, rgb(1, 14, 15), #07213b);
- }
-
- .ringtones .jumbotron {
-   background-image: linear-gradient(to right, rgb(21, 5, 37), rgb(74, 39, 121));
- }
-
- .explore-btn {
-   box-shadow: 0 4px 8px 0 rgb(68, 68, 68);
- }
-
- .svg-icon {
-   width: 50px;
-   height: auto;
-   margin-right: 10px;
-   padding-right: 10px;
-   border-right: 2px solid whitesmoke;
- }
-
- @keyframes come-in {
-   to {
-     transform: translateY(0);
-   }
- }
-
- @keyframes fadeIn {
-   100% {
-     opacity: 1;
-   }
- }
+.section {
+  color: white;
+  padding: 0;
+  border-left: 4px solid rebeccapurple;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(80, 79, 79, 0.2), 0 6px 15px 0 rgba(32, 32, 32, 0.19);
+}
 
 
- @media only screen and (max-width: 992px) {
-   .column-css {
-     border: none;
-   }
- }
+.section.wallpapers {
+  border-left: 4px solid #ac2674;
+}
 
- @media only screen and (max-width: 768px) {
-   .display-3 {
-     font-size: 4em;
-   }
+.section.ringtones {
+  border-left: 4px solid rgb(153, 138, 51);
+}
 
-   .titlecontent {
-     padding-top: 7px;
-     padding-bottom: 2rem;
-   }
+.section:hover {
+  border-left-color: brown;
+}
 
-   .lead {
-     font-size: 1rem;
-   }
+.games .jumbotron {
+  background-image: linear-gradient(to right, rgb(30, 31, 31), rgb(77, 75, 75));
+}
 
-   .head {
-     padding-left: 1rem;
-     margin-right: 0;
-   }
+.wallpapers .jumbotron {
+  position: relative;
+  background-image: linear-gradient(to right, rgb(1, 14, 15), #07213b);
+}
 
-   .mid-section {
-     border-radius: 0;
-   }
+.ringtones .jumbotron {
+  background-image: linear-gradient(to right, rgb(21, 5, 37), rgb(74, 39, 121));
+}
 
-   .box {
-     width: 18rem;
-   }
- }
+.explore-btn {
+  box-shadow: 0 4px 8px 0 rgb(68, 68, 68);
+}
+
+.svg-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 2px solid whitesmoke;
+}
+
+@keyframes come-in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 992px) {
+  .column-css {
+    border: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .display-4 {
+    font-size: 3em ;
+  }
+
+  .titlecontent {
+    padding-top: 7px;
+    padding-bottom: 2rem;
+    font-size: 3.2em;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .head {
+    padding-left: 1rem;
+    margin-right: 0;
+  }
+
+  .box {
+    width: 18rem;
+  }
+}
