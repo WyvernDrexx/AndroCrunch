@@ -20,9 +20,30 @@
 }
 body {
   background-color: #0e1111;
-  opacity: 1;
-  /* animation: fadeIn 0.5s linear 0.7s 1 forwards ; */
+  opacity: 0;
+  transition-duration: 1s;
+  animation: fadeIn 1s linear 0.7s 1 forwards ;
 }
+
+
+
+
+.come-in {
+  transform: translateY(150px);
+  animation: come-in 0.8s ease forwards;
+}
+.come-in:nth-child(odd) {
+  animation-duration: 1s; /* So they look staggered */
+}
+
+@keyframes come-in {
+  to { transform: translateY(0); }
+}
+
+
+
+
+
 @keyframes fadeIn{
   100%{
     opacity: 1;
@@ -65,7 +86,16 @@ body {
 .nav-item:hover{
   background-color: rgba(246, 250, 3, 0.842);
 }
+footer{
+  margin: 5rem 2rem;
+  padding: 5rem;
+  text-align: center;
+}
 
+footer p{
+  font-size: 2rem;
+  margin-bottom: 0;
+}
 .part {
   position: relative;
   background: transparent;
