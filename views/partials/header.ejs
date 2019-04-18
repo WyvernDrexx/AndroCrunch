@@ -14,7 +14,7 @@
 <body>
     <div id="particles-js"></div>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a class="navbar-brand " href="#"><img class="logo" src="/imgs/logo.png"></a>
+        <a class="navbar-brand " href="#"><img class="logo" src="/imgs/logo.png" alt="Site Logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,18 +47,25 @@
             </form>
         </div>
     </nav>
-<div class="separator"></div>
+    <div class="separator"></div>
+
     <% if(error && error.length > 0) { %>
+    <br>
+    <br>
     <div class="alert alert-danger" role="alert">
         <%= error %>
     </div>
     <% } %>
     <% if(success && success.length > 0) { %>
+    <br>
+    <br>
     <div class="alert alert-success" role="alert">
         <%= success %>
     </div>
     <% } %>
     <% if(warning && warning.length > 0) { %>
+    <br>
+    <br>
     <div class="alert alert-danger" role="alert">
         <%= warning %>
     </div>
