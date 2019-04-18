@@ -161,7 +161,9 @@ footer p {
 nav {
   background-color: #0e1111 !important;
 }
-
+.separator{
+  margin: 3rem 0;
+}
 #particles-js {
   background-color: #0e1111;
   color: #fc2d26;
