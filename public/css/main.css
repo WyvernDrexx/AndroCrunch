@@ -1,8 +1,28 @@
+
+*{
+  transition: 0.5s;
+}
+
 .logo {
   width: 40px;
   height: auto;
 }
+.anim{
+  border-left: 6px solid rgb(51, 50, 50);
+  transition-duration: 0.5s;
+  margin: 2px;
+}
 
+.column-css{
+  border-left: 3px solid #4e4d4d;
+  transition: 1s;
+}
+ .column-css:hover{
+  border-left-color: #f55852;
+}
+.anim:hover{
+  border-left-color: #176940;
+}
 .head {
   width: 100%;
   padding-bottom: 3rem;
@@ -24,8 +44,6 @@ body {
   transition-duration: 1s;
   animation: fadeIn 1s linear 0.7s 1 forwards ;
 }
-
-
 
 
 .come-in {
@@ -174,8 +192,8 @@ nav {
   box-shadow: 0 4px 8px 0 rgb(68, 68, 68);
 }
 
-/* @media only screen and (max-width: 992px) {
-  .mid-section .row div img{
-    display: none;
+@media only screen and (max-width: 992px) {
+  .column-css{
+    border: none;
   }
-} */
+}
