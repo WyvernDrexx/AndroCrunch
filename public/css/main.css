@@ -168,7 +168,7 @@ nav {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -10;
 }
 
 
@@ -211,10 +211,50 @@ nav {
   max-height: 100%;
 }
 
+.section{
+  color: white;
+  padding: 0;
+  border-left: 4px solid rebeccapurple;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(80, 79, 79, 0.2), 0 6px 15px 0 rgba(32, 32, 32, 0.19);
+}
+
+
+.section.wallpapers{
+  border-left: 4px solid #ac2674;
+}
+.section.ringtones{
+  border-left: 4px solid rgb(153, 138, 51);
+}
+.section:hover{
+  border-left-color: brown;
+}
+.games .jumbotron{
+  background-image: linear-gradient(to right, rgb(30, 31, 31) , rgb(77, 75, 75));
+}
+
+.wallpapers .jumbotron{
+  position: relative;
+  background-image: linear-gradient(to right, rgb(1, 14, 15) , #07213b);
+}
+
+.ringtones .jumbotron{
+  background-image: linear-gradient(to right, rgb(21, 5, 37) , rgb(74, 39, 121));
+}
+hr{
+  background-color: #404140;
+}
+
 .explore-btn {
   box-shadow: 0 4px 8px 0 rgb(68, 68, 68);
 }
-
+.svg-icon{
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 2px solid whitesmoke;
+}
 @media only screen and (max-width: 992px) {
   .column-css {
     border: none;
