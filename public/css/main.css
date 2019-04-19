@@ -54,6 +54,7 @@ a {
 
 .navbar-icon {
   border-radius: 4px;
+  height: 45px;;
   padding-left: 7px;
   padding-right: 7px;
 }
@@ -94,7 +95,7 @@ a {
 }
 
 .jumbo-button .dark-purple:hover {
-  background-color: #997bdb;
+  background-color: #5a00f0;
 }
 
 section.container-fluid .jumbotron.text-white {
@@ -197,6 +198,7 @@ nav a.navbar-brand:hover {
 .search-box .form-control{
   border: 3px solid #7731a9;
   border-left: none;
+  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
 }
 
 @keyframes come-in {
