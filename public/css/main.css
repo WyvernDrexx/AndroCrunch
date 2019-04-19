@@ -178,11 +178,13 @@ nav a.navbar-brand:hover {
 .search-box div.rounded{
   padding: 2rem 0;
   max-width: 70%;
+  box-shadow: 0 0 30px #181818, 0 0 15px #3a393a;
 }
 .search-dropdown{
   padding: auto;
   padding-right: 5rem;
   padding-left: 1rem;
+  box-shadow: none !important;
 }
 .search-btn{
   max-height: 2.35rem;
@@ -201,6 +203,7 @@ nav a.navbar-brand:hover {
 .search-box .form-control{
   border: 3px solid #7731a9;
   border-left: none;
+  
 }
 
 @keyframes come-in {
