@@ -86,14 +86,14 @@ window.onload = function () {
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
     if (offset > 50) {
-      nav.style.backgroundColor = "#580096";
+      nav.style.backgroundColor = "#19191a";
     } else if (op) {
       nav.style.backgroundColor = "transparent";
     }
   });
 
   nav.addEventListener("click", () => {
-    nav.style.backgroundColor = "#580096";
+    nav.style.backgroundColor = "#19191a";
     if(op){
       op = false;
     }else{

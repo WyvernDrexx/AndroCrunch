@@ -54,13 +54,17 @@ a {
 
 .navbar-icon {
   border-radius: 4px;
-  height: 45px;;
+  height: 40px;
   padding-left: 7px;
   padding-right: 7px;
+  border: none;
 }
-
+.top-section{
+  width: 70vw;
+  margin: auto;
+}
 .navbar {
-  background-color: rgb(8, 8, 8);
+  background-color: #19191afb;
 }
 
 .base-bg {
@@ -113,8 +117,8 @@ section.container-fluid .jumbotron.text-white {
 
 .brand-name {
   position: absolute;
-  font-size: 16px;
-  padding: 5px;
+  font-size: 14px;
+  padding: 3px;
 }
 
 .top-margin {
@@ -136,8 +140,8 @@ h1.display-4 {
   letter-spacing: 2px;
 }
 
-nav a {
-  border-bottom: 4px solid #580096;
+nav a.nav-link {
+  border-bottom: 4px solid #19191a;
 }
 
 nav a.nav-link:hover {
@@ -240,7 +244,9 @@ nav a.navbar-brand:hover {
     font-size: 3rem;
   }
 
-  
+  .top-section{
+    width: 90%;
+  }
 
   .brand-name {
     display: none;
