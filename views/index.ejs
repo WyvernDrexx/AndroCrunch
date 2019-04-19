@@ -1,6 +1,6 @@
 <% include partials/header %>
-<section class="container-fluid light-purple">
-    <div class="jumbotron text-white">
+<section class="container-fluid pl-0 light-purple pr-0">
+    <div class="jumbotron text-white mb-0">
         <h1 class="display-4">India's <span class="text-warning">#1</span> <br> Digital Store !</h1>
         <p class="lead">Looking for some new amazing Ringtones, Wallpapers, Apps, etc ?</p>
         <!-- <hr class="my-4 text-secondary"> -->
@@ -9,8 +9,30 @@
             <a class="btn dark-purple text-white rounded-pill btn-lg" href="#" role="button">EXPLORE...</a>
             <a class="btn btn-outline rounded-pill btn-lg ml-3" href="#" role="button">Take a Tour</a>
         </div>
-
     </div>
 </section>
+<div class="container-fluid mt-0 search-box dark-purple">
+    <div class="bg-light container rounded">
+        <h1 class="display-5 text-center">What are you looking for?</h1>
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle dark-purple search-dropdown text-white" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">All</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+            <button class="btn dark-purple search-btn no-border" type="submit"><img class="svg-icon no-border" src="/imgs/search.svg"></button>
+        </div>
+    </div>
+
+
+
+</div>
 
 <% include partials/footer %>

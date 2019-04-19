@@ -98,7 +98,7 @@ a {
 }
 
 section.container-fluid .jumbotron.text-white {
-  background-image: linear-gradient(to right, #580096, #a469f2);
+  background-image: linear-gradient(to right, #580096, #7448ad);
 }
 
 .lead {
@@ -150,13 +150,6 @@ nav a.navbar-brand:hover {
 
 
 
-.svg-icon {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
-  padding-right: 10px;
-  border-right: 2px solid whitesmoke;
-}
 
 .jumbo-button {
   margin-top: 2em;
@@ -164,6 +157,45 @@ nav a.navbar-brand:hover {
 
 .no-border {
   border: none;
+}
+.search-box{
+  padding: 5rem 0;
+  color: black;
+}
+.search-box .input-group{
+  width: 80%;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+.search-box div.rounded{
+  padding: 2rem 0;
+  max-width: 70%;
+}
+.search-dropdown{
+  padding: auto;
+  padding-right: 5rem;
+  padding-left: 1rem;
+  box-shadow: none;
+  
+}
+.search-btn{
+  max-height: 2.35rem;
+  background-color: #7731a9;
+  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.search-btn:hover{
+  background-color: #404140;
+}
+.search-btn img{
+  height: 1.5rem;
+
+}
+.search-box .form-control{
+  border: 3px solid #7731a9;
+  border-left: none;
 }
 
 @keyframes come-in {
@@ -192,10 +224,20 @@ nav a.navbar-brand:hover {
   .card img {
     height: auto;
   }
-
+.search-box div.rounded{
+  min-width: 100% !important;
+}
+.search-box{
+  padding: 10px;
+}
+.search-box .display-5{
+  font-size: 1.5rem;
+}
   .display-4 {
     font-size: 3rem;
   }
+
+  
 
   .brand-name {
     display: none;
