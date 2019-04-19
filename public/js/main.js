@@ -84,7 +84,7 @@ window.onload = function () {
   parallax.style.backgroundColor = "transparent";
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
-    if (offset > 20) {
+    if (offset > 40) {
       parallax.style.backgroundColor = "#580096";
     } else {
       parallax.style.backgroundColor = "transparent";
