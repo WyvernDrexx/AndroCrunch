@@ -69,8 +69,16 @@ win.scroll(function (event) {
   });
 
 });
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
 
-// var parallax = document.getElementById("parallax");
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+// var parallax = document.getElementById("particles-js");
 // window.addEventListener("scroll", ()=>{
 //   var offset = window.pageYOffset;
 //   parallax.style.backgroundPositionY = offset * 0.99 + "px";
