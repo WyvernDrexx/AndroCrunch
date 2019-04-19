@@ -15,57 +15,6 @@ footer {
   text-align: center;
 }
 
-
- /* The side navigation menu */
- .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-} 
-
 footer p {
   font-size: 2rem;
   margin-bottom: 0;
@@ -76,24 +25,8 @@ hr {
   background-color: #404140;
 }
 
-.logo {
-  width: 40px;
-  height: auto;
-}
 
-.head {
-  width: 100%;
-  padding-bottom: 3rem;
-  border-radius: 0;
-  padding-left: 10%;
-  background: transparent;
-}
 
-.titlecontent {
-  padding-left: 50px;
-  padding-top: 45px;
-  font-weight: bold;
-}
 
 .bg-black {
   background-color: #0e1111;
@@ -109,87 +42,63 @@ hr {
   /* So they look staggered */
 }
 
-.part {
-  position: relative;
-  background: transparent;
-}
-.blog-post{
-  background-color: #404140;
-  padding: 10px;
-}
-/* .row .col-sm .card{
-  width: 100%;
-  align-self: center;
-} */
-.card{
-  transition-duration: 0.4s;
-}
-.blog-post h2{
-  color: white;
-  padding: 6px;
-  border-left: 4px solid #1e8a54;
-}
-.card:hover{
-  box-shadow:0 4px 8px 0 rgb(8, 8, 8), 0 6px 15px 0 rgba(32, 32, 32);
-}
-.card img{
-  height: 25rem;
-}
-.nav-item{
+
+.nav-item {
   margin: 0 15px;
 }
-.store{
-  color: #580096;
-}
-a{
+
+a {
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .navbar-icon {
   border-radius: 4px;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.navbar{
+.navbar {
   background-color: rgb(8, 8, 8);
 }
 
-.box {
-  width: 19rem;
-  height: 16rem;
-  padding: 10px;
-  padding-top: 20px;
-  border: 16px solid #03d9ff;
-  position: absolute;
-  z-index: -1;
-}
-
-.base-bg{
+.base-bg {
   background-color: #0e1111;
 }
 
-.base-color{
+.base-color {
   background-color: #1d005a;
 }
-.dark-purple{
+
+.dark-purple {
   background-color: #580096;
 }
-.light-purple{
+
+.light-purple {
   background-color: #a469f2;
 }
-.med-purple{
+
+.med-purple {
   background-color: #38475d;
 }
 
-.btn-outline{
+.btn-outline {
   padding: 8px 16px;
-  border: 4px solid #a469f2;
+  border: 4px solid #3d0068;
   color: white;
 }
-.jumbo-button .btn-outline:hover{
-  background-color: #63109e;
+
+.jumbo-button .btn-outline:hover {
+  border-color: #6e438d;
   color: white;
+}
+
+.jumbo-button .dark-purple:hover {
+  background-color: #997bdb;
+}
+
+section.container-fluid .jumbotron.text-white {
+  background-image: linear-gradient(to right, #580096, #a469f2);
 }
 
 .lead {
@@ -197,88 +106,49 @@ a{
   font-weight: 400;
 }
 
-.nav-link:hover{
-  color: #4b279e;
-}
-
 .separator {
   margin: 3rem 0;
 }
-.brand-name{
+
+.brand-name {
   position: absolute;
   font-size: 16px;
   padding: 5px;
 }
-.top-margin{
+
+.top-margin {
   margin-top: 6em;
 }
 
-.btn.dark-purple{
-  box-shadow: 0 0 30px #6e438d,0 0 15px #8b67ee;
+h1.display-4 {
+  font-weight: bold;
+}
+
+.btn.dark-purple {
+  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
   opacity: 0.8;
 }
 
-.brand-name span{
+.brand-name span {
   display: inline-block;
   font-size: 10px;
   letter-spacing: 2px;
 }
-.brand-name:hover{
-  color: #63109e;
-}
-.navbar-brand:hover .navbar-icon{
-  background-color: #63109e;
-}
-.navbar-toggler-icon{
-  background-color: #1e8a54;
-  color: black;
-}
-#particles-js {
-  background-color: #0e1111;
-  color: #fc2d26;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  position: fixed;
+
+nav a {
+  border-bottom: 4px solid #580096;
 }
 
-.section {
+nav a.nav-link:hover {
+  color: #8b67ee;
+  border-bottom: 4px solid #8b67ee;
+}
+
+nav a.navbar-brand:hover {
   color: white;
-  padding: 0;
-  border-left: 4px solid rebeccapurple;
-  border-radius: 4px;
 }
 
 
-.section.wallpapers {
-  border-left: 4px solid #ac2674;
-}
-
-.section.ringtones {
-  border-left: 4px solid rgb(153, 138, 51);
-}
-
-.section:hover {
-  border-left-color: brown;
-}
-
-.games .jumbotron {
-  background-image: linear-gradient(to right, rgb(30, 31, 31), rgb(77, 75, 75));
-}
-
-.wallpapers .jumbotron {
-  position: relative;
-  background-image: linear-gradient(to right, rgb(1, 14, 15), #07213b);
-}
-
-.ringtones .jumbotron {
-  background-image: linear-gradient(to right, rgb(21, 5, 37), rgb(74, 39, 121));
-}
-
-.explore-btn {
-  box-shadow: 0 4px 8px 0 rgb(68, 68, 68);
-}
 
 .svg-icon {
   width: 50px;
@@ -288,13 +158,14 @@ a{
   border-right: 2px solid whitesmoke;
 }
 
-.jumbo-button{
+.jumbo-button {
   margin-top: 2em;
 }
 
-.no-border{
+.no-border {
   border: none;
 }
+
 @keyframes come-in {
   to {
     transform: translateY(0);
@@ -309,35 +180,17 @@ a{
 
 
 @media only screen and (max-width: 992px) {
-  .column-css {
-    border: none;
-  }
-
 }
 
 @media only screen and (max-width: 768px) {
-  .titlecontent {
-    padding-top: 7px;
-    padding-bottom: 2rem;
-    font-size: 2.9em;
-  }
-
   .lead {
     font-size: 1rem;
   }
 
-  .head {
-    padding-left: 1rem;
-    margin-right: 0;
-  }
-
-  .box {
-    width: 18rem;
-  }
 }
 
 @media only screen and (max-width: 576px) {
-  .card img{
+  .card img {
     height: auto;
   }
 
