@@ -78,10 +78,16 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
-// var parallax = document.getElementById("particles-js");
-// window.addEventListener("scroll", ()=>{
-//   var offset = window.pageYOffset;
-//   parallax.style.backgroundPositionY = offset * 0.99 + "px";
-// });
 
-
+window.onload = function () {
+  var parallax = document.getElementById("nav");
+  parallax.style.backgroundColor = "transparent";
+  window.addEventListener("scroll", () => {
+    var offset = window.pageYOffset;
+    if (offset > 20) {
+      parallax.style.backgroundColor = "#580096";
+    } else {
+      parallax.style.backgroundColor = "transparent";
+    }
+  });
+}

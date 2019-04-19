@@ -178,13 +178,12 @@ nav a.navbar-brand:hover {
   padding: auto;
   padding-right: 5rem;
   padding-left: 1rem;
-  box-shadow: none;
-  
+  box-shadow: none !important;
 }
 .search-btn{
   max-height: 2.35rem;
   background-color: #7731a9;
-  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
+  box-shadow: none !important;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
