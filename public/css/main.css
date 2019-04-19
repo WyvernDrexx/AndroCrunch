@@ -15,9 +15,6 @@ footer {
   text-align: center;
 }
 
-nav {
-  background-color: #0e1111 !important;
-}
 
  /* The side navigation menu */
  .sidenav {
@@ -187,17 +184,12 @@ a{
 
 .btn-outline{
   padding: 8px 16px;
-  border: 2px solid #580096;
+  border: 4px solid #a469f2;
   color: white;
 }
-.jumbotron .btn-outline:hover{
-  background-color: #580096;
+.jumbo-button .btn-outline:hover{
+  background-color: #63109e;
   color: white;
-}
-
-
-.btn:hover{
-  opacity: 0.5;
 }
 
 .lead {
@@ -217,10 +209,29 @@ a{
   font-size: 16px;
   padding: 5px;
 }
+.top-margin{
+  margin-top: 6em;
+}
+
+.btn.dark-purple{
+  box-shadow: 0 0 30px #6e438d,0 0 15px #8b67ee;
+  opacity: 0.8;
+}
+
 .brand-name span{
   display: inline-block;
   font-size: 10px;
   letter-spacing: 2px;
+}
+.brand-name:hover{
+  color: #63109e;
+}
+.navbar-brand:hover .navbar-icon{
+  background-color: #63109e;
+}
+.navbar-toggler-icon{
+  background-color: #1e8a54;
+  color: black;
 }
 #particles-js {
   background-color: #0e1111;
@@ -275,6 +286,10 @@ a{
   margin-right: 10px;
   padding-right: 10px;
   border-right: 2px solid whitesmoke;
+}
+
+.jumbo-button{
+  margin-top: 2em;
 }
 
 .no-border{
