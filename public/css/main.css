@@ -179,8 +179,7 @@ nav a.navbar-brand:hover {
 }
 
 
-@media only screen and (max-width: 992px) {
-}
+@media only screen and (max-width: 992px) {}
 
 @media only screen and (max-width: 768px) {
   .lead {
@@ -194,4 +193,16 @@ nav a.navbar-brand:hover {
     height: auto;
   }
 
+  .display-4 {
+    font-size: 3rem;
+  }
+
+  .brand-name {
+    display: none;
+  }
+
+  section.container-fluid {
+    padding-left: 0;
+    margin-top: 5rem;
+  }
 }
