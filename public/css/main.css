@@ -183,7 +183,6 @@ nav a.navbar-brand:hover {
   padding: auto;
   padding-right: 5rem;
   padding-left: 1rem;
-  box-shadow: none !important;
 }
 .search-btn{
   max-height: 2.35rem;
@@ -202,7 +201,6 @@ nav a.navbar-brand:hover {
 .search-box .form-control{
   border: 3px solid #7731a9;
   border-left: none;
-  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
 }
 
 @keyframes come-in {
