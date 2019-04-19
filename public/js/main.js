@@ -80,14 +80,24 @@ function closeNav() {
 }
 
 window.onload = function () {
-  var parallax = document.getElementById("nav");
-  parallax.style.backgroundColor = "transparent";
+  var nav = document.getElementById("nav");
+  var op = true;
+  nav.style.backgroundColor = "transparent";
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
-    if (offset > 40) {
-      parallax.style.backgroundColor = "#580096";
-    } else {
-      parallax.style.backgroundColor = "transparent";
+    if (offset > 50) {
+      nav.style.backgroundColor = "#580096";
+    } else if (op) {
+      nav.style.backgroundColor = "transparent";
+    }
+  });
+
+  nav.addEventListener("click", () => {
+    nav.style.backgroundColor = "#580096";
+    if(op){
+      op = false;
+    }else{
+      op = true;
     }
   });
 }
