@@ -138,11 +138,24 @@ hr {
 .card img{
   height: 25rem;
 }
-.navbar-brand {
-  background-color: #1e8a54;
+.nav-item{
+  margin: 0 15px;
+}
+.store{
+  color: #580096;
+}
+a{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar-icon {
   border-radius: 4px;
   padding-left: 7px;
   padding-right: 7px;
+}
+
+.navbar{
+  background-color: rgb(8, 8, 8);
 }
 
 .box {
@@ -155,16 +168,60 @@ hr {
   z-index: -1;
 }
 
+.base-bg{
+  background-color: #0e1111;
+}
+
+.base-color{
+  background-color: #1d005a;
+}
+.dark-purple{
+  background-color: #580096;
+}
+.light-purple{
+  background-color: #a469f2;
+}
+.med-purple{
+  background-color: #38475d;
+}
+
+.btn-outline{
+  padding: 8px 16px;
+  border: 2px solid #580096;
+  color: white;
+}
+.jumbotron .btn-outline:hover{
+  background-color: #580096;
+  color: white;
+}
+
+
+.btn:hover{
+  opacity: 0.5;
+}
+
 .lead {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 400;
 }
 
+.nav-link:hover{
+  color: #4b279e;
+}
 
 .separator {
   margin: 3rem 0;
 }
-
+.brand-name{
+  position: absolute;
+  font-size: 16px;
+  padding: 5px;
+}
+.brand-name span{
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
 #particles-js {
   background-color: #0e1111;
   color: #fc2d26;
