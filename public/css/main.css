@@ -148,7 +148,9 @@ nav a.navbar-brand:hover {
   color: white;
 }
 
-
+.svg-icon{
+  height: 40px;;
+}
 
 
 .jumbo-button {
