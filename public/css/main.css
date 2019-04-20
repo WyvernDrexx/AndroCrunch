@@ -297,7 +297,7 @@ h1.display-4 {
   position: relative;
   max-width: 64%;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
-  z-index: 3;
+  z-index: 2;
 }
 .search-box div.rounded h1{
   font-weight: bold;
