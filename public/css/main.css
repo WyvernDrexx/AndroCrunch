@@ -22,7 +22,7 @@ footer p {
 }
 
 nav.fixed-top div.container{
-  width: 72vw;
+  width: 65vw;
 }
 hr {
   background-color: #404140;
@@ -121,16 +121,17 @@ nav a.navbar-brand:hover {
   display: none;
   position: fixed;
   background-color: rgb(240, 239, 238);
-  opacity: 1;
-  z-index: 12;
 }
-
+#side-toggler{
+  z-index: 12;
+  background-color: #0e1111;
+}
  /* The side navigation menu */
  .sidenav {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  z-index: 3; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   background-color: #111; /* Black*/
@@ -180,9 +181,9 @@ nav a.navbar-brand:hover {
 }
 
 .btn-outline {
-  padding: 8px 16px;
-  border: 4px solid #3d0068;
-  background-color: #672894;
+  padding: 8px 25px;
+  border: 4px solid #9839da;
+  background-color: #ffffff00;
   color: white;
 }
 
@@ -214,8 +215,12 @@ nav a.navbar-brand:hover {
   padding-top: 2.5rem;
 }
 
+.jumbo-button .btn{
+  font-weight: 600;
+}
+
 .btn.btn-purple-color {
-  box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
+  box-shadow: 0 0 30px #cbace2, 0 0 15px #8b67ee;
   opacity: 0.8;
 }
 
@@ -252,7 +257,7 @@ nav a.navbar-brand:hover {
 .search-box div.rounded {
   padding: 2rem 0;
   max-width: 70%;
-  box-shadow: 0 0 30px #181818, 0 0 15px #3a393a;
+  box-shadow: 10px 30px 50px 10px rgba(0, 0, 0, 0.15);
 }
 
 .search-dropdown {

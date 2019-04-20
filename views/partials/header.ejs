@@ -12,20 +12,19 @@
 </head>
 
 <body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+    <div id="side-toggler" class="container">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <!-- Use any element to open the sidenav -->
+
+        <span id="sidenavs" onclick="openNav()"><img class="svg-icon no-border" src="/imgs/menu.svg"></span>
     </div>
-
-    <!-- Use any element to open the sidenav -->
-    <span id="sidenavs" onclick="openNav()"><img class="svg-icon no-border" src="/imgs/menu.svg"></span>
-
-
-
-    <nav id="nav" class="navbar navbar-expand-lg fixed-top p-0">
+    <nav id="nav" class="navbar navbar-expand-lg fixed-top p-100">
         <div class="container">
             <a class="navbar-brand" href="#"><img class="navbar-icon" src="/imgs/logo.png">
                 <span class="brand-name">AndroCrunch<br><span>BEYOND THE INFINTY</span></a>
