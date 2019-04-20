@@ -21,12 +21,38 @@ footer p {
 
 }
 
+nav.fixed-top div.container{
+  width: 72vw;
+}
 hr {
   background-color: #404140;
 }
 
+a {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+section.container-fluid .jumbotron.text-white {
+  background-image: linear-gradient(to right, #3f2a6b, #580096);
+}
 
+h1.display-4 {
+  font-weight: bold;
+}
+
+nav a.nav-link {
+  border-bottom: 4px solid #19191a;
+}
+
+nav a.nav-link:hover {
+  color: #8b67ee;
+  border-bottom: 4px solid #8b67ee;
+}
+
+nav a.navbar-brand:hover {
+  color: white;
+}
 
 .bg-black {
   background-color: #0e1111;
@@ -42,14 +68,8 @@ hr {
   /* So they look staggered */
 }
 
-
 .nav-item {
   margin: 0 15px;
-}
-
-a {
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar-icon {
@@ -80,19 +100,19 @@ a {
 .dark-purple {
   background-color: #580096;
 }
-.text-dark-purple{
+
+.text-dark-purple {
   color: #580096;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 .light-purple {
   background-color: #a469f2;
 }
-.MultiCarousel-inner .item:hover{
-  background-color: #474646;
-}
-.text-light-purple{
+
+.text-light-purple {
   color: #a469f2;
-  font-family: monospace;  
+  font-family: monospace;
 }
 
 .med-purple {
@@ -114,10 +134,6 @@ a {
   background-color: #5a00f0;
 }
 
-section.container-fluid .jumbotron.text-white {
-  background-image: linear-gradient(to right, #3f2a6b, #580096);
-}
-
 .lead {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 400;
@@ -137,10 +153,6 @@ section.container-fluid .jumbotron.text-white {
   padding-top: 2.5rem;
 }
 
-h1.display-4 {
-  font-weight: bold;
-}
-
 .btn.dark-purple {
   box-shadow: 0 0 30px #6e438d, 0 0 15px #8b67ee;
   opacity: 0.8;
@@ -152,25 +164,11 @@ h1.display-4 {
   letter-spacing: 2px;
 }
 
-nav a.nav-link {
-  border-bottom: 4px solid #19191a;
-}
-
-nav a.nav-link:hover {
-  color: #8b67ee;
-  border-bottom: 4px solid #8b67ee;
-}
-
-nav a.navbar-brand:hover {
-  color: white;
-}
-
 .svg-icon {
   height: 40px;
   ;
 }
-
-
+/* ----------------------- Middle section of homepage */
 .jumbo-button {
   margin-top: 2em;
 }
@@ -226,26 +224,9 @@ nav a.navbar-brand:hover {
 
 }
 
-@keyframes come-in {
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  100% {
-    opacity: 1;
-  }
-}
-
-
-@media only screen and (max-width: 992px) {}
-
-@media only screen and (max-width: 768px) {
-  .lead {
-    font-size: 1rem;
-  }
-
+/* Multi carousel ------------------------------------------------------ */
+.MultiCarousel-inner .item:hover {
+  background-color: #474646;
 }
 
 .MultiCarousel {
@@ -294,9 +275,39 @@ nav a.navbar-brand:hover {
   background: rgb(153, 152, 152);
 }
 
+/* Keframes  */
+@keyframes come-in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Media queries from large to medium */
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 768px) {
+  .lead {
+    font-size: 1rem;
+  }
+
+  .input-group{
+    width: 98% !important;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   .card img {
     height: auto;
+  }
+
+  .display-5 {
+    font-size: 1.5rem;
   }
 
   .search-box div.rounded {
