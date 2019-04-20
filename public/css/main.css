@@ -94,6 +94,7 @@ h1.display-4 {
 
 .text-dark-purple {
   color: #580096 !important;
+  
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .btn-purple-color{
@@ -244,26 +245,28 @@ h1.display-4 {
 .search-box {
   margin-top: 7rem;
   color: black;
-  
-  margin-bottom: -103px;
+  margin-bottom: -9rem;
 }
 
 .search-box .input-group {
-  width: 59%;
+  width: 65%;
   margin: auto;
   padding: 1rem 0;
 }
 .pt-6{
-  padding-top: 18rem;
+  padding-top: 16rem;
 }
 .search-box div.rounded {
-  padding: 2rem 0;
+  padding: 5rem 0;
   position: relative;
-  max-width: 59%;
-  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.4);
+  max-width: 64%;
+  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
   z-index: 3;
 }
-
+.search-box div.rounded h1{
+  font-weight: 600;
+  color: #3c465a;
+}
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
