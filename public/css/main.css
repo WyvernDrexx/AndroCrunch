@@ -38,18 +38,12 @@ h1.display-4 {
   font-weight: bold;
 }
 
-nav a.nav-link {
-  border-bottom: 4px solid #19191a;
+
+
+.nav-item .nav-link:hover {
+  color: #080808 !important;
 }
 
-nav a.nav-link:hover {
-  color: #8b67ee;
-  border-bottom: 4px solid #8b67ee;
-}
-
-nav a.navbar-brand:hover {
-  color: white;
-}
 
 .bg-black {
   background-color: #0e1111;
@@ -192,7 +186,7 @@ nav a.navbar-brand:hover {
   color: white;
 }
 
-.jumbo-button .dark-purple:hover {
+.jumbo-button .dark-purple-color:hover {
   background-color: #5a00f0;
 }
 
@@ -218,15 +212,19 @@ nav a.navbar-brand:hover {
 .jumbo-button .btn{
   font-weight: 600;
 }
-
-.btn.btn-purple-color {
-  box-shadow: 0 0 30px #cbace2, 0 0 15px #8b67ee;
-  opacity: 0.8;
+.btn.btn-purple-color{
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.brand-name span {
+.btn.btn-purple-color:hover {
+  box-shadow: 0 0 30px #cbace2, 0 0 15px #8b67ee;
+}
+
+.brand-name span.motto {
   display: inline-block;
   font-size: 10px;
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
@@ -244,32 +242,35 @@ nav a.navbar-brand:hover {
 }
 
 .search-box {
-  padding: 5rem 0;
-  margin: 7rem 0;
+  margin-top: 7rem;
   color: black;
+  
+  margin-bottom: -103px;
 }
 
 .search-box .input-group {
-  width: 80%;
+  width: 59%;
   margin: auto;
   padding: 1rem 0;
 }
-
+.pt-6{
+  padding-top: 18rem;
+}
 .search-box div.rounded {
   padding: 2rem 0;
-  max-width: 70%;
-  box-shadow: 10px 30px 50px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  max-width: 59%;
+  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.4);
+  z-index: 3;
 }
 
 .search-dropdown {
-  padding: auto;
-  padding-right: 5rem;
-  padding-left: 1rem;
+  padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
 }
 
 .search-btn {
-  max-height: 2.35rem;
+  max-height: 2.6rem;
   background-color: #7731a9;
   box-shadow: none !important;
   border-top-left-radius: 0;
@@ -288,7 +289,7 @@ nav a.navbar-brand:hover {
 .search-box .form-control {
   border: 3px solid #7731a9;
   border-left: none;
-
+  height: auto;
 }
 
 /* Multi carousel ------------------------------------------------------ */
@@ -311,6 +312,17 @@ nav a.navbar-brand:hover {
   width: 100%;
   position: relative;
 }
+.rightLst, .leftLst{
+  opacity: 0.3;
+}
+
+.leftLst:hover{
+  opacity: 1;
+}
+
+.rightLst:hover{
+  opacity: 1;
+}
 
 .MultiCarousel .MultiCarousel-inner {
   transition: 1s ease all;
@@ -325,7 +337,7 @@ nav a.navbar-brand:hover {
   text-align: center;
   padding: 10px;
   margin: 10px;
-  height: 15rem;
+  height: 13rem;
   background: #f1f1f1;
   color: #666;
 }
@@ -348,6 +360,7 @@ nav a.navbar-brand:hover {
 .MultiCarousel .leftLst.over,
 .MultiCarousel .rightLst.over {
   pointer-events: none;
+  opacity: 0;
   background: rgb(153, 152, 152);
 }
 

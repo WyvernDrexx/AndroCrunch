@@ -1,4 +1,3 @@
-
 // Scroll effect ------------------------------------------------
 (function ($) {
 
@@ -141,8 +140,7 @@ $(document).ready(function () {
       if (bodyWidth >= 576) {
         incno = itemsSplit[1];
         itemWidth = sampwidth / incno;
-      }
-      else {
+      } else {
         incno = itemsSplit[0];
         itemWidth = sampwidth / incno;
       }
@@ -197,9 +195,17 @@ $(document).ready(function () {
     ResCarousel(ell, Parent, slide);
   }
 
-  setInterval(()=> {
+  setInterval(() => {
     $("#right-move").trigger("click");
   }, 3000);
+
+
+
+  // $(document).on('scroll', function() {
+  //   if( $(this).scrollTop() >= $('.MultiCarousel').offset().top ){
+        
+  //   }
+  // });
 
 });
 
