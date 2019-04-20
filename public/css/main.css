@@ -231,7 +231,7 @@ h1.display-4 {
 
 .svg-icon {
   height: 40px;
-  ;
+  width: auto;
 }
 /* ----------------------- Middle section of homepage */
 .jumbo-button {
@@ -256,6 +256,30 @@ h1.display-4 {
 .pt-6{
   padding-top: 16rem;
 }
+.pad15{
+  position: relative;
+}
+.item-info{
+  background-color: rgba(15, 15, 15, 0.8);
+  opacity: 0;
+  width: auto;
+  height: inherit;
+  position: absolute;
+  z-index: 6;
+  border: none;
+}
+.item-info span{
+  position: absolute;
+  top: 43%;
+  left: 43%;
+}
+
+
+
+.item-info:hover{
+  opacity: 0.9;
+}
+
 .search-box div.rounded {
   padding: 5rem 0;
   position: relative;
@@ -338,7 +362,6 @@ h1.display-4 {
 
 .MultiCarousel .MultiCarousel-inner .item>div {
   text-align: center;
-  padding: 10px;
   margin: 10px;
   height: 13rem;
   background: #f1f1f1;

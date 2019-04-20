@@ -148,9 +148,15 @@ $(document).ready(function () {
         'transform': 'translateX(0px)',
         'width': itemWidth * itemNumbers
       });
+
+      //-------------
+      var widthItem = 0;
       $(this).find(itemClass).each(function () {
         $(this).outerWidth(itemWidth);
       });
+      widthItem = $(".pad15").innerWidth();
+      $(".item-info").outerWidth(widthItem);
+      console.log(widthItem);
       $(".leftLst").addClass("over");
       $(".rightLst").removeClass("over");
     });
@@ -203,7 +209,7 @@ $(document).ready(function () {
 
   // $(document).on('scroll', function() {
   //   if( $(this).scrollTop() >= $('.MultiCarousel').offset().top ){
-        
+
   //   }
   // });
 
