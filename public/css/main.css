@@ -99,7 +99,7 @@ nav a.navbar-brand:hover {
 }
 
 .text-dark-purple {
-  color: #580096;
+  color: #580096 !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .btn-purple-color{

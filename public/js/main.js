@@ -81,9 +81,13 @@ window.onload = function () {
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
     if (offset > 50) {
-      nav.style.backgroundColor = "#19191a";
+      nav.style.backgroundColor = "#ededee";
+      $(".nav-link").addClass("text-dark-purple");
+      $(".navbar-brand").addClass("text-dark-purple");
     } else if (op) {
       nav.style.backgroundColor = "transparent";
+      $(".nav-link").removeClass("text-dark-purple");
+      $(".navbar-brand").removeClass("text-dark-purple");
     }
   });
 
