@@ -275,11 +275,18 @@ h1.display-4 {
 }
 .item-info span{
   position: absolute;
-  top: 43%;
-  left: 43%;
+  top: 29%;
+  left: 29%;
 }
 
-
+.plus-symbol{
+  font-weight: bolder;
+  font-size: 60px;
+  color: white;
+  background-color: #0e1111;
+  border-radius: 50%;
+  padding: 3px 30px;
+}
 
 .item-info:hover{
   opacity: 0.9;
@@ -299,6 +306,7 @@ h1.display-4 {
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
+  background-color: #6600ff;
 }
 
 .search-btn {
@@ -319,7 +327,7 @@ h1.display-4 {
 }
 
 .search-box .form-control {
-  border: 3px solid #7731a9;
+  border: 3px solid #6600ff;
   border-left: none;
   height: auto;
 }
