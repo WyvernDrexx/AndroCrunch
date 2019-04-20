@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: linear-gradient(90deg, #1c0030, #63119e);
+  background-image: linear-gradient(90deg, #330066, #2c008b, #570094);
   opacity: 0;
   transition-duration: 1s;
   animation: fadeIn 1s linear 0.7s 1 forwards;
