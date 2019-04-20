@@ -245,6 +245,7 @@ nav a.navbar-brand:hover {
 
 .search-box {
   padding: 5rem 0;
+  margin: 7rem 0;
   color: black;
 }
 
@@ -293,6 +294,14 @@ nav a.navbar-brand:hover {
 /* Multi carousel ------------------------------------------------------ */
 .MultiCarousel-inner .item:hover {
   background-color: #474646;
+}
+
+.mb-6{
+  margin-bottom: 8rem;
+}
+
+.mt-6{
+  margin-bottom: 8rem;
 }
 
 .MultiCarousel {
@@ -403,7 +412,9 @@ nav a.navbar-brand:hover {
 
   .top-section {
     width: 90%;
+    
   }
+
 
   .brand-name {
     display: none;
