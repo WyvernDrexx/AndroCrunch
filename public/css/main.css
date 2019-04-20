@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #0e1111;
+  background-image: linear-gradient(to right, #1c0030, #63119e);
   opacity: 0;
   transition-duration: 1s;
   animation: fadeIn 1s linear 0.7s 1 forwards;
@@ -33,9 +33,6 @@ a {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-section.container-fluid .jumbotron.text-white {
-  background-image: linear-gradient(to right, #3f2a6b, #580096);
-}
 
 h1.display-4 {
   font-weight: bold;
@@ -117,6 +114,10 @@ nav a.navbar-brand:hover {
 
 .med-purple {
   background-color: #38475d;
+}
+
+.transparent{
+  background: transparent;
 }
 
 .btn-outline {
@@ -319,6 +320,7 @@ nav a.navbar-brand:hover {
 
   .search-box {
     padding: 10px;
+    background-image: linear-gradient()
   }
 
   .search-box .display-5 {
