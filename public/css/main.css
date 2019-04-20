@@ -292,6 +292,9 @@ nav a.navbar-brand:hover {
 @media only screen and (max-width: 992px) {}
 
 @media only screen and (max-width: 768px) {
+  nav.fixed-top div.container{
+    width: 100vw;
+  }
   .lead {
     font-size: 1rem;
   }
