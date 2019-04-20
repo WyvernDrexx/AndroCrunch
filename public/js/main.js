@@ -76,7 +76,15 @@ function closeNav() {
 window.onload = function () {
   var nav = document.getElementById("nav");
   var op = true;
-  nav.style.backgroundColor = "transparent";
+  var offset = window.pageYOffset;
+  if (offset > 50) {
+    nav.style.backgroundColor = "#ededee";
+    $(".nav-link").addClass("text-dark-purple");
+    $(".navbar-brand").addClass("text-dark-purple");
+  }else{
+    nav.style.backgroundColor = "transparent";
+  }
+
   window.addEventListener("scroll", () => {
     var offset = window.pageYOffset;
     if (offset > 50) {

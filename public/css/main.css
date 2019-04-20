@@ -23,11 +23,16 @@ footer p {
 
 nav.fixed-top div.container{
   width: 65vw;
+  padding-top: 20px;
 }
 hr {
   background-color: #404140;
 }
-
+input::placeholder {
+  color: #99cccc;
+  font-size: 1em;
+  font-weight: bold;
+}
 a {
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,7 +46,7 @@ h1.display-4 {
 
 
 .nav-item .nav-link:hover {
-  color: #080808 !important;
+  color: #9966cc !important;
 }
 
 
@@ -219,7 +224,7 @@ h1.display-4 {
 }
 
 .btn.btn-purple-color:hover {
-  box-shadow: 0 0 30px #cbace2, 0 0 15px #8b67ee;
+  box-shadow: 0 0 30px #cbace2, 0 0 15px #6600ff;
 }
 
 .brand-name span.motto {
@@ -288,8 +293,8 @@ h1.display-4 {
   z-index: 3;
 }
 .search-box div.rounded h1{
-  font-weight: 600;
-  color: #3c465a;
+  font-weight: bold;
+  color: #333366;
 }
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
@@ -298,7 +303,7 @@ h1.display-4 {
 
 .search-btn {
   max-height: 2.6rem;
-  background-color: #7731a9;
+  background-color: #6600ff;
   box-shadow: none !important;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
