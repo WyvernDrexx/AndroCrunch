@@ -1,5 +1,6 @@
 * {
   transition: 0.5s;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
 }
 
 body {
@@ -50,9 +51,12 @@ h1.display-4 {
 }
 
 .nav-item .nav-link:hover {
-  color: #9966cc !important;
+  color: #9966ff !important;
 }
-
+.blog-icon{
+  width: 70%;
+  height: auto;
+}
 
 .nav-item {
   margin: 0 15px;
@@ -134,7 +138,7 @@ input:focus{
 }
 
 .blog-posts{
-  margin: 5rem 0;
+  margin-bottom: 5rem;
   padding: 1rem 0; 
 }
 
@@ -241,7 +245,7 @@ input:focus{
 }
 
 .jumbo-button .btn-outline:hover {
-  border-color: #54336b;
+  border-color: #9966ff;
   color: white;
 }
 
@@ -346,7 +350,7 @@ input:focus{
   color: #6600ff;;
   background-color: white;
   border-radius: 50%;
-  padding: 6px 15px;
+  padding: 3px 15px;
 }
 
 .item-info:hover {
@@ -369,7 +373,7 @@ input:focus{
 }
 .statistics{
   padding-top: 7.5rem;
-  background-image: linear-gradient(-90deg, #330066, #6600cc);
+  background-image: linear-gradient(to bottom, #330066, #6600cc);
 }
 .hits{
   position: relative;
@@ -391,10 +395,9 @@ input:focus{
   max-width: 16rem;
   margin: 15px;
   margin-top: -7rem;
-  
   z-index: 1;
   background-color: white;
-  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.19);
+  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
 }
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
@@ -436,6 +439,9 @@ input:focus{
 
 .mt-6 {
   margin-top: 8rem;
+}
+.load-more{
+  background-color: #6600ff;
 }
 
 .MultiCarousel {
