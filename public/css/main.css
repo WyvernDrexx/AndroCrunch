@@ -69,7 +69,7 @@ h1.display-4 {
 
 .navbar {
   background-color: #19191afb;
-  padding: 1rem 2rem;
+  padding: 2rem 3rem;
   padding-top: 0;
 }
 input:focus{
@@ -258,7 +258,7 @@ input:focus{
 }
 
 .search-box {
-  margin-top: 7rem;
+  margin-top: 0rem;
   color: black;
   margin-bottom: -9rem;
 }
@@ -347,8 +347,10 @@ input:focus{
 }
 .statistics .container-fluid .row div{
   height: 16rem;
-  margin: 25px;
+  max-width: 16rem;
+  margin: 15px;
   margin-top: -7rem;
+  
   z-index: 1;
   background-color: white;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.19);
