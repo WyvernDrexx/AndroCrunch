@@ -412,10 +412,10 @@ input:focus{
   font-weight: bold;
 }
 .statistics .container-fluid .row div{
-  height: 16rem;
-  max-width: 16rem;
-  margin: 15px;
-  margin-top: -7rem;
+  height: 13rem;
+  max-width: 18rem;
+  margin: 10px;
+  margin-top: -5rem;
   z-index: 1;
   background-color: white;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
@@ -598,9 +598,6 @@ input:focus{
     display: none;
   }
 
-  product-box:last-child {
-    display: none;
-  }
 
   .display-5 {
     font-size: 1.5rem;
@@ -629,8 +626,13 @@ input:focus{
   }
 
   .statistics .container-fluid .row div:first-of-type{
-      margin-top: -9rem;
+    margin-top: -9rem;
   }
+
+  .statistics .container-fluid .row div{
+    margin: 0;
+  }
+
   .brand-name {
     display: none;
   }
