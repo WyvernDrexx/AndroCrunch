@@ -328,7 +328,7 @@ input:focus{
 }
 .statistics{
   padding-top: 7.5rem;
-  background-image: linear-gradient(90deg, #330066, #493870, #570094);
+  background-image: linear-gradient(-90deg, #330066, #6600cc);
 }
 .hits{
   position: relative;
