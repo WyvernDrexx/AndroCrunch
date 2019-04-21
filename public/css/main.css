@@ -86,7 +86,6 @@ h1.display-4 {
 
 .text-dark-purple {
   color: #580096 !important;
-
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -110,8 +109,6 @@ h1.display-4 {
 /* ------------------------------------------------------------------------- */
 
 #sidenavs {
-  display: none;
-  
   background-color: rgb(240, 239, 238);
 }
 
@@ -121,6 +118,7 @@ h1.display-4 {
   top: 0;
   background-color: #feffff;
   padding: 0;
+  display: none;
 }
 
 /* The side navigation menu */
@@ -154,7 +152,7 @@ h1.display-4 {
   text-decoration: none;
   font-size: 25px;
   color: #6600ff;
-  display: display: inline-block;
+  display: block;
   transition: 0.3s;
 }
 
@@ -467,7 +465,7 @@ h1.display-4 {
     height: auto;
   }
 
-  #sidenavs {
+  #side-toggler {
     display: inline-block;
   }
 

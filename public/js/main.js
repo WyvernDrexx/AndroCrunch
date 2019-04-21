@@ -63,17 +63,7 @@ win.scroll(function (event) {
   });
 
 });
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("sidenavs").style.display = "inline-block";
-}
 
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("sidenavs").style.display = "inline-block";
-}
 
 window.onload = function () {
   var nav = document.getElementById("nav");
@@ -83,10 +73,10 @@ window.onload = function () {
     nav.style.backgroundColor = "#ededee";
     $(".nav-link").addClass("text-dark-purple");
     $(".navbar-brand").addClass("text-dark-purple");
-    $("#side-toggler").style.backgroundColor = "#ededee";
+    document.getElementById("side-toggler").style.backgroundColor = "#ededee";
   }else{
     nav.style.backgroundColor = "transparent";
-    $("#side-toggler").style.backgroundColor = "transparent";
+    document.getElementById("side-toggler").style.backgroundColor = "transparent";
   }
 
   window.addEventListener("scroll", () => {
@@ -95,12 +85,12 @@ window.onload = function () {
       nav.style.backgroundColor = "#ededee";
       $(".nav-link").addClass("text-dark-purple");
       $(".navbar-brand").addClass("text-dark-purple");
-      $("#side-toggler").style.backgroundColor = "#ededee";
+      document.getElementById("side-toggler").style.backgroundColor = "#ededee";
     } else if (op) {
       nav.style.backgroundColor = "transparent";
       $(".nav-link").removeClass("text-dark-purple");
       $(".navbar-brand").removeClass("text-dark-purple");
-      $("#side-toggler").style.backgroundColor = "transparent";
+      document.getElementById("side-toggler").style.backgroundColor = "transparent";
     }
   });
 
