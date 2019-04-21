@@ -160,7 +160,6 @@ $(document).ready(function () {
       });
       widthItem = $(".pad15").innerWidth();
       $(".item-info").outerWidth(widthItem);
-      console.log(widthItem);
       $(".leftLst").addClass("over");
       $(".rightLst").removeClass("over");
     });
@@ -199,8 +198,6 @@ $(document).ready(function () {
   //It is used to get some elements from btn
   function click(ell, ee) {
     var Parent = "#" + $(ee).parent().attr("id");
-    console.log("parent");
-    console.log(Parent);
     var slide = $(Parent).attr("data-slide");
     ResCarousel(ell, Parent, slide);
   }

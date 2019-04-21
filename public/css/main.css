@@ -62,7 +62,7 @@ h1.display-4 {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 0px; /* Place the button at the bottom of the page */
-  right: 2px; /* Place the button 30px from the right */
+  right: 0px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
@@ -326,7 +326,7 @@ input:focus{
 .search-box {
   margin-top: 0rem;
   color: black;
-  margin-bottom: -5rem;
+  margin-bottom: -9rem;
 }
 
 .search-box .input-group {
@@ -379,7 +379,7 @@ input:focus{
 }
 
 .search-box div.rounded {
-  padding: 1.5rem 0;
+  padding: 5rem 0;
   position: relative;
   max-width: 58%;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
@@ -415,7 +415,7 @@ input:focus{
   height: 16rem;
   max-width: 16rem;
   margin: 15px;
-  margin-top: -5rem;
+  margin-top: -7rem;
   z-index: 1;
   background-color: white;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
