@@ -96,6 +96,42 @@ input:focus{
 .btn-purple-color {
   background-color: #6600ff;
 }
+.blog-posts .container div div{
+  margin: 1rem;
+}
+.post{
+  position: relative;
+}
+.img-icon{
+  height: 50px;
+  width: 50px;
+  position: absolute;
+}
+.post-title, .post-date{
+  margin-left: 55px;
+}
+.post-title{
+  color: #171718;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  opacity: 0.9;
+}
+.post-date{
+  color: #570094;
+  font-size: 11px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.blog-posts h2 span{
+  padding: 5px 50px 5px 50px;
+  border-bottom: 1px solid #6600ff;
+}
+.blog-posts h2{
+  padding: 25px;
+}
+
+.blog-posts{
+  margin: 5rem 0;
+  padding: 1rem 0; 
+}
 
 .light-purple {
   background-color: #a469f2;
