@@ -69,8 +69,12 @@ h1.display-4 {
 
 .navbar {
   background-color: #19191afb;
+  padding: 1rem 2rem;
+  padding-top: 0;
 }
-
+input:focus{
+  outline: none;
+}
 /* Base colors scheme */
 .base-bg {
   background-color: #0e1111;
