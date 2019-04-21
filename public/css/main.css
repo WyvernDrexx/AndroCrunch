@@ -110,7 +110,7 @@ h1.display-4 {
 
 #sidenavs {
   display: inline-block;
-  height: rem;
+  height: 1rem;
   background-color: rgb(240, 239, 238);
 }
 
