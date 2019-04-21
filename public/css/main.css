@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: linear-gradient(90deg, #330066, #2c008b, #570094);
+  background-image: linear-gradient(-90deg, #330066, #660099, #6600cc);
   opacity: 0;
   transition-duration: 1s;
   animation: fadeIn 1s linear 0.7s 1 forwards;
@@ -97,7 +97,7 @@ h1.display-4 {
 }
 
 .navbar {
-  background-color: #19191afb;
+  background-color: #fffffffb;
   padding: 2rem 3rem;
   padding-top: 0;
 }
