@@ -272,7 +272,7 @@ input:focus{
 .product-box {
   color: wheat;
   height: 9rem;
-  margin: 4px;
+  margin: 8px;
 }
 
 .pt-6 {
@@ -300,8 +300,8 @@ input:focus{
 }
 
 .plus-symbol {
-  font-weight: bolder;
-  font-size: 20px;
+  font-weight: 300;
+  font-size: 25px;
   color: white;
   background-color: #6600ff;
   border-radius: 50%;
@@ -408,8 +408,8 @@ input:focus{
 .MultiCarousel .leftLst,
 .MultiCarousel .rightLst {
   position: absolute;
-  border-radius: 50%;
-  top: calc(50% - 20px);
+  font-size: 50px;
+  top: calc(50% - 50px);
 }
 
 .MultiCarousel .leftLst {
