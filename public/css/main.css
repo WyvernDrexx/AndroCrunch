@@ -264,8 +264,9 @@ h1.display-4 {
   margin: auto;
   padding: 1rem 0;
 }
-.product-box{
-  color: wheat; 
+
+.product-box {
+  color: wheat;
   height: 9rem;
   margin: 4px;
 }
@@ -443,6 +444,11 @@ h1.display-4 {
     width: 100vw;
   }
 
+  .product-box {
+    width: 48%;
+    height: 10rem;
+  }
+
   .lead {
     font-size: 1rem;
   }
@@ -454,7 +460,7 @@ h1.display-4 {
 
 @media only screen and (max-width: 576px) {
 
-  .mt-6{
+  .mt-6 {
     margin-top: 6rem;
   }
 
@@ -463,10 +469,12 @@ h1.display-4 {
     border-radius: none;
   }
 
-  .btn-outline.rounded-pill{
+  .btn-outline.rounded-pill {
     margin-top: 1rem;
-    width: 90%;
+    margin-left: 0 !important;
+    width: 99%;
   }
+
   .card img {
     height: auto;
   }
@@ -474,15 +482,15 @@ h1.display-4 {
   #side-toggler {
     display: inline-block;
   }
-  .product-box{
-    width: 40%;
-  }
+
   #nav {
     display: none;
   }
-  product-box:last-child{
+
+  product-box:last-child {
     display: none;
   }
+
   .display-5 {
     font-size: 1.5rem;
   }
