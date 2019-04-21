@@ -261,13 +261,18 @@ h1.display-4 {
 }
 
 .search-box .input-group {
-  width: 65%;
+  width: 62%;
   margin: auto;
   padding: 1rem 0;
 }
+.product-box{
+  color: wheat; 
+  height: 9rem;
+  margin: 4px;
+}
 
 .pt-6 {
-  padding-top: 16rem;
+  padding-top: 15rem;
 }
 
 .pad15 {
