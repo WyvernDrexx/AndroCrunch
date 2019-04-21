@@ -607,9 +607,6 @@ input:focus{
   .statistics .container-fluid .row div:first-of-type{
       margin-top: -9rem;
   }
-  .statistics .container-fluid .row div{
-    margin-bottom: 8rem;
-  }
   .brand-name {
     display: none;
   }
