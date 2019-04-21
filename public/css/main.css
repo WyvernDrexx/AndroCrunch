@@ -445,10 +445,15 @@ h1.display-4 {
   }
 
   .product-box {
-    width: 48%;
+    width: 46%;
     height: 10rem;
   }
-
+  .product-box:nth-child(2){
+    margin-left: -4px;
+  }
+  .product-box:nth-child(4){
+    margin-left: -4px;
+  }
   .lead {
     font-size: 1rem;
   }
