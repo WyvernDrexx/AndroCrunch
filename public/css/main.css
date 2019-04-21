@@ -111,12 +111,14 @@ h1.display-4 {
 
 #sidenavs {
   display: none;
-  position: sticky;
+  
   background-color: rgb(240, 239, 238);
 }
 
 #side-toggler {
   z-index: 99;
+  position: fixed;
+  top: 0;
   background-color: #feffff;
   padding: 0;
 }
@@ -152,7 +154,7 @@ h1.display-4 {
   text-decoration: none;
   font-size: 25px;
   color: #6600ff;
-  display: block;
+  display: display: inline-block;
   transition: 0.3s;
 }
 
@@ -449,7 +451,7 @@ h1.display-4 {
 @media only screen and (max-width: 576px) {
 
   .mt-6{
-    margin-top: 2rem;
+    margin-top: 6rem;
   }
 
   .btn.btn-purple-color {

@@ -66,11 +66,13 @@ win.scroll(function (event) {
 /* Set the width of the side navigation to 250px */
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("sidenavs").style.display = "inline-block";
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("sidenavs").style.display = "inline-block";
 }
 
 window.onload = function () {
@@ -237,5 +239,5 @@ function openNav() {
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("sidenavs").style.display = "block";
+  document.getElementById("sidenavs").style.display = "inline-block";
 }
