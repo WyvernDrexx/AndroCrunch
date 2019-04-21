@@ -326,7 +326,7 @@ input:focus{
 .search-box {
   margin-top: 0rem;
   color: black;
-  margin-bottom: -9rem;
+  margin-bottom: -5rem;
 }
 
 .search-box .input-group {
@@ -379,7 +379,7 @@ input:focus{
 }
 
 .search-box div.rounded {
-  padding: 5rem 0;
+  padding: 1.5rem 0;
   position: relative;
   max-width: 58%;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
@@ -415,7 +415,7 @@ input:focus{
   height: 16rem;
   max-width: 16rem;
   margin: 15px;
-  margin-top: -7rem;
+  margin-top: -5rem;
   z-index: 1;
   background-color: white;
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
