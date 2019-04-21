@@ -319,12 +319,40 @@ input:focus{
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-
+.pb-6{
+  padding-bottom: 4.5rem;
+}
 .search-box div.rounded h1 {
   font-weight: bold;
   color: #333366;
 }
+.statistics{
+  padding-top: 7.5rem;
+  background-image: linear-gradient(90deg, #330066, #493870, #570094);
+}
+.hits{
+  position: relative;
+  top: 33%;
+}
 
+.hits span{
+  color: #2c008b;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.hits span.lead{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.statistics .container-fluid .row div{
+  height: 16rem;
+  margin: 25px;
+  margin-top: -7rem;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.19);
+}
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
