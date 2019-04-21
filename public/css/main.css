@@ -265,7 +265,7 @@ h1.display-4 {
   position: relative;
 }
 .item-info{
-  background-color: rgba(15, 15, 15, 0.8);
+  background-color: rgba(56, 54, 54, 0.678);
   opacity: 0;
   width: auto;
   height: inherit;
@@ -275,21 +275,21 @@ h1.display-4 {
 }
 .item-info span{
   position: absolute;
-  top: 29%;
-  left: 29%;
+  top: 40%;
+  left: 40%;
 }
 
 .plus-symbol{
   font-weight: bolder;
-  font-size: 60px;
+  font-size: 20px;
   color: white;
-  background-color: #0e1111;
+  background-color: #6600ff;
   border-radius: 50%;
-  padding: 3px 30px;
+  padding:5px 15px;
 }
 
 .item-info:hover{
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .search-box div.rounded {
