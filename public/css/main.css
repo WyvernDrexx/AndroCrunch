@@ -111,7 +111,6 @@ h1.display-4 {
 #sidenavs {
   display: inline-block;
   height: 1rem;
-  background-color: rgb(240, 239, 238);
 }
 
 #side-toggler {
@@ -475,11 +474,15 @@ h1.display-4 {
   #side-toggler {
     display: inline-block;
   }
-
+  .product-box{
+    width: 40%;
+  }
   #nav {
     display: none;
   }
-
+  product-box:last-child{
+    display: none;
+  }
   .display-5 {
     font-size: 1.5rem;
   }
