@@ -81,8 +81,10 @@ window.onload = function () {
     nav.style.backgroundColor = "#ededee";
     $(".nav-link").addClass("text-dark-purple");
     $(".navbar-brand").addClass("text-dark-purple");
+    $("#side-toggler").style.backgroundColor = "#ededee";
   }else{
     nav.style.backgroundColor = "transparent";
+    $("#side-toggler").style.backgroundColor = "transparent";
   }
 
   window.addEventListener("scroll", () => {
@@ -91,10 +93,12 @@ window.onload = function () {
       nav.style.backgroundColor = "#ededee";
       $(".nav-link").addClass("text-dark-purple");
       $(".navbar-brand").addClass("text-dark-purple");
+      $("#side-toggler").style.backgroundColor = "#ededee";
     } else if (op) {
       nav.style.backgroundColor = "transparent";
       $(".nav-link").removeClass("text-dark-purple");
       $(".navbar-brand").removeClass("text-dark-purple");
+      $("#side-toggler").style.backgroundColor = "transparent";
     }
   });
 

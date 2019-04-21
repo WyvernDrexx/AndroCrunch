@@ -21,48 +21,34 @@ footer p {
 
 }
 
-nav.fixed-top div.container{
+nav.fixed-top div.container {
   width: 65vw;
   padding-top: 20px;
 }
+
 hr {
   background-color: #404140;
 }
+
 input::placeholder {
   color: #99cccc;
   font-size: 1em;
   font-weight: bold;
 }
+
 a {
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 h1.display-4 {
   font-weight: bold;
 }
-
-
 
 .nav-item .nav-link:hover {
   color: #9966cc !important;
 }
 
-
-.bg-black {
-  background-color: #0e1111;
-}
-
-.come-in {
-  transform: translateY(150px);
-  animation: come-in 0.8s ease forwards;
-}
-
-.come-in:nth-child(odd) {
-  animation-duration: 0.5s;
-  /* So they look staggered */
-}
 
 .nav-item {
   margin: 0 15px;
@@ -85,6 +71,7 @@ h1.display-4 {
   background-color: #19191afb;
 }
 
+/* Base colors scheme */
 .base-bg {
   background-color: #0e1111;
 }
@@ -99,12 +86,14 @@ h1.display-4 {
 
 .text-dark-purple {
   color: #580096 !important;
-  
+
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.btn-purple-color{
+
+.btn-purple-color {
   background-color: #6600ff;
 }
+
 .light-purple {
   background-color: #a469f2;
 }
@@ -117,35 +106,52 @@ h1.display-4 {
 .med-purple {
   background-color: #38475d;
 }
-#sidenavs{
+
+/* ------------------------------------------------------------------------- */
+
+#sidenavs {
   display: none;
-  position: fixed;
+  position: sticky;
   background-color: rgb(240, 239, 238);
 }
-#side-toggler{
-  z-index: 12;
-  background-color: #0e1111;
+
+#side-toggler {
+  z-index: 99;
+  background-color: #feffff;
+  padding: 0;
 }
- /* The side navigation menu */
- .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 3; /* Stay on top */
-  top: 0; /* Stay at the top */
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 3;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: #111;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */
 }
+
+
 
 /* The navigation menu links */
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #6600ff;
   display: block;
   transition: 0.3s;
 }
@@ -172,12 +178,13 @@ h1.display-4 {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-} 
+  .sidenav {
+    padding-top: 15px;
+  }
 
-.transparent{
-  background: transparent;
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 
 .btn-outline {
@@ -201,10 +208,6 @@ h1.display-4 {
   font-weight: 400;
 }
 
-.separator {
-  margin: 3rem 0;
-}
-
 .brand-name {
   position: absolute;
   font-size: 14px;
@@ -215,10 +218,11 @@ h1.display-4 {
   padding-top: 2.5rem;
 }
 
-.jumbo-button .btn{
+.jumbo-button .btn {
   font-weight: 600;
 }
-.btn.btn-purple-color{
+
+.btn.btn-purple-color {
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -238,6 +242,7 @@ h1.display-4 {
   height: 40px;
   width: auto;
 }
+
 /* ----------------------- Middle section of homepage */
 .jumbo-button {
   margin-top: 2em;
@@ -258,13 +263,16 @@ h1.display-4 {
   margin: auto;
   padding: 1rem 0;
 }
-.pt-6{
+
+.pt-6 {
   padding-top: 16rem;
 }
-.pad15{
+
+.pad15 {
   position: relative;
 }
-.item-info{
+
+.item-info {
   background-color: rgba(56, 54, 54, 0.678);
   opacity: 0;
   width: auto;
@@ -273,22 +281,23 @@ h1.display-4 {
   z-index: 6;
   border: none;
 }
-.item-info span{
+
+.item-info span {
   position: absolute;
   top: 40%;
   left: 40%;
 }
 
-.plus-symbol{
+.plus-symbol {
   font-weight: bolder;
   font-size: 20px;
   color: white;
   background-color: #6600ff;
   border-radius: 50%;
-  padding:5px 15px;
+  padding: 5px 15px;
 }
 
-.item-info:hover{
+.item-info:hover {
   opacity: 1;
 }
 
@@ -299,10 +308,12 @@ h1.display-4 {
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-.search-box div.rounded h1{
+
+.search-box div.rounded h1 {
   font-weight: bold;
   color: #333366;
 }
+
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
@@ -337,12 +348,12 @@ h1.display-4 {
   background-color: #474646;
 }
 
-.mb-6{
+.mb-6 {
   margin-bottom: 8rem;
 }
 
-.mt-6{
-  margin-bottom: 8rem;
+.mt-6 {
+  margin-top: 8rem;
 }
 
 .MultiCarousel {
@@ -352,15 +363,17 @@ h1.display-4 {
   width: 100%;
   position: relative;
 }
-.rightLst, .leftLst{
+
+.rightLst,
+.leftLst {
   opacity: 0.3;
 }
 
-.leftLst:hover{
+.leftLst:hover {
   opacity: 1;
 }
 
-.rightLst:hover{
+.rightLst:hover {
   opacity: 1;
 }
 
@@ -420,28 +433,46 @@ h1.display-4 {
 @media only screen and (max-width: 992px) {}
 
 @media only screen and (max-width: 768px) {
-  nav.fixed-top div.container{
+  nav.fixed-top div.container {
     width: 100vw;
   }
+
   .lead {
     font-size: 1rem;
   }
 
-  .input-group{
+  .input-group {
     width: 98% !important;
   }
 }
 
 @media only screen and (max-width: 576px) {
+
+  .mt-6{
+    margin-top: 2rem;
+  }
+
+  .btn.btn-purple-color {
+    width: 100%;
+    border-radius: none;
+  }
+
+  .btn-outline.rounded-pill{
+    margin-top: 1rem;
+    width: 90%;
+  }
   .card img {
     height: auto;
   }
-  #sidenavs{
-    display: block;
+
+  #sidenavs {
+    display: inline-block;
   }
-  #nav{
+
+  #nav {
     display: none;
   }
+
   .display-5 {
     font-size: 1.5rem;
   }
@@ -465,7 +496,7 @@ h1.display-4 {
 
   .top-section {
     width: 90%;
-    
+
   }
 
 
