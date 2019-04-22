@@ -1,4 +1,3 @@
-
 window.onload = function () {
   var nav = document.getElementById("nav");
   var op = true;
@@ -8,7 +7,7 @@ window.onload = function () {
     $(".nav-link").addClass("text-dark-purple");
     $(".navbar-brand").addClass("text-dark-purple");
     document.getElementById("side-toggler").style.backgroundColor = "#ededee";
-  }else{
+  } else {
     nav.style.backgroundColor = "transparent";
     document.getElementById("side-toggler").style.backgroundColor = "transparent";
   }
@@ -137,7 +136,7 @@ $(document).ready(function () {
   }
 
   setInterval(() => {
-    $("#right-move").trigger("click");
+    $(".right-move").trigger("click");
   }, 3000);
 
 
@@ -174,19 +173,19 @@ function closeNav() {
 // }
 var amountScrolled = 300;
 
-$(window).scroll(function() {
-	if ( $(window).scrollTop() > amountScrolled ) {
-		$('#myBtn').fadeIn('slow');
-	} else {
-		$('#myBtn').fadeOut('slow');
-	}
+$(window).scroll(function () {
+  if ($(window).scrollTop() > amountScrolled) {
+    $('#myBtn').fadeIn('slow');
+  } else {
+    $('#myBtn').fadeOut('slow');
+  }
 });
 
-$('#myBtn').click(function() {
-	$('html, body').animate({
-		scrollTop: 0
-	}, 700);
-	return false;
+$('#myBtn').click(function () {
+  $('html, body').animate({
+    scrollTop: 0
+  }, 700);
+  return false;
 });
 
 // When the user clicks on the button, scroll to the top of the document
