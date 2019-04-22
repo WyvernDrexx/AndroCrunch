@@ -76,10 +76,10 @@ $(document).ready(function () {
       $(this).parent().attr("id", "MultiCarousel" + id);
       if (bodyWidth >= 576) {
         incno = itemsSplit[1];
-        itemWidth = sampwidth / incno;
+        itemWidth = sampwidth / incno - 7;
       } else {
         incno = itemsSplit[0];
-        itemWidth = sampwidth / incno;
+        itemWidth = sampwidth / incno -7;
       }
       $(this).css({
         'transform': 'translateX(0px)',

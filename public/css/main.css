@@ -63,7 +63,7 @@ h1.display-4 {
   height: 13rem;
   max-height: 100%;
   margin: 10px 0;
-  background-image: linear-gradient(to left, #302f30, #7c7b7c, #d8d6da);
+  background-image: linear-gradient(to left, #ffffff, #0000ffff );
   opacity: 0.3;
 }
 .nav-item .nav-link:hover {
@@ -131,6 +131,10 @@ h1.display-4 {
 
 .bg-gradient {
   background-image: linear-gradient(to bottom, #330066, #660099, #6600cc) !important;
+}
+
+.bg-gradient-rev {
+  background-image: linear-gradient(to top, #330066, #660099, #6600cc) !important;
 }
 
 .top-section {
