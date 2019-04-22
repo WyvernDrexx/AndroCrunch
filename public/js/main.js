@@ -163,18 +163,34 @@ function closeNav() {
   document.getElementById("sidenavs").style.display = "inline-block";
 }
 
-window.onscroll = function() {scrollFunction()};
+// window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
+// function scrollFunction() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     document.getElementById("myBtn").style.display = "block";
+//   } else {
+//     document.getElementById("myBtn").style.display = "none";
+//   }
+// }
+var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('#myBtn').fadeIn('slow');
+	} else {
+		$('#myBtn').fadeOut('slow');
+	}
+});
+
+$('#myBtn').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
 
 // When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-} 
+// function topFunction() {
+//   document.body.scrollTop = 0; // For Safari
+//   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+// } 
