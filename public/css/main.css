@@ -133,7 +133,6 @@ input:focus{
 }
 .blog-posts .container div div{
   margin: 1rem;
-  margin-bottom: 0;
 }
 .img-icon img{
   height: 50px;
@@ -158,7 +157,7 @@ input:focus{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .blog-posts h2 span{
-  padding: 5px 50px 5px 50px;
+  padding: 0px 50px 5px 50px;
   border-bottom: 1px solid #6600ff;
 }
 .blog-posts h2{
@@ -234,7 +233,15 @@ input:focus{
   display: block;
   transition: 0.3s;
 }
-
+a:hover{
+  color: white;
+}
+.blog-posts div.row div.col-lg .row{
+  border-left: 4px solid white;
+}
+.blog-posts div.row div.col-lg .row:hover{
+  border-left: 4px solid #6600ff; 
+}
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color:#9839da;
@@ -611,6 +618,9 @@ input:focus{
     display: none;
   }
 
+    .mb-6{
+      margin-bottom: 1rem;
+    }
 
   .display-5 {
     font-size: 1.5rem;
