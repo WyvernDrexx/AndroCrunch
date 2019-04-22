@@ -114,6 +114,7 @@ $(document).ready(function () {
       if (translateXval <= itemWidth / 2) {
         translateXval = 0;
         $(el + ' ' + leftBtn).addClass("over");
+        
       }
     } else if (e == 1) {
       var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
@@ -123,6 +124,7 @@ $(document).ready(function () {
       if (translateXval >= itemsCondition - itemWidth / 2) {
         translateXval = itemsCondition;
         $(el + ' ' + rightBtn).addClass("over");
+        $(".fade-on").css("display", "none");
       }
     }
     $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
