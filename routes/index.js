@@ -6,8 +6,8 @@ router.get("/blogs", (req, res) => {
     res.send("Blogs");
 });
 
-router.get("/test", (req, res) => {
-    res.render("particles");
+router.get("/products", (req, res) => {
+    res.render("products");
 });
 
 

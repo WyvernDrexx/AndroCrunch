@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: linear-gradient(to bottom, #330066, #660099, #6600cc);
+  background-image: linear-gradient(to left, #330066, #660099, #6600cc);
   opacity: 0;
   transition-duration: 1s;
   animation: fadeIn 1s linear 0.7s 1 forwards;
@@ -89,11 +89,12 @@ h1.display-4 {
 .navbar-icon {
   border-radius: 4px;
   height: 40px;
-  padding-left: 7px;
   padding-right: 7px;
   border: none;
 }
-
+.bg-gradient{
+  background-image: linear-gradient(to bottom, #330066, #660099, #6600cc) !important;
+}
 .top-section {
   width: 57vw;
   margin: auto;
@@ -188,6 +189,7 @@ input:focus{
 
 #side-toggler {
   z-index: 99;
+  padding: 9px 0;
   position: fixed;
   top: 0;
   background-color: #feffff;
@@ -208,13 +210,14 @@ input:focus{
   top: 0;
   /* Stay at the top */
   left: 0;
-  background-color: #111;
+  background-color: rgb(250, 246, 246);
   /* Black*/
   overflow-x: hidden;
   /* Disable horizontal scroll */
   padding-top: 60px;
   /* Place content 60px from the top */
   transition: 0.5s;
+  opacity: 0.9;
   /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -594,6 +597,7 @@ input:focus{
   }
 
   #side-toggler {
+    padding: 1rem 3px;
     display: inline-block;
   }
 
