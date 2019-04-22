@@ -77,7 +77,9 @@ h1.display-4 {
   font-size: 18px; /* Increase font size */
   transition: 0.3s;
 }
-
+.transparent{
+  background: transparent !important;
+}
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
@@ -131,6 +133,7 @@ input:focus{
 }
 .blog-posts .container div div{
   margin: 1rem;
+  margin-bottom: 0;
 }
 .img-icon img{
   height: 50px;
