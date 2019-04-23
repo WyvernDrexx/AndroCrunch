@@ -133,6 +133,11 @@ h1.display-4 {
   background-image: linear-gradient(to bottom, #330066, #660099, #6600cc) !important;
 }
 
+.compact-form{
+  max-width: 60%;
+  margin: auto;
+}
+
 .bg-gradient-rev {
   background-image: linear-gradient(to top, #330066, #660099, #6600cc) !important;
 }
