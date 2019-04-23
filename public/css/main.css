@@ -411,7 +411,7 @@ a:hover {
 .product-box {
   color: wheat;
   height: 9rem;
-  border: 4px solid white;
+  border: 4px solid transparent;
   margin: 8px;
 }
 
