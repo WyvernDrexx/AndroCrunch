@@ -10,12 +10,12 @@ passport.deserializeUser(User.deserializeUser());
 
 router.get("/register", (req, res) => {
     // res.render("register");
-    req.flash("info", "Currently we do not support login for public.");
+    req.flash("success", "Currently we do not support login for public.");
     res.redirect("/");
 });
 
 router.post("/register", (req, res) => {
-    req.flash("info", "Currently we do not support login for public.");
+    req.flash("success", "Currently we do not support login for public.");
     res.redirect("/");
     // Register work
     // User.register(new User({
