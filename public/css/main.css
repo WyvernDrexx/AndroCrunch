@@ -717,7 +717,6 @@ a:hover {
 
   .top-section {
     width: 90%;
-
   }
 
   .blog-posts h2{
@@ -738,6 +737,5 @@ a:hover {
 
   section.container-fluid {
     padding-left: 0;
-    margin-top: 5rem;
   }
 }
