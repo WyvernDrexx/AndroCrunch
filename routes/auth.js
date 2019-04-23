@@ -9,24 +9,28 @@ passport.deserializeUser(User.deserializeUser());
 
 
 router.get("/register", (req, res) => {
-    res.render("register");
+    // res.render("register");
+    req.flash("info", "Currently we do not support login for public.");
+    res.redirect("/");
 });
 
 router.post("/register", (req, res) => {
+    req.flash("info", "Currently we do not support login for public.");
+    res.redirect("/");
     // Register work
-    User.register(new User({
-        username: req.body.username}), req.body.password, (err, user) => {
-            if(err){
-                console.log(err);
-                req.flash("error", err.message);
-                res.redirect("/register");
-            }else{
-                passport.authenticate("local")(req, res, () => {
-                    req.flash("success", "Registered successfully!");
-                    res.redirect("/");
-                });
-            }
-        });
+    // User.register(new User({
+    //     username: req.body.username}), req.body.password, (err, user) => {
+    //         if(err){
+    //             console.log(err);
+    //             req.flash("error", err.message);
+    //             res.redirect("/register");
+    //         }else{
+    //             passport.authenticate("local")(req, res, () => {
+    //                 req.flash("success", "Registered successfully!");
+    //                 res.redirect("/");
+    //             });
+    //         }
+    //     });
     });
 //Login Routes..........................................
 

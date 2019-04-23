@@ -1,4 +1,4 @@
-const server = require("./imports/express"),
+const server = require("./middlewares/express"),
     PORT = process.env.PORT || 3000,
     mongoose = require("mongoose");
 
