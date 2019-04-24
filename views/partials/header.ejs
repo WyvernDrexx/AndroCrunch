@@ -51,10 +51,10 @@
                         <a class="nav-link store" href="#">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">Wallpapers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="#">Ringtones</a>
                     </li>
                 </ul>
             </div>
@@ -65,22 +65,16 @@
     </nav>
 
     <% if(error && error.length > 0) { %>
-    <br>
-    <br>
     <div class="alert alert-danger mt-6" role="alert">
         <%= error %>
     </div>
     <% } %>
     <% if(success && success.length > 0) { %>
-    <br>
-    <br>
     <div class="alert alert-success mt-6" role="alert">
         <%= success %>
     </div>
     <% } %>
     <% if(warning && warning.length > 0) { %>
-    <br>
-    <br>
     <div class="alert alert-danger mt-6" role="alert">
         <%= warning %>
     </div>

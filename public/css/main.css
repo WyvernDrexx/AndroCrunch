@@ -170,6 +170,11 @@ input:focus {
   background-color: #580096;
 }
 
+.social-icon{
+  width: 2rem;
+  height: auto;
+}
+
 .text-dark-purple {
   color: #580096 !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -527,6 +532,27 @@ a:hover {
 .search-btn img {
   height: 1.5rem;
 
+}
+.text-gray{
+  color: gray !important;
+}
+.main-content{
+  max-width: 65vw;
+  margin: auto;
+}
+
+.item-image{
+  width: 100%;
+  min-height: 15rem;
+}
+
+.item-details{
+  padding: 1rem 0 1rem 2rem;
+}
+
+.item-title{
+  font-size: 1.5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .search-box .form-control {
