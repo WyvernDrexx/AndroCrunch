@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<h1 class="display-5 text-white text-center mt-6">New Blog Post</h1>
+<section aria-label="New Blog Post">
+    <div class="container">
+        <form class="compact-form mb-6" action="/posts" method="POST">
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Title:</span>
+                </div>
+                <input type="text" class="form-control" name="post[title]" placeholder="Title" aria-label="Title"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image:</span>
+                </div>
+                <input type="text" class="form-control" name="post[image]" placeholder="Image Url" aria-label="Image URL"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Content</span>
+                </div>
+                <textarea name="post[content]" class="form-control" aria-label="Post Content"
+                    placeholder="Post's Content"></textarea>
+            </div>
+            <button type="submit" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit  </button>
+        </form>
+    </div>
+</section>
+
+<% include partials/footer %>

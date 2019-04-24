@@ -535,6 +535,14 @@ a:hover {
   height: auto;
 }
 
+.input-group-text{
+  width: 8rem;
+}
+
+textarea.form-control{
+  height: 17rem;;
+}
+
 /* Multi carousel ------------------------------------------------------ */
 .MultiCarousel-inner .item:hover {
   background-color: #474646;

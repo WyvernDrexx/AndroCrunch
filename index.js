@@ -1,4 +1,4 @@
-const server = require("./middlewares/express"),
+const server = require("./imports/express"),
     PORT = process.env.PORT || 3000,
     mongoose = require("mongoose");
 
@@ -19,6 +19,7 @@ server.get("/", (req, res) => {
 //  Required routes
 
 server.use(require("./routes/index"));
+server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
 
 //Wildcard route//
