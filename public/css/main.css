@@ -175,6 +175,17 @@ input:focus {
   height: auto;
 }
 
+.item-description{
+  background-color: rgba(166, 182, 202, 0.582);
+}
+
+.item-description .item-title{
+  font-size: 1rem;
+}
+
+.item-description .info{
+  margin-top: 9%;
+}
 .text-dark-purple {
   color: #580096 !important;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -400,14 +411,20 @@ a:hover {
 .no-border {
   border: none;
 }
+.no-border-radius{
+  border-radius: 0 !important;
+}
 
 .search-box {
   margin-top: 5.3rem;
   color: black;
   margin-bottom: -9rem;
 }
+.border-purple{
+  border: 2px solid #6600ff !important;
+}
 
-.search-box .input-group {
+.search-box .input-group, .main-content .input-group {
   width: 62%;
   margin: auto;
   padding: 1rem 0;
@@ -507,6 +524,10 @@ a:hover {
   box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
 }
 
+.box-shadow-dark{
+  box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
+}
+
 .search-dropdown {
   padding: 0.5rem 5rem 0.5rem 1rem;
   box-shadow: none !important;
@@ -555,7 +576,7 @@ a:hover {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.search-box .form-control {
+.search-box .form-control, .main-content .form-control {
   border: 3px solid #6600ff;
   border-left: none;
   height: auto;
@@ -565,7 +586,21 @@ a:hover {
   width: 8rem;
 }
 
-textarea.form-control{
+.comment textarea, .comment input{
+  width: 100%;
+  padding: 8px;
+  color: rgb(77, 76, 76);
+  border: 2px solid rgba(97, 97, 97, 0.493);
+}
+
+.comment input{
+  margin: 3px 0; 
+  padding: 10px;
+}
+.comment *::placeholder{
+  color: gray;
+}
+textarea.form-control, .comment textarea{
   height: 17rem;;
 }
 
@@ -695,7 +730,13 @@ textarea.form-control{
 }
 
 @media only screen and (max-width: 576px) {
+  .main-content{
+  min-width: 100%;
+  }
 
+  .btn-group-lg{
+    display: block !important;
+  }
   .mt-6 {
     margin-top: 6rem;
   }
@@ -736,6 +777,9 @@ textarea.form-control{
     min-width: 100% !important;
   }
 
+  .item-details .btn-group a {
+    display: block;
+  }
   .search-box {
     padding: 10px;
     background-image: linear-gradient()
