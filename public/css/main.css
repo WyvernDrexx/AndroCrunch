@@ -740,6 +740,9 @@ textarea.form-control, .comment textarea{
 }
 
 @media only screen and (max-width: 576px) {
+  footer .container{
+    width: 90vw;
+  }
   .main-content{
   min-width: 100%;
   }
