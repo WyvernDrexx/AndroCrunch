@@ -740,15 +740,10 @@ textarea.form-control, .comment textarea{
 }
 
 @media only screen and (max-width: 576px) {
-  footer .container{
-    width: 90vw;
-  }
   .main-content{
   min-width: 100%;
   }
-  .main-content{
-    min-width: 99vw;
-  }
+
 
   .item-details .btn-group.btn-group-lg{
     display: block;
