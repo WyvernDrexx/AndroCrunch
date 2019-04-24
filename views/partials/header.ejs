@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html style="position: relative;">
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,7 +7,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/main.css'>
-
 </head>
 
 <body>
@@ -23,12 +21,12 @@
             <a href="#">Contact</a>
         </div>
         <!-- Use any element to open the sidenav -->
-
-        <span class="float-right" id="sidenavs" onclick="openNav()"><img class="svg-icon no-border" src="/imgs/menu.svg"></span>
+        <span class="float-right" id="sidenavs" onclick="openNav()"><img class="svg-icon no-border"
+                src="/imgs/menu.svg"></span>
         <img class="navbar-icon float-left" src="/imgs/logo.png">
     </div>
     <nav id="nav" class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
+        <div class="container ">
             <a class="navbar-brand" href="#"><img class="navbar-icon" src="/imgs/logo.png">
                 <span class="brand-name"><span>AndroCrunch</span><br><span class="motto">BEYOND THE INFINTY</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -44,17 +42,23 @@
                         <a class="nav-link" href="/products">Content</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="/posts">Blog</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link store" href="#">Store</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Wallpapers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ringtones</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/login">Login</a>
+                            <a class="dropdown-item" href="#">Sign Up</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">About Us</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -79,4 +83,4 @@
         <%= warning %>
     </div>
     <% } %>
-    <button id="myBtn" title="Go to top">Top</button> 
+    <button id="myBtn" title="Go to top">Top</button>
