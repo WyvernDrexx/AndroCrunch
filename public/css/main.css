@@ -403,7 +403,7 @@ a:hover {
   width: auto;
 }
 .item-action{
-  margin-top: 25.6%;
+  margin-top: 5.4rem;
 }
 .share h6{
   display: inline;
@@ -587,13 +587,16 @@ a:hover {
 
 .item-image{
   width: 100%;
-  box-shadow: 20px 40px 30px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 20px 40px 30px 0px rgba(0, 0, 0, 0.2);
   min-height: 15rem;
+  max-height: 15rem;
 }
 
 .item-image img{
-  max-height: 16rem;
   width: 100%;
+  min-height: 15rem;
+  max-height: 15rem;
+  object-fit: fill;
 }
 
 
