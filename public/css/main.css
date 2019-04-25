@@ -174,10 +174,6 @@ input:focus {
   padding-top: 8rem;
 }
 
-.social-icon{
-  width: 2rem;
-  height: auto;
-}
 
 .item-description{
   background-color: #ccccff;
@@ -406,7 +402,30 @@ a:hover {
   height: 40px;
   width: auto;
 }
+.item-action{
+  margin-top: 5.4rem;
+}
+.share h6{
+  display: inline;
+  padding-left: 8px;
+  padding-right: 18px;
+  color: white;
+}
+.social-icon{
+  width: 1rem;
+  height: auto;
+}
 
+.item-action .download{
+  display: inline-block;
+}
+
+.share{
+  display: inline-block;
+  padding-left: 16px;
+  padding: 2px;
+  border: 2px solid #6600ff;
+}
 /* ----------------------- Middle section of homepage */
 .jumbo-button {
   margin-top: 2em;
@@ -777,7 +796,26 @@ textarea.form-control, .comment textarea{
   #nav {
     display: none;
   }
+  
+  .item-action .download{
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
+  .share{
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    justify-content: space-around;
+  }
+  .share h6{
+    position: absolute;
+    top: 26%;
+  }
+  .share a{
+    float: right;
+    margin: 4px;
+  }
   .mb-6 {
     margin-bottom: 1rem;
   }
