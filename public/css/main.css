@@ -735,7 +735,7 @@ textarea.form-control, .comment textarea{
   nav.fixed-top div.container {
     width: 100vw;
   }
-  
+
  .item-action{
    margin-top: 0rem;
  }
@@ -865,9 +865,9 @@ textarea.form-control, .comment textarea{
     width: 90%;
   }
 
-  .item-description{
+  /* .item-description{
     max-width: 90% !important;
-  }
+  } */
   .blog-posts h2{
     font-size: 1.2rem;
   }
