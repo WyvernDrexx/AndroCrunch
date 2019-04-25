@@ -509,7 +509,9 @@ a:hover {
 .pb-6 {
   padding-bottom: 4.5rem;
 }
-
+.item-details{
+  margin-left: 2rem;
+}
 .search-box div.rounded h1 {
   font-weight: bold;
   color: #333366;
@@ -780,6 +782,11 @@ textarea.form-control, .comment textarea{
   .main-content{
   width: 100%;
   }
+
+  .item-details{
+    margin-left: 0;
+  }
+
 
   .item-details div.btn-group *{
     display:block;
