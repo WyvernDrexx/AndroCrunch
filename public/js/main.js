@@ -188,7 +188,14 @@ $('#myBtn').click(function () {
   }, 700);
   return false;
 });
+$(document).ready(function() {
+   
+  $('#take-a-tour').click(function(){
+      $('html, body').animate({scrollTop:$(document).height()}, 20000, 'swing');
+      return false;
+  });
 
+});
 // When the user clicks on the button, scroll to the top of the document
 // function topFunction() {
 //   document.body.scrollTop = 0; // For Safari
