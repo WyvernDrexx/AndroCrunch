@@ -181,6 +181,7 @@ $(window).scroll(function () {
     $('#myBtn').fadeOut('slow');
   }
 });
+// ccccff
 
 $('#myBtn').click(function () {
   $('html, body').animate({
@@ -189,7 +190,6 @@ $('#myBtn').click(function () {
   return false;
 });
 $(document).ready(function() {
-   
   $('#take-a-tour').click(function(){
       $('html, body').animate({scrollTop:$(document).height()}, 20000, 'swing');
       return false;
@@ -200,4 +200,4 @@ $(document).ready(function() {
 // function topFunction() {
 //   document.body.scrollTop = 0; // For Safari
 //   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-// } 
+// } e window s
