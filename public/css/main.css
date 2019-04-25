@@ -741,7 +741,7 @@ textarea.form-control, .comment textarea{
 
 @media only screen and (max-width: 576px) {
   .main-content{
-  min-width: 100%;
+  width: 100%;
   }
 
 
@@ -811,6 +811,9 @@ textarea.form-control, .comment textarea{
     width: 90%;
   }
 
+  .item-description{
+    max-width: 90% !important;
+  }
   .blog-posts h2{
     font-size: 1.2rem;
   }
