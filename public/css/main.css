@@ -590,6 +590,10 @@ a:hover {
   min-height: 15rem;
 }
 
+.item-image img{
+  width: 100%;
+}
+
 
 .item-title{
   font-size: 1.5rem;
