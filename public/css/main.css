@@ -403,7 +403,7 @@ a:hover {
   width: auto;
 }
 .item-action{
-  margin-top: 5.4rem;
+  margin-top: 10.4rem;
 }
 .share h6{
   display: inline;
@@ -800,7 +800,9 @@ textarea.form-control, .comment textarea{
   #nav {
     display: none;
   }
-  
+  .item-action{
+    margin-top: 8rem;
+  }
   .item-action .download{
     width: 100%;
     margin-bottom: 1rem;
