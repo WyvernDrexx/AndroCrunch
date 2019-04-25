@@ -191,10 +191,14 @@ $('#myBtn').click(function () {
 });
 $(document).ready(function() {
   $('#take-a-tour').click(function(){
-      $('html, body').animate({scrollTop:$(document).height()}, 20000, 'swing');
+      $('html, body').animate({scrollTop:$(document).height()}, 10000, 'swing');
       return false;
   });
 
+});
+var page = $("html, body");
+$(document).on('mousemove', function() {
+    page.stop();
 });
 // When the user clicks on the button, scroll to the top of the document
 // function topFunction() {

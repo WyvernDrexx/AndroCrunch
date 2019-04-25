@@ -884,7 +884,12 @@ textarea.form-control, .comment textarea{
   }
 
   .statistics .container-fluid .row div {
-    margin: 0;
+    margin: 0px;
+  }
+
+  .comment .row div.col-sm{
+    padding-left:0px;
+    padding-right: 0px;
   }
 
   .brand-name {
