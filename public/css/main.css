@@ -718,6 +718,9 @@ textarea.form-control, .comment textarea{
     width: 46%;
     height: 10rem;
   }
+  .pt-6{
+    padding-top: 8rem;
+  }
 
   .product-box:nth-child(2) {
     margin-left: -4px;
