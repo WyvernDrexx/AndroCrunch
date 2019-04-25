@@ -741,6 +741,9 @@ textarea.form-control, .comment textarea{
   width: 100%;
   }
 
+  .pt{
+    padding-top: 
+  }
 
   .item-details .btn-group.btn-group-lg{
     display: block;
