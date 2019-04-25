@@ -864,8 +864,8 @@ textarea.form-control, .comment textarea{
     font-size: 1.5rem;
   }
 
-  .display-4 {
-    font-size: 3rem;
+  h1.display-4 {
+    font-size: 2.5rem;
   }
 
   .top-section {
