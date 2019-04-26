@@ -174,7 +174,7 @@ function closeNav() {
 //     document.getElementById("myBtn").style.display = "none";
 //   }
 // }
-var amountScrolled = 300;
+var amountScrolled = 1000;
 
 $(window).scroll(function () {
   if ($(window).scrollTop() > amountScrolled) {
@@ -193,15 +193,12 @@ $('#myBtn').click(function () {
 });
 $(document).ready(function() {
   $('#take-a-tour').click(function(){
-      $('html, body').animate({scrollTop:$(document).height()}, 10000, 'swing');
+      $('html, body').animate({scrollTop:$(document).height()}, 8000, 'swing');
       return false;
   });
 
 });
-var page = $("html, body");
-$(document).on('mousemove', function() {
-    page.stop();
-});
+
 // When the user clicks on the button, scroll to the top of the document
 // function topFunction() {
 //   document.body.scrollTop = 0; // For Safari
