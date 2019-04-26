@@ -26,6 +26,9 @@
                     placeholder="Post's Content"></textarea>
             </div>
             <button onclick="post()" type="button" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
+                <div class="spinner-border spinner-border-sm ml-4 d-none" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </button>
         </form>
     </div>
@@ -33,6 +36,7 @@
 
 <script>
     function post() {
+        $(".spinner-border.spinner-border-sm").removeClass("d-none");
         let title = $("input[name=title]").val();
         let image = $("input[name=image]").val();
         let content = $("textarea[name=content]").val();
@@ -60,6 +64,7 @@
                     "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Less than<strong> six</strong> characters not allowed!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
                     );
             }
+            $(".spinner-border.spinner-border-sm").addClass("d-none");
         });
 
     }

@@ -18,7 +18,12 @@
                 <input name="password" type="password" class="form-control" placeholder="Password" aria-label="Password"
                     aria-describedby="basic-addon1">
             </div>
-            <button type="submit" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit  </button>
+            <button onclick="login()" type="button"
+                class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
+                <div class="spinner-border spinner-border-sm ml-4 d-none" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
         </form>
 
 
@@ -42,8 +47,10 @@
                 $("button[type=button]").removeClass("btn-primary");
                 $(".spinner-border.spinner-border-sm").addClass("d-none");
                 $(".alert.alert-danger").remove();
-                
-                setTimeout(() => {$("form").prepend("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Incorrect Username/Password<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>");
+                $("form").prepend(
+                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Incorrect Username/Password<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                    );
+                setTimeout(() => {
                     $("button[type=button]").removeClass("btn-danger");
                     $("button[type=button]").addClass("btn-primary");
                 }, 4000);

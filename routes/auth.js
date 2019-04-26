@@ -39,10 +39,35 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/success",
-    failureRedirect: "/failure"
-}));
+// router.post("/login", passport.authenticate("local", {
+//     successRedirect: "/success",
+//     failureRedirect: "/failure"
+// }));
+
+router.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            return next(err);       //If exception occured
+        }
+        if (!user) {
+            return res.send({
+                status: false
+            });       //If login failed
+        }
+        req.logIn(user, function (err) {
+            if (err) {
+                return next(err);
+            }
+            return res.send({
+                status: true
+            });       //If login succeeded
+        });
+    })(req, res, next);
+}, (res, req, err) => {
+    res.send(err);
+});
+
+
 
 router.get("/success", (req, res) => {
     console.log(req.user);
