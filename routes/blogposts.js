@@ -14,11 +14,16 @@ router.get("/posts/new", isLoggedIn, (req, res) => {
 
 router.post("/posts", isLoggedIn, (req, res) => {
     // Post creation...
-    const post = req.body.post;
+    const post = {
+        title: req.body.title,
+        image: req.body.image,
+        content: req.body.content
+    }
     for (const name of Object.keys(post)) {
         if (post[name].trim().length <= 6) {
-            req.flash("error", "Fields must be at least six characters long.");
-            res.redirect("/posts/new");
+            res.send({
+                status: 2
+            });
             return;
         }
     }
@@ -28,13 +33,14 @@ router.post("/posts", isLoggedIn, (req, res) => {
     post.authorId = req.user._id;
     Post.create(post, (err, returnedPost) => {
         if(err){
-            req.flash("error", "Error creating the post!");
-            res.redirect("/posts/new");
+            res.send({
+                status: 0
+            });
             console.log(err);
         }else{
-            req.flash("success", "Post successfully added!");
-            res.redirect("/posts");
-            console.log(returnedPost);
+            res.send({
+                status: 1
+            });
         }
     });
 

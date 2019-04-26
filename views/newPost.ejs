@@ -8,26 +8,61 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Title:</span>
                 </div>
-                <input type="text" class="form-control" name="post[title]" placeholder="Title" aria-label="Title"
+                <input type="text" class="form-control" name="title" placeholder="Title" aria-label="Title"
                     aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-2 flex-nowrap">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Image:</span>
                 </div>
-                <input type="text" class="form-control" name="post[image]" placeholder="Image Url" aria-label="Image URL"
+                <input type="text" class="form-control" name="image" placeholder="Image Url" aria-label="Image URL"
                     aria-describedby="basic-addon1">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Content</span>
                 </div>
-                <textarea name="post[content]" class="form-control" aria-label="Post Content"
+                <textarea name="content" class="form-control" aria-label="Post Content"
                     placeholder="Post's Content"></textarea>
             </div>
-            <button type="submit" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit  </button>
+            <button onclick="post()" type="button" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
+            </button>
         </form>
     </div>
 </section>
+
+<script>
+    function post() {
+        let title = $("input[name=title]").val();
+        let image = $("input[name=image]").val();
+        let content = $("textarea[name=content]").val();
+        let post = {
+            title,
+            image,
+            content
+        }
+
+        $.ajax("/posts", {
+            method: "POST",
+            data: post
+        }).done(data => {
+            $(".alert.alert-dismissible").remove();
+            if (data.status === 1) {
+                $("form").prepend(
+                    "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">Post successfully created!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                    );
+            } else if (data.status === 0) {
+                $("form").prepend(
+                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Error unable to create post!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                    );
+            } else {
+                $("form").prepend(
+                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Less than<strong> six</strong> characters not allowed!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                    );
+            }
+        });
+
+    }
+</script>
 
 <% include partials/footer %>
