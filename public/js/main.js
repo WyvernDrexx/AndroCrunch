@@ -153,13 +153,15 @@ $(document).ready(function () {
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "100vw";
+  document.getElementById("mySidenav").style.width = "80vw";
   document.getElementById("sidenavs").style.display = "none";
+  $("#side-toggler .closebtn").css("display", "block");
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  $("#side-toggler .closebtn").css("display", "none");
   document.getElementById("sidenavs").style.display = "inline-block";
 }
 

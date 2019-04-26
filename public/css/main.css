@@ -80,7 +80,7 @@ h1.display-4 {
 }
 
 .transparent {
-    background: transparent !;
+    background: transparent !important;
 }
 
 #myBtn {
@@ -292,7 +292,6 @@ input:focus {
     padding-top: 60px;
     /* Place content 60px from the top */
     transition: 0.5s;
-    opacity: 0.9;
     /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -330,10 +329,11 @@ a:hover {
 
 /* Position and style the close button (top right corner) */
 
-.sidenav .closebtn {
+#side-toggler .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
+    left: 75%;
+    display: none;
     font-size: 36px;
     margin-left: 50px;
 }
@@ -839,6 +839,10 @@ textarea.form-control,
 
     .card img {
         height: auto;
+    }
+
+    .compact-form{
+        max-width: 100%;
     }
 
     .blog-posts h2 {
