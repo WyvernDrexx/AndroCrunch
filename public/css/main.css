@@ -122,6 +122,13 @@ h1.display-4 {
 .disclaimer-gradient{
     background-image: linear-gradient(to bottom, #999900, #330033) !important;
 }
+.advert-gradient{
+    background-image: linear-gradient(to bottom, #0033cc, #000033) !important;
+}
+
+.privacy-policy-gradient{
+    background-image: linear-gradient(to bottom, #ff0033, #330000) !important;
+}
 
 .block-title{
     font-size: 36px;

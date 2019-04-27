@@ -10,7 +10,13 @@ router.get("/item", (req, res) => {
     res.render("item");
 });
 
+router.get("/advertisement", (req, res) => {
+    res.render("advert");
+})
 
+router.get("/privacy_policy", (req, res) => {
+    res.render("privacy_policy");
+});
 router.get("/about_us", (req, res) => {
     res.render("about_us");
 });
