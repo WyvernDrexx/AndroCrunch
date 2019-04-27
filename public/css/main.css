@@ -113,6 +113,10 @@ h1.display-4 {
     transition: 0.3s;
 }
 
+.about-us-gradient{
+    background-image: linear-gradient(to bottom, #990099, #330033) !important;
+}
+
 #myBtn:hover {
     background-color: #555;
     /* Add a dark-grey background on hover */

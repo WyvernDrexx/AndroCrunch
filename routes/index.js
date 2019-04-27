@@ -10,6 +10,11 @@ router.get("/item", (req, res) => {
     res.render("item");
 });
 
+
+router.get("/about_us", (req, res) => {
+    res.render("about_us");
+});
+
 router.get("/products", (req, res) => {
     res.render("products");
 });
