@@ -112,9 +112,14 @@ h1.display-4 {
     /* Increase font size */
     transition: 0.3s;
 }
-
+.text-sm{
+    font-size: 0.8rem;
+}
 .about-us-gradient{
     background-image: linear-gradient(to bottom, #990099, #330033) !important;
+}
+.contact-us-gradient{
+    background-image: linear-gradient(to bottom, #009999, #330033) !important;
 }
 
 #myBtn:hover {

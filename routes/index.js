@@ -15,6 +15,10 @@ router.get("/about_us", (req, res) => {
     res.render("about_us");
 });
 
+router.get("/contact", (req, res) => {
+    res.render("contact");
+});
+
 router.get("/products", (req, res) => {
     res.render("products");
 });
