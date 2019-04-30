@@ -1,7 +1,6 @@
 * {
     transition: 0.5s;
     font-family: Arial, Helvetica, sans-serif !important;
-    /* font-family: Proxima Nova !important; */
 }
 
 body {
@@ -176,7 +175,7 @@ h1.display-4 {
 }
 
 .bg-gradient {
-    background-image: linear-gradient(to bottom, #0000ff, #0033ff) !important;
+    background-image: linear-gradient(to bottom, #0033ff, #000033, #000033) !important;
 }
 
 .compact-form {
@@ -185,7 +184,7 @@ h1.display-4 {
 }
 
 .bg-gradient-rev {
-    background-image: linear-gradient(to top, #0000ff, #0033ff) !important;
+    background-image: linear-gradient(to top, #330066, #660099, #6600cc) !important;
 }
 
 .top-section {
@@ -860,7 +859,7 @@ textarea.form-control,
     }
 
     .jumbo-button {
-        margin-top: 5rem; 
+        margin-top: rem; 
     }
 
     h1.display-4 {
