@@ -175,7 +175,7 @@ h1.display-4 {
 }
 
 .bg-gradient {
-    background-image: linear-gradient(to bottom, #330066, #660099, #6600cc) !important;
+    background-image: linear-gradient(to bottom, #0033ff, #000033) !important;
 }
 
 .compact-form {
