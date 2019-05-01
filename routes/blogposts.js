@@ -4,8 +4,7 @@ const Post = require("../models/post"),        //Posts model
     isLoggedIn = require("../middlewares/index").isLoggedIn;
 
 router.get("/posts", (req, res) => {
-    req.flash("success", "Posts section will  be added shortly");
-    res.redirect("/");
+    res.render("blogs");
 });
 
 router.get("/posts/new", isLoggedIn, (req, res) => {

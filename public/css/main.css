@@ -219,6 +219,10 @@ h1.display-4 {
     color: white;
 }
 
+.blog-image-sm{
+    height: 8rem;;
+}
+
 .navbar-icon {
     border-radius: 4px;
     height: 40px;
@@ -977,7 +981,7 @@ textarea.form-control,
     }
 
 
-    .main-content {
+    .main-content, .right-side-bar {
         width: 100%;
     }
 

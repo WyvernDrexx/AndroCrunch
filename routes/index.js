@@ -2,7 +2,11 @@ const express = require("express"),
     router = express.Router();
 
 router.get("/blogs", (req, res) => {
-    res.render("blogs");
+    res.redirect("/posts");
+});
+
+router.get("/more", (req, res) => {
+    res.render("more-posts");
 });
 
 router.get("/item", (req, res) => {
