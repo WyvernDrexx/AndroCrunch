@@ -199,7 +199,15 @@ h1.display-4 {
 .blog-content .sub{
     margin-left: 2px;
 }
-
+.blog-image{
+    height: 15rem;
+    background-color: #0033ff;
+    width: 100%;
+}
+.blog-image-md{
+    height: 13rem;
+    background-color: #0033ff;
+}
 .blog-head{
     border-bottom: 2px solid #2c008b;
     margin-bottom: 1rem;
