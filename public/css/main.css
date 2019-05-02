@@ -180,9 +180,11 @@ h1.display-4 {
     font-weight: bold;
 }
 
-.main .blog-title {
+.blog-title {
     font-size: 20px;
     font-weight: 400;
+    z-index: 2;
+    padding: 6px;
 }
 
 .blog-content .main {
@@ -191,10 +193,34 @@ h1.display-4 {
     height: 100%;
     background-color: #0033ff;
 }
-
+.zoom-ft{
+    overflow: hidden;
+    min-width: initial;
+    max-width: initial;
+    max-height: initial;
+    overflow: hidden;
+    z-index: 1;
+}
+.zoom-ft:hover .blog-image-md{
+    transform: scaleX(1.2);
+}
+.hover-opacity{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0e1111;
+    opacity: 0;
+}
+.hover-opacity:hover{
+    opacity: 0.6;
+}
 .blog-details {
     position: absolute;
     bottom: 0;
+    z-index: 2;
 }
 
 .blog-content .sub .col-sm {
@@ -218,6 +244,7 @@ h1.display-4 {
 
 .blog-image-md {
     height: 13rem;
+    max-height: 13rem;
     background-color: #0033ff;
 }
 
