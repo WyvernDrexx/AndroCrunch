@@ -222,7 +222,9 @@ h1.display-4 {
 .blog-image-sm{
     height: 8rem;;
 }
-
+.height-lg{
+    height: 20rem;
+}
 .navbar-icon {
     border-radius: 4px;
     height: 40px;
@@ -299,7 +301,9 @@ input:focus {
 .lucida-font {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
 }
-
+.post-image{
+    height: 23rem;
+}
 .post-title {
     color: #171718;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -761,6 +765,9 @@ textarea.form-control,
     ;
 }
 
+.font-size-md{
+    font-size: 2.3rem;
+}
 
 /* Multi carousel ------------------------------------------------------ */
 
