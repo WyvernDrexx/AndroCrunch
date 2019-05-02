@@ -1016,7 +1016,12 @@ textarea.form-control,
     .search-box .display-5 {
         font-size: 1.5rem;
     }
-
+    .font-size-md{
+        font-size: 1.5rem;
+    }
+    .post-image{
+        max-height: 10rem;
+    }
     .share {
         position: relative;
         width: 100%;
