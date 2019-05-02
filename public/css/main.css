@@ -217,8 +217,8 @@ h1.display-4 {
 }
 
 
-.card:hover .card-text{
-    color: #4766e2;
+.card:hover .card-title{
+    color: #a89d33;
 }
 
 .card:hover{
@@ -800,9 +800,8 @@ a:hover {
     display: flex;
 }
 
-.scroll-flex .col-sm-6{
+.scroll-flex .col-sm-5{
     flex: 0 0 auto;
-    max-width: 82vw;
 }
 
 .comment textarea,
@@ -1165,5 +1164,8 @@ textarea.form-control,
     .scroll-flex {
         flex-wrap: nowrap;
         overflow-x: auto;
+    }
+    .scroll-flex .col-sm-5{
+        max-width: 80vw;
     }
 }
