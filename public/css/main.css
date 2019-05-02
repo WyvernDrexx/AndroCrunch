@@ -181,9 +181,8 @@ h1.display-4 {
 }
 
 .blog-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
-    z-index: 2;
     padding: 6px;
 }
 
@@ -193,17 +192,7 @@ h1.display-4 {
     height: 100%;
     background-color: #0033ff;
 }
-.zoom-ft{
-    overflow: hidden;
-    min-width: initial;
-    max-width: initial;
-    max-height: initial;
-    overflow: hidden;
-    z-index: 1;
-}
-.zoom-ft:hover .blog-image-md{
-    transform: scaleX(1.2);
-}
+
 .hover-opacity{
     position: absolute;
     top: 0;
@@ -217,6 +206,7 @@ h1.display-4 {
 .hover-opacity:hover{
     opacity: 0.6;
 }
+
 .blog-details {
     position: absolute;
     bottom: 0;
