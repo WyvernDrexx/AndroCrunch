@@ -207,6 +207,16 @@ h1.display-4 {
     opacity: 0.6;
 }
 
+.latest-posts .row{
+    border: 1px solid lightgray;
+    padding: 4px;
+    margin: 3px;
+}
+.latest-posts .row:hover{
+    border: 1px solid rgba(0,0,0,.35);
+}
+
+
 .card:hover .card-text{
     color: #4766e2;
 }
