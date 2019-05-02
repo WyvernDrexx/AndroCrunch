@@ -223,7 +223,6 @@ h1.display-4 {
 
 .card:hover{
     border-color: rgba(0,0,0,.35);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .blog-details {
