@@ -767,6 +767,7 @@ a:hover {
 
 .scroll-flex .col-sm-6{
     flex: 0 0 auto;
+    max-width: 82vw;
 }
 
 .comment textarea,
