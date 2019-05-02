@@ -207,6 +207,15 @@ h1.display-4 {
     opacity: 0.6;
 }
 
+.card:hover .card-text{
+    color: #4766e2;
+}
+
+.card:hover{
+    border-color: rgba(0,0,0,.35);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
 .blog-details {
     position: absolute;
     bottom: 0;
@@ -566,8 +575,8 @@ a:hover {
 }
 
 .item-image {
-    width: 100%;
-    box-shadow: 20px 40px 30px 0px rgba(0, 0, 0, 0.2);
+    width: 100%;box-shadow: 20px 40px 30px 0px rgba(0, 0, 0, 0.2);
+    
     min-height: 15rem;
     max-height: 15rem;
 }
