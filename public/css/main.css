@@ -908,11 +908,7 @@ textarea.form-control,
     }
 }
 
-@keyframes fadeIn {
-    100% {
-        opacity: 1;
-    }
-}
+
 
 
 /* Media queries from large to medium */
