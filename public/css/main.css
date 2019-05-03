@@ -157,7 +157,9 @@ h1.display-4 {
 
 
 /* Base colors scheme */
-
+.bg-fallback{
+    background-color: #00046c;
+}
 .base-bg {
     background-color: #0e1111;
 }
@@ -296,6 +298,14 @@ h1.display-4 {
 
 .bg-gradient-rev {
     background-image: linear-gradient(to top, #330066, #660099, #6600cc) !important;
+}
+.bg-gradient-right{
+    background-image: linear-gradient(to left, #0033ff, #000033) !important;
+}
+.bg-image{
+    background-image: url("/imgs/home-bg.svg") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .top-section {
@@ -646,7 +656,7 @@ a:hover {
 }
 
 .search-box {
-    margin-top: 5.3rem;
+    /* margin-top: 5.3rem; */
     color: black;
     margin-bottom: -9rem;
 }
@@ -947,6 +957,9 @@ textarea.form-control,
 @media only screen and (max-width: 992px) {
     .main-content {
         min-width: 80vw;
+    }
+    .bg-image{
+        background-image: linear-gradient(to left, #0033ff, #000033) !important;
     }
 }
 
