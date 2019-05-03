@@ -36,40 +36,9 @@ window.onload = function () {
   });
 
   $("body").css("opacity", "1");
-  $.fn.isOnScreen = function(){
-
-    var win = $(window);
-
-    var viewport = {
-        top : win.scrollTop(),
-        left : win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height();
-
-    var bounds = this.offset();
-    bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
-
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-
-};
 }
 
 $(document).ready(function () {
-  if($("#stats")){
-    $(window).scroll(function(){
-      if ($('#inViewport').isOnScreen()) {
-          // The element is visible, do something
-          alert("in viewport!");
-      } else {
-          // The element is NOT visible, do something else
-      }
-  });
-  }else{
-    console.log("NOt here");
-  }
-
   var itemsMainDiv = ('.MultiCarousel');
   var itemsDiv = ('.MultiCarousel-inner');
   var itemWidth = "";
