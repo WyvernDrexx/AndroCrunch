@@ -36,6 +36,7 @@ window.onload = function () {
   });
 
   $("body").css("opacity", "1");
+  $(".loader-div").remove();
 }
 
 $(document).ready(function () {

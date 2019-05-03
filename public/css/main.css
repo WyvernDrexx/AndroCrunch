@@ -25,7 +25,9 @@ footer p {
     font-size: 2rem;
     margin-bottom: 0;
 }
-
+.fixed-top{
+    z-index: 99;
+}
 nav.fixed-top div.container {
     width: 65vw;
     padding-top: 20px;
@@ -845,6 +847,35 @@ textarea.form-control,
     width: 100%;
     position: relative;
 }
+.loader-div{
+    position: fixed;
+    top: 0;
+    opacity: 0.99;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111111;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+}
+.loader {
+    border: 16px solid #e1e1e4; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-bottom: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 .rightLst,
 .leftLst {
