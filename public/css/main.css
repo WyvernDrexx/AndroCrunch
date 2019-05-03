@@ -1098,7 +1098,7 @@ textarea.form-control,
     }
 
     .post-image {
-        max-height: 10rem;
+        max-height: 20rem;
     }
 
     .share {
@@ -1160,7 +1160,9 @@ textarea.form-control,
     .blog-details .meta {
         font-size: 0.8rem;
     }
-
+    .post-image{
+        padding: initial 0px;
+    }
     .scroll-flex {
         flex-wrap: nowrap;
         overflow-x: auto;
