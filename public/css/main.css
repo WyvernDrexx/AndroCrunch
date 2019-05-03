@@ -173,7 +173,7 @@ h1.display-4 {
 }
 
 .blog-content {
-    min-height: 20rem;
+    min-height: auto;
 }
 
 .blog-details span {
@@ -187,7 +187,7 @@ h1.display-4 {
 }
 
 .blog-content .main {
-    min-height: 20rem;
+    min-height: 25rem;
     width: 100%;
     height: 100%;
     background-color: #0033ff;
@@ -218,7 +218,7 @@ h1.display-4 {
 
 
 .card:hover .card-title{
-    color: #a89d33;
+    color: #0033ff;
 }
 
 .card:hover{
@@ -233,7 +233,7 @@ h1.display-4 {
 
 .blog-content .sub .col-sm {
     width: 100%;
-    height: 9.8rem;
+    height: 12.3rem;
     background-color: #0033cc;
     margin: 2px;
     margin-top: 0;
