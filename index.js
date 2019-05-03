@@ -16,7 +16,7 @@ server.get("/", (req, res) => {
     res.render("index");
 });
 
-server.get("/userage", (req, res) => {
+server.get("/useragent", (req, res) => {
     res.send(req);
 });
 //  Required routes
