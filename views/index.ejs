@@ -188,7 +188,7 @@
             Trusted by 100000+ people in every state in India and Worldwide</p>
     </div>
     <div class="container-fluid pb-6 bg-white">
-        <div class="row justify-content-center">
+        <div id="stats" class="row justify-content-center">
             <div class="col-sm">
                 <p class="hits text-center">
                     <span id="premium-stuffs">1279</span><br>
@@ -197,13 +197,13 @@
             </div>
             <div class="col-sm">
                 <p class="hits text-center">
-                    <span id="premium-stuffs">22551649</span><br>
+                    <span id="downloads">22551649</span><br>
                     <span class="lead">TOTAL DOWNLOADS</span>
                 </p>
             </div>
             <div class="col-sm">
                 <p class="hits text-center">
-                    <span id="premium-stuffs">185611</span><br>
+                    <span id="notify-squad">185611</span><br>
                     <span class="lead">NOTIFICATION SQUAD</span>
                 </p>
             </div>
@@ -252,9 +252,11 @@
 </div>
 </div>
 <script>
+    window.onload = function () {
         var page = $("html, body");
         $(document).on('mousemove', function () {
             page.stop();
         });
-    </script>
+    }
+</script>
 <% include partials/footer %>

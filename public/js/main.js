@@ -39,6 +39,84 @@ window.onload = function () {
 }
 
 $(document).ready(function () {
+  $.fn.isOnScreen = function () {
+
+    var win = $(window);
+
+    var viewport = {
+      top: win.scrollTop() - 150,
+      left: win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+  };
+  let statsFlag = false;
+
+  $.fn.exists = function () {
+    return this.length !== 0;
+  }
+  if ($("#stats").exists()) {
+    $(window).scroll(function () {
+      if ($('#stats').isOnScreen() && !statsFlag) {
+        // $("#downloads").html("Got it!");
+        statsFlag = true;
+        // setInterval(() => {
+        //   let fill = false;
+        //   if()
+        // }, 1000);
+        setTimeout(() => {
+          $('#downloads').each(function () {
+            $(this).prop('Counter', 0).animate({
+              Counter: $(this).text()
+            }, {
+              duration: 4000,
+              easing: 'swing',
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              }
+            });
+          });
+        }, 100);
+        setTimeout(() => {
+          $('#premium-stuffs').each(function () {
+            $(this).prop('Counter', 0).animate({
+              Counter: $(this).text()
+            }, {
+              duration: 4000,
+              easing: 'swing',
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              }
+            });
+          });
+        }, 100);
+        setTimeout(() => {
+          $('#notify-squad').each(function () {
+            $(this).prop('Counter', 0).animate({
+              Counter: $(this).text()
+            }, {
+              duration: 4000,
+              easing: 'swing',
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              }
+            });
+          });
+        }, 100);
+      } else {
+        // The element is NOT visible, do something else
+      }
+    });
+  } else {
+    console.log("doesnt exist");
+  }
   var itemsMainDiv = ('.MultiCarousel');
   var itemsDiv = ('.MultiCarousel-inner');
   var itemWidth = "";
@@ -79,7 +157,7 @@ $(document).ready(function () {
         itemWidth = sampwidth / incno - 7;
       } else {
         incno = itemsSplit[0];
-        itemWidth = sampwidth / incno -7;
+        itemWidth = sampwidth / incno - 7;
       }
       $(this).css({
         'transform': 'translateX(0px)',
@@ -114,7 +192,7 @@ $(document).ready(function () {
       if (translateXval <= itemWidth / 2) {
         translateXval = 0;
         $(el + ' ' + leftBtn).addClass("over");
-        
+
       }
     } else if (e == 1) {
       var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
@@ -192,10 +270,12 @@ $('#myBtn').click(function () {
   }, 700);
   return false;
 });
-$(document).ready(function() {
-  $('#take-a-tour').click(function(){
-      $('html, body').animate({scrollTop:$(document).height()}, 8000, 'swing');
-      return false;
+$(document).ready(function () {
+  $('#take-a-tour').click(function () {
+    $('html, body').animate({
+      scrollTop: $(document).height()
+    }, 8000, 'swing');
+    return false;
   });
 
 });
