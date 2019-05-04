@@ -5,9 +5,9 @@
 
 body {
     background-image: linear-gradient(to left, #330066, #660099, #6600cc);
-    opacity: 0;
+    /* opacity: 0;
     transition-duration: 1s;
-    animation: fadeIn 1s linear 0.7s 1 forwards;
+    animation: fadeIn 1s linear 0.7s 1 forwards; */
 }
 
 p {
