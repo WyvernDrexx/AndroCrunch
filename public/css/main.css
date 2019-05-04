@@ -1047,21 +1047,22 @@ textarea.form-control,
     width: 100vw;
     height: 100vh;
     z-index: 99;
+    text-align: center;
 }
 
 .loader {
-    border: 16px solid #e1e1e4;
+    border: 16px solid #111111;
     /* Light grey */
-    border-top: 16px solid #3498db;
+    border-top: 16px solid #fa1919;
     /* Blue */
-    border-bottom: 16px solid #3498db;
+    border-bottom: 16px solid #d82d0f;
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    position: absolute;
-    top: 45%;
-    left: 45%;
+    position: relative;
+    top: 40%;
     animation: spin 1s linear infinite;
+    display: inline-block;
 }
 
 @keyframes spin {
