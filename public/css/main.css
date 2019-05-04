@@ -595,6 +595,45 @@ a:hover {
     border: none;
 }
 
+div.emphasis:hover{
+    border-left-color: #fd058d;
+}
+div.emphasis{
+    border-left: 6px solid #4471f7;
+    background-color: rgb(245, 241, 241);
+    color: black;
+    padding: 18px 6px 14px 6px;
+    margin: 10px 4px;
+}
+div.blog-content p.content{
+    color: #646464;
+}
+div.emphasis p.head{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #0033ff;
+    margin: 4px 4px;
+}
+div.emphasis p.text{
+    font-style: italic;
+    font-size: 16px;
+    color: #7c7c7c;
+}
+div.emphasis p.author{
+    color: black;
+    font-style: italic;
+    font-weight: 500;
+    text-align: right;
+
+}
+
+.subtitle{
+    font-size: 28px;
+    color: #171718;
+    padding: 8px;
+    border-left: 4px solid gray;
+}
+
 .item-image {
     width: 100%;box-shadow: 20px 40px 30px 0px rgba(0, 0, 0, 0.2);
     
@@ -1209,5 +1248,12 @@ textarea.form-control,
     }
     .scroll-flex .col-sm-5{
         max-width: 80vw;
+    }
+
+    div.emphasis p.text{
+        font-size: 14px;
+    }
+    div.emphasis p.author{
+        font-size: 15px;
     }
 }
