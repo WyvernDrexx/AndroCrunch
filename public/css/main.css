@@ -304,7 +304,7 @@ h1.display-4 {
 }
 .bg-image{
     background-image: url("/imgs/home-bg.svg") !important;
-    background-size: cover 100%;
+    background-size: inherit 100vw;
     background-repeat: no-repeat;
 }
 
