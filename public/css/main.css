@@ -1051,7 +1051,7 @@ textarea.form-control,
 }
 
 .loader {
-    border: 16px solid #111111;
+    border: 16px solid #202020cb;
     /* Light grey */
     border-top: 16px solid #fa1919;
     /* Blue */
