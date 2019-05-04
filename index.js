@@ -16,9 +16,6 @@ server.get("/", (req, res) => {
     res.render("index");
 });
 
-server.get("/useragent", (req, res) => {
-    res.send(req);
-});
 //  Required routes
 
 server.use(require("./routes/index"));
