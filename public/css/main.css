@@ -1205,7 +1205,12 @@ textarea.form-control,
     .product-box:nth-child(4) {
         margin-left: -4px;
     }
-
+    .subscribe .input-group{
+        margin-top: 2rem;
+    }
+    .subscribe{
+        margin-bottom: -4.7rem !important;
+    }
     .pt-6 {
         padding-top: 8rem;
     }
@@ -1389,9 +1394,7 @@ textarea.form-control,
         margin-bottom: -5.7rem !important;
     }
 
-    .subscribe .input-group{
-        margin-top: 2rem;
-    }
+    
     .sub .container {
         padding-left: 0;
     }
