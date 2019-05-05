@@ -410,7 +410,7 @@ input::placeholder {
 
 .bg-image {
     background-image: url("/imgs/img-2.png") !important;
-    background-size:100%;
+    background-size:100% 100%;
 }
 
 .top-section {
