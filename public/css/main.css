@@ -1361,6 +1361,7 @@ textarea.form-control,
 
     .statistics .container-fluid .row div {
         margin: 0px;
+        margin-top: -1.5rem;
     }
 
     .top-section {
