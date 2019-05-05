@@ -35,7 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 //     });
 // //Login Routes..........................................
 
-router.get("/login", (req, res) => {
+router.get("/androadin", (req, res) => {
     res.render("login");
 });
 
