@@ -410,8 +410,7 @@ input::placeholder {
 
 .bg-image {
     background-image: url("/imgs/home-bg.svg") !important;
-    background-size:100% 100vw;
-    background-repeat: no-repeat;
+    background-size:100%;
 }
 
 .top-section {
