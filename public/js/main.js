@@ -41,6 +41,29 @@ window.onload = function () {
 
 $(document).ready(function () {
 
+  window.subscribe = function () {
+    let email = $(".subscription input[name=email]").val();
+    $(".spinner-border.spinner-border-sm").removeClass("d-none");
+    $.ajax("/subscribe", {
+      method: "POST",
+      data: {
+        email: email
+      }
+    }).done(data => {
+      $(".spinner-border.spinner-border-sm").addClass("d-none");
+      if (!data.status) {
+        $(".subscription button").css("background-color", "#d42323");
+        $(".subscription input[name=email]").val("");
+        $(".subscription input[name=email]").attr("placeholder", data.message);
+      }else{
+        $(".subscription button").css("background-color", "rgb(3, 131, 182)");
+        $(".subscription input[name=email]").attr("placeholder", data.message);
+        $(".subscription input[name=email]").val("");
+      }
+    });
+  }
+
+
   $.fn.isOnScreen = function () {
 
     var win = $(window);

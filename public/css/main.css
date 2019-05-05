@@ -219,15 +219,15 @@ h1.display-4 {
     z-index: 2;
     position: absolute;
 }
-.subscribe .input-group-text{
+.subscription .input-group-text{
     max-width: 5rem; 
     border-radius: 5rem;
     background-color: rgb(3, 131, 182);
 }
-.subscribe .input-group-text:hover{
+.subscription .input-group-text:hover{
     background-color: rgb(49, 170, 218);
 }
-.subscribe .input-group-text img{
+.subscription .input-group-text img{
     width: 20px;
 }
 .input-group-text {
@@ -241,17 +241,17 @@ input::placeholder {
 
 }
 
-.subscribe .search-box .form-control,
+.subscription .search-box .form-control,
 .main-content .form-control {
     border: 1px solid #ced4da !important;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-.subscribe .form-control{
+.subscription .form-control{
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-.subscribe .input-group {
+.subscription .input-group {
     margin-top: 0.5rem;
     box-shadow: 19px 5px 17px rgb(168, 168, 168);
     border-radius: 5rem;
@@ -1207,10 +1207,10 @@ textarea.form-control,
     .product-box:nth-child(4) {
         margin-left: -4px;
     }
-    .subscribe .input-group{
+    .subscription .input-group{
         margin-top: 2rem;
     }
-    .subscribe{
+    .subscription{
         margin-bottom: -4.7rem !important;
     }
     .pt-6 {
@@ -1393,7 +1393,7 @@ textarea.form-control,
         margin-top: 1rem !important;
     }
 
-    .subscribe{
+    .subscription{
         margin-bottom: -5.7rem !important;
     }
 

@@ -38,12 +38,16 @@ router.get("/products", (req, res) => {
 });
 
 router.post("/subscribe", (req, res) => {
+    let response = new Object();
+    response.status = true;
     let email = req.body.email;
     email = email.toLowerCase();
-    console.log(email);
+    console.log("email: " + email);
     if (!email) {
-        req.flash("Empty field supplied!");
-        res.redirect("back");
+        response.status = false;
+        response.message = "Field cannot be empty!"
+        res.send(response);
+        return;
     }
     Subscriber.findOne({
             email
@@ -51,27 +55,29 @@ router.post("/subscribe", (req, res) => {
         .then((data) => {
             console.log(data);
             if (Boolean(data)) {
-                req.flash("error", "Email exists please enter another email");
-                res.redirect("/");
+                response.status = false;
+                response.message = "You have already subscribed!"
+                res.send(response);
                 return;
             } else {
                 Subscriber.create({
                     email
                 }, (err, data) => {
                     if(err){
-                        req.flash("error", "There was an error subscribing to the newsletter. Try again!");
-                        res.redirect("back");
+                        response.status = false;
+                        response.message = "There was an error subscribing to the newsletter. Try again!";
+                        res.send(response);
                     }else{
-                        req.flash("success", "Thank you for subscribing to our newsletter!");
-                        res.redirect("back");
+                        response.message = "Thank you for subscribing!"
+                        res.send(response);
                     }
                 });
             }
         }).catch((err) => {
-            console.log(err);
-            req.flash("error", "Error with it!");
-            res.redirect("/");
-        })
+            response.status = false;
+            response.message = "Unable to subscribe at the moment! Please try again!";
+            res.send(response);
+        });
 });
 
 
