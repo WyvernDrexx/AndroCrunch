@@ -3,13 +3,13 @@ const Post = require("../models/post"),        //Posts model
     moment = require("moment"),
     isLoggedIn = require("../middlewares/index").isLoggedIn;
 
-router.get("/posts", (req, res) => {
+router.get("/blogs", (req, res) => {
     res.render("blogs");
 });
 router.get("/post", (req, res) => {
     res.render("post");
 });
-router.get("/posts/new", isLoggedIn, (req, res) => {
+router.get("/blogs/new", isLoggedIn, (req, res) => {
     res.render("newPost");
 });
 
