@@ -1317,6 +1317,7 @@ textarea.form-control,
         position: absolute;
         left: 0;
         border-radius: 5px !important;
+        margin-top: 0.5rem;
     }
 
     /* .item-details .btn-group a {
