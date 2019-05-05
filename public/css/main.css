@@ -249,7 +249,7 @@ input::placeholder {
 }
 
 .subscribe .input-group {
-    margin-top: 0.5rem !important;
+    margin-top: 0.5rem;
     box-shadow: 19px 5px 17px rgb(168, 168, 168);
     border-radius: 5rem;
     cursor: pointer;
@@ -1299,9 +1299,13 @@ textarea.form-control,
     .mt-6 {
         margin-top: 6rem;
     }
-
+    .display-6{
+        font-size: 1.5rem;
+    }
     .search-box div.rounded {
-        min-width: 100% !important;
+        min-width: 100vw !important;
+        position: absolute;
+        left: 0;
         border-radius: 5px !important;
     }
 
@@ -1378,7 +1382,11 @@ textarea.form-control,
     }
 
     .subscribe{
-        margin-bottom: -4.7rem !important;
+        margin-bottom: -5.7rem !important;
+    }
+
+    .subscribe .input-group{
+        margin-top: 2rem;
     }
 
     .sub .container {

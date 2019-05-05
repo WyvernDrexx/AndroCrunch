@@ -40,6 +40,7 @@ window.onload = function () {
 }
 
 $(document).ready(function () {
+
   $.fn.isOnScreen = function () {
 
     var win = $(window);
@@ -117,6 +118,10 @@ $(document).ready(function () {
     });
   } else {
     console.log("doesnt exist");
+  }
+
+  if (window.innerWidth < 576 && $(".subscribe").exists()) {
+    $(".subscribe").removeClass("main-content");
   }
   var itemsMainDiv = ('.MultiCarousel');
   var itemsDiv = ('.MultiCarousel-inner');
