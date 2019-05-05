@@ -247,7 +247,10 @@ input::placeholder {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-
+.subscribe .form-control{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
 .subscribe .input-group {
     margin-top: 0.5rem;
     box-shadow: 19px 5px 17px rgb(168, 168, 168);
@@ -1389,7 +1392,6 @@ textarea.form-control,
     .subscribe .input-group{
         margin-top: 2rem;
     }
-
     .sub .container {
         padding-left: 0;
     }
@@ -1414,6 +1416,9 @@ textarea.form-control,
     .scroll-flex {
         flex-wrap: nowrap;
         overflow-x: auto;
+    }
+    .btn-outline.rounded-pill.small{
+        width: auto;
     }
 
     .scroll-flex .col-sm-5 {
