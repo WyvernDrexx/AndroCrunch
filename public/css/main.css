@@ -410,7 +410,8 @@ input::placeholder {
 
 .bg-image {
     background-image: url("/imgs/img-2.png") !important;
-    background-size: 100vw;
+    background-size: contain;
+    background-position-x: 50px;
     background-repeat: no-repeat;
 }
 
