@@ -309,12 +309,15 @@ input::placeholder {
 
 .card {
     box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .card:hover {
     box-shadow: none;
 }
-
+.card:hover .card-title{
+    color: rgb(3, 131, 182);
+}
 .blog-posts .card {
     border-radius: 15px !important;
 }
