@@ -824,8 +824,7 @@ div.emphasis p.author {
 .search-box {
     /* margin-top: 5.3rem; */
     color: black;
-    max-height: 0rem;
-    margin-bottom: -0rem;
+    padding-bottom: 3rem;
 }
 
 .border-purple {
