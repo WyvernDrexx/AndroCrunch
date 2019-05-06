@@ -353,7 +353,7 @@ input::placeholder {
     padding-top: 0px;
 }
 .recommended .card img{
-    border-radius: 15px;
+    border-radius: 11px;
 }
 .card:hover {
     box-shadow: none;
