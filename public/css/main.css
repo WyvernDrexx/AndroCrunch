@@ -198,42 +198,52 @@ h1.display-4 {
     width: 100%;
     height: 100%;
 }
-.pagination{
+
+.pagination {
     padding: 4px;
     max-width: 15rem !important;
     margin-left: auto;
     border-radius: 25px;
     border: 1px solid #0033ff;
 }
-.pagination .active a{
+
+.pagination .active a {
     color: white !important;
     background-color: #335bd4d8 !important;
 }
-.pagination a{
+
+.pagination a {
     background-color: transparent;
     border: none;
     border-radius: 50% !important;
 }
-.pagination a.next, .pagination a.previous{
+
+.pagination a.next,
+.pagination a.previous {
     border-radius: 0 !important;
     background-color: transparent !important;
 }
-.small-ht{
+
+.small-ht {
     max-height: 12rem !important;
 }
 
-.main .col-md-4{
+.main .col-md-4 {
     background-color: #0033cc;
     margin: 10px;
-    height: 23.3rem;;
+    height: 23.3rem;
+    ;
     border-radius: 11px;
 }
-.main .row .col-sm, .main .row .col-sm-4{
+
+.main .row .col-sm,
+.main .row .col-sm-4 {
     margin: 10px;
     background-color: #009999;
     height: 11rem;
     border-radius: 11px;
 }
+
 .hover-opacity {
     position: absolute;
     top: 0;
@@ -253,17 +263,21 @@ h1.display-4 {
     z-index: 2;
     position: absolute;
 }
-.subscription .input-group-text{
-    max-width: 5rem; 
+
+.subscription .input-group-text {
+    max-width: 5rem;
     border-radius: 5rem;
     background-color: rgb(3, 131, 182);
 }
-.subscription .input-group-text:hover{
+
+.subscription .input-group-text:hover {
     background-color: rgb(49, 170, 218);
 }
-.subscription .input-group-text img{
+
+.subscription .input-group-text img {
     width: 20px;
 }
+
 .input-group-text {
     width: auto !important;
 }
@@ -281,10 +295,12 @@ input::placeholder {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-.subscription .form-control{
+
+.subscription .form-control {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
+
 .subscription .input-group {
     margin-top: 0.5rem;
     box-shadow: 19px 5px 17px rgb(168, 168, 168);
@@ -327,6 +343,7 @@ input::placeholder {
     color: white;
     font-size: 21px;
     font-weight: 400;
+    left: 10px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -348,22 +365,28 @@ input::placeholder {
     box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
-.recommended .card-body{
+
+.recommended .card-body {
     padding-bottom: 0px;
     padding-top: 0px;
 }
-.recommended .card img{
+
+.recommended .card img {
     border-radius: 11px;
 }
+
 .card:hover {
     box-shadow: none;
 }
-.card:hover .card-title{
+
+.card:hover .card-title {
     color: rgb(102, 149, 168);
 }
-.card:hover .card img{
-    filter: blur(5px) !important;    
+
+.card:hover .card img {
+    filter: blur(5px) !important;
 }
+
 .card {
     border-radius: 11px !important;
     margin: 2px;
@@ -457,7 +480,7 @@ input::placeholder {
 
 .bg-image {
     background-image: url("/imgs/bg-img.png") !important;
-    background-size:100vw 100%;
+    background-size: 100vw 100%;
 }
 
 .top-section {
@@ -872,9 +895,11 @@ div.emphasis p.author {
     /* margin-top: 5.3rem; */
     color: black;
 }
-.bg-white{
+
+.bg-white {
     background-color: #f8f8f8 !important;
 }
+
 .border-purple {
     border: 2px solid #6600ff !important;
 }
@@ -1042,9 +1067,6 @@ div.emphasis p.author {
     display: flex;
 }
 
-.scroll-flex .col-sm {
-    flex: 0 0 auto;
-}
 
 .comment textarea,
 .comment input {
@@ -1221,6 +1243,7 @@ textarea.form-control,
     .pt-6s {
         padding-top: 4rem;
     }
+
     .input-group {
         width: 98% !important;
     }
@@ -1236,15 +1259,17 @@ textarea.form-control,
     .main-content {
         width: 85vw;
     }
-    
-    .blog-posts .card , .main-carousel .col-md{
+
+    .blog-posts .card,
+    .main-carousel .col-md {
         margin-bottom: 1rem;
     }
 
-    .card{
+    .card {
         margin: 15px;
         margin-top: 1rem;
     }
+
     .product-box {
         width: 46%;
         height: 10rem;
@@ -1257,12 +1282,15 @@ textarea.form-control,
     .product-box:nth-child(4) {
         margin-left: -4px;
     }
-    .subscription .input-group{
+
+    .subscription .input-group {
         margin-top: 2rem;
     }
-    .subscription{
+
+    .subscription {
         margin-bottom: -4.7rem !important;
     }
+
     .pt-6 {
         padding-top: 8rem;
     }
@@ -1279,10 +1307,17 @@ textarea.form-control,
         display: inline-block;
     }
 
+    .scroll-flex .col-md {
+        flex: 0 0 auto;
+    }
+
     .jumbo-button {
         margin-top: rem;
     }
 
+    .recommended .card-title{
+        font-size: 1rem;
+    }
     h1.display-4 {
         font-size: 2.5rem;
     }
@@ -1359,9 +1394,11 @@ textarea.form-control,
     .mt-6 {
         margin-top: 6rem;
     }
-    .display-6{
+
+    .display-6 {
         font-size: 1.5rem;
     }
+
     .search-box div.rounded {
         min-width: 100vw !important;
         position: absolute;
@@ -1428,6 +1465,7 @@ textarea.form-control,
     .top-section {
         width: 90%;
     }
+
     .blog-content .sub .col-sm {
         margin: 0;
         margin-top: 3px;
@@ -1442,11 +1480,11 @@ textarea.form-control,
         margin-top: 1rem !important;
     }
 
-    .subscription{
+    .subscription {
         margin-bottom: -5.7rem !important;
     }
 
-    
+
     .sub .container {
         padding-left: 0;
     }
@@ -1472,16 +1510,19 @@ textarea.form-control,
         flex-wrap: nowrap;
         overflow-x: auto;
     }
-    .btn-outline.rounded-pill.small{
+
+    .btn-outline.rounded-pill.small {
         width: auto;
     }
 
-    .scroll-flex .col-sm {
-        min-width: 75vw;
+    .scroll-flex .col-md {
+        width: 73vw;
     }
-    .scroll-flex .card-title{
+
+    .scroll-flex .card-title {
         padding-top: 1rem;
     }
+
     div.emphasis p.text {
         font-size: 14px;
     }
