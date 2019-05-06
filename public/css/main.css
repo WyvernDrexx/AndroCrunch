@@ -366,6 +366,7 @@ input::placeholder {
 }
 .card {
     border-radius: 11px !important;
+    margin: 2px;
 }
 
 .card img {
