@@ -352,13 +352,13 @@ input::placeholder {
 .card:hover .card-title{
     color: rgb(3, 131, 182);
 }
-.blog-posts .card {
-    border-radius: 15px !important;
+.card {
+    border-radius: 11px !important;
 }
 
-.blog-posts .card img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+.card img {
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
 }
 
 
@@ -1412,7 +1412,6 @@ textarea.form-control,
     .top-section {
         width: 90%;
     }
-
     .blog-content .sub .col-sm {
         margin: 0;
         margin-top: 3px;
