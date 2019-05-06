@@ -144,6 +144,7 @@ $(document).ready(function () {
   if (window.innerWidth < 576 && $(".subscribe").exists()) {
     $(".subscribe").removeClass("main-content");
     $(".trending-posts").remove();
+    $(".card-body").addClass("px-2");
   }
   var itemsMainDiv = ('.MultiCarousel');
   var itemsDiv = ('.MultiCarousel-inner');

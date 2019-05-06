@@ -321,7 +321,7 @@ input::placeholder {
     margin-bottom: 0;
 }
 
-.card-title {
+.recommended .card-title {
     position: absolute;
     top: 5%;
     color: white;
@@ -1221,6 +1221,18 @@ textarea.form-control,
         padding-top: 4rem;
     }
 
+    .card-title{
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+
+    .tags{
+        margin-bottom: 10px;
+    }
+
+    .date{
+        margin-top: 5px;
+    }
     .input-group {
         width: 98% !important;
     }
@@ -1241,6 +1253,10 @@ textarea.form-control,
         margin-bottom: 1rem;
     }
 
+    .card{
+        margin: 1px;
+        margin-top: 1rem;
+    }
     .product-box {
         width: 46%;
         height: 10rem;
@@ -1472,10 +1488,12 @@ textarea.form-control,
         width: auto;
     }
 
-    .scroll-flex .col-sm-6 {
-        min-width: 80vw;
+    .scroll-flex .col-sm {
+        min-width: 75vw;
     }
-
+    .scroll-flex .card-title{
+        padding-top: 1rem;
+    }
     div.emphasis p.text {
         font-size: 14px;
     }
