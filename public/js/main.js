@@ -139,8 +139,6 @@ $(document).ready(function () {
         // The element is NOT visible, do something else
       }
     });
-  } else {
-    console.log("doesnt exist");
   }
 
   if (window.innerWidth < 576 && $(".subscribe").exists()) {
