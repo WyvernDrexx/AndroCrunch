@@ -6,6 +6,9 @@ const Post = require("../models/post"),        //Posts model
 router.get("/post", (req, res) => {
     res.render("post");
 });
+router.get("/posts", (req, res) =>{
+    res.render("more-posts");
+});
 router.get("/blogs/new", isLoggedIn, (req, res) => {
     res.render("newPost");
 });
