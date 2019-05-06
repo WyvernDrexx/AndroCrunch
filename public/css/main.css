@@ -322,6 +322,9 @@ input::placeholder {
 }
 
 .card-title {
+    position: absolute;
+    top: 5%;
+    color: white;
     font-size: 21px;
     font-weight: 400;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -345,12 +348,21 @@ input::placeholder {
     box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
-
+.recommended .card-body{
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.recommended .card img{
+    border-radius: 15px;
+}
 .card:hover {
     box-shadow: none;
 }
 .card:hover .card-title{
-    color: rgb(3, 131, 182);
+    color: rgb(102, 149, 168);
+}
+.card:hover .card img{
+    filter: blur(5px) !important;    
 }
 .card {
     border-radius: 11px !important;
