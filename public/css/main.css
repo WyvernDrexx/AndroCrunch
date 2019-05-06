@@ -483,7 +483,7 @@ input::placeholder {
 }
 
 .bg-image {
-    background-image: url("/imgs/bg-img.png") !important;
+    background-image: url("/imgs/bg-img.jpg") !important;
     background-size: 100vw 100%;
 }
 
@@ -545,6 +545,9 @@ input:focus {
     border-bottom: none;
 }
 
+.home-selected .card.head{
+    width: 100%;
+}
 .img-icon img {
     height: 50px;
     width: 50px;
