@@ -3,7 +3,7 @@ const express = require("express"),
     Subscriber = require("../models/subscribers");
 
 router.get("/blogs", (req, res) => {
-    res.redirect("/posts");
+    res.render("blogs");
 });
 
 router.get("/more", (req, res) => {

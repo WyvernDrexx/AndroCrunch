@@ -3,9 +3,6 @@ const Post = require("../models/post"),        //Posts model
     moment = require("moment"),
     isLoggedIn = require("../middlewares/index").isLoggedIn;
 
-router.get("/blogs", (req, res) => {
-    res.render("blogs");
-});
 router.get("/post", (req, res) => {
     res.render("post");
 });
