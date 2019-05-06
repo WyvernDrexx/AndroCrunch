@@ -337,7 +337,7 @@ input::placeholder {
     margin-bottom: 0;
 }
 
-.recommended .card-title {
+.recommended .card-title , .absolutte-card-title{
     position: absolute;
     top: 5%;
     color: white;
@@ -1336,7 +1336,7 @@ textarea.form-control,
         margin-top: rem;
     }
 
-    .recommended .card-title{
+    .recommended .card-title, .absolutte-card-title{
         font-size: 1rem;
     }
     h1.display-4 {
