@@ -1220,19 +1220,6 @@ textarea.form-control,
     .pt-6s {
         padding-top: 4rem;
     }
-
-    .card-title{
-        font-size: 1rem;
-        margin-bottom: 4px;
-    }
-
-    .tags{
-        margin-bottom: 10px;
-    }
-
-    .date{
-        margin-top: 5px;
-    }
     .input-group {
         width: 98% !important;
     }
@@ -1254,7 +1241,7 @@ textarea.form-control,
     }
 
     .card{
-        margin: 1px;
+        margin: 15px;
         margin-top: 1rem;
     }
     .product-box {
