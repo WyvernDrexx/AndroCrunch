@@ -1042,7 +1042,7 @@ div.emphasis p.author {
     display: flex;
 }
 
-.scroll-flex .col-sm-5 {
+.scroll-flex .col-sm {
     flex: 0 0 auto;
 }
 
