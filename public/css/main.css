@@ -351,14 +351,18 @@ input::placeholder {
     font-size: 13px;
 }
 
+.latest-posts .col.justify-content-end{
+    margin-left: 2rem;
+}
 .latest-posts .row {
-    border: 1px solid lightgray;
     padding: 4px;
     margin: 3px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 }
 
-.latest-posts .row:hover {
-    border: 1px solid rgba(0, 0, 0, .35);
+.latest-posts .row:last-child{
+    border-bottom: none;
 }
 
 .card {
@@ -525,6 +529,20 @@ input:focus {
 
 .blog-posts .container div div {
     margin: 1rem;
+}
+.border-bottom-light{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+}
+.side-posts{
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+.img-icon{
+    height: 3.8rem;
+}
+
+.side-posts.border-bottom-light:last-child{
+    border-bottom: none;
 }
 
 .img-icon img {
