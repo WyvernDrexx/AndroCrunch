@@ -198,7 +198,26 @@ h1.display-4 {
     width: 100%;
     height: 100%;
 }
-
+.pagination{
+    padding: 4px;
+    max-width: 15rem !important;
+    margin-left: auto;
+    border-radius: 25px;
+    border: 1px solid #0033ff;
+}
+.pagination .active a{
+    color: white !important;
+    background-color: #335bd4d8 !important;
+}
+.pagination a{
+    background-color: transparent;
+    border: none;
+    border-radius: 50% !important;
+}
+.pagination a.next, .pagination a.previous{
+    border-radius: 0 !important;
+    background-color: transparent !important;
+}
 .small-ht{
     max-height: 12rem !important;
 }
@@ -206,6 +225,7 @@ h1.display-4 {
 .main .col-md-4{
     background-color: #0033cc;
     margin: 10px;
+    height: 23.3rem;;
     border-radius: 11px;
 }
 .main .row .col-sm, .main .row .col-sm-4{
@@ -1441,8 +1461,8 @@ textarea.form-control,
         width: auto;
     }
 
-    .scroll-flex .col-sm-5 {
-        max-width: 80vw;
+    .scroll-flex .col-sm-6 {
+        min-width: 80vw;
     }
 
     div.emphasis p.text {
