@@ -337,7 +337,52 @@ input::placeholder {
     margin-bottom: 0;
 }
 
-.recommended .card-title , .absolutte-card-title{
+.home-selected .card-title {
+    font-size: 12px;
+}
+
+.hover-option {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(3, 27, 104, 0.527);
+    z-index: -1;
+}
+
+.hover-option a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: 40px;
+    max-width: 150px;
+    transition: none !important;
+    opacity: 1;
+}
+
+.card:hover .hover-option {
+    z-index: 2;
+}
+
+.home-selected .card {
+    min-height: 11rem;
+    margin: 4px !important;
+    margin-bottom: 15px !important;
+}
+
+.home-selected .card-body {
+    padding: 15px;
+}
+
+.home-selected .card,
+.home-selected .card img {
+    border-radius: 0px !important;
+}
+
+.recommended .card-title,
+.absolutte-card-title {
     position: absolute;
     top: 5%;
     color: white;
@@ -351,9 +396,10 @@ input::placeholder {
     font-size: 13px;
 }
 
-.latest-posts .col.justify-content-end{
+.latest-posts .col.justify-content-end {
     margin-left: 2rem;
 }
+
 .latest-posts .row {
     padding: 4px;
     margin: 3px;
@@ -361,12 +407,12 @@ input::placeholder {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 }
 
-.latest-posts .row:last-child{
+.latest-posts .row:last-child {
     border-bottom: none;
 }
 
 .card {
-    box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.726);
     cursor: pointer;
 }
 
@@ -383,13 +429,6 @@ input::placeholder {
     box-shadow: none;
 }
 
-.card:hover .card-title {
-    color: rgb(102, 149, 168);
-}
-
-.card:hover .card img {
-    filter: blur(5px) !important;
-}
 
 .card {
     border-radius: 11px !important;
@@ -530,24 +569,28 @@ input:focus {
 .blog-posts .container div div {
     margin: 1rem;
 }
-.border-bottom-light{
+
+.border-bottom-light {
     border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 }
-.side-posts{
+
+.side-posts {
     margin-left: 1rem;
     margin-top: 1rem;
 }
-.img-icon{
+
+.img-icon {
     height: 3.8rem;
 }
 
-.side-posts.border-bottom-light:last-child{
+.side-posts.border-bottom-light:last-child {
     border-bottom: none;
 }
 
-.home-selected .card.head{
+.home-selected .card.head {
     width: 100%;
 }
+
 .img-icon img {
     height: 50px;
     width: 50px;
@@ -1336,9 +1379,11 @@ textarea.form-control,
         margin-top: rem;
     }
 
-    .recommended .card-title, .absolutte-card-title{
+    .recommended .card-title,
+    .absolutte-card-title {
         font-size: 1rem;
     }
+
     h1.display-4 {
         font-size: 2.5rem;
     }
