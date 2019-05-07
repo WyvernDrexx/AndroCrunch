@@ -368,7 +368,7 @@ input::placeholder {
 
 .home-selected .card {
     min-height: 11rem;
-    margin: 4px !important;
+    margin: 16px !important;
     margin-bottom: 15px !important;
 }
 
@@ -376,10 +376,6 @@ input::placeholder {
     padding: 15px;
 }
 
-.home-selected .card,
-.home-selected .card img {
-    border-radius: 0px !important;
-}
 
 .recommended .card-title,
 .absolutte-card-title {
@@ -412,7 +408,7 @@ input::placeholder {
 }
 
 .card {
-    box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.726);
+    box-shadow : 3px 3px 15px rgba(0, 0, 0, 0.726);
     cursor: pointer;
 }
 
