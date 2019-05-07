@@ -371,7 +371,7 @@ input::placeholder {
     min-height: 11rem;
     margin: 16px !important;
     margin-bottom: 15px !important;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.267);
+    box-shadow: 5px 5px 18px rgba(0, 0, 0, 0.185);
 }
 
 .home-selected .card-body {
