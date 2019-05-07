@@ -347,6 +347,7 @@ input::placeholder {
     width: 100%;
     background: rgba(3, 27, 104, 0.527);
     z-index: -1;
+    border-radius: 11px;
 }
 
 .hover-option a {
