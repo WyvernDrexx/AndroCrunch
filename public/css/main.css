@@ -345,7 +345,7 @@ input::placeholder {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(3, 27, 104, 0.527);
+    background: rgba(3, 27, 104, 0.151);
     z-index: -1;
     border-radius: 11px;
 }
@@ -371,6 +371,7 @@ input::placeholder {
     min-height: 11rem;
     margin: 16px !important;
     margin-bottom: 15px !important;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.267);
 }
 
 .home-selected .card-body {
@@ -1356,6 +1357,10 @@ textarea.form-control,
         padding-top: 8rem;
     }
 
+    .home-selected .card{
+        margin-bottom: 2.5rem !important;
+    }
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -1405,7 +1410,10 @@ textarea.form-control,
         display: none;
     }
 
-
+    .home-selected .card{
+        margin: 0 !important;
+        margin-bottom: 3.5rem !important;
+    }
     .btn-outline.rounded-pill {
         margin-top: 1rem;
         margin-left: 0 !important;
