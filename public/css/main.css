@@ -976,7 +976,7 @@ div.emphasis p.author {
 }
 .horizontal-scroll .scroll-item{
     display: inline-block;
-    margin: 1px;
+    margin: 5px;
     margin-top: 1.2rem;
     height: 9rem;
     width: 9rem;
@@ -1512,9 +1512,6 @@ textarea.form-control,
         flex: 0 0 auto;
     }
 
-    .jumbo-button {
-        margin-top: rem;
-    }
 
     .recommended .card-title,
     .absolutte-card-title {
@@ -1528,7 +1525,9 @@ textarea.form-control,
     section.container-fluid {
         padding-left: 0;
     }
-
+    .jumbo-button .btn-outline{
+        margin-top: 1rem;
+    }
     .card img {
         height: auto;
     }
