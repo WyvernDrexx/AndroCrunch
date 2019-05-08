@@ -1,4 +1,7 @@
 window.onload = function () {
+  $('.srch-btn').click(function(){
+    $(this).parent().toggleClass('open');
+  });
   var nav = document.getElementById("nav");
   var op = true;
   var offset = window.pageYOffset;

@@ -1,366 +1,193 @@
 <% include partials/header %>
 
-<div class="container-fluid pt-6 pb-6 bg-gradient-rev">
+<div class="container-fluid pt-6s pb-6 bg-gradient-rev">
     <h1 class="text-center text-white display-5 mb-3">Content</h1>
-    <p class="lead pb-6 text-center text-white">Something Here</p>
+    <p class="lead pb-5 text-center text-white">Something Here</p>
 </div>
-<section class="container-fluid bg-white">
-    <div class="container pt-2 bg-white px-0">
-        <h1 class="display-5 text-dark mt-6 px-4">Wallpapers</h1>
-        <div class="container-fluid top-section">
-            <div class="row">
-                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                    <div class="MultiCarousel-inner">
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span></span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
+<div class="container-fluid search-box pt-1 pb-1 bg-white">
+    <div class="bg-white container rounded">
+        <h1 class="display-6 text-center">What are you looking for?</h1>
+        <div class="input-group mb-2 ">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle  search-dropdown text-white" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All</button>
+                <div class="dropdown-menu">
+                    <span class="dropdown-item" href="#">Wallpapers</span>
+                    <span class="dropdown-item" href="#">Ringtones</span>
+                    <span class="dropdown-item" href="#">Apps</span>
+                    <span class="dropdown-item" href="#">Games</span>
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                placeholder="Type & Hit Enter">
+            <button class="btn dark-purple search-btn no-border" type="submit"><img class="svg-icon no-border"
+                    src="/imgs/search.svg"></button>
+        </div>
+    </div>
+</div>
+<section class="container-fluid bg-white pb-6">
+    <div class="pt-6s">
+            <h1 class="display-5 font-weight-bold text-center padding-top text-dark-purple pt-6 pt-md-1">The Most Popular
+                Ones</h1>
+            <p class="lead text-center text-light-purple">Selected Wallpapers for you.</p>
+            <br>
+        </div>
+    <div class="row main-content justify-content-center pt-5">
+        <div class="col-7">
+            <div class="bd-example">
+                <div id="wallpapers" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#wallpapers" data-slide-to="0" class="active"></li>
+                        <li data-target="#wallpapers" data-slide-to="1"></li>
+                        <li data-target="#wallpapers" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span>
-                                        <!-- <img class="svg-icon" src="/imgs/add.svg"> -->
-                                        <span class="plus-symbol">+</span>
-                                    </span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
+                        <div class="carousel-item">
+                            <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span></span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
+                        <div class="carousel-item">
+                            <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                             </div>
                         </div>
                     </div>
-                    <button class="btn  leftLst">
-                        <</button> <button class="btn  rightLst right-move">>
-                    </button>
+                    <a class="carousel-control-prev" href="#wallpapers" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#wallpapers" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
-            <div class="padding-top"></div>
         </div>
+    </div>
+    <div class="container-fluid bg-white home-selected">
+        <div class="row main-content pt-1 justify-content-center px-0">
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
 
-        <!-- ----------------------Ring tones -->
-        <h1 class="display-5 text-dark mt-6 px-4">Ringtones</h1>
-        <div class="container-fluid top-section">
-            <div class="row">
-                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                    <div class="MultiCarousel-inner">
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span></span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span>
-                                        <!-- <img class="svg-icon" src="/imgs/add.svg"> -->
-                                        <span class="plus-symbol">+</span>
-                                    </span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span></span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="item-info">
-                                    <span><span class="plus-symbol">+</span><span>
-                                </div>
-                                <p class="lead">Multi Item Carousel</p>
-                                <p>₹ 1</p>
-                                <p>₹ 6000</p>
-                                <p>50% off</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn  leftLst">
-                        <</button> <button class="btn  rightLst right-move">>
-                    </button>
-                </div>
-            </div>
-            <div class="padding-top"></div>
-        </div>
-        <!-- Apps------------------------------------------ -->
-        <h1 class="display-5 text-dark mt-6 px-4">Apps</h1>
-        <div class="container-fluid top-section">
-            <div class="row">
-                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                    <div class="MultiCarousel-inner">
-                        <div class="item">
-                            <div class="pad15 circle "">
-                                <div class=" item-info">
-                                <span><span class="plus-symbol">+</span></span>
-                            </div>
-                            <p>₹ 1</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15 circle "">
-                                <div class=" item-info">
-                            <span>
-                                <!-- <img class="svg-icon" src="/imgs/add.svg"> -->
-                                <span class="plus-symbol">+</span>
-                            </span>
-                        </div>
-                        <p>₹ 1</p>
+                        <h5 class="card-title ">High Quality Wallpapers
+                        </h5>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="pad15 circle "">
-                                <div class=" item-info">
-                        <span><span class="plus-symbol">+</span></span>
+            </div>
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
                     </div>
-                    <p>₹ 1</p>
+                    <img src="/imgs/blog-12.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title ">GTA V Android Mod
+                        </h5>
+                    </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="pad15 circle "">
-                                <div class=" item-info">
-                    <span><span class="plus-symbol">+</span><span>
-                </div>
-                <p>₹ 1</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="pad15 circle "">
-                                <div class=" item-info">
-                <span><span class="plus-symbol">+</span><span>
-            </div>
-            <p>₹ 1</p>
-        </div>
-    </div>
-    <div class="item">
-        <div class="pad15 circle "">
-                                <div class=" item-info">
-            <span><span class="plus-symbol">+</span><span>
-        </div>
-        <p>₹ 1</p>
-    </div>
-    </div>
-    <div class="item">
-        <div class="pad15 circle "">
-                                <div class=" item-info">
-            <span><span class="plus-symbol">+</span><span>
-        </div>
-        <p>₹ 1</p>
-    </div>
-    </div>
-    </div>
-    <button class="btn  leftLst">
-        <</button> <button class="btn  rightLst right-move">>
-    </button>
-    </div>
-    </div>
-    <div class="padding-top"></div>
-    </div>
-    <!-- Presets--------------------------------------------------- -->
-    <h1 class="display-5 text-dark mt-6 mb-6 px-4">Presets</h1>
-    <div class="container-fluid top-section">
-        <div class="row">
-            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-                <div class="MultiCarousel-inner">
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span></span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
+
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
                     </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span>
-                                    <!-- <img class="svg-icon" src="/imgs/add.svg"> -->
-                                    <span class="plus-symbol">+</span>
-                                </span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span></span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span><span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span><span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span><span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pad15">
-                            <div class="item-info">
-                                <span><span class="plus-symbol">+</span><span>
-                            </div>
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <h5 class="card-title ">High Quality Wallpapers
+                        </h5>
                     </div>
                 </div>
-                <button class="btn  leftLst">
-                    <</button> <button class="btn  rightLst right-move">>
-                </button>
+            </div>
+
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title ">High Quality Wallpapers
+                        </h5>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="padding-top"></div>
+        <div class="row main-content pt-1 justify-content-center px-0">
+            <div class="col-md px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog-9.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <h5 class="card-title ">HD Mac Wallpaper</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <h5 class="card-title ">High Quality Wallpapers
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog-12.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title ">GTA V Android Mod
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm px-0">
+                <div class="card mx-0 mb-3">
+                    <div class="hover-option">
+                        <a class="btn btn-purple-color text-white btn-md" href="/">Fetch</a>
+                    </div>
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <h5 class="card-title ">High Quality Wallpapers
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>
     </div>
 </section>
 

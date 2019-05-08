@@ -244,21 +244,6 @@ h1.display-4 {
     border-radius: 11px;
 }
 
-.hover-opacity {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0e1111;
-    opacity: 0;
-}
-
-.hover-opacity:hover {
-    opacity: 0.6;
-}
-
 .sub-box {
     z-index: 2;
     position: absolute;
@@ -345,8 +330,9 @@ input::placeholder {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(3, 27, 104, 0.151);
-    z-index: -1;
+    background: rgba(3, 27, 104, 0.311);
+    z-index: 2;
+    opacity: 0;
     border-radius: 11px;
 }
 
@@ -356,17 +342,24 @@ input::placeholder {
     right: 0;
     bottom: 0;
     left: 0;
+    width: 50px;
+height: 20px;
     margin: auto;
-    height: 40px;
-    max-width: 150px;
-    transition: none !important;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    z-index: 3;
+}
+
+.carousel-item:hover .hover-option{
     opacity: 1;
 }
-
-.card:hover .hover-option {
-    z-index: 2;
+.carousel-control-next, .carousel-control-prev:hover .hover-option{
+    opacity: 1 !important;
 }
-
+.carousel-item:hover .carousel-caption{
+    opacity: 0;
+}
 .home-selected .card {
     min-height: 11rem;
     margin: 16px !important;
@@ -410,7 +403,7 @@ input::placeholder {
 }
 
 .card {
-    box-shadow : 3px 3px 15px rgba(0, 0, 0, 0.199);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.199);
     cursor: pointer;
 }
 
@@ -758,6 +751,10 @@ a:hover {
     color: white;
 }
 
+.jumbo-button {
+    text-align: center;
+}
+
 .jumbo-button .btn-outline:hover {
     border-color: #9966ff;
     color: white;
@@ -972,6 +969,28 @@ div.emphasis p.author {
     margin: auto;
     padding: 1rem 0;
 }
+.horizontal-scroll{
+    padding-top: 20px;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+.horizontal-scroll .scroll-item{
+    display: inline-block;
+    margin: 15px;
+    height: 9rem;
+    width: 9rem;
+    background-color: #0fc4c4;
+    border-radius: 15px;
+
+}
+.horizontal-scroll .scroll-item img{
+    width: 9rem;
+    border-radius: 15px;
+    height: 9rem;
+}
+.horizontal-scroll .scroll-item:hover{
+    transform: translateY(-15px);
+}
 
 .product-box {
     color: wheat;
@@ -992,10 +1011,10 @@ div.emphasis p.author {
     font-weight: 400;
     font-size: 25px;
     color: #6600ff;
-    ;
     background-color: white;
     border-radius: 50%;
-    padding: 3px 15px;
+    padding: 8px 15px;
+    cursor: pointer;
 }
 
 .mb-6 {
@@ -1263,7 +1282,126 @@ textarea.form-control,
     opacity: 0;
     background: rgb(153, 152, 152);
 }
+.srch {
+    width: 100px;
+    height: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    background-color: crimson;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50px;
+    transition: all 0.5s ease;
+}
 
+.srch:before {
+    content: '';
+    display: block;
+    margin-left: -5px;
+    width: 3px;
+    height: 100%;
+    position: relative;
+    background-color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.srch.open {
+    width: 500px;
+}
+
+.srch.open:before {
+    height: 60px;
+    margin: 20px 0 20px 30px;
+    position: absolute;
+}
+
+.srch-box {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    color: #fff;
+    padding: 20px 100px 20px 45px;
+    font-size: 40px;
+}
+
+.srch-box:focus {
+    outline: none;
+}
+
+.srch-btn {
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.srch-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: 3px solid #ffffff;
+    display: block;
+    position: relative;
+    margin-left: 5px;
+    transition: all 0.5s ease;
+}
+
+.srch-icon:before {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -2px;
+    top: 30px;
+    display: block;
+    background-color: #ffffff;
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+}
+
+.srch-icon:after {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -12px;
+    top: 40px;
+    display: block;
+    background-color: #ffffff;
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+}
+
+.open .srch-icon {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+}
+
+.open .srch-icon:before {
+    transform: rotate(52deg);
+    right: 22px;
+    top: 23px;
+    height: 18px;
+}
+
+.open .srch-icon:after {
+    transform: rotate(-230deg);
+    right: 22px;
+    top: 13px;
+    height: 18px;
+}
 
 /* Keframes  */
 
@@ -1285,6 +1423,8 @@ textarea.form-control,
 
     .bg-image {
         background-image: linear-gradient(to left, #0033ff, #000033) !important;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
 }
 
@@ -1357,7 +1497,7 @@ textarea.form-control,
         padding-top: 8rem;
     }
 
-    .home-selected .card{
+    .home-selected .card {
         margin-bottom: 2.5rem !important;
     }
 
@@ -1410,14 +1550,13 @@ textarea.form-control,
         display: none;
     }
 
-    .home-selected .card{
+    .home-selected .card {
         margin: 0 !important;
         margin-bottom: 3.5rem !important;
     }
+
     .btn-outline.rounded-pill {
-        margin-top: 1rem;
-        margin-left: 0 !important;
-        width: 99%;
+        margin-left: 0.1rem;
     }
 
     .comment .row div.col-sm {
@@ -1447,7 +1586,6 @@ textarea.form-control,
     }
 
     .jumbo-button .btn.btn-purple-color {
-        width: 100%;
         border-radius: none;
     }
 
@@ -1555,7 +1693,9 @@ textarea.form-control,
         margin-bottom: -5.7rem !important;
     }
 
-
+    .srch.open{
+        width: 330px;
+    }
     .sub .container {
         padding-left: 0;
     }
@@ -1582,12 +1722,9 @@ textarea.form-control,
         overflow-x: auto;
     }
 
-    .btn-outline.rounded-pill.small {
-        width: auto;
-    }
 
-    .scroll-flex .col-md {
-        width: 73vw;
+    .scroll-flex .col-sm {
+        min-width: 73vw;
     }
 
     .scroll-flex .card-title {
