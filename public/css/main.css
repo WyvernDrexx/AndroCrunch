@@ -338,12 +338,12 @@ input::placeholder {
 
 .hover-option a {
     position: absolute;
+    width: 120px;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 50px;
-height: 20px;
+    height: 50px;
     margin: auto;
 }
 
@@ -354,11 +354,8 @@ height: 20px;
 .carousel-item:hover .hover-option{
     opacity: 1;
 }
-.carousel-control-next, .carousel-control-prev:hover .hover-option{
-    opacity: 1 !important;
-}
-.carousel-item:hover .carousel-caption{
-    opacity: 0;
+.hover-option:hover{
+    opacity: 1;
 }
 .home-selected .card {
     min-height: 11rem;
@@ -1330,6 +1327,7 @@ textarea.form-control,
     font-size: 40px;
 }
 
+
 .srch-box:focus {
     outline: none;
 }
@@ -1395,7 +1393,23 @@ textarea.form-control,
     top: 23px;
     height: 18px;
 }
-
+.trending-posts{
+    color: white;
+}
+.trending-posts .col-sm-4:hover p{
+    opacity: 0;
+}
+.trending-posts .col-sm:hover p{
+    opacity: 0;
+}
+.trending-posts p{
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+}
+.trending-posts .col-md-4:hover p{
+    opacity: 0;
+}
 .open .srch-icon:after {
     transform: rotate(-230deg);
     right: 22px;
