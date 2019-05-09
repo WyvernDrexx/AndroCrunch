@@ -986,6 +986,7 @@ div.emphasis p.author {
 }
 .horizontal-scroll .scroll-item:hover{
     transform: translateY(-15px);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.199);
 }
 
 .product-box {
@@ -1288,10 +1289,10 @@ textarea.form-control,
     transition: all 1s;
     width: 50px;
     height: 50px;
-    background: white;
+    background: #0033ff;
     box-sizing: border-box;
     border-radius: 25px;
-    border: 4px solid white;
+    border: 4px solid #0033ff;
     padding: 5px;
     z-index: 2;
     margin-bottom: -4.5rem;
@@ -1303,6 +1304,7 @@ textarea.form-control,
     left: 0;
     width: 100%;;
     height: 42.5px;
+    background: #0033ff;
     line-height: 30px;
     outline: 0;
     border: 0;
@@ -1321,14 +1323,14 @@ textarea.form-control,
     top: 0;
     right: 0;
     border-radius: 50%;
-    color: #07051a;
     text-align: center;
+    color: white;
     font-size: 1.2em;
     transition: all 1s;
 }
 
 .srch form:hover{
-    width: 200px;
+    width: 300px;
     cursor: pointer;
 }
 
@@ -1337,7 +1339,7 @@ textarea.form-control,
 }
 
 .srch form:hover .fas{
-    background: #07051a;
+    background: #0033cc;
     color: white;
 }
 .trending-posts{
@@ -1356,12 +1358,6 @@ textarea.form-control,
 }
 .trending-posts .col-md-4:hover p{
     opacity: 0;
-}
-.open .srch-icon:after {
-    transform: rotate(-230deg);
-    right: 22px;
-    top: 13px;
-    height: 18px;
 }
 
 /* Keframes  */
