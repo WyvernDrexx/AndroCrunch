@@ -1716,6 +1716,9 @@ textarea.form-control,
         overflow-x: auto;
     }
 
+    .subscribe{
+        margin-bottom: -6rem !important;
+    }
 
     .scroll-flex .col-sm {
         min-width: 73vw;
