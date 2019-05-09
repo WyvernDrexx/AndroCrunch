@@ -1,6 +1,5 @@
 * {
     transition: 0.5s;
-    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 body {
@@ -1279,119 +1278,67 @@ textarea.form-control,
     opacity: 0;
     background: rgb(153, 152, 152);
 }
-.srch {
-    width: 100px;
-    height: 100px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    margin: auto;
-    background-color: crimson;
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
-    position: absolute;
-    overflow: hidden;
-    border-radius: 50px;
-    transition: all 0.5s ease;
-}
 
-.srch:before {
-    content: '';
-    display: block;
-    margin-left: -5px;
-    width: 3px;
-    height: 100%;
+
+.srch form{
     position: relative;
-    background-color: #ffffff;
-    transition: all 0.5s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+    z-index: 2;
+    margin-bottom: -4.5rem;
 }
 
-.srch.open {
-    width: 500px;
-}
-
-.srch.open:before {
-    height: 60px;
-    margin: 20px 0 20px 30px;
+.srch input{
     position: absolute;
-}
-
-.srch-box {
-    width: 100%;
-    height: 100%;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    color: #fff;
-    padding: 20px 100px 20px 45px;
-    font-size: 40px;
-}
-
-
-.srch-box:focus {
-    outline: none;
-}
-
-.srch-btn {
-    width: 100px;
-    height: 100px;
-    display: block;
-    position: absolute;
-    right: 0;
     top: 0;
-    padding: 20px;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.srch .fas{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.srch form:hover{
+    width: 200px;
     cursor: pointer;
 }
 
-.srch-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-    border: 3px solid #ffffff;
+.srch form:hover input{
     display: block;
-    position: relative;
-    margin-left: 5px;
-    transition: all 0.5s ease;
 }
 
-.srch-icon:before {
-    content: '';
-    width: 3px;
-    height: 15px;
-    position: absolute;
-    right: -2px;
-    top: 30px;
-    display: block;
-    background-color: #ffffff;
-    transform: rotate(-45deg);
-    transition: all 0.5s ease;
-}
-
-.srch-icon:after {
-    content: '';
-    width: 3px;
-    height: 15px;
-    position: absolute;
-    right: -12px;
-    top: 40px;
-    display: block;
-    background-color: #ffffff;
-    transform: rotate(-45deg);
-    transition: all 0.5s ease;
-}
-
-.open .srch-icon {
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-}
-
-.open .srch-icon:before {
-    transform: rotate(52deg);
-    right: 22px;
-    top: 23px;
-    height: 18px;
+.srch form:hover .fas{
+    background: #07051a;
+    color: white;
 }
 .trending-posts{
     color: white;
