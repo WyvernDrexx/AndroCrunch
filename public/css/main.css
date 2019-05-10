@@ -334,15 +334,18 @@ input::placeholder {
     opacity: 0;
     border-radius: 11px;
 }
+.fab.big{
+    font-size: 25px;
+}
 
 .hover-option a {
     position: absolute;
-    width: 120px;
+    width: 50px;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 50px;
+    height: 40px;
     margin: auto;
 }
 
@@ -352,6 +355,9 @@ input::placeholder {
 
 .carousel-item:hover .hover-option{
     opacity: 1;
+}
+.carousel-item:hover p{
+    opacity: 0;
 }
 .hover-option:hover{
     opacity: 1;
