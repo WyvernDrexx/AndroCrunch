@@ -747,7 +747,6 @@ a:hover {
 }
 
 .btn-outline {
-    padding: 8px 32px;
     border: 2px solid #9839da;
     background-color: #ffffff00;
     color: white;
@@ -786,10 +785,6 @@ a:hover {
     font-size: 14px !important;
 }
 
-.btn.btn-purple-color {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
 
 .btn.btn-purple-color:hover {
     box-shadow: 0 0 30px #cbace2, 0 0 15px #6600ff;
@@ -882,7 +877,7 @@ div.emphasis p.author {
 
 .carousel-item img {
     border-radius: 10px !important;
-    min-height: 12rem;
+    min-height: 15rem;
 }
 
 .subtitle {
@@ -942,7 +937,7 @@ div.emphasis p.author {
 /* ----------------------- Middle section of homepage */
 
 .jumbo-button {
-    margin-top: 2em;
+    margin-top: 1em;
 }
 .jumbo-button a{
     font-size: 16px !important;
@@ -1410,7 +1405,7 @@ textarea.form-control,
     }
 
     .pt-6s {
-        padding-top: 4rem;
+        padding-top: 6rem;
     }
 
     .input-group {
@@ -1512,11 +1507,6 @@ textarea.form-control,
         margin: 0 !important;
         margin-bottom: 3.5rem !important;
     }
-
-    .btn-outline.rounded-pill {
-        margin-left: 0.1rem;
-    }
-
     .comment .row div.col-sm {
         padding-left: 0px;
         padding-right: 0px;
