@@ -3,9 +3,13 @@ const express = require("express"),
     Subscriber = require("../models/subscribers");
 
 router.post("/subscribe", (req, res) => {
+    let validEmailClients = ["gmail.com", "ymail.com", "outlook.com", "mail.com", "aol.com", "business.com", "contarctor.com", "admin.com"];
     let response = new Object();
-    response.status = true;
     let email = req.body.email;
+    let checkEmail = "";
+    let checkDomain = "";
+
+    response.status = true;
     email = email.toLowerCase();
     //Check email field for emptiness
     if (!email) {
@@ -15,15 +19,14 @@ router.post("/subscribe", (req, res) => {
         return;
     }
     // Check for correct format for email
-    let checkEmail = email.split("@");
-    if (checkEmail.length > 2 || checkEmail.length === 1) {
+    checkEmail = email.split("@");
+    checkDomain = checkEmail[1];
+    if (checkEmail.length > 2 || checkEmail.length === 1 || checkDomain.length < 2) {
         response.status = false;
         response.message = "Invalid email format!"
         res.send(response);
         return;
     }
-    let checkDomain = checkEmail[1];
-    let validEmailClients = ["gmail.com", "ymail.com", "outlook.com", "mail.com", "aol.com", "business.com", "contarctor.com", "admin.com"];
     validEmailClients.forEach((domain) => {
         if (domain === checkDomain) {
             checkEmail = false;
