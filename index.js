@@ -15,7 +15,6 @@ mongoose.connect("mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27
 server.get("/", (req, res) => {
     res.render("index");
 });
-
 //  Required routes
 
 server.use(require("./routes/index"));
@@ -28,5 +27,6 @@ server.get("*", (req, res) => {
 });
 
 server.listen(PORT, process.env.IP, () => {
-    console.log("Listening....");
+    console.log(`Listening on PORT: ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV}`);
 });
