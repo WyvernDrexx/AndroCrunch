@@ -3,7 +3,7 @@ const express = require("express"),
     Subscriber = require("../models/subscribers");
 
 router.post("/subscribe", (req, res) => {
-    let validEmailClients = ["gmail.com", "ymail.com", "outlook.com", "mail.com", "aol.com", "business.com", "contarctor.com", "admin.com"];
+    let validEmailClients = ["gmail.com", "ymail.com", "outlook.com", "mail.com", "aol.com", "business.com", "contractor.com", "admin.com"];
     let response = new Object();
     let email = req.body.email;
     let checkEmail = "";
@@ -11,19 +11,21 @@ router.post("/subscribe", (req, res) => {
 
     response.status = true;
     email = email.toLowerCase();
+
     //Check email field for emptiness
     if (!email) {
         response.status = false;
-        response.message = "Field cannot be empty!"
+        response.message = "Field cannot be empty!";
         res.send(response);
         return;
     }
+
     // Check for correct format for email
     checkEmail = email.split("@");
     checkDomain = checkEmail[1];
     if (checkEmail.length > 2 || checkEmail.length === 1 || checkDomain.length < 2) {
         response.status = false;
-        response.message = "Invalid email format!"
+        response.message = "Invalid email format!";
         res.send(response);
         return;
     }
@@ -35,7 +37,7 @@ router.post("/subscribe", (req, res) => {
     });
     if (checkEmail) {
         response.status = false;
-        response.message = `${checkDomain} not supported!`
+        response.message = `${checkDomain} not supported!`;
         res.send(response);
         return;
     } else {
@@ -45,7 +47,7 @@ router.post("/subscribe", (req, res) => {
             .then((data) => {
                 if (Boolean(data)) {
                     response.status = false;
-                    response.message = "You have already subscribed!"
+                    response.message = "You have already subscribed!";
                     res.send(response);
                     return;
                 } else {
@@ -57,7 +59,7 @@ router.post("/subscribe", (req, res) => {
                             response.message = "There was an error subscribing to the newsletter. Try again!";
                             res.send(response);
                         } else {
-                            response.message = "Thank you for subscribing!"
+                            response.message = "Thank you for subscribing!";
                             res.send(response);
                         }
                     });
