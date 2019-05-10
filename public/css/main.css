@@ -874,7 +874,9 @@ div.emphasis p.author {
 .gallery-carousel {
     max-width: 99%;
 }
-
+.social a:hover {
+    color: crimson;
+}
 .carousel-item img {
     border-radius: 10px !important;
     min-height: 15rem;
