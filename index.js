@@ -21,7 +21,7 @@ server.get("/", (req, res) => {
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
-
+server.use(require("./routes/subscribers"));
 //Wildcard route//
 server.get("*", (req, res) => {
     res.render("error", {

@@ -1,7 +1,5 @@
 const express = require("express"),
-    router = express.Router(),
-    Subscriber = require("../models/subscribers");
-
+    router = express.Router();
 router.get("/blogs", (req, res) => {
     res.render("blogs");
 });
