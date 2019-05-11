@@ -836,12 +836,7 @@ a:hover {
     margin-top: 5.4rem;
 }
 
-.share h6 {
-    display: inline;
-    padding-left: 8px;
-    padding-right: 18px;
-    color: white;
-}
+
 
 .item-details {
     margin-left: 2rem;
@@ -953,16 +948,46 @@ div.emphasis p.author {
     width: 1rem;
     height: auto;
 }
+.img{
+    position: relative;
+}
+.download-item img{
+    width: 18rem;
+    max-width: 18rem;
+    border-radius: 15px;
+    position: absolute;
+    max-height: 16rem;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
 
 .item-action .download {
     display: inline-block;
 }
 
 .share {
-    display: inline-block;
-    padding-left: 16px;
-    padding: 2px;
-    border: 2px solid #6600ff;
+    border: 1px solid #0033ff;
+    border-radius: 25px;
+    padding: 8px;
+    display: block;
+    margin: auto;
+    color: #0033ff;
+    max-width: 10rem;
+    margin-top: 1.5rem;
+}
+.share span{
+    font-weight: bold;
+}
+.share a{
+    color: #0033ff;
+}
+.share a .fab{
+    font-size: 14px;
+    margin: 5px 0px 5px 5px;
 }
 
 
@@ -1182,18 +1207,25 @@ div.emphasis p.author {
     display: flex;
 }
 
+.xs-small{
+    font-size: 8px;
+    letter-spacing: 0px;
+}
 
 .comment textarea,
 .comment input {
     width: 100%;
-    padding: 8px;
+    padding: 16px;
     color: rgb(77, 76, 76);
-    border: 2px solid rgba(97, 97, 97, 0.493);
+    border: 1px solid #0033ff;
+    border-radius: 15px !important;
+    font-size: 10px !important;
 }
 
 .comment input {
-    margin: 3px 0;
-    padding: 10px;
+    margin: 12px 0;
+    padding: 15px 10px;
+    border-radius: 10px !important;
 }
 
 .comment *::placeholder {
@@ -1203,7 +1235,6 @@ div.emphasis p.author {
 textarea.form-control,
 .comment textarea {
     height: 17rem;
-    ;
 }
 
 .font-size-md {
@@ -1630,22 +1661,6 @@ textarea.form-control,
         max-height: 20rem;
     }
 
-    .share {
-        position: relative;
-        width: 100%;
-        display: inline-block;
-        justify-content: space-around;
-    }
-
-    .share h6 {
-        position: absolute;
-        top: 26%;
-    }
-
-    .share a {
-        float: right;
-        margin: 4px;
-    }
 
     .statistics .container-fluid .row div:first-of-type {
         margin-top: -4rem;
