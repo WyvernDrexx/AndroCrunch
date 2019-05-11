@@ -33,8 +33,8 @@ router.get("/contact", (req, res) => {
     res.render("contact");
 });
 
-router.get("/products", (req, res) => {
-    res.render("products");
+router.get("/contents", (req, res) => {
+    res.render("contents");
 });
 
 router.post("/subscribe", (req, res) => {

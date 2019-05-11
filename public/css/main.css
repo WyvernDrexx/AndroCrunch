@@ -235,6 +235,13 @@ h1.display-4 {
     border-radius: 11px;
 }
 
+.bottom-rounded{
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.site-content .col-md{
+    max-width: 9rem;
+}
 .main .row .col-sm,
 .main .row .col-sm-4 {
     margin: 10px;
