@@ -36,7 +36,9 @@ router.get("/contact", (req, res) => {
 router.get("/contents", (req, res) => {
     res.render("contents");
 });
-
+router.get("/ringtones", (req, res) => {
+    res.render("ringtones");
+});
 router.post("/subscribe", (req, res) => {
     let response = new Object();
     response.status = true;
