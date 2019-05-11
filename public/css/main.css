@@ -419,6 +419,10 @@ input::placeholder {
 .latest-posts .col.justify-content-end {
     margin-left: 2rem;
 }
+.line{
+    padding-left: 13rem;
+    border-top: 1px solid purple;
+}
 
 .latest-posts .row {
     padding: 4px;
@@ -774,7 +778,7 @@ a:hover {
 }
 
 .btn-outline {
-    border: 2px solid #9839da;
+    border: 1px solid #9839da;
     background-color: #ffffff00;
     color: white;
 }
