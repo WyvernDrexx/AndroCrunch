@@ -245,7 +245,6 @@ h1.display-4 {
 .site-content .apps img{
     border-radius: 50%;
     padding: 5px;
-    height: 100%;
 }
 .site-content .apps img.card-img-top{
     min-height: 11rem;
