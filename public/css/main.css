@@ -10,7 +10,7 @@ body {
 }
 
 p {
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -330,7 +330,7 @@ input::placeholder {
     border-radius: 25px;
     padding: 38px 35px;
     box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: -2.7rem !important;
+    margin-bottom: -5.7rem !important;
 }
 
 .tags,
@@ -524,7 +524,11 @@ input::placeholder {
 }
 
 .bg-gradient {
-    background-image: linear-gradient(to bottom, #0033ff, #000033, #000033) !important;
+    background-image: linear-gradient(40deg, #000033, #0033cc, #33cccc) !important;
+}
+
+.bg-gradient-bottom{
+    background-image: linear-gradient(180deg, #000033, #0033cc, #33cccc) !important;
 }
 
 .compact-form {
@@ -536,13 +540,6 @@ input::placeholder {
     font-size: 2rem;
 }
 
-.bg-gradient-rev {
-    background-image: linear-gradient(to top, #330066, #660099, #6600cc) !important;
-}
-
-.bg-gradient-right {
-    background-image: linear-gradient(to left, #0033ff, #000033) !important;
-}
 
 .bg-image {
     background-image: url("/imgs/bg-img.jpg") !important;
@@ -586,7 +583,7 @@ input:focus {
 }
 
 .btn-purple-color {
-    background-color: #0033ff;
+    background-color: #0066cc;
 }
 
 .blog-posts .container div div {
@@ -776,8 +773,13 @@ a:hover {
     }
 }
 
+h1{
+    color: #333333;
+}
+
+
 .btn-outline {
-    border: 1px solid #9839da;
+    border: 1px solid #0066cc;
     background-color: #ffffff00;
     color: white;
 }
@@ -1090,16 +1092,14 @@ div.emphasis p.author {
 }
 
 .load-more {
-    color: #6600ff;
+    color: #0066cc;
     font-size: 18px;
     font-weight: 400;
 }
 
 .load-more:hover {
     color: white;
-    background-color: #9839da;
-    ;
-
+    background-color: #0066cc;
 }
 
 .search-box div.rounded {
@@ -1185,7 +1185,7 @@ div.emphasis p.author {
 }
 
 .text-gray {
-    color: gray !important;
+    color: #999999 !important;
 }
 
 .main-content {
@@ -1469,7 +1469,7 @@ textarea.form-control,
     }
 
     .details{
-        padding-top: 15rem;
+        padding-top: 11rem;
     }
 
     .pt-6s {
