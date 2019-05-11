@@ -976,7 +976,7 @@ div.emphasis p.author {
 }
 
 .no-border {
-    border: none;
+    border: none !important;
 }
 
 .no-border-radius {
