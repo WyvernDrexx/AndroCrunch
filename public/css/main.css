@@ -239,19 +239,14 @@ h1.display-4 {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-.site-content .apps .card{
-    background-color: transparent !important;
-    box-shadow: none;
-    border: none;
+.site-content .col-md{
+    max-width: 9rem;
 }
-.site-content .apps .col{
-    max-width: 4rem;
-}
-/* .site-content .apps img{
+.site-content .apps img{
     border-radius: 50%;
     padding: 5px;
-    max-height: 5rem;
-} */
+    height: 8rem;
+}
 .main .row .col-sm,
 .main .row .col-sm-4 {
     margin: 10px;
@@ -1476,15 +1471,6 @@ textarea.form-control,
     .home-selected .card {
         margin-bottom: 2.5rem !important;
     }
-
-    /* .site-content .col-md{
-        max-width: 9rem;
-    }
-    .site-content .apps img{
-        border-radius: 50%;
-        padding: 5px;
-        height: 9rem;
-    } */
 
 }
 
