@@ -1,6 +1,7 @@
 const express = require("express"),
     router = express.Router(),
-    Subscriber = require("../models/subscribers");
+    Subscriber = require("../models/subscribers"),
+    jquery = require("jquery");
 
 router.get("/blogs", (req, res) => {
     res.render("blogs");
@@ -36,8 +37,19 @@ router.get("/contact", (req, res) => {
 router.get("/contents", (req, res) => {
     res.render("contents");
 });
-router.get("/ringtones", (req, res) => {
-    res.render("ringtones");
+router.get("/contents/:category", (req, res) => {
+    let category = req.params.category.toLowerCase();
+    if (category === "wallpapers" || category === "ringtones" || category === "plugins" || category === "presets") {
+        res.render("category", {
+            category
+        });
+    }else{
+        req.flash("error", "Category doesn't exist!");
+        res.redirect("/contents");
+    }
+});
+router.get("/item", (req, res) => {
+    res.render("individual");
 });
 router.post("/subscribe", (req, res) => {
     let response = new Object();
@@ -52,8 +64,8 @@ router.post("/subscribe", (req, res) => {
         return;
     }
     Subscriber.findOne({
-            email
-        })
+        email
+    })
         .then((data) => {
             console.log(data);
             if (Boolean(data)) {
@@ -65,11 +77,11 @@ router.post("/subscribe", (req, res) => {
                 Subscriber.create({
                     email
                 }, (err, data) => {
-                    if(err){
+                    if (err) {
                         response.status = false;
                         response.message = "There was an error subscribing to the newsletter. Try again!";
                         res.send(response);
-                    }else{
+                    } else {
                         response.message = "Thank you for subscribing!"
                         res.send(response);
                     }
@@ -81,7 +93,6 @@ router.post("/subscribe", (req, res) => {
             res.send(response);
         });
 });
-
 
 
 module.exports = router;

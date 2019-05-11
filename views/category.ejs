@@ -16,16 +16,43 @@
     <div class="main-content site-content">
         <div class="pt-6s text-center pb-5">
             <div class="text-center">
-                <a href="#" class="btn btn-outline-primary rounded-pill btn-small px-4 pt-2 pb-2">All</a>
-                <a href="#" class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2 active">Ringtones</a>
+                <a href="/contents" class="btn btn-outline-primary rounded-pill btn-small px-4 pt-2 pb-2">All</a>
+                <% if(category === "ringtones"){ %>
+                <a href="/contents/ringtones"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2 active">Ringtones</a>
+
+                <% }else{ %>
+                <a href="/contents/ringtones"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Ringtones</a>
+                <% } %>
             </div>
             <div class="mt-4">
-                <a href="#" class="btn btn-outline-primary rounded-pill pt-2 pb-2">Wallpapers</a>
-                <a href="#" class="btn btn-outline-primary rounded-pill pt-2 pb-2">Presets</a>
-                <a href="#" class="btn btn-outline-primary rounded-pill pt-2 pb-2">Plugins</a>
+                <% if(category === "wallpapers"){ %>
+                <a href="/contents/wallpapers"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2 active">Wallpapers</a>
+                <% }else{ %>
+                <a href="/contents/wallpapers"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Wallpapers</a>
+                <% } %>
+                <% if(category === "plugins"){ %>
+                <a href="/contents/plugins"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2 active">Plugins</a>
+
+                <% }else{ %>
+                <a href="/contents/plugins"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Plugins</a>
+                <% } %>
+                <% if(category === "presets"){ %>
+                <a href="/contents/presets"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2 active">Presets</a>
+
+                <% }else{ %>
+                <a href="/contents/presets"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Presets</a>
+                <% } %>
             </div>
         </div>
-        <h1 class="display-5 text-center pt-5 pb-1">Ringtones</h1>
+        <h1 class="display-5 text-center pt-5 pb-1"><%= category.toUpperCase() %></h1>
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
         <div class="row justify-content-center">
             <div class="col-6 col-md px-0">
