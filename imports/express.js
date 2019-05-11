@@ -35,9 +35,6 @@ server.use((req, res, next) => {
     res.locals.warning = req.flash("warning");
     next();
 });
-if(process.env.NODE_ENV === "development"){
-    let logger = require("../middlewares/logger");
-    server.use(logger);
-}
+
 
 module.exports = server;
