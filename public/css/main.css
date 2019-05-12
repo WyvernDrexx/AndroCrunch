@@ -231,7 +231,6 @@ h1.display-4 {
     background-color: #0033cc;
     margin: 10px;
     height: 23.3rem;
-    ;
     border-radius: 11px;
 }
 
@@ -367,13 +366,14 @@ input::placeholder {
 
 .hover-option a {
     position: absolute;
-    width: 50px;
+    width: 80px;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     height: 40px;
     margin: auto;
+    padding-bottom: 39px;
 }
 
 .carousel-control-next, .carousel-control-prev{
@@ -1449,7 +1449,7 @@ textarea.form-control,
     }
 
     .bg-image {
-        background-image: linear-gradient(to left, #0033ff, #000033) !important;
+        background-image: linear-gradient(40deg, #000033, #0033cc, #33cccc) !important;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
     }
@@ -1466,6 +1466,10 @@ textarea.form-control,
 
     div.footer.container-fluid .container.transparent {
         display: none;
+    }
+
+    .recommended .card-title{
+        font-size: 16px;
     }
 
     nav.fixed-top div.container {
@@ -1555,6 +1559,7 @@ textarea.form-control,
 
     .scroll-flex .col-md {
         flex: 0 0 auto;
+        width: 14.2rem;
     }
     .recommended .card-title,
     .absolutte-card-title {
