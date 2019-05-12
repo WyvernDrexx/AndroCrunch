@@ -242,12 +242,13 @@ h1.display-4 {
 .site-content .col-md{
     max-width: 9rem;
 }
-.site-content .apps img{
-    border-radius: 50%;
-    padding: 5px;
-}
 .site-content .apps img.card-img-top{
+    border-radius: 50%;
     min-height: 11rem;
+    min-width: 12rem;
+    max-width: 12rem;
+    max-height: 11rem;
+    margin: auto;
 }
 .site-content .apps .card{
     background: transparent;
@@ -1452,6 +1453,13 @@ textarea.form-control,
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
     }
+    .site-content .apps img.card-img-top{
+        border-radius: 50%;
+        min-height: 8rem;
+        min-width: 9rem;
+        max-width: 9rem;
+        max-height: 8rem;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1525,15 +1533,19 @@ textarea.form-control,
     .home-selected .card {
         margin-bottom: 2.5rem !important;
     }
-    .site-content .apps img.card-img-top{
-        min-height: 9rem;
-    }
 
 }
 
 @media only screen and (max-width: 576px) {
     #nav {
         display: none;
+    }
+    .site-content .apps img.card-img-top{
+        border-radius: 50%;
+        min-height: 4rem;
+        min-width: 4rem;
+        max-width: 4rem;
+        max-height: 4rem;
     }
 
     #side-toggler {
@@ -1543,10 +1555,6 @@ textarea.form-control,
 
     .scroll-flex .col-md {
         flex: 0 0 auto;
-    }
-
-    .site-content .apps img.card-img-top{
-        min-height: 5rem;
     }
     .recommended .card-title,
     .absolutte-card-title {
