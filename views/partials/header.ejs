@@ -8,7 +8,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/main.css'>
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
@@ -16,6 +17,9 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div id="mySidenav" class="sidenav">
             <a href="/">Home</a>
+            <% if(loggedUser) {%>
+                <a class="text-warning" href="/author/panel">Panel</a>
+            <% } %>
             <a href="/blogs">Blogs</a>
             <a href="/contents">Contents</a>
             <a href="/disclaimer">Disclaimer</a>
@@ -41,12 +45,13 @@
                 <ul id="nav-content" class="navbar-nav ml-auto px-7 justify-content-center font-weight-bold text-white">
                     <% if(loggedUser) {%>
                     <li class="nav-item active">
-                        <a class="nav-link text-warning" href="/author/panel">Panel <span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-warning" href="/author/panel">Panel <span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <% } else { %>
-                        <li class="nav-item active">
-                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                            </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
                     <% } %>
                     <li class="nav-item">
                         <a class="nav-link" href="/contents">Contents</a>
