@@ -88,8 +88,30 @@ router.put("/blogs/edit/:id", isLoggedIn, (req, res) => {
     })
 });
 
+router.get("/blogs/delete/:id", isLoggedIn, (req, res) => {
+    Post.findById(req.params.id, (err, post) => {
+        if(err){
+            req.flash("error", "Couldn't delete post!");
+            res.redirect("back");
+            return;
+        }
+        res.render("deletePost", {
+            id: req.params.id
+        });
+    });
+});
 
-
+router.delete("/blogs/delete/:id", isLoggedIn, (req, res) => {
+    Post.findOneAndDelete({_id: req.params.id}, (err, post) => {
+        if(err){
+            req.flash("error", "This type of actions not allowed against this site quit now!");
+            res.redirect("back");
+            return;
+        }
+        req.flash("success", "Post successfully deleted!");
+        res.redirect("/blogs/list");
+    });
+});
 router.get("/post", (req, res) => {
     res.render("post");
 });

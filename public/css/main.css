@@ -83,7 +83,23 @@ h1.display-4 {
 .disclaimer-gradient {
     background-image: linear-gradient(to bottom, #999900, #330033) !important;
 }
+.deleteForm{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: #111111;
+}
 
+.deleteForm form{
+    width: 30vw;
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
 .advert-gradient {
     background-image: linear-gradient(to bottom, #0033cc, #000033) !important;
 }

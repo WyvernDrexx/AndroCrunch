@@ -10,6 +10,7 @@ const postSchema = new mongoose.Schema({
     title: String,
     subtitle: String,
     rating: Number,
+    image: String,
     comments: {
         type: mongoose.Types.ObjectId,
         ref: "Comments"
