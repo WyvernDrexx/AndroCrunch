@@ -8,6 +8,7 @@ const postSchema = new mongoose.Schema({
         ref: "User"
     },
     title: String,
+    subtitle: String,
     rating: Number,
     comments: {
         type: mongoose.Types.ObjectId,
@@ -20,6 +21,5 @@ const postSchema = new mongoose.Schema({
     }
 });
 
-postSchema.plugin(passportLocalMongoose);
 const Post = mongoose.model("Post", postSchema);
 module.exports = Post;

@@ -31,7 +31,7 @@
 </section>
 <script>
     function login() {
-        $(".spinner-border.spinner-border-sm").removeClass("d-none");
+        $(".compact-form .spinner-border.spinner-border-sm").removeClass("d-none");
         let username = $("input[name=username]").val();
         let password = $("input[name=password]").val();
         let user = {
@@ -45,9 +45,9 @@
             if (!data.status) {
                 $("button[type=button]").addClass("btn-danger");
                 $("button[type=button]").removeClass("btn-primary");
-                $(".spinner-border.spinner-border-sm").addClass("d-none");
+                $(".compact-form .spinner-border.spinner-border-sm").addClass("d-none");
                 $(".alert.alert-danger").remove();
-                $("form").prepend(
+                $("form.compact-form").prepend(
                     "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Incorrect Username/Password<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
                     );
                 setTimeout(() => {

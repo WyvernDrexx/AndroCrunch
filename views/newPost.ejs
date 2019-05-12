@@ -2,13 +2,20 @@
 
 <h1 class="display-5 text-white text-center mt-6">New Blog Post</h1>
 <section aria-label="New Blog Post">
-    <div class="container">
-        <form class="compact-form mb-6" action="/posts" method="POST">
+    <div class="container-fluid">
+        <form class="mb-6" action="/posts" method="POST">
             <div class="input-group mb-2 flex-nowrap">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Title:</span>
                 </div>
                 <input type="text" class="form-control" name="title" placeholder="Title" aria-label="Title"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Subtitle:</span>
+                </div>
+                <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" aria-label="Subtitle"
                     aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-2 flex-nowrap">
@@ -40,8 +47,10 @@
         let title = $("input[name=title]").val();
         let image = $("input[name=image]").val();
         let content = $("textarea[name=content]").val();
+        let subtitle = $("input[name=subtitle]").val();
         let post = {
             title,
+            subtitle,
             image,
             content
         }
@@ -54,19 +63,14 @@
             if (data.status === 1) {
                 $("form").prepend(
                     "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">Post successfully created!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
-                    );
-            } else if (data.status === 0) {
-                $("form").prepend(
-                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Error unable to create post!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
-                    );
+                );
             } else {
                 $("form").prepend(
-                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">Less than<strong> six</strong> characters not allowed!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
-                    );
+                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + data.message + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                );
             }
             $(".spinner-border.spinner-border-sm").addClass("d-none");
         });
-
     }
 </script>
 

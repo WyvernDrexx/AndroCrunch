@@ -17,13 +17,22 @@ router.post("/posts", isLoggedIn, (req, res) => {
     // Post creation...
     const post = {
         title: req.body.title,
+        subtitle: req.body.subtitle,
         image: req.body.image,
         content: req.body.content
     }
     for (const name of Object.keys(post)) {
+        if(post[name].trim().length <= 64){
+            res.send({
+                status: 0,
+                message: "Subtitle must contain at least 65 characters including spaces"
+            });
+            return;
+        }
         if (post[name].trim().length <= 6) {
             res.send({
-                status: 2
+                status: 0,
+                message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
             });
             return;
         }
@@ -35,7 +44,8 @@ router.post("/posts", isLoggedIn, (req, res) => {
     Post.create(post, (err, returnedPost) => {
         if(err){
             res.send({
-                status: 0
+                status: 0,
+                message: "Error submitting post! Report it to admin ASAP!"
             });
             console.log(err);
         }else{

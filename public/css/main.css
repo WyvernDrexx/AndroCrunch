@@ -226,7 +226,6 @@ input::placeholder {
 
 }
 
-
 .subscription .form-control {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -318,7 +317,6 @@ input::placeholder {
     padding: 15px;
 }
 
-
 .recommended .card-title,
 .absolutte-card-title {
     position: absolute;
@@ -370,7 +368,6 @@ input::placeholder {
     box-shadow: none;
 }
 
-
 .card {
     border-radius: 11px !important;
     margin: 2px;
@@ -380,8 +377,6 @@ input::placeholder {
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
 }
-
-
 
 .blog-details {
     position: absolute;
@@ -424,7 +419,6 @@ input::placeholder {
     font-size: 2rem;
 }
 
-
 .bg-image {
     background-image: url("/imgs/bg-img.jpg") !important;
     background-size: 100vw 100%;
@@ -448,7 +442,6 @@ input:focus {
 .pt-6s {
     padding-top: 8rem;
 }
-
 
 .text-dark-purple {
     color: #580096 !important;
@@ -488,8 +481,6 @@ input:focus {
     font-size: 1.5rem !important;
 }
 
-
-
 /* ------------------------------------------------------------------------- */
 
 #sidenavs {
@@ -507,7 +498,6 @@ input:focus {
     display: none;
 }
 
-
 /* The side navigation menu */
 
 .sidenav {
@@ -522,7 +512,7 @@ input:focus {
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: rgb(250, 246, 246);
+    background-color: #0066cc;
     /* Black*/
     overflow-x: hidden;
     /* Disable horizontal scroll */
@@ -532,20 +522,15 @@ input:focus {
     /* 0.5 second transition effect to slide in the sidenav */
 }
 
-
 /* The navigation menu links */
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #6600ff;
+    font-size: 21px;
+    color: white;
     display: block;
     transition: 0.3s;
-}
-
-a:hover {
-    color: white;
 }
 
 .blog-posts div.row div.col-lg .row {
@@ -556,13 +541,11 @@ a:hover {
     border-left: 4px solid #6600ff;
 }
 
-
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    color: #9839da;
+    color: #0f0e0f;
 }
-
 
 /* Position and style the close button (top right corner) */
 
@@ -575,14 +558,12 @@ a:hover {
     margin-left: 50px;
 }
 
-
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 #main {
     transition: margin-left .5s;
     padding: 20px;
 }
-
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
@@ -599,7 +580,6 @@ a:hover {
 h1{
     color: #333333;
 }
-
 
 .btn-outline {
     border: 1px solid #0066cc;
@@ -635,7 +615,6 @@ h1{
     font-size: 14px !important;
 }
 
-
 .btn.btn-purple-color:hover {
     box-shadow: 0 0 30px #cbace2, 0 0 15px #6600ff;
 }
@@ -658,24 +637,39 @@ h1{
     max-width: 5px;
     ;
 }
+.btn-outline-secondary:hover{
+    color: white !important;
+}
 .social a:hover {
     color: crimson;
+}
+.social a{
+    color: white;
+}
+.download-item img{
+    max-width: 15rem;
+    max-height: 16rem;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
 }
 .carousel-item img {
     border-radius: 10px !important;
     min-height: 15rem;
 }
 
-.social-icon {
-    width: 1rem;
-    height: auto;
-}
 .img{
     position: relative;
 }
+
 .details{
     padding-top: 8rem;
 }
+
 .share {
     border: 1px solid #0033ff;
     border-radius: 25px;
@@ -683,25 +677,26 @@ h1{
     display: block;
     margin: auto;
     color: #0033ff;
+  
     max-width: 10rem;
 }
 .share span{
     font-weight: bold;
 }
+
 .share a{
     color: #0033ff;
 }
+
 .share a .fab{
     font-size: 14px;
     margin: 5px 0px 5px 5px;
 }
 
-
-/* ----------------------- Middle section of homepage */
-
 .jumbo-button {
     margin-top: 1em;
 }
+
 .jumbo-button a{
     font-size: 16px !important;
 }
@@ -727,6 +722,7 @@ h1{
     overflow-y: auto;
     white-space: nowrap;
 }
+
 .horizontal-scroll .scroll-item{
     display: inline-block;
     margin: 5px;
@@ -736,11 +732,13 @@ h1{
     background-color: #0fc4c4;
     border-radius: 15px;
 }
+
 .horizontal-scroll .scroll-item img{
     width: 9rem;
     border-radius: 15px;
     height: 9rem;
 }
+
 .horizontal-scroll .scroll-item:hover{
     transform: translateY(-15px);
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.199);
@@ -1133,7 +1131,6 @@ textarea.form-control,
         border-radius: none;
     }
 
-
     .main-content,
     .right-side-bar {
         width: 100%;
@@ -1167,7 +1164,6 @@ textarea.form-control,
     .post-image {
         max-height: 20rem;
     }
-
 
     .statistics .container-fluid .row div:first-of-type {
         margin-top: -4rem;

@@ -46,14 +46,14 @@ $(document).ready(function () {
 
   window.subscribe = function () {
     let email = $(".subscription input[name=email]").val();
-    $(".spinner-border.spinner-border-sm").removeClass("d-none");
+    $(".subscribe .spinner-border.spinner-border-sm").removeClass("d-none");
     $.ajax("/subscribe", {
       method: "POST",
       data: {
         email: email
       }
     }).done(data => {
-      $(".spinner-border.spinner-border-sm").addClass("d-none");
+      $(".subscribe .spinner-border.spinner-border-sm").addClass("d-none");
       if (!data.status) {
         $(".subscription button").css("background-color", "#d42323");
         $(".subscription input[name=email]").val("");
@@ -167,15 +167,6 @@ function closeNav() {
   document.getElementById("sidenavs").style.display = "inline-block";
 }
 
-// window.onscroll = function() {scrollFunction()};
-
-// function scrollFunction() {
-//   if (document.body.scrBollTop > 20 || document.documentElement.scrollTop > 20) {
-//     document.getElementyId("myBtn").style.display = "block";
-//   } else {
-//     document.getElementById("myBtn").style.display = "none";
-//   }
-// }
 var amountScrolled = 1000;
 
 $(window).scroll(function () {
@@ -202,3 +193,12 @@ $(document).ready(function () {
   });
 
 });
+
+// Disable form submit on key press
+$('form').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+}); 
