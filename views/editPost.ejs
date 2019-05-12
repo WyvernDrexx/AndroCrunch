@@ -1,0 +1,74 @@
+<% include partials/header %>
+
+<h1 class="display-5 text-white text-center mt-6">New Blog Post</h1>
+<section aria-label="New Blog Post">
+    <div class="container-fluid">
+        <form class="mb-6" action="/blogs/edit/<%= post._id %>?_method=PUT" method="POST">
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Title:</span>
+                </div>
+                <input type="text" class="form-control" name="title" placeholder="Title" aria-label="Title"
+                    aria-describedby="basic-addon1" value="<%= post.title %>">
+            </div>
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Subtitle:</span>
+                </div>
+                <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" aria-label="Subtitle"
+                    aria-describedby="basic-addon1" value="<%= post.title %>">
+            </div>
+            <div class="input-group mb-2 flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image:</span>
+                </div>
+                <input type="text" class="form-control" name="image" placeholder="Image Url" aria-label="Image URL"
+                    aria-describedby="basic-addon1" value="<%= post.title %>">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Content</span>
+                </div>
+                <textarea name="content" class="form-control" aria-label="Post Content"
+                    placeholder="Post's Content"><%= post.content %></textarea>
+            </div>
+            <button onclick="edit()" type="button" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
+                <div class="spinner-border spinner-border-sm ml-4 d-none" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+        </form>
+    </div>
+</section>
+<script>
+    function edit() {
+        $(".spinner-border.spinner-border-sm").removeClass("d-none");
+        let title = $("input[name=title]").val();
+        let image = $("input[name=image]").val();
+        let content = $("textarea[name=content]").val();
+        let subtitle = $("input[name=subtitle]").val();
+        let post = {
+            title,
+            subtitle,
+            image,
+            content
+        }
+        $.ajax("/blogs/edit/<%= post._id %>?_method=PUT", {
+            method: "POST",
+            data: post
+        }).done(data => {
+            $(".alert.alert-dismissible").remove();
+            if (data.status === 1) {
+                $("form").prepend(
+                    "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">Post successfully edited!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                );
+            } else {
+                $("form").prepend(
+                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + data.message + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
+                );
+            }
+            $(".spinner-border.spinner-border-sm").addClass("d-none");
+        });
+    }
+</script>
+<% include partials/footer %>

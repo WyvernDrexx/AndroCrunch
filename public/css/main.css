@@ -87,7 +87,13 @@ h1.display-4 {
 .advert-gradient {
     background-image: linear-gradient(to bottom, #0033cc, #000033) !important;
 }
-
+.edit-list .row{
+    border: 1px solid gray;
+    padding: 20px;
+}
+.edit-list .col-md-4, .edit-list .col-md-6 , .edit-list .col-md-2{
+    background-color: gainsboro;
+}
 .privacy-policy-gradient {
     background-image: linear-gradient(to bottom, #ff0033, #330000) !important;
 }

@@ -1,0 +1,26 @@
+<% include partials/header %>
+<div class="container-fluid pt-5 pb-6 text-white bg-gradient">
+    <h1 class="display-4 text-center text-white mt-6">Posts List:</h1>
+    <p class="lead text-center">Select a post from the list to edit</p>
+    <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
+</div>
+
+<div class="container-fluid bg-white">
+    <div class="main-content pt-5 pb-6 edit-list">
+        <% posts.forEach((post) => { %>
+        <div class="card mt-5">
+            <div class="card-header">
+                    <%= post.title %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><small><%= post.subtitle %></small></h5>
+                <a href="/blogs/edit/<%= post._id %>" class="btn btn-primary mt-4 mb-4">Edit</a>
+                <a href="/blogs/delete/<%= post._id %>" class="btn btn-outline-danger mt-4 mb-4">Remove</a>
+                <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
+                <p class="tags"><span class="text-dark">by </span> <%= post.author %></p>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+<% include partials/footer %>
