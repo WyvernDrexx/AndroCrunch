@@ -1,5 +1,5 @@
 window.onload = function () {
-  $('.srch-btn').click(function(){
+  $('.srch-btn').click(function () {
     $(this).parent().toggleClass('open');
   });
   var nav = document.getElementById("nav");
@@ -58,7 +58,7 @@ $(document).ready(function () {
         $(".subscription button").css("background-color", "#d42323");
         $(".subscription input[name=email]").val("");
         $(".subscription input[name=email]").attr("placeholder", data.message);
-      }else{
+      } else {
         $(".subscription button").css("background-color", "rgb(3, 131, 182)");
         $(".subscription input[name=email]").attr("placeholder", data.message);
         $(".subscription input[name=email]").val("");
@@ -104,12 +104,12 @@ $(document).ready(function () {
             $(this).prop('Counter', 0).animate({
               Counter: $(this).text()
             }, {
-              duration: 4000,
-              easing: 'swing',
-              step: function (now) {
-                $(this).text(Math.ceil(now));
-              }
-            });
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                  $(this).text(Math.ceil(now));
+                }
+              });
           });
         }, 100);
         setTimeout(() => {
@@ -117,12 +117,12 @@ $(document).ready(function () {
             $(this).prop('Counter', 0).animate({
               Counter: $(this).text()
             }, {
-              duration: 4000,
-              easing: 'swing',
-              step: function (now) {
-                $(this).text(Math.ceil(now));
-              }
-            });
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                  $(this).text(Math.ceil(now));
+                }
+              });
           });
         }, 100);
         setTimeout(() => {
@@ -130,12 +130,12 @@ $(document).ready(function () {
             $(this).prop('Counter', 0).animate({
               Counter: $(this).text()
             }, {
-              duration: 4000,
-              easing: 'swing',
-              step: function (now) {
-                $(this).text(Math.ceil(now));
-              }
-            });
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                  $(this).text(Math.ceil(now));
+                }
+              });
           });
         }, 100);
       } else {
@@ -149,7 +149,7 @@ $(document).ready(function () {
     $(".trending-posts").remove();
   }
 
-  
+
 });
 
 
@@ -195,10 +195,22 @@ $(document).ready(function () {
 });
 
 // Disable form submit on key press
-$('form').on('keyup keypress', function(e) {
+$('form').on('keyup keypress', function (e) {
   var keyCode = e.keyCode || e.which;
-  if (keyCode === 13) { 
+  if (keyCode === 13) {
     e.preventDefault();
     return false;
   }
-}); 
+});
+
+$("input[type=file]").change(function () {
+  var fieldVal = $(this).val();
+
+  // Change the node's value by removing the fake path (Chrome)
+  fieldVal = fieldVal.replace("C:\\fakepath\\", "");
+
+  if (fieldVal != undefined || fieldVal != "") {
+      $(this).next(".custom-file-label").attr('data-content', fieldVal);
+      $(this).next(".custom-file-label").text(fieldVal);
+  }
+});

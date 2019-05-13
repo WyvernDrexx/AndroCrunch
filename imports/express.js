@@ -36,5 +36,14 @@ server.use((req, res, next) => {
     next();
 });
 
+server.use((err, req, res, next) => {
+    if(err){
+        console.log("ERROR ENCOUNTERED ON EXPRESS!");
+        console.log(err);
+        next();
+    }else{
+        next();
+    }
+});
 
 module.exports = server;

@@ -1,0 +1,19 @@
+<% include partials/header %>
+
+<div class="container-fluid bg-gradient pb-6 pt-6">
+    <div class=" main-content">
+        <form action="/files/upload" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="files" name="upload"
+                        aria-describedby="files" multiple>
+                    <label class="custom-file-label" for="files">You can upload maximum of 10 files at one time!</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04">UPLOAD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<% include partials/footer %>
