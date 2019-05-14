@@ -295,10 +295,12 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             }
-            ans = deleteFromSystem("upload", file.referenceFile);
-            console.log(ans);
-            res.send("deleted!");
-            
+            deleteFromSystem("upload", file.referenceFile);
+            if (file.thumbnail.length > 0) {
+                deleteFromSystem("thumbnail", file.thumbnail);
+            }
+            req.flash("success", "File deleted successfully!");
+            res.redirect("back");
         });
     }
     else if (mimetype === "audio") {
@@ -310,10 +312,12 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             }
-            ans = deleteFromSystem("upload", file.referenceFile);
-            console.log(ans);
-            res.send("deleted!");
-            
+            deleteFromSystem("upload", file.referenceFile);
+            if (file.thumbnail.length > 0) {
+                deleteFromSystem("thumbnail", file.thumbnail);
+            }
+            req.flash("success", "File deleted successfully!");
+            res.redirect("back");
         });
     }
     else if (mimetype === "application") {
@@ -325,18 +329,14 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             }
-            ans = deleteFromSystem("upload", file.referenceFile);
-            console.log(ans);
+            deleteFromSystem("upload", file.referenceFile);
+            if (file.thumbnail.length > 0) {
+                deleteFromSystem("thumbnail", file.thumbnail);
+            }
             req.flash("success", "File deleted successfully!");
-            req.redirect("back");
+            res.redirect("back");
         });
     }
-    // else if (mimetype === "audio") {
-    //     Audio.
-    // }
-    // else if (mimetype === "application") {
-    //     App.
-    // }
 });
 
 
