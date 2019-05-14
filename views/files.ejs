@@ -1,0 +1,40 @@
+<% include partials/header %>
+<div class="container-fluid pt-5 pb-6 text-white bg-gradient">
+    <h1 class="display-4 text-center text-white mt-6">All Files List:</h1>
+    <p class="lead text-center">Select a file from the list to modify.</p>
+    <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
+</div>
+
+<div class="container-fluid bg-white">
+    <div class="text-center pt-4">
+        <a class="btn btn-lg btn-outline-primary px-5 text-center" href="/files/upload">UPLOAD A NEW FILE</a>
+    </div>
+    <div class="main-content pt-5 pb-6 edit-list">
+        <% data.forEach((files) => { %>
+        <% files.forEach((file) => { %>
+        <div class="card mt-5">
+            <div class="card-header">
+                <%= file.filename %>
+            </div>
+            <div class="card-body">
+                <p class="tags"><strong>Type: </strong><%= file.mimetype %></p>
+                <% if(typeof file.thumbnail === "undefined"){ %>
+                <p class="tags text-danger">No thumbnail provided</p>
+                <% }else{ %>
+                <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                <% } %>
+                <h5 class="card-text"><%= file.description %></h5>
+                <a href="/blogs/edit/<%= file._id %>" class="btn btn-primary mt-4 mb-4 disabled">Edit</a>
+                <a href="/blogs/delete/<%= file._id %>" class="btn btn-outline-danger mt-4 mb-4 disabled">Remove</a>
+                <a href="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>"
+                    class="btn btn-outline-primary float-sm-right mt-4 mb-4">Upload Thumbnail</a>
+                <p class="date"><%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
+                </p>
+                <p class="tags"><span class="text-dark">by </span> <%= file.uploader %></p>
+            </div>
+        </div>
+        <% }); %>
+        <% }) %>
+    </div>
+</div>
+<% include partials/footer %>

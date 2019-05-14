@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<div class="contaimer-fluid pt-6s bg-dark">
+    <div class="main-content">
+        <div class="card mt-5">
+            <div class="card-header">
+                <%= file.filename %>
+            </div>
+            <div class="card-body">
+                <p class="tags"><strong>Type: </strong><%= file.mimetype %></p>
+                <h5 class="card-text"><small><%= file.description %></small></h5>
+                <p class="date"><%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
+                </p>
+                <p class="tags"><span class="text-dark">by </span> <%= file.uploader %></p>
+            </div>
+            <form action="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>" method="POST" class="mb-3" enctype="multipart/form-data">
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="files" name="thumbnail"
+                            aria-describedby="files">
+                        <label class="custom-file-label overflow-hidden" for="files">Select Thumbnail</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" id="upload">UPLOAD</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<% include partials/footer %>

@@ -10,7 +10,11 @@ const imageSchema           = new mongoose.Schema({
         default: "image"
     },
     description: String,
-    thumbnail: String
+    thumbnail: String,
+    uploader: String,
+    created: {
+        type: Date
+    }
 });
 const Image = mongoose.model("Image", imageSchema);
 
