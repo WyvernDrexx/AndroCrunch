@@ -90,7 +90,11 @@ h1.display-4 {
     z-index: 9999;
     background-color: #111111;
 }
-
+.thumbnail{
+    max-width: 400px;
+    max-height: 400px;
+    margin: auto;
+}
 .deleteForm form{
     width: 30vw;
     position: absolute;

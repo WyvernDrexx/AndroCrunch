@@ -18,17 +18,25 @@
             </div>
             <div class="card-body">
                 <p class="tags"><strong>Type: </strong><%= file.mimetype.toUpperCase() %></p>
-                <% if(typeof file.thumbnail === "undefined"){ %>
-                <p class="tags text-danger">No thumbnail provided</p>
+                <% if(typeof file.thumbnail === "undefined" && file.mimetype !== "image"){ %>
+                    <p class="tags text-danger">No thumbnail provided</p>
                 <% }else{ %>
-                <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
-                <div class="thumbnail text-center">
-                    <img src="/thumbnails/<%= file.thumbnail %>" class="img-thumbnail mb-3">
-                </div>
+                    <% if(file.mimetype === "image") { %>
+                        <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                        <div class="thumbnail text-center">
+                            <img src="/uploads/<%= file.referenceFile %>" class="img-thumbnail mb-3">
+                        </div>
+                    <% } else {%>
+                        <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                        <div class="thumbnail text-center">
+                            <img src="/thumbnails/<%= file.thumbnail %>" class="img-thumbnail mb-3">
+                        </div>
+                    <% } %>
                 <% } %>
                 <h5 class="card-text"><%= file.description %></h5>
                 <a href="/files/<%= file.mimetype %>/<%= file._id %>/edit" class="btn btn-primary mt-4 mb-4">Edit</a>
-                <form class="d-inline" action="/files/<%= file.mimetype %>/<%= file._id %>?_method=DELETE" method="POST">
+                <form class="d-inline" action="/files/<%= file.mimetype %>/<%= file._id %>?_method=DELETE"
+                    method="POST">
                     <button type="submit" class="btn btn-outline-danger mt-4 mb-4 d-inline">Remove</button>
                 </form>
                 <a href="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>"

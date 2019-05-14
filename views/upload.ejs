@@ -6,6 +6,8 @@
 
     </div>
     <div class=" main-content">
+        <p class="text-center text-center text-white small"><strong>Note:</strong> .webp files is not currently
+            supported.</p>
         <form action="/files/upload" method="POST" enctype="multipart/form-data">
             <div class="input-group">
                 <div class="custom-file">
@@ -38,6 +40,7 @@
         posting info about the files which will be added to DATABASE.</p>
     <p class="text-center text-center text-warning"><strong>WARNING:</strong> Do not leave the page without uploading
         data, the files is not automatically removed since it ia already uploaded.</p>
+
     <div class="main-content">
         <form action="/files/upload/data" class="pt-5 pb-5" method="POST">
             <% files.forEach((file, index) => { %>

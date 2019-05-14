@@ -183,20 +183,36 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             res.redirect("back");
             return;
         } else {
+            if(req.file.mimetype.split("/")[0] !== "image"){
+                req.flash("error", "Thumbnail must be an image not a " + req.file.mimetype.split("/")[0]);
+                res.redirect("/files/list");
+                deleteFromSystem("thumbnail", req.file.filename);
+                console.log("deleted!");
+                return;
+            }
             if (mimetype === "image") {
                 Image.findOne({ _id: id }, (err, image) => {
+                    if(typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0){
+                        deleteFromSystem("thumbnail", image.thumbnail);
+                    }
                     image.thumbnail = req.file.filename;
                     image.save();
                 });
             }
             else if (mimetype === "audio") {
                 Audio.findOne({ _id: id }, (err, audio) => {
+                    if(typeof audio.thumbnail !== "undefined" && app.thumbnail.length > 0){
+                        deleteFromSystem("thumbnail", audio.thumbnail);
+                    }
                     audio.thumbnail = req.file.filename;
                     audio.save();
                 });
             }
             else if (mimetype === "application") {
                 App.findOne({ _id: id }, (err, app) => {
+                    if(typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0){
+                        deleteFromSystem("thumbnail", app.thumbnail);
+                    }
                     app.thumbnail = req.file.filename;
                     app.save();
                 });
@@ -244,7 +260,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description
         }, (err, image) => {
             if (err) {
-                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
             }
@@ -258,7 +274,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description
         }, (err, audio) => {
             if (err) {
-                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
             }
@@ -272,7 +288,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description
         }, (err, app) => {
             if (err) {
-                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
             }
@@ -291,12 +307,12 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             _id: id
         }, (err, file) => {
             if (err) {
-                req.flash("err", "Unable to find the file");
+                req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
@@ -308,12 +324,12 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             _id: id
         }, (err, file) => {
             if (err) {
-                req.flash("err", "Unable to find the file");
+                req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
@@ -325,12 +341,12 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             _id: id
         }, (err, file) => {
             if (err) {
-                req.flash("err", "Unable to find the file");
+                req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
