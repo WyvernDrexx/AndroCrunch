@@ -18,7 +18,6 @@ const imageSchema           = new mongoose.Schema({
 });
 const Image = mongoose.model("Image", imageSchema);
 
-
 const audioSchema           = new mongoose.Schema({
     filename: String,
     size: Number,
@@ -28,7 +27,8 @@ const audioSchema           = new mongoose.Schema({
         default: "audio"
     },
     description: String,
-    thumbnail: String
+    thumbnail: String,
+    uploader: String
 });
 const Audio = mongoose.model("Audio", audioSchema);
 
@@ -42,6 +42,7 @@ const appSchema             = new mongoose.Schema({
         default: "application"
     },
     description: String,
+    uploader: String,
     thumbnail: String
 });
 const App = mongoose.model("Application", appSchema);

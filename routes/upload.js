@@ -17,7 +17,8 @@ const router = require("express").Router(),
     Image = require("../models/uploadsSchema").Image,
     Audio = require("../models/uploadsSchema").Audio,
     App = require("../models/uploadsSchema").App,
-    moment = require("moment");
+    moment = require("moment"),
+    deleteFromSystem = require("../imports/deleteFromSystem");
 
 const upload = multer({
     storage: storage
@@ -37,6 +38,7 @@ router.post("/files/upload", isLoggedIn, (req, res) => {
             req.flash("error", "Couldn't upload file!");
             res.redirect("back");
         } else {
+            console.log(req.files);
             req.flash("success", "File successfully added! Number of files uploaded: " + req.files.length);
             res.render("upload", { files: req.files });
         }
@@ -46,7 +48,7 @@ router.post("/files/upload", isLoggedIn, (req, res) => {
 router.post("/files/upload/data", isLoggedIn, (req, res) => {
     // Returned object will have array of titles and description
     let filesData = req.body;
-    let message = "All data uploaded!";
+    let message = "All data uploaded successfully!";
     for (let i = 0; i < filesData.title.length; i++) {
         var file = {
             filename: filesData.title[i],
@@ -57,7 +59,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             uploader: req.user.username,
             created: moment()
         }
-
+        console.log(req.user.username);
         if (file.mimetype === "image") {
             Image.create(file, (err, returnedData) => {
                 if (err) {
@@ -76,7 +78,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                 }
             });
 
-        } else if (file.mimetype === "aappliction") {
+        } else if (file.mimetype === "application") {
             App.create(file, (err, returnedData) => {
                 if (err) {
                     message = message + err;
@@ -233,7 +235,7 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
 });
 
 
-router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
+router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
     if (mimetype === "image") {
@@ -241,7 +243,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
             filename: req.body.filename,
             description: req.body.description
         }, (err, image) => {
-            if(err){
+            if (err) {
                 req.flash("err", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -255,7 +257,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
             filename: req.body.filename,
             description: req.body.description
         }, (err, audio) => {
-            if(err){
+            if (err) {
                 req.flash("err", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -269,7 +271,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
             filename: req.body.filename,
             description: req.body.description
         }, (err, app) => {
-            if(err){
+            if (err) {
                 req.flash("err", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -278,6 +280,63 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
             res.redirect("/files/list");
         });
     }
+});
+
+
+router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
+    let mimetype = req.params.mimetype;
+    let id = req.params.id;
+    if (mimetype === "image") {
+        Image.findOneAndDelete({
+            _id: id
+        }, (err, file) => {
+            if (err) {
+                req.flash("err", "Unable to find the file");
+                res.redirect("back");
+                return;
+            }
+            ans = deleteFromSystem("upload", file.referenceFile);
+            console.log(ans);
+            res.send("deleted!");
+            
+        });
+    }
+    else if (mimetype === "audio") {
+        Audio.findOneAndDelete({
+            _id: id
+        }, (err, file) => {
+            if (err) {
+                req.flash("err", "Unable to find the file");
+                res.redirect("back");
+                return;
+            }
+            ans = deleteFromSystem("upload", file.referenceFile);
+            console.log(ans);
+            res.send("deleted!");
+            
+        });
+    }
+    else if (mimetype === "application") {
+        App.findOneAndDelete({
+            _id: id
+        }, (err, file) => {
+            if (err) {
+                req.flash("err", "Unable to find the file");
+                res.redirect("back");
+                return;
+            }
+            ans = deleteFromSystem("upload", file.referenceFile);
+            console.log(ans);
+            req.flash("success", "File deleted successfully!");
+            req.redirect("back");
+        });
+    }
+    // else if (mimetype === "audio") {
+    //     Audio.
+    // }
+    // else if (mimetype === "application") {
+    //     App.
+    // }
 });
 
 

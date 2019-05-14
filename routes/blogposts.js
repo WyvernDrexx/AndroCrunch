@@ -102,7 +102,7 @@ router.get("/blogs/delete/:id", isLoggedIn, (req, res) => {
 });
 
 router.delete("/blogs/delete/:id", isLoggedIn, (req, res) => {
-    Post.findOneAndDelete({_id: req.params.id}, (err, post) => {
+    Post.findOneAndDelete({_id: req.params.id}, (err) => {
         if(err){
             req.flash("error", "This type of actions not allowed against this site quit now!");
             res.redirect("back");

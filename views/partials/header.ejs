@@ -83,17 +83,17 @@
 
     <% if(error && error.length > 0) { %>
     <div class="alert alert-danger mt-6" role="alert">
-        <%= error %>
+        <%- error %>
     </div>
     <% } %>
     <% if(success && success.length > 0) { %>
     <div class="alert alert-success mt-6" role="alert">
-        <%= success %>
+        <%- success %>
     </div>
     <% } %>
     <% if(warning && warning.length > 0) { %>
     <div class="alert alert-danger mt-6" role="alert">
-        <%= warning %>
+        <%- warning %>
     </div>
     <% } %>
     <button id="myBtn" title="Go to top"><img class="svg-icon" src="/imgs/top.svg"></button>

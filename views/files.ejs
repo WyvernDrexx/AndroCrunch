@@ -28,7 +28,9 @@
                 <% } %>
                 <h5 class="card-text"><%= file.description %></h5>
                 <a href="/files/<%= file.mimetype %>/<%= file._id %>/edit" class="btn btn-primary mt-4 mb-4">Edit</a>
-                <a href="/blogs/delete/<%= file._id %>" class="btn btn-outline-danger mt-4 mb-4 disabled">Remove</a>
+                <form class="d-inline" action="/files/<%= file.mimetype %>/<%= file._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-outline-danger mt-4 mb-4 d-inline">Remove</button>
+                </form>
                 <a href="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>"
                     class="btn btn-outline-primary float-sm-right mt-4 mb-4">Upload Thumbnail</a>
                 <p class="date"><%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
