@@ -25,10 +25,12 @@
     <h1 class="display-5 text-center text-white">Edit uploaded files details:</h1>
     <p class="lead text-white small text-center">The file has been uploaded with title of Original Filename and the
         below data will be saved in database for reference.</p>
-    <p class="text-center small text-center text-danger"><strong>NOTE:</strong> The files are already uploaded to STORAGE and now,
+    <p class="text-center small text-center text-danger"><strong>NOTE:</strong> The files are already uploaded to
+        STORAGE and now,
         you are just
         posting info about the files which will be added to DATABASE.</p>
-        <p class="text-center text-center text-warning"><strong>WARNING:</strong> Do not leave the page without uploading data, the files is not automatically removed since it ia already uploaded.</p>
+    <p class="text-center text-center text-warning"><strong>WARNING:</strong> Do not leave the page without uploading
+        data, the files is not automatically removed since it ia already uploaded.</p>
     <div class="main-content">
         <form action="/files/upload/data" class="pt-5 pb-5" method="POST">
             <% files.forEach((file, index) => { %>
@@ -47,9 +49,9 @@
                 <textarea name="description[<%= index %>]" class="form-control" rows="1"
                     placeholder="File description goes here!" required></textarea>
                 <label class="mt-3">File Size: <span class="text-primary"><%= file.size %> Bytes</span></label>
-                <% }); %>
-                <input type="text" name="uploadedFiles" value="<%= files %>" hidden>
             </div>
+            <% }); %>
+            <input type="text" name="uploadedFiles" value="<%= files %>" hidden>
             <button type="submit" class="btn btn-primary">Upload Data</button>
         </form>
     </div>
