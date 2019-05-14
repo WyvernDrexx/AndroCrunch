@@ -2,6 +2,9 @@
 
 <% if( typeof files === "undefined") { %>
 <div class="container-fluid bg-gradient pb-6 pt-6">
+    <div id="status pt-5 pb-3">
+
+    </div>
     <div class=" main-content">
         <form action="/files/upload" method="POST" enctype="multipart/form-data">
             <div class="input-group">
@@ -12,16 +15,20 @@
                         one time!</label>
                 </div>
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" id="inputGroupFileAddon04">UPLOAD</button>
+                    <button class="btn btn-primary" type="submit" id="upload">UPLOAD</button>
                 </div>
             </div>
         </form>
+
     </div>
 </div>
 <% } %>
 
 <% if( typeof files !== "undefined") { %>
 <div class="pt-6s bg-dark">
+    <div class="alert alert-success" role="alert">
+        All files [<%= files.length %>] successfully uploaded!
+    </div>
     <h1 class="display-5 text-center text-white">Edit uploaded files details:</h1>
     <p class="lead text-white small text-center">The file has been uploaded with title of Original Filename and the
         below data will be saved in database for reference.</p>
@@ -57,4 +64,12 @@
     </div>
 </div>
 <% }%>
+
+<script>
+    document.querySelector("#upload").addEventListener("click", () => {
+        document.querySelector("#status").innerHTML = "<div class=\"alert alert-success\" role=\"alert\">Your file is getting  uploaded please wait a while and do not refresh or leave the page!</div>";
+    });
+</script>
+<!-- Your file is getting  uploaded please wait a while and do not refresh or leave the page! -->
+
 <% include partials/footer %>
