@@ -5,26 +5,29 @@
     <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
 </div>
 
-<div class="container-fluid bg-white">
+<div class="container-fluid bg-white px-0">
     <div class="text-center pt-4">
         <a class="btn btn-lg btn-outline-primary px-5 text-center" href="/files/upload">UPLOAD A NEW FILE</a>
     </div>
-    <div class="main-content pt-5 pb-6 edit-list">
+    <div class="main-content pt-5 pb-6">
         <% data.forEach((files) => { %>
         <% files.forEach((file) => { %>
-        <div class="card mt-5">
+        <div class="card mt-5 mx-0">
             <div class="card-header">
                 <%= file.filename %>
             </div>
             <div class="card-body">
-                <p class="tags"><strong>Type: </strong><%= file.mimetype %></p>
+                <p class="tags"><strong>Type: </strong><%= file.mimetype.toUpperCase() %></p>
                 <% if(typeof file.thumbnail === "undefined"){ %>
                 <p class="tags text-danger">No thumbnail provided</p>
                 <% }else{ %>
                 <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                <div class="thumbnail text-center">
+                    <img src="/thumbnails/<%= file.thumbnail %>" class="img-thumbnail mb-3">
+                </div>
                 <% } %>
                 <h5 class="card-text"><%= file.description %></h5>
-                <a href="/blogs/edit/<%= file._id %>" class="btn btn-primary mt-4 mb-4 disabled">Edit</a>
+                <a href="/files/<%= file.mimetype %>/<%= file._id %>/edit" class="btn btn-primary mt-4 mb-4">Edit</a>
                 <a href="/blogs/delete/<%= file._id %>" class="btn btn-outline-danger mt-4 mb-4 disabled">Remove</a>
                 <a href="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>"
                     class="btn btn-outline-primary float-sm-right mt-4 mb-4">Upload Thumbnail</a>

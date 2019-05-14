@@ -206,6 +206,79 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
 });
 
+router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
+    let mimetype = req.params.mimetype;
+    let id = req.params.id;
+    if (mimetype === "image") {
+        Image.findOne({ _id: id }, (err, image) => {
+            res.render("updateFile", {
+                file: image
+            })
+        });
+    }
+    else if (mimetype === "audio") {
+        Audio.findOne({ _id: id }, (err, audio) => {
+            res.render("updateFile", {
+                file: audio
+            })
+        });
+    }
+    else if (mimetype === "application") {
+        App.findOne({ _id: id }, (err, app) => {
+            res.render("updateFile", {
+                file: app
+            })
+        });
+    }
+});
+
+
+router.put("/files/:mimetype/:id/edit", isLoggedIn,  (req, res) => {
+    let mimetype = req.params.mimetype;
+    let id = req.params.id;
+    if (mimetype === "image") {
+        Image.findOneAndUpdate({ _id: id }, {
+            filename: req.body.filename,
+            description: req.body.description
+        }, (err, image) => {
+            if(err){
+                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                res.redirect("back");
+                return;
+            }
+            req.flash("success", "File <strong>" + image.filename + "</strong> updated successfully!");
+            res.redirect("/files/list");
+        });
+    }
+    else if (mimetype === "audio") {
+        Audio.findOneAndUpdate({ _id: id }, {
+            filename: req.body.filename,
+            description: req.body.description
+        }, (err, audio) => {
+            if(err){
+                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                res.redirect("back");
+                return;
+            }
+            req.flash("success", "File <strong>" + audio.filename + "</strong> updated successfully!");
+            res.redirect("/files/list");
+        });
+    }
+    else if (mimetype === "application") {
+        App.findOneAndUpdate({ _id: id }, {
+            filename: req.body.filename,
+            description: req.body.description
+        }, (err, app) => {
+            if(err){
+                req.flash("err", "We couldn't update to the database! Try again or contact admin.")
+                res.redirect("back");
+                return;
+            }
+            req.flash("success", "File <strong>" + app.filename + "</strong> updated successfully!");
+            res.redirect("/files/list");
+        });
+    }
+});
 
 
 module.exports = router;
