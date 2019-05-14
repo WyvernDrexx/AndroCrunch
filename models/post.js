@@ -1,6 +1,4 @@
-const passportLocalMongoose = require("passport-local-mongoose"), 
-    mongoose                = require("mongoose");
-
+const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema({
     author: String,
     authorId: {
