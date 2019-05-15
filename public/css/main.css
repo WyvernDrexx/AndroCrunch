@@ -191,17 +191,19 @@ h1.display-4 {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-.site-content .col-md{
+.site-content .col-md-3{
     max-width: 9rem;
 }
-.site-content .apps img.card-img-top{
-    border-radius: 50%;
-    min-height: 11rem;
-    min-width: 12rem;
-    max-width: 12rem;
-    max-height: 11rem;
-    margin: auto;
+
+.site-content .col-md-3 .card{
+    height: 10.7rem;
 }
+
+.site-content .card img{
+    min-height: 5.8rem;
+    max-height: 5.8rem;
+}
+
 .site-content .apps .card{
     background: transparent;
     border: none;
@@ -1095,6 +1097,9 @@ textarea.form-control,
     #nav {
         display: none;
     }
+    .site-content .col-md-3{
+        height: 15rem;   
+    }
     .site-content .apps img.card-img-top{
         border-radius: 50%;
         min-height: 4rem;
@@ -1124,9 +1129,7 @@ textarea.form-control,
     section.container-fluid {
         padding-left: 0;
     }
-    .card img {
-        height: auto;
-    }
+
 
     .compact-form {
         max-width: 100%;

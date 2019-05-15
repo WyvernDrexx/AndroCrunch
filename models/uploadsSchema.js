@@ -28,7 +28,8 @@ const audioSchema           = new mongoose.Schema({
     },
     description: String,
     thumbnail: String,
-    uploader: String
+    uploader: String,
+    created: Date
 });
 const Audio = mongoose.model("Audio", audioSchema);
 
@@ -43,7 +44,8 @@ const appSchema             = new mongoose.Schema({
     },
     description: String,
     uploader: String,
-    thumbnail: String
+    thumbnail: String,
+    created: Date
 });
 const App = mongoose.model("Application", appSchema);
 

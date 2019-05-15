@@ -59,6 +59,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             uploader: req.user.username,
             created: moment()
         }
+        console.log(moment());
         console.log(req.user.username);
         if (file.mimetype === "image") {
             Image.create(file, (err, returnedData) => {

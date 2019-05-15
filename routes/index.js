@@ -37,17 +37,7 @@ router.get("/contact", (req, res) => {
 router.get("/contents", (req, res) => {
     res.render("contents");
 });
-router.get("/contents/:category", (req, res) => {
-    let category = req.params.category.toLowerCase();
-    if (category === "wallpapers" || category === "ringtones" || category === "plugins" || category === "presets") {
-        res.render("category", {
-            category
-        });
-    }else{
-        req.flash("error", "Category doesn't exist!");
-        res.redirect("/contents");
-    }
-});
+
 router.get("/item", (req, res) => {
     res.render("individual");
 });

@@ -22,6 +22,7 @@ server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
 server.use(require("./routes/upload"));
+server.use(require("./routes/category"));
 //Wildcard route//
 server.get("*", (req, res) => {
     res.render("error", {message: "URL Not found!", code: 404});
