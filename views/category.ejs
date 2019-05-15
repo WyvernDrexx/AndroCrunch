@@ -53,24 +53,26 @@
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
 
         <div class="row justify-content-center">
-            <% for( let i = 0; i < files.length; i ++){ %>
+            <% for( let i = files.length -1 ; i >= 0; i--){ %>
             <%      file=files[i];  %>
             <%      if(category === "wallpapers"){ %>
             <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4">
-                <div class="card mx-0">
-                    <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small"><%= file.filename.substring(0, 28)%></p>
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+                <a href="/">
+                    <div class="card mx-0">
+                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4">
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <div class="card mx-0">
                     <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-title small"><%= file.filename.substring(0, 28)%></p>
+                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                     </div>
                 </div>
             </div>

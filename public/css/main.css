@@ -194,7 +194,9 @@ h1.display-4 {
 .site-content .col-md-3{
     max-width: 9rem;
 }
-
+a{
+    text-decoration: none !important;
+}
 .site-content .col-md-3 .card{
     height: 10.7rem;
 }
@@ -689,7 +691,12 @@ h1{
     border-radius: 10px !important;
     min-height: 15rem;
 }
-
+a:active, a:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+    outline-style: none;
+}  
 .img{
     position: relative;
 }
@@ -750,7 +757,9 @@ h1{
     overflow-y: auto;
     white-space: nowrap;
 }
-
+.card{
+    color: #0f0e0fd3;
+}
 .horizontal-scroll .scroll-item{
     display: inline-block;
     margin: 5px;
