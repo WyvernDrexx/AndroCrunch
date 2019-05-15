@@ -214,6 +214,10 @@ a{
     max-height: 5.8rem;
 }
 
+.site-content .card{
+    min-height: 11.5rem;
+}
+
 .site-content .apps .card{
     background: transparent;
     border: none;

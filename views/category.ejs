@@ -60,7 +60,7 @@
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/">
-                    <div class="card mx-0">
+                    <div class="card m-0">
                         <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
@@ -70,7 +70,7 @@
             </div>
             <% }else { %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                <div class="card mx-0">
+                <div class="card m-0">
                     <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
@@ -82,7 +82,7 @@
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <a href="/">
-                    <div class="card mx-0">
+                    <div class="card m-0">
                         <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
@@ -92,7 +92,7 @@
             </div>
             <% }else { %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                <div class="card mx-0">
+                <div class="card m-0">
                     <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
@@ -157,26 +157,25 @@
         <% } %>
 
     </div>
-</div>
-<nav class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5" aria-label="Pagination">
-    <ul class="pagination d-flex ml-0">
-        <li class="page-item disabled">
-            <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-        </li>
-        <li class="page-item disabled active no-border "><a class="page-link" href="#">1</a></li>
-        <li class="page-item  " aria-current="page">
-            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link next pl-1" href="/posts">Next</a>
-        </li>
-    </ul>
-</nav>
-<h2 class="display-5 text-center  mb-3 pt-6s pt-md-5"><span>Our Blogs</span></h2>
-<div class="text-center"><span class="line pl-6"></span></div>
-<div class="text-center mt-5 mb-4">
-    <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
-</div>
+    <nav class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5" aria-label="Pagination">
+        <ul class="pagination d-flex ml-0">
+            <li class="page-item disabled">
+                <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+            </li>
+            <li class="page-item disabled active no-border "><a class="page-link" href="#">1</a></li>
+            <li class="page-item  " aria-current="page">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link next pl-1" href="/posts">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <h2 class="display-5 text-center  mb-3 pt-6s pt-md-5"><span>Our Blogs</span></h2>
+    <div class="text-center"><span class="line pl-6"></span></div>
+    <div class="text-center mt-5 mb-4">
+        <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
+    </div>
 </div>
 <% include partials/footer %>
