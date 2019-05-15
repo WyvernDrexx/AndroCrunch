@@ -357,4 +357,52 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
 });
 
 
+router.get("/files/list/:category", (req, res) => {
+    let category = req.params.category.toLowerCase();
+    if(category === "images"){
+        Image.find({}, (err, images) => {
+            if(err){
+                req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
+                return res.redirect("/author/panel");
+            }
+            res.render("filesSection", {
+                files: images,
+                category,
+                moment
+            });
+        });
+    }
+    else if(category === "audio"){
+        Audio.find({}, (err, audio) => {
+            if(err){
+                req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
+                return res.redirect("/author/panel");
+            }
+            res.render("filesSection", {
+                files: audio,
+                category,
+                moment
+            });
+        });
+    }
+
+    else if(category === "apps"){
+        App.find({}, (err, apps) => {
+            if(err){
+                req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
+                return res.redirect("/author/panel");
+            }
+            res.render("filesSection", {
+                files: apps,
+                category,
+                moment
+            });
+        });
+    }
+    else if(category === "presets"){
+        req.flash("success", "Not available right now");
+        return res.redirect("back");
+    }
+})
+
 module.exports = router;

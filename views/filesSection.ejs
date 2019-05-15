@@ -1,0 +1,86 @@
+<%  include partials/header %>
+<div class="container-fluid pt-5 pb-6 text-white bg-gradient">
+    <h1 class="display-4 text-center text-white mt-6"><%= category.toUpperCase() %> Files List:</h1>
+    <p class="lead text-center">Select a file from the list to modify.</p>
+    <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
+</div>
+<div class="container-fluid bg-white px-0">
+    <div class="text-center pt-4">
+        <a class="btn btn-lg btn-outline-primary px-5 text-center" href="/files/upload">UPLOAD A NEW FILE</a>
+    </div>
+    <div class="main-content pb-6">
+        <div class="pt-6s text-center pb-5">
+            <div class="text-center">
+                <a href="/files/list" class="btn btn-outline-primary rounded-pill btn-small px-4 pt-2 pb-2">All</a>
+                <% if(category === "audio"){ %>
+                <a href="/files/list/audio"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border">Audio</a>
+                <% }else{ %>
+                <a href="/files/list/audio"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Audio</a>
+                <% } %>
+            </div>
+            <div class="mt-4">
+                <% if(category === "images"){ %>
+                <a href="/files/list/images"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border">Images</a>
+                <% }else{ %>
+                <a href="/files/list/images"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Wallpapers</a>
+                <% } %>
+                <% if(category === "apps"){ %>
+                <a href="/files/list/apps"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border ">Apps</a>
+
+                <% }else{ %>
+                <a href="/files/list/apps" class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Apps</a>
+                <% } %>
+                <% if(category === "presets"){ %>
+                <a href="/files/list/presets"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border ">Presets</a>
+                <% }else{ %>
+                <a href="/files/list/presets" class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Presets</a>
+                <% } %>
+            </div>
+        </div>
+        <% for( let i =files.length - 1; i >= 0; i-- ){ %>
+        <% file = files[i]; %>
+        <div class="card mt-5 mx-0">
+            <div class="card-header">
+                <%= file.filename %>
+            </div>
+            <div class="card-body">
+                <p class="tags"><strong>Type: </strong><%= file.mimetype.toUpperCase() %></p>
+                <% if(typeof file.thumbnail === "undefined" && file.mimetype !== "image"){ %>
+                <p class="tags text-danger">No thumbnail provided</p>
+                <% }else{ %>
+                <% if(file.mimetype === "image") { %>
+                <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                <div class="thumbnail text-center">
+                    <img src="/uploads/<%= file.referenceFile %>" class="img-thumbnail mb-3">
+                </div>
+                <% } else {%>
+                <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
+                <div class="thumbnail text-center">
+                    <img src="/thumbnails/<%= file.thumbnail %>" class="img-thumbnail mb-3">
+                </div>
+                <% } %>
+                <% } %>
+                <h5 class="card-text"><%= file.description %></h5>
+                <a href="/files/<%= file.mimetype %>/<%= file._id %>/edit" class="btn btn-primary mt-4 mb-4">Edit</a>
+                <form class="d-inline" action="/files/<%= file.mimetype %>/<%= file._id %>?_method=DELETE"
+                    method="POST">
+                    <button type="submit" class="btn btn-outline-danger mt-4 mb-4 d-inline">Remove</button>
+                </form>
+                <a href="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>"
+                    class="btn btn-outline-primary float-sm-right mt-4 mb-4">Upload Thumbnail</a>
+                <p class="date"><%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
+                </p>
+                <p class="tags"><span class="text-dark">by </span> <%= file.uploader %></p>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<% include partials/footer %>

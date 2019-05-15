@@ -95,6 +95,9 @@ h1.display-4 {
     max-height: 400px;
     margin: auto;
 }
+.thumbnail img{
+max-height: 300px !important;
+}
 .deleteForm form{
     width: 30vw;
     position: absolute;
