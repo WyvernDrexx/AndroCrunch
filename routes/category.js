@@ -15,7 +15,7 @@ router.get("/contents/:category", (req, res) => {
             res.render("category", {
                 category,
                 files: apps
-            })
+            });
         })
 
     } else if (category === "wallpapers") {
@@ -35,6 +35,27 @@ router.get("/contents/:category", (req, res) => {
         req.flash("warning", "Category is under development");
         res.redirect("/contents");
     }
+});
+
+router.get("/contents", (req, res) => {
+    let files = new Object();
+    Image.find({}, (err, images) => {
+        if(err){
+            req.flash("error", "Unable to find images");
+            return res.redirect("/");
+        }
+        files.images = images;
+        App.find({}, (err, apps) => {
+            if(err){
+                req.flash("error", "Unable to find apps");
+                return res.redirect("/");
+            }
+            files.apps = apps;
+            res.render("contents", {
+                files
+            });
+        })
+    });
 });
 
 module.exports = router;

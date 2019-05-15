@@ -33,7 +33,7 @@
                 <a href="/contents/wallpapers"
                     class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Wallpapers</a>
                 <% } %>
-                <% if(category === "plugins"){ %>
+                <% if(category === "apps"){ %>
                 <a href="/contents/apps"
                     class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border ">Apps</a>
 
@@ -52,12 +52,12 @@
         <h1 class="display-5 text-center pt-5 pb-1"><%= category.toUpperCase() %></h1>
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center apps">
             <% for( let i = files.length -1 ; i >= 0; i--){ %>
             <%      file=files[i];  %>
             <%      if(category === "wallpapers"){ %>
             <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/">
                     <div class="card mx-0">
                         <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
@@ -68,7 +68,7 @@
                 </a>
             </div>
             <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <div class="card mx-0">
                     <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
                     <div class="card-body">

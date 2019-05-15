@@ -17,7 +17,8 @@
         <div class="pt-6s text-center pb-5">
             <div class="text-center">
                 <a href="/contents" class="btn btn-outline-primary rounded-pill btn-small px-4 pt-2 pb-2 active">All</a>
-                <a href="/contents/ringtones" class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Ringtones</a>
+                <a href="/contents/ringtones"
+                    class="btn btn-outline-primary rounded-pill px-4 ml-2 pt-2 pb-2">Ringtones</a>
             </div>
             <div class="mt-4">
                 <a href="/contents/wallpapers" class="btn btn-outline-primary rounded-pill pt-2 pb-2">Wallpapers</a>
@@ -28,7 +29,7 @@
         <h1 class="display-5 text-center pt-5 pb-1">Ringtones</h1>
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
         <div class="row justify-content-center">
-            <div class="col-6 col-md px-0">
+            <div class="col-6 col-md-3 px-0">
                 <div class="card mx-0">
                     <img src="/imgs/blog-9.webp" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -37,25 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6  ml-4 ml-md-4 col-md px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-9.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md mt-5 ml-0 ml-md-4 mt-md-0 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-9.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 ml-4 ml-md-4 mt-5 mt-md-0 col-md px-0 mx-0">
+            <div class="col-6 col-md-3 ml-4 px-0">
                 <div class="card mx-0">
                     <img src="/imgs/blog-9.webp" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -71,42 +54,30 @@
         <h1 class="display-5 text-center pt-5 pb-1">Wallpapers</h1>
         <p class="small text-center text-gray pb-3">Get the super minimal walls available!</p>
         <div class="row justify-content-center">
-            <div class="col-6 col-md px-0">
+            <% for( let i =  3 ; i >= 0; i--){ %>
+            <% file=files.images[i];  %>
+            <% if(i % 2 === 0){ %>
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+                <a href="/">
+                    <div class="card mx-0">
+                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% }else { %>
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <div class="card mx-0">
-                    <img src="/imgs/blog-2.webp" class="card-img-top" alt="...">
+                    <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
+                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                     </div>
                 </div>
             </div>
-            <div class="col-6  ml-4 ml-md-4  col-md px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-5.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md mt-5 ml-0 ml-md-4 mt-md-0 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-6.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 ml-4 ml-md-4 mt-5 mt-md-0 col-md px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-7.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small">Lorem,
-                            fugit.</p>
-                    </div>
-                </div>
-            </div>
+            <% } %>
+            <% } %>
         </div>
         <div class="text-center mt-6 mt-md-5">
             <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>
@@ -114,56 +85,30 @@
         <h1 class="display-5 text-center pt-5 pb-1">Apps</h1>
         <p class="small text-center text-gray pb-3">Get the super minimal walls available!</p>
         <div class="row justify-content-center apps">
-            <div class="col-3 px-0">
+            <% for( let i =  3 ; i >= 0; i--){ %>
+            <% file=files.apps[i];  %>
+            <% if(i % 2 === 0){ %>
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+                <a href="/">
+                    <div class="card mx-0">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% }else { %>
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <div class="card mx-0">
-                    <img src="/imgs/blog-2.webp" class="card-img-top" alt="...">
+                    <img src="/thumbnails/<%=file.thumbnail%>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
+                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                     </div>
                 </div>
             </div>
-            <div class="ml-4 ml-md-4 col-3 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-5.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 ml-4  mt-md-0 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-6.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center apps">
-            <div class="col-3 px-0">
-                <div class="card mx-0">
-                    <img src="/imgs/bg-img.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-4 ml-md-4 col-3 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-5.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 ml-4  mt-md-0 px-0 mx-0">
-                <div class="card mx-0">
-                    <img src="/imgs/blog-6.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title small text-center">Secret App</p>
-                    </div>
-                </div>
-            </div>
+            <% } %>
+            <% } %>
         </div>
         <div class="text-center mt-5 mt-md-5">
             <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>

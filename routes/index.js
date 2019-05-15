@@ -34,9 +34,6 @@ router.get("/contact", (req, res) => {
     res.render("contact");
 });
 
-router.get("/contents", (req, res) => {
-    res.render("contents");
-});
 
 router.get("/item", (req, res) => {
     res.render("individual");

@@ -200,10 +200,15 @@ max-height: 300px !important;
 a{
     text-decoration: none !important;
 }
-.site-content .col-md-3 .card{
-    height: 10.7rem;
-}
 
+.site-content .apps img.card-img-top{
+    border-radius: 50%;
+    min-height: 8rem;
+    min-width: 8rem;
+    max-width: 8rem;
+    max-height: 8rem;
+    margin: auto;
+}
 .site-content .card img{
     min-height: 5.8rem;
     max-height: 5.8rem;
@@ -217,6 +222,9 @@ a{
 .site-content .apps .card-body{
     padding-left: 0px;
     padding-right: 0px;
+}
+.site-content .apps .card *{
+    margin: auto;
 }
 .site-content .card-title{
     letter-spacing: normal;
@@ -1108,9 +1116,6 @@ textarea.form-control,
 @media only screen and (max-width: 576px) {
     #nav {
         display: none;
-    }
-    .site-content .col-md-3{
-        height: 15rem;   
     }
     .site-content .apps img.card-img-top{
         border-radius: 50%;
