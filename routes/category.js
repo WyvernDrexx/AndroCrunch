@@ -6,11 +6,17 @@ const router = require("express").Router(),
 
 router.get("/contents/:category", (req, res) => {
     let category = req.params.category.toLowerCase();
-    if (category === "ringtones" || category === "plugins" || category === "presets") {
-        res.render("category", {
-            category,
-            files: [1,2,222,2,2,2,2,2,2,2,2,2,2]
-        });
+    if (category === "apps") {
+        App.find({}, (err, apps) => {
+            if(err){
+                req.flash("error", "Unable to find apps at the moment.");
+                return res.redirect("/contents");
+            }
+            res.render("category", {
+                category,
+                files: apps
+            })
+        })
 
     } else if (category === "wallpapers") {
         Image.find({}, (err, images) => {
@@ -26,7 +32,7 @@ router.get("/contents/:category", (req, res) => {
 
     }
     else {
-        req.flash("error", "Category doesn't exist!");
+        req.flash("warning", "Category is under development");
         res.redirect("/contents");
     }
 });
