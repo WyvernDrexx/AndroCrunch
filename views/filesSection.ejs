@@ -77,6 +77,7 @@
                 <p class="date"><%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
                 </p>
                 <p class="tags"><span class="text-dark">by </span> <%= file.uploader %></p>
+                <p class="tags"><strong>Size: </strong> <%= String(file.size/1024).split(".")[0] %> kB</p>
             </div>
         </div>
         <% } %>
