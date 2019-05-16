@@ -58,9 +58,27 @@ const appSchema             = new mongoose.Schema({
 });
 const App = mongoose.model("Application", appSchema);
 
+const presetSchema             = new mongoose.Schema({
+    filename: String,
+    size: Number,
+    referenceFile: String,
+    mimetype: {
+        type: String,
+        default: "zip"
+    },
+    description: String,
+    uploader: String,
+    thumbnail: {
+        type: String,
+        default: "default.jpg"
+    },
+    created: Date
+});
+const Preset = mongoose.model("Preset", presetSchema);
 
 uploads.Image = Image;
 uploads.Audio = Audio;
 uploads.App   = App;
+uploads.Preset = Preset;
 
 module.exports = uploads;

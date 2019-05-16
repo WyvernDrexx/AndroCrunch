@@ -348,6 +348,11 @@ input::placeholder {
 .carousel-item:hover p{
     opacity: 0;
 }
+
+.carousel-item img{
+    min-height: 20rem;
+    max-height: 20rem;
+}
 .hover-option:hover{
     opacity: 1;
 }
@@ -704,7 +709,6 @@ h1{
 }
 .carousel-item img {
     border-radius: 10px !important;
-    min-height: 15rem;
 }
 a:active, a:focus {
     outline: 0;
@@ -1121,6 +1125,12 @@ textarea.form-control,
     #nav {
         display: none;
     }
+
+    .carousel-item img{
+        min-height: 12rem;
+        max-height: 12rem;
+    }
+
     .site-content .apps img.card-img-top{
         border-radius: 50%;
         min-height: 4rem;

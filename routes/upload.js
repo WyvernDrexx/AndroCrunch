@@ -17,6 +17,7 @@ const router = require("express").Router(),
     Image = require("../models/uploadsSchema").Image,
     Audio = require("../models/uploadsSchema").Audio,
     App = require("../models/uploadsSchema").App,
+    Preset = require("../models/uploadsSchema").Preset,
     moment = require("moment"),
     deleteFromSystem = require("../imports/deleteFromSystem");
 
@@ -59,8 +60,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             uploader: req.user.username,
             created: moment()
         }
-        console.log(moment());
-        console.log(req.user.username);
+        if(filesData.mimetype[i].split("/")[1] === "zip"){
+            file.mimetype = "zip";
+        }
         if (file.mimetype === "image") {
             Image.create(file, (err, returnedData) => {
                 if (err) {
@@ -88,10 +90,19 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                 }
             });
 
+        } else if(file.mimetype === "zip"){
+            Preset.create(file, (err, returnedData) => {
+                if(err){
+                    console.log(err);
+                }else{
+                    return;
+                }
+            });
         } else {
             message = message.concat("File [" + file.filename + "] couldnt be added to database!");
         }
     }
+
     req.flash("success", message);
     res.redirect("/files/list");
 });
@@ -116,12 +127,19 @@ router.get("/files/list", isLoggedIn, (req, res) => {
                 if (err) {
 
                 }
-
                 files.push(apps);
-                res.render("files", {
-                    data: files,
-                    moment: moment
+                Preset.find({}, (err, presets) => {
+                    if(err){
+
+                    }
+                    files.push(presets);
+                    res.render("files", {
+                        data: files,
+                        moment: moment
+                    });
+
                 });
+                
             });
 
         });
@@ -129,6 +147,7 @@ router.get("/files/list", isLoggedIn, (req, res) => {
     });
 
 });
+
 
 router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
@@ -171,6 +190,21 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 moment
             });
         });
+    } else if(mimetype === "zip"){
+        Preset.findOne({ _id: id }, (err, preset) => {
+            if (err) {
+                req.flash("error", "Couldn't find the file!");
+                res.redirect("/author/panel");
+                return;
+            }
+            res.render("thumbnail", {
+                file: preset,
+                moment
+            });
+        });
+    }else{
+        req.flash("error", "Not found! Check URL");
+        res.render("/author/panel");
     }
 });
 
@@ -193,7 +227,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             if (mimetype === "image") {
                 Image.findOne({ _id: id }, (err, image) => {
-                    if(typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0){
+                    if(typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg"){
                         deleteFromSystem("thumbnail", image.thumbnail);
                     }
                     image.thumbnail = req.file.filename;
@@ -202,7 +236,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             else if (mimetype === "audio") {
                 Audio.findOne({ _id: id }, (err, audio) => {
-                    if(typeof audio.thumbnail !== "undefined" && app.thumbnail.length > 0){
+                    if(typeof audio.thumbnail !== "undefined" && app.thumbnail.length > 0 && audio.thumbnail !== "default.jpg"){
                         deleteFromSystem("thumbnail", audio.thumbnail);
                     }
                     audio.thumbnail = req.file.filename;
@@ -211,11 +245,19 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             else if (mimetype === "application") {
                 App.findOne({ _id: id }, (err, app) => {
-                    if(typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0){
+                    if(typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg"){
                         deleteFromSystem("thumbnail", app.thumbnail);
                     }
                     app.thumbnail = req.file.filename;
                     app.save();
+                });
+            } else if(mimetype === "zip"){
+                Preset.findOne({ _id: id }, (err, preset) => {
+                    if(typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg"){
+                        deleteFromSystem("thumbnail", preset.thumbnail);
+                    }
+                    preset.thumbnail = req.file.filename;
+                    preset.save();
                 });
             }
         }
@@ -232,21 +274,27 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         Image.findOne({ _id: id }, (err, image) => {
             res.render("updateFile", {
                 file: image
-            })
+            });
         });
     }
     else if (mimetype === "audio") {
         Audio.findOne({ _id: id }, (err, audio) => {
             res.render("updateFile", {
                 file: audio
-            })
+            });
         });
     }
     else if (mimetype === "application") {
         App.findOne({ _id: id }, (err, app) => {
             res.render("updateFile", {
                 file: app
-            })
+            });
+        });
+    } else if (mimetype === "zip") {
+        Preset.findOne({ _id: id }, (err, preset) => {
+            res.render("updateFile", {
+                file: preset
+            });
         });
     }
 });
@@ -296,6 +344,19 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             req.flash("success", "File <strong>" + app.filename + "</strong> updated successfully!");
             res.redirect("back");
         });
+    } else if (mimetype === "zip") {
+        Preset.findOneAndUpdate({ _id: id }, {
+            filename: req.body.filename,
+            description: req.body.description
+        }, (err, preset) => {
+            if (err) {
+                req.flash("error", "We couldn't update to the database! Try again or contact admin.")
+                res.redirect("back");
+                return;
+            }
+            req.flash("success", "File <strong>" + preset.filename + "</strong> updated successfully!");
+            res.redirect("back");
+        });
     }
 });
 
@@ -313,7 +374,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
@@ -330,7 +391,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
@@ -347,12 +408,32 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
                 return;
             }
             deleteFromSystem("upload", file.referenceFile);
-            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0) {
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
                 deleteFromSystem("thumbnail", file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
         });
+    }
+    else if (mimetype === "zip") {
+        Preset.findOneAndDelete({
+            _id: id
+        }, (err, file) => {
+            if (err) {
+                req.flash("error", "Unable to find the file");
+                res.redirect("back");
+                return;
+            }
+            deleteFromSystem("upload", file.referenceFile);
+            if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
+                deleteFromSystem("thumbnail", file.thumbnail);
+            }
+            req.flash("success", "File deleted successfully!");
+            res.redirect("back");
+        });
+    }else{
+        req.flash("error", "Category invalid!");
+        res.redirect("back");
     }
 });
 
@@ -375,7 +456,7 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
     else if(category === "audio"){
         Audio.find({}, (err, audio) => {
             if(err){
-                req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
+                req.flash("error", "Unable to retrieve Audios from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
             res.render("filesSection", {
@@ -389,7 +470,7 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
     else if(category === "apps"){
         App.find({}, (err, apps) => {
             if(err){
-                req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
+                req.flash("error", "Unable to retrieve Apps from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
             res.render("filesSection", {
@@ -400,9 +481,22 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
         });
     }
     else if(category === "presets"){
-        req.flash("success", "Not available right now");
-        return res.redirect("back");
+        Preset.find({}, (err, presets) => {
+            if(err){
+                req.flash("error", "Unable to retrieve Presets from Database. Contact admin ASAP!");
+                return res.redirect("/author/panel");
+            }
+            res.render("filesSection", {
+                files: presets,
+                category,
+                moment
+            });
+        });
+
+    }else{
+        req.flash("error", "Category not found!");
+        res.redirect("back");
     }
-})
+});
 
 module.exports = router;

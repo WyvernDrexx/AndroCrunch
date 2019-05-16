@@ -2,7 +2,8 @@ const router = require("express").Router(),
     Image = require("../models/uploadsSchema").Image,
     Audio = require("../models/uploadsSchema").Audio,
     App = require("../models/uploadsSchema").App,
-    moment = require("moment");
+    moment = require("moment"),
+    Preset = require("../models/uploadsSchema").Preset;
 
 router.get("/contents/:category", (req, res) => {
     let category = req.params.category.toLowerCase();
@@ -42,6 +43,18 @@ router.get("/contents/:category", (req, res) => {
             });
         });
     }
+    else if(category === "presets"){
+        Preset.find({}, (err, presets) => {
+            if(err){
+                req.flash("error", "Unable to find ringtones at the moment.");
+                return res.redirect("/contents");
+            }
+            res.render("category", {
+                files: presets,
+                category
+            });
+        });
+    }
     else {
         req.flash("warning", "Category is under development");
         res.redirect("/contents");
@@ -68,8 +81,15 @@ router.get("/contents", (req, res) => {
                     return res.redirect("/");
                 }
                 files.apps = apps;
-                res.render("contents", {
-                    files
+                Preset.find({}, (err, presets) => {
+                    if(err){
+                        req.flash("error", "Unable to find Presets");
+                        return res.redirect("/");
+                    }
+                    files.presets = presets;
+                    res.render("contents", {
+                        files
+                    });
                 });
             });
         });
