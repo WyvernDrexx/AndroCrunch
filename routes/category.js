@@ -30,6 +30,17 @@ router.get("/contents/:category", (req, res) => {
             });
         });
 
+    }else if(category === "ringtones"){
+        Audio.find({}, (err, audios) => {
+            if(err){
+                req.flash("error", "Unable to find ringtones at the moment.");
+                return res.redirect("/contents");
+            }
+            res.render("category", {
+                files: audios,
+                category
+            });
+        });
     }
     else {
         req.flash("warning", "Category is under development");
@@ -45,16 +56,23 @@ router.get("/contents", (req, res) => {
             return res.redirect("/");
         }
         files.images = images;
-        App.find({}, (err, apps) => {
+        Audio.find({}, (err, audios) => {
             if(err){
-                req.flash("error", "Unable to find apps");
+                req.flash("error", "Unable to find ringtones");
                 return res.redirect("/");
             }
-            files.apps = apps;
-            res.render("contents", {
-                files
+            files.audio = audios;
+            App.find({}, (err, apps) => {
+                if(err){
+                    req.flash("error", "Unable to find apps");
+                    return res.redirect("/");
+                }
+                files.apps = apps;
+                res.render("contents", {
+                    files
+                });
             });
-        })
+        });
     });
 });
 

@@ -10,7 +10,10 @@ const imageSchema           = new mongoose.Schema({
         default: "image"
     },
     description: String,
-    thumbnail: String,
+    thumbnail: {
+        type: String,
+        default: "default.jpg"
+    },
     uploader: String,
     created: {
         type: Date
@@ -27,7 +30,10 @@ const audioSchema           = new mongoose.Schema({
         default: "audio"
     },
     description: String,
-    thumbnail: String,
+    thumbnail: {
+        type: String,
+        default: "default.jpg"
+    },
     uploader: String,
     created: Date
 });
@@ -44,7 +50,10 @@ const appSchema             = new mongoose.Schema({
     },
     description: String,
     uploader: String,
-    thumbnail: String,
+    thumbnail: {
+        type: String,
+        default: "default.jpg"
+    },
     created: Date
 });
 const App = mongoose.model("Application", appSchema);

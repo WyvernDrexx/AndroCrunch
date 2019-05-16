@@ -266,7 +266,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
                 return;
             }
             req.flash("success", "File <strong>" + image.filename + "</strong> updated successfully!");
-            res.redirect("/files/list");
+            res.redirect("back");
         });
     }
     else if (mimetype === "audio") {
@@ -280,7 +280,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
                 return;
             }
             req.flash("success", "File <strong>" + audio.filename + "</strong> updated successfully!");
-            res.redirect("/files/list");
+            res.redirect("back");
         });
     }
     else if (mimetype === "application") {
@@ -294,7 +294,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
                 return;
             }
             req.flash("success", "File <strong>" + app.filename + "</strong> updated successfully!");
-            res.redirect("/files/list");
+            res.redirect("back");
         });
     }
 });
@@ -357,7 +357,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
 });
 
 
-router.get("/files/list/:category", (req, res) => {
+router.get("/files/list/:category", isLoggedIn,(req, res) => {
     let category = req.params.category.toLowerCase();
     if(category === "images"){
         Image.find({}, (err, images) => {
