@@ -139,9 +139,9 @@
                             <li data-target="#products" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <% for( let i = files.presets.length - 1; i > 0; i--){ %>
+                            <% for( let i = 3; i >= 0; i--){ %>
                             <% let file = files.presets[i];  %>
-                            <% if( i === files.presets.length -1){ %>
+                            <% if( i === 3){ %>
                             <div class="carousel-item active">
                                 <div class="hover-option">
                                     <a href="/"><span class="plus-symbol">+</span></a>
@@ -161,27 +161,27 @@
                                     <p><%= file.filename %></p>
                                 </div>
                             </div>
+                            <% } %>
+                            <% } %>
                         </div>
-                        <% } %>
-                        <% } %>
-                    <a class="carousel-control-prev" href="#products" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#products" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                        <a class="carousel-control-prev" href="#products" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#products" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+        <h2 class="display-5 text-center  mb-3 pt-5"><span>Our Blogs</span></h2>
+        <div class="text-center"><span class="line d-block"></span></div>
+        <div class="text-center mt-5 mt-md-5">
+            <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
+        </div>
     </div>
-    <h2 class="display-5 text-center  mb-3 pt-5"><span>Our Blogs</span></h2>
-    <div class="text-center"><span class="line d-block"></span></div>
-    <div class="text-center mt-5 mt-md-5">
-        <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
-    </div>
-</div>
 </div>
 
 <% include partials/footer %>
