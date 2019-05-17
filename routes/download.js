@@ -106,6 +106,9 @@ router.get("/:category/:id/download", (req, res) => {
             var ext = image.referenceFile.split(".");
             ext = ext[ext.length - 1];
             let filename = image.filename.trim() + "." + ext;
+            image.downloads = image.downloads + 1;
+            image.save();
+            console.log(image);
             res.download("public/uploads/" + image.referenceFile, filename);
         });
 
@@ -118,6 +121,8 @@ router.get("/:category/:id/download", (req, res) => {
             var ext = audio.referenceFile.split(".");
             ext = ext[ext.length - 1];
             let filename = audio.filename.trim() + "." + ext;
+            audio.downloads = audio.downloads + 1;
+            audio.save();
             res.download("public/uploads/" + audio.referenceFile, filename);
         });
 
@@ -130,6 +135,8 @@ router.get("/:category/:id/download", (req, res) => {
             var ext = preset.referenceFile.split(".");
             ext = ext[ext.length - 1];
             let filename = preset.filename.trim() + "." + ext;
+            preset.downloads = preset.downloads + 1;
+            preset.save();
             res.download("public/uploads/" + preset.referenceFile, filename);
         });
 
@@ -142,6 +149,8 @@ router.get("/:category/:id/download", (req, res) => {
             var ext = app.referenceFile.split(".");
             ext = ext[ext.length - 1];
             let filename = app.filename.trim() + "." + ext;
+            app.downloads = app.downloads + 1;
+            app.save();
             res.download("public/uploads/" + app.referenceFile, filename);
         });
 

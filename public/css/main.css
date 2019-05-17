@@ -653,6 +653,22 @@ h1{
 .lead {
     font-weight: 400;
 }
+.blog-main-title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 28px;
+    letter-spacing: 0.5px;
+    padding-bottom: 28px;
+}
+.blog-main-image{
+    text-align: center;
+    padding-top: 25px;
+}
+
+.blog-main-image img{
+    width: 100%;
+    border-radius: 5px;
+}
 
 .brand-name {
     position: absolute;
