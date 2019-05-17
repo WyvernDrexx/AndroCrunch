@@ -94,6 +94,9 @@ router.get("/:category/:id/download", (req, res) => {
     let id = req.params.id;
     console.log("Headers:");
     console.log(req.headers);
+    if(typeof req.headers.referer === "undefined"){
+        return res.redirect("/contents");
+    }
     if (category === "wallpapers") {
         Image.findOne({ _id: id }, (err, image) => {
             if (err) {
