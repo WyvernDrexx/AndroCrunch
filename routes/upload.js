@@ -29,6 +29,7 @@ const thumbnail = multer({
     storage: thumbnailStorage
 }).single("thumbnail");
 
+
 router.get("/files/upload", isLoggedIn, (req, res) => {
     res.render("upload");
 });
@@ -39,7 +40,6 @@ router.post("/files/upload", isLoggedIn, (req, res) => {
             req.flash("error", "Couldn't upload file!");
             res.redirect("back");
         } else {
-            console.log(req.files);
             req.flash("success", "File successfully added! Number of files uploaded: " + req.files.length);
             res.render("upload", { files: req.files });
         }
@@ -50,6 +50,10 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
     // Returned object will have array of titles and description
     let filesData = req.body;
     let message = "All data uploaded successfully!";
+
+    // This code is vulnerable not CRITICAL but problematic to debug if unhandeled>> The hidden input fields on upload.ejs allow the sizes, mimetype
+    // referenceFile and size to be modified..
+    
     for (let i = 0; i < filesData.title.length; i++) {
         var file = {
             filename: filesData.title[i],
@@ -112,27 +116,33 @@ router.get("/files/list", isLoggedIn, (req, res) => {
     var files = [];
     Image.find({}, (err, images) => {
         if (err) {
-
+            req.flash("error", "Error retrieving lists of [images]");
+            return res.redirect("/author/panel");
         }
         files.push(images);
 
         Audio.find({}, (err, audios) => {
             if (err) {
-
+                req.flash("error", "Error retrieving lists of [audio]");
+                return res.redirect("/author/panel");
             }
 
             files.push(audios);
 
             App.find({}, (err, apps) => {
                 if (err) {
-
+                    req.flash("error", "Error retrieving lists of [apps]");
+                    return res.redirect("/author/panel");
                 }
                 files.push(apps);
+
                 Preset.find({}, (err, presets) => {
                     if(err){
-
+                        req.flash("error", "Error retrieving lists of [presets]");
+                        return res.redirect("/author/panel");
                     }
                     files.push(presets);
+
                     res.render("files", {
                         data: files,
                         moment: moment
@@ -203,8 +213,8 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             });
         });
     }else{
-        req.flash("error", "Not found! Check URL");
-        res.render("/author/panel");
+        req.flash("warning", "Category is not present.");
+        res.redirect("/author/panel");
     }
 });
 

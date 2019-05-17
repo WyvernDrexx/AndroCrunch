@@ -201,7 +201,7 @@ a{
     text-decoration: none !important;
 }
 
-.site-content .apps img.card-img-top{
+.site-content .apps a img.card-img-top{
     border-radius: 50%;
     min-height: 8rem;
     min-width: 8rem;
@@ -218,16 +218,16 @@ a{
     min-height: 11.5rem;
 }
 
-.site-content .apps .card{
+.site-content .apps a .card{
     background: transparent;
     border: none;
     box-shadow: none;
 }
-.site-content .apps .card-body{
+.site-content .apps a .card-body{
     padding-left: 0px;
     padding-right: 0px;
 }
-.site-content .apps .card *{
+.site-content .apps a .card *{
     margin: auto;
 }
 .site-content .card-title{
@@ -696,7 +696,12 @@ h1{
 .social a{
     color: white;
 }
+.circle{
+    border-radius: 50% !important;
+}
 .download-item img{
+    min-width: 15rem;
+    min-height: 14rem;
     max-width: 15rem;
     max-height: 16rem;
     margin: auto;
@@ -706,6 +711,7 @@ h1{
     left: 0;
     right: 0;
     border-radius: 15px;
+    background-color: white;
 }
 .carousel-item img {
     border-radius: 10px !important;
@@ -732,7 +738,7 @@ a:active, a:focus {
     margin: auto;
     color: #0033ff;
   
-    max-width: 10rem;
+    max-width: 10.5rem;
 }
 .share span{
     font-weight: bold;
@@ -1051,7 +1057,7 @@ textarea.form-control,
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
     }
-    .site-content .apps img.card-img-top{
+    .site-content .apps  a img.card-img-top{
         border-radius: 50%;
         min-height: 8rem;
         min-width: 9rem;
@@ -1131,7 +1137,7 @@ textarea.form-control,
         max-height: 12rem;
     }
 
-    .site-content .apps img.card-img-top{
+    .site-content .apps a img.card-img-top{
         border-radius: 50%;
         min-height: 4rem;
         min-width: 4rem;

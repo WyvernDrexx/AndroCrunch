@@ -34,7 +34,7 @@
             <% file=files.audio[i];  %>
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                <a href="/">
+                <a href="/ringtones/<%= file._id %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
                             alt="Image for <%= file.filename %>">
@@ -46,13 +46,15 @@
             </div>
             <% }else { %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                <div class="card mx-0">
-                    <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
-                        alt="Image for <%= file.filename %>">
-                    <div class="card-body">
-                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                <a href="/ringtones/<%= file._id %>">
+                    <div class="card mx-0">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="Image for <%= file.filename %>">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <% } %>
             <% } %>
@@ -67,7 +69,7 @@
             <% file=files.images[i];  %>
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                <a href="/">
+                <a href="/wallpapers/<%= file._id %>">
                     <div class="card mx-0">
                         <img src="/uploads/<%= file.referenceFile %>" class="card-img-top"
                             alt="Image for <%= file.filename %>">
@@ -79,13 +81,15 @@
             </div>
             <% }else { %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                <div class="card mx-0">
-                    <img src="/uploads/<%= file.referenceFile %>" class="card-img-top"
-                        alt="Image for <%= file.filename %>">
-                    <div class="card-body">
-                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                <a href="/wallpapers/<%= file._id %>">
+                    <div class="card mx-0">
+                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top"
+                            alt="Image for <%= file.filename %>">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <% } %>
             <% } %>
@@ -100,7 +104,7 @@
             <% file=files.apps[i];  %>
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                <a href="/">
+                <a href="/apps/<%= file._id %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
                             alt="Image for <%= file.filename %>">
@@ -112,13 +116,15 @@
             </div>
             <% }else { %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                <div class="card mx-0">
-                    <img src="/thumbnails/<%=file.thumbnail%>" class="card-img-top"
-                        alt="Image for <%= file.filename %>">
-                    <div class="card-body">
-                        <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                <a href="/apps/<%= file._id %>">
+                    <div class="card mx-0">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="Image for <%= file.filename %>">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <% } %>
             <% } %>
@@ -144,7 +150,7 @@
                             <% if( i === 3){ %>
                             <div class="carousel-item active">
                                 <div class="hover-option">
-                                    <a href="/"><span class="plus-symbol">+</span></a>
+                                    <a href="/presets/<%= file._id %>"><span class="plus-symbol">+</span></a>
                                 </div>
                                 <img src="/thumbnails/<%= file.thumbnail %>" class="d-block w-100" alt="...">
                                 <div class="carousel-caption   d-md-block">
@@ -154,7 +160,7 @@
                             <% }else{ %>
                             <div class="carousel-item">
                                 <div class="hover-option">
-                                    <a href="/"><span class="plus-symbol">+</span></a>
+                                    <a href="/presets/<%= file._id %>"><span class="plus-symbol">+</span></a>
                                 </div>
                                 <img src="/thumbnails/<%= file.thumbnail %>" class="d-block w-100" alt="...">
                                 <div class="carousel-caption   d-md-block">
