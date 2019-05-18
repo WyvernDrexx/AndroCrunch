@@ -6,7 +6,6 @@ const postSchema = new mongoose.Schema({
         ref: "User"
     },
     title: String,
-    subtitle: String,
     rating: Number,
     image: String,
     comments: {
@@ -17,7 +16,8 @@ const postSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: Date.now()
-    }
+    },
+    tags:String
 });
 
 const Post = mongoose.model("Post", postSchema);

@@ -1,0 +1,16 @@
+<% include partials/header %>
+<h1 class="display-5 text-white text-center mt-6 text-danger">Upload Image for Post</h1>
+<h5 class=" text-white main-content pt-5"><strong>Title: </strong><%= post.title %></h5>
+<h5 class="text-white main-content pb-5"><strong>Content: </strong><%= post.content %></h5>
+<form action="/post/<%= post._id %>/update/image" class="main-content pb-6" method="POST" enctype="multipart/form-data">
+    <div class="input-group mb-2">
+        <div class="custom-file">
+            <input type="file" name="thumbnail" class="custom-file-input" aria-describedby="File Input">
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Upload</button>
+        </div>
+    </div>
+</form>
+<% include partials/footer %>

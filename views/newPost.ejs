@@ -1,5 +1,5 @@
 <% include partials/header %>
-
+<% if(typeof post === "undefined"){ %>
 <h1 class="display-5 text-white text-center mt-6">New Blog Post</h1>
 <section aria-label="New Blog Post">
     <div class="container-fluid">
@@ -11,20 +11,6 @@
                 <input type="text" class="form-control" name="title" placeholder="Title" aria-label="Title"
                     aria-describedby="basic-addon1">
             </div>
-            <div class="input-group mb-2 flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Subtitle:</span>
-                </div>
-                <input type="text" class="form-control" name="subtitle" placeholder="Subtitle" aria-label="Subtitle"
-                    aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-2 flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Image:</span>
-                </div>
-                <input type="text" class="form-control" name="image" placeholder="Image Url" aria-label="Image URL"
-                    aria-describedby="basic-addon1">
-            </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Content</span>
@@ -32,7 +18,7 @@
                 <textarea name="content" class="form-control" aria-label="Post Content"
                     placeholder="Post's Content"></textarea>
             </div>
-            <button onclick="post()" type="button" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
+            <button type="submit" class="btn  text-white px-4 btn-purple-color btn-md mt-2 mb-6">Submit
                 <div class="spinner-border spinner-border-sm ml-4 d-none" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
@@ -40,38 +26,20 @@
         </form>
     </div>
 </section>
-
-<script>
-    function post() {
-        $(".spinner-border.spinner-border-sm").removeClass("d-none");
-        let title = $("input[name=title]").val();
-        let image = $("input[name=image]").val();
-        let content = $("textarea[name=content]").val();
-        let subtitle = $("input[name=subtitle]").val();
-        let post = {
-            title,
-            subtitle,
-            image,
-            content
-        }
-
-        $.ajax("/posts", {
-            method: "POST",
-            data: post
-        }).done(data => {
-            $(".alert.alert-dismissible").remove();
-            if (data.status === 1) {
-                $("form").prepend(
-                    "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">Post successfully created!<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
-                );
-            } else {
-                $("form").prepend(
-                    "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" + data.message + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>"
-                );
-            }
-            $(".spinner-border.spinner-border-sm").addClass("d-none");
-        });
-    }
-</script>
-
+<% } else{ %>
+<h1 class="display-5 text-white text-center mt-6">Upload Image for Post</h1>
+<h5 class=" text-white main-content pt-5"><strong>Title: </strong><%= post.title %></h5>
+<h5 class="text-white main-content pb-5"><strong>Content: </strong><%= post.content %></h5>
+<form action="/post/<%= post._id %>/upload" class="main-content pb-6" method="POST" enctype="multipart/form-data">
+    <div class="input-group mb-2">
+        <div class="custom-file">
+            <input type="file" name="thumbnail" class="custom-file-input" aria-describedby="File Input">
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Upload</button>
+        </div>
+    </div>
+</form>
+<% } %>
 <% include partials/footer %>
