@@ -122,7 +122,10 @@ router.delete("/blogs/delete/:id", isLoggedIn, (req, res) => {
             res.redirect("back");
             return;
         }
-        deleteFromSystem("thumbnail", post.image);
+        if(typeof post.image !== "undefined"){
+            deleteFromSystem("thumbnail", post.image);
+
+        }
         req.flash("success", "Post successfully deleted!");
         res.redirect("/blogs/list");
     });
@@ -143,8 +146,10 @@ router.post("/posts", isLoggedIn, (req, res) => {
     // Post creation...
     const post = {
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        tags: req.body.tags
     }
+
     for (const name of Object.keys(post)) {
         if (post[name].trim().length <= 6) {
             res.send({
@@ -155,6 +160,7 @@ router.post("/posts", isLoggedIn, (req, res) => {
             return;
         }
     }
+    
     console.log(post);
     post.created = moment();
     post.author = req.user.username;
@@ -215,7 +221,9 @@ router.post("/post/:id/update/image", isLoggedIn,(req, res) => {
                     // deleteFromSystem("thumbnail", req.file.filename);
                     return res.redirect("/posts/new");
                 }
-                deleteFromSystem("thumbnail", post.image);
+                if(typeof post.image !== "undefined"){
+                    deleteFromSystem("thumbnail", post.image);
+                }
                 post.image = req.file.filename;
                 post.save();
                 req.flash("success", "Post successfully updated!");
@@ -225,7 +233,7 @@ router.post("/post/:id/update/image", isLoggedIn,(req, res) => {
     });
 });
 
-router.get("/blogs/edit/:id/image", (req, res) => {
+router.get("/blogs/edit/:id/image", isLoggedIn,  (req, res) => {
     Post.findOne({_id: req.params.id}, (err, post) => {
         if(err){
             req.flash("error", "Couldn't find post!");
@@ -236,6 +244,5 @@ router.get("/blogs/edit/:id/image", (req, res) => {
             post
         });
     });
-    
 });
 module.exports = router;
