@@ -1,5 +1,5 @@
 const server   = require("./imports/express"),
-        PORT   = process.env.PORT || 3000,
+        PORT   = process.env.PORT || 80,
     mongoose   = require("mongoose");
 
 mongoose.connect("mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27017,dev-shard-00-01-cbuvl.mongodb.net:27017,dev-shard-00-02-cbuvl.mongodb.net:27017/test?ssl=true&replicaSet=dev-shard-0&authSource=admin&retryWrites=true", {
