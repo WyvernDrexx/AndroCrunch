@@ -13,6 +13,7 @@
                 </p>
                 <p class="tags"><span class="text-dark">by </span> <%= file.uploader %></p>
             </div>
+            <small id="file" class="form-text text-info">The Thumbnail should be landscape for better view. Eg, 800x450</small>
             <form action="/files/<%= file.mimetype %>/thumbnail/<%= file._id %>" method="POST" class="mb-3" enctype="multipart/form-data">
                 <div class="input-group">
                     <div class="custom-file">
@@ -20,7 +21,6 @@
                             aria-describedby="files">
                         <label class="custom-file-label overflow-hidden" for="files">Select Thumbnail</label>
                     </div>
-                    <small id="file" class="form-text text-info">The Thumbnail should be landscape for better view. Eg, 800x450</small>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" id="upload">UPLOAD</button>
                     </div>
