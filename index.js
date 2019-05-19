@@ -15,7 +15,6 @@ if(process.env.NODE_ENV === "production"){
         }
     });
 }else{
-    
     mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retryWrites=true", {
         useNewUrlParser: true
     }, (err) => {
