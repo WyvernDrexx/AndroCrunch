@@ -246,7 +246,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             else if (mimetype === "audio") {
                 Audio.findOne({ _id: id }, (err, audio) => {
-                    if(typeof audio.thumbnail !== "undefined" && app.thumbnail.length > 0 && audio.thumbnail !== "default.jpg"){
+                    if(typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg"){
                         deleteFromSystem("thumbnail", audio.thumbnail);
                     }
                     audio.thumbnail = req.file.filename;
