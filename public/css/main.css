@@ -1301,6 +1301,10 @@ textarea.form-control,
         margin-bottom: -6rem !important;
     }
 
+    .download-item .img img{
+        max-width: 18rem;
+    }
+
     .scroll-flex .col-sm {
         min-width: 73vw;
     }
