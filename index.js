@@ -31,6 +31,15 @@ server.get("/", (req, res) => {
     res.render("index");
 });
 //  Required routes
+server.use(function (req, res, next) {
+    if (req.secure) {
+        // request was via https, so do no special handling
+        next();
+    } else {
+        // request was via http, so redirect to https
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
@@ -53,7 +62,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
     https.createServer(options, server).listen(443, () => {
         console.log("Server is on production mode and listening on 443");
     });
-}else{
+} else {
     server.listen(3000, () => {
         console.log("Server listening on PORT 3000");
     })
