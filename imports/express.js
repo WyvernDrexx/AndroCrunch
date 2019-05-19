@@ -1,4 +1,5 @@
-const methodOverride = require('method-override');
+const methodOverride = require('method-override'),
+    redirectToHTTPS = require('express-http-to-https').redirectToHTTPS,
 sanitizer = require('express-sanitizer'),
     express = require('express'),
     bodyParser = require('body-parser'),
@@ -15,6 +16,7 @@ server.use(bodyParser.urlencoded({
 }));
 server.use(methodOverride("_method"));
 server.use(sanitizer());
+server.use(redirectToHTTPS(301));
 server.use(cookieSession({
     name: 'hookie',
     secret: "XamarinisTheBoss",

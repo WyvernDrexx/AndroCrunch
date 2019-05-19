@@ -41,11 +41,7 @@ server.get("/", (req, res) => {
 //         res.redirect('https://androcrunch.in' + req.url);
 //     }
 // });
-var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
+
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
