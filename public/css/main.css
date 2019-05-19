@@ -210,8 +210,8 @@ a{
     margin: auto;
 }
 .site-content .card img{
-    min-height: 5.8rem;
-    max-height: 5.8rem;
+    min-height: 6rem;
+    max-height: 6rem;
 }
 
 .site-content .card{
@@ -223,15 +223,31 @@ a{
     border: none;
     box-shadow: none;
 }
-.site-content .apps a .card-body{
-    padding-left: 0px;
-    padding-right: 0px;
+.site-content .apps a .card-title{
+    position: relative;
+    top: initial;
+    bottom: initial;
+    left: initial;
+    right: initial;
+}
+.apps .card p{
+    text-align: center;
+}
+.card-body{
+    padding: 0.5rem !important;
+    padding-top: 1rem;
 }
 .site-content .apps a .card *{
     margin: auto;
 }
 .site-content .card-title{
     letter-spacing: normal;
+    position: absolute;
+    top: 56%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
 }
 .main .row .col-sm,
 .main .row .col-sm-4 {
