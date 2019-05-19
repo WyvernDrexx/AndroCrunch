@@ -18,7 +18,6 @@ router.post("/register", (req, res) => {
     // req.flash("success", "Currently we do not support login for public.");
     // res.redirect("/");
     // Register work
-    req.body.username = req.body.username.toLowerCase();
     User.register(new User({
         username: req.body.username}), req.body.password, (err, user) => {
             if(err){
