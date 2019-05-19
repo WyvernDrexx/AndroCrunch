@@ -32,15 +32,15 @@ server.get("/", (req, res) => {
 });
 
 //  Required routes
-// server.use(function (req, res, next) {
-//     if (req.secure) {
-//         // request was via https, so do no special handling
-//         next();
-//     } else {
-//         // request was via http, so redirect to https
-//         res.redirect('https://androcrunch.in' + req.url);
-//     }
-// });
+server.use(function (req, res, next) {
+    if (req.secure) {
+        // request was via https, so do no special handling
+        next();
+    } else {
+        // request was via http, so redirect to https
+        res.redirect('https://androcrunch.in' + req.url);
+    }
+});
 
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
