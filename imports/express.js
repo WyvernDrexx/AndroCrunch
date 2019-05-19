@@ -4,7 +4,7 @@ sanitizer = require('express-sanitizer'),
     bodyParser = require('body-parser'),
     server = express(),
     passport = require("passport"),
-    expressSession = require("express-session"),
+    cookieSession = require("cookie-session"),
     flash = require("connect-flash"),
     helmet = require("helmet");
 server.use(helmet());
@@ -15,15 +15,10 @@ server.use(bodyParser.urlencoded({
 }));
 server.use(methodOverride("_method"));
 server.use(sanitizer());
-server.use(expressSession({
-    secret: "XamarinReborn",
-    key: "Cooke",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        expires: new Date(Date.now() + 60 * 60 * 1000)
-    }
+server.use(cookieSession({
+    name: 'hookie',
+    secret: "XamarinisTheBoss",
+    httpOnly: true
 }));
 server.use(flash());
 server.use(passport.initialize());
