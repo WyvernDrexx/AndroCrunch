@@ -1,9 +1,10 @@
 const server   = require("./imports/express"),
-        PORT   = process.env.PORT || 443,
+        PORT   = 443,
     mongoose   = require("mongoose");
-
-
-if(process.env.NODE_ENV === "production"){
+var https = require('https');
+var fs = require('fs');
+const express = require("express");
+if(typeof process.env.NODE_ENV === "undefined"){
     mongoose.connect("mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27017,dev-shard-00-01-cbuvl.mongodb.net:27017,dev-shard-00-02-cbuvl.mongodb.net:27017/test?ssl=true&replicaSet=dev-shard-0&authSource=admin&retryWrites=true", {
         useNewUrlParser: true
     }, (err) => {
@@ -26,13 +27,13 @@ if(process.env.NODE_ENV === "production"){
         }
     });
 }
+console.log(process.env.NODE_ENV);
 server.get("/", (req, res) => {
     res.render("index");
 });
-
 //  Required routes
-
 server.use(require("./routes/index"));
+
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
 server.use(require("./routes/upload"));
@@ -40,10 +41,15 @@ server.use(require("./routes/category"));
 server.use(require("./routes/download"));
 
 //Wildcard route//
-server.get("*", (req, res) => {
-    res.render("error", {message: "URL Not found!", code: 404});
-});
+//#server.get("*", (req, res) => {
+	//#    res.render("error", {message: "URL Not found!", code: 404});
+	//#});
 
-server.listen(PORT, process.env.IP, () => {
-    console.log("Listening....");
-});
+
+var options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/chain.pem')
+};
+
+https.createServer(options, server).listen(443);

@@ -35,7 +35,6 @@ server.use((req, res, next) => {
     res.locals.warning = req.flash("warning");
     next();
 });
-
 server.use((err, req, res, next) => {
     if(err){
         console.log("ERROR ENCOUNTERED ON EXPRESS!");
