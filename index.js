@@ -27,7 +27,6 @@ if (typeof process.env.NODE_ENV === "undefined") {
         }
     });
 }
-console.log(process.env.NODE_ENV);
 server.get("/", (req, res) => {
     res.render("index");
 });
