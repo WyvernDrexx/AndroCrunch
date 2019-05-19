@@ -1,5 +1,5 @@
 const server   = require("./imports/express"),
-        PORT   = process.env.PORT || 80,
+        PORT   = process.env.PORT || 443,
     mongoose   = require("mongoose");
 
 
@@ -15,7 +15,7 @@ if(process.env.NODE_ENV === "production"){
         }
     });
 }else{
-    mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retryWrites=true", {
+    mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/beta?retryWrites=true", {
         useNewUrlParser: true
     }, (err) => {
         if (err) {
