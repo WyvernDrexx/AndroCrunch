@@ -744,6 +744,7 @@ h1{
     right: 0;
     border-radius: 15px;
     background-color: white;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.599);
 }
 .carousel-item img {
     border-radius: 10px !important;
