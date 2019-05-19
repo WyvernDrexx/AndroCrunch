@@ -3,6 +3,12 @@ const express = require("express"),
     Subscriber = require("../models/subscribers"),
     jquery = require("jquery");
 
+router.get("/kickout", (req, res) => {
+    req.logout();
+    req.flash("success", "Successfully logged you out!");
+    res.redirect("/");
+});
+
 router.get("/blogs", (req, res) => {
     res.render("blogs");
 });

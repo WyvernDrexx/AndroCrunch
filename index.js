@@ -32,7 +32,6 @@ server.get("/", (req, res) => {
 });
 //  Required routes
 server.use(require("./routes/index"));
-
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
 server.use(require("./routes/upload"));
