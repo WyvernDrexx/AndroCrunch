@@ -18,7 +18,9 @@ server.use(sanitizer());
 server.use(cookieSession({
     name: 'hookie',
     secret: "XamarinisTheBoss",
-    httpOnly: true
+    httpOnly: true,
+    secure: true,
+    
 }));
 server.use(flash());
 server.use(passport.initialize());

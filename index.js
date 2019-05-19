@@ -30,7 +30,6 @@ if (typeof process.env.NODE_ENV === "undefined") {
 server.get("/", (req, res) => {
     res.render("index");
 });
-server.enable('trust proxy');
 
 //  Required routes
 server.use(function (req, res, next) {
@@ -39,9 +38,10 @@ server.use(function (req, res, next) {
         next();
     } else {
         // request was via http, so redirect to https
-        res.redirect('https://' + req.headers.host + req.url);
+        res.redirect('https://androcrunch.in' + req.url);
     }
 });
+
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
@@ -67,6 +67,6 @@ if (typeof process.env.NODE_ENV === "undefined") {
 } else {
     server.listen(3000, () => {
         console.log("Server listening on PORT 3000");
-    })
+    });
 }
 
