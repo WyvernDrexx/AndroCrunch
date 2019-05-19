@@ -30,6 +30,8 @@ if (typeof process.env.NODE_ENV === "undefined") {
 server.get("/", (req, res) => {
     res.render("index");
 });
+server.enable('trust proxy');
+
 //  Required routes
 server.use(function (req, res, next) {
     if (req.secure) {
