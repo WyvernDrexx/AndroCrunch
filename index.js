@@ -30,9 +30,10 @@ if (typeof process.env.NODE_ENV === "undefined") {
 server.get("/", (req, res) => {
     res.render("index");
 });
+const serverFavicon = require("serve-favicon");
 
 //  Required routes
-
+server.use(serverFavicon(__dirname + '/public/imgs/favicon.ico'));
 server.use(require("./routes/index"));
 server.use(require("./routes/blogposts"));
 server.use(require("./routes/auth"));
@@ -41,7 +42,7 @@ server.use(require("./routes/category"));
 server.use(require("./routes/download"));
 
 server.get("*", (req, res) => {
-    res.render("error", {message: "URL Not found!", code: 404});
+    res.render("error", { message: "URL Not found!", code: 404 });
 });
 
 if (typeof process.env.NODE_ENV === "undefined") {
