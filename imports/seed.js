@@ -1,21 +1,32 @@
 const mongoose = require("mongoose"),
-User     = require("../models/user");
+    Image = require("../models/uploadsSchema").Image,
+    Audio = require("../models/uploadsSchema").Audio,
+    App = require("../models/uploadsSchema").App,
+    Preset = require("../models/uploadsSchema").Preset;
 
-mongoose.connect("mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27017,dev-shard-00-01-cbuvl.mongodb.net:27017,dev-shard-00-02-cbuvl.mongodb.net:27017/test?ssl=true&replicaSet=dev-shard-0&authSource=admin&retryWrites=true",
+
+mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retryWrites=true",
     { useNewUrlParser: true }, (err) => {
         if (err) {
             console.log("Error connecting to database!");
             console.log(err);
         } else {
             console.log("Connected to dB");
+            Preset.find({}, (err, data) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                // 
+                data.forEach((elem) => {
+                    elem.name = elem.filename.trim().toLowerCase().replace(/\s/g, "-");
+                    elem.save()
+                    console.log("Saved: " + elem.filename + " with: " + elem.name);
+                });
+            });
+            console.log("Getting all!");
+            Preset.find({}, (err, data) => {
+                console.log(data);
+            });
         }
-});
-
-User.findByIdAndRemove({}, (err, data) => {
-    if(err) {
-        console.log("Unable to remove users!");
-        console.log(err);
-    }else{
-        console.log("All data removed from Users!");
-    }
-});
+    });

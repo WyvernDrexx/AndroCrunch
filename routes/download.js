@@ -22,15 +22,12 @@ const router = require("express").Router(),
     deleteFromSystem = require("../imports/deleteFromSystem");
 
 
-
-
-
-router.get("/:category/:id", (req, res) => {
+router.get("/:category/:name", (req, res) => {
     let category = req.params.category.toLowerCase();
-    let id = req.params.id;
+    let name = req.params.name;
 
     if (category === "wallpapers") {
-        Image.findOne({ _id: id }, (err, image) => {
+        Image.findOne({ name }, (err, image) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("back");
@@ -46,7 +43,7 @@ router.get("/:category/:id", (req, res) => {
         });
 
     } else if (category === "ringtones") {
-        Audio.findOne({ _id: id }, (err, audio) => {
+        Audio.findOne({  name }, (err, audio) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("back");
@@ -62,7 +59,7 @@ router.get("/:category/:id", (req, res) => {
         });
 
     } else if (category === "presets") {
-        Preset.findOne({ _id: id }, (err, preset) => {
+        Preset.findOne({  name }, (err, preset) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("back");
@@ -78,7 +75,7 @@ router.get("/:category/:id", (req, res) => {
         });
 
     } else if (category === "apps") {
-        App.findOne({ _id: id }, (err, app) => {
+        App.findOne({  name }, (err, app) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("back");
@@ -101,16 +98,16 @@ router.get("/:category/:id", (req, res) => {
 });
 
 
-router.get("/:category/:id/download", (req, res) => {
+router.get("/:category/:name/download", (req, res) => {
     let category = req.params.category.toLowerCase();
-    let id = req.params.id;
+    let name = req.params.name.toLowerCase();
     console.log("Headers:");
     console.log(req.headers);
     if(typeof req.headers.referer === "undefined"){
         return res.redirect("/" + category);
     }
     if (category === "wallpapers") {
-        Image.findOne({ _id: id }, (err, image) => {
+        Image.findOne({  name }, (err, image) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -124,7 +121,7 @@ router.get("/:category/:id/download", (req, res) => {
         });
 
     } else if (category === "ringtones") {
-        Audio.findOne({ _id: id }, (err, audio) => {
+        Audio.findOne({  name }, (err, audio) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -138,7 +135,7 @@ router.get("/:category/:id/download", (req, res) => {
         });
 
     } else if (category === "presets") {
-        Preset.findOne({ _id: id }, (err, preset) => {
+        Preset.findOne({  name }, (err, preset) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -152,7 +149,7 @@ router.get("/:category/:id/download", (req, res) => {
         });
 
     } else if (category === "apps") {
-        App.findOne({ _id: id }, (err, app) => {
+        App.findOne({  name }, (err, app) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");

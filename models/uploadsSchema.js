@@ -21,7 +21,8 @@ const imageSchema           = new mongoose.Schema({
     downloads: {
         type: Number,
         default: 0
-    }
+    },
+    name: String
 });
 const Image = mongoose.model("Image", imageSchema);
 
@@ -43,7 +44,9 @@ const audioSchema           = new mongoose.Schema({
     downloads: {
         type: Number,
         default: 0
-    }
+    },
+    name: String
+
 });
 const Audio = mongoose.model("Audio", audioSchema);
 
@@ -66,7 +69,9 @@ const appSchema             = new mongoose.Schema({
     downloads: {
         type: Number,
         default: 0
-    }
+    },
+    name: String
+
 });
 const App = mongoose.model("Application", appSchema);
 
@@ -88,7 +93,9 @@ const presetSchema             = new mongoose.Schema({
     downloads: {
         type: Number,
         default: 0
-    }
+    },
+    name: String
+
 });
 const Preset = mongoose.model("Preset", presetSchema);
 
