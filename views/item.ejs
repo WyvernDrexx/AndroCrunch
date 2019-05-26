@@ -18,7 +18,7 @@
         <% } %>
     </div>
     <div class="details pt-md-">
-        <p class="text-gray small text-center m-0 pt-5">154589 Downloads</p>
+        <p class="text-gray small text-center m-0 pt-5"><%= file.downloads %> Downloads</p>
         <p class="text-gray small text-center m-0">by <span class="text-dark"><%= file.uploader %></span> in
             <span class="text-dark">Ringtones</span> on <%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY") %></p>
         <div class="text-center ">
