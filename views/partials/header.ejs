@@ -4,12 +4,35 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <% if(typeof title !== "undefined"){ %>
+    <title><%= title %> </title>
+    <% }else{ %>
     <title>AndroCrunch</title>
+    <% } %>
+    <% if(typeof keywords !== "undefined"){ %>
+    <meta name="keywords" content="<%= keywords %>">
+    <% }else{ %>
+    <meta name="keywords"
+        content="Ringtone, wallpapers, wallpapers hd, android, products, free ringtones, download, hd, mp3, presets, audio">
+    <% } %>
+    <% if(typeof description !== "undefined"){ %>
+    <meta name="description" content="<%= description %>">
+    <% }else{ %>
+    <meta name="description"
+        content="Best place for free ringtones, wallpapers, presets download for your mobile phone and desktop">
+    <% } %>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/main.css'>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1360407062723594",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 
 <body>
@@ -18,7 +41,7 @@
         <div id="mySidenav" class="sidenav">
             <a href="/">Home</a>
             <% if(loggedUser) {%>
-                <a class="text-warning" href="/author/panel">Panel</a>
+            <a class="text-warning" href="/author/panel">Panel</a>
             <% } %>
             <a href="/blogs">Blogs</a>
             <a href="/contents">Contents</a>

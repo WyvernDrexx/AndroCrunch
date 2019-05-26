@@ -10,23 +10,27 @@ router.get("/kickout", (req, res) => {
 });
 
 router.get("/blogs", (req, res) => {
-    res.render("blogs");
-});
-
-router.get("/more", (req, res) => {
-    res.render("more-posts");
-});
-
-router.get("/item", (req, res) => {
-    res.render("item");
+    res.render("blogs", {
+        title:"Latest And Top Blog Posts",
+        keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
+        description: "Read latest posts on Android, technology, security, Apple and mobile devices"
+    });
 });
 
 router.get("/advertisement", (req, res) => {
-    res.render("advert");
+    res.render("advert", {
+        title:"AndroCrunch | Advertisement",
+        keywords: "androcrunch, advertisement",
+        description: "Advertisement information for AndroCrunch"
+    });
 })
 
 router.get("/privacy_policy", (req, res) => {
-    res.render("privacy_policy");
+    res.render("privacy_policy",{
+        title:"AndroCrunch | Privacy Policy",
+        keywords: "androcrunch, privacy policy",
+        description: "Privacy Policy of AndroCrunch"
+    });
 });
 router.get("/about_us", (req, res) => {
     res.render("about_us");
@@ -40,10 +44,6 @@ router.get("/contact", (req, res) => {
     res.render("contact");
 });
 
-
-router.get("/item", (req, res) => {
-    res.render("individual");
-});
 router.post("/subscribe", (req, res) => {
     let response = new Object();
     response.status = true;

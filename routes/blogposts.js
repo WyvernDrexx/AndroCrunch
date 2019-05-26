@@ -135,7 +135,11 @@ router.get("/post", (req, res) => {
 });
 
 router.get("/posts", (req, res) => {
-    res.render("more-posts");
+    res.render("more-posts", {
+        title:"Recent Blog posts",
+        keywords: "androcrunch, blog, posts, tech, security, download, products, mi, apple, android",
+        description: "Latest blog posts on various genre including products review, security, tips, tricks and more."
+    });
 });
 
 router.get("/blogs/new", isLoggedIn, (req, res) => {

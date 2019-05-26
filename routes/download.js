@@ -38,7 +38,10 @@ router.get("/:category/:id", (req, res) => {
             res.render("item", {
                 file: image,
                 category,
-                moment
+                moment,
+                title: "Wallpapers | " + image.filename,
+                keywords: image.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                description: image.description
             });
         });
 
@@ -51,7 +54,10 @@ router.get("/:category/:id", (req, res) => {
             res.render("item", {
                 file: audio,
                 category,
-                moment
+                moment,
+                title: "Ringtones | " + audio.filename,
+                keywords: audio.filename + " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, ",
+                description: audio.description
             });
         });
 
@@ -64,7 +70,10 @@ router.get("/:category/:id", (req, res) => {
             res.render("item", {
                 file: preset,
                 category,
-                moment
+                moment,
+                title:"Presets | " + preset.filename,
+                keywords: preset.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                description: preset.description
             });
         });
 
@@ -77,7 +86,10 @@ router.get("/:category/:id", (req, res) => {
             res.render("item", {
                 file: app,
                 category,
-                moment
+                moment,
+                title: "Apps and games | " + app.filename,
+                keywords: app.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                description: app.description
             });
         });
 
@@ -108,7 +120,6 @@ router.get("/:category/:id/download", (req, res) => {
             let filename = image.filename.trim() + "." + ext;
             image.downloads = image.downloads + 1;
             image.save();
-            console.log(image);
             res.download("public/uploads/" + image.referenceFile, filename);
         });
 
