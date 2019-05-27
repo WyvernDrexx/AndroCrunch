@@ -31,7 +31,10 @@ server.get("/", (req, res) => {
     res.render("index");
 });
 const serverFavicon = require("serve-favicon");
-
+server.use((request, response, next) => {
+    console.log(request.hostname);
+    next()
+});
 //  Required routes
 server.use(serverFavicon(__dirname + '/public/imgs/favicon.ico'));
 server.use(require("./routes/index"));
@@ -52,6 +55,10 @@ if (typeof process.env.NODE_ENV === "undefined") {
         ca: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/chain.pem')
     };
     server.get("*", function (request, response) {
+        if (request.hostname.split("www").length === 2) {
+            response.redirect("https://" + request.hostname.split("www")[1].replace(".", "") + request.url);
+            return;
+        }
         response.redirect("https://" + request.headers.host + request.url);
     });
     https.createServer(options, server).listen(443, () => {
