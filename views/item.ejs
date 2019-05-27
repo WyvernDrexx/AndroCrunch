@@ -32,12 +32,12 @@
 <section class="download-item bg-white" aria-label="The main section for download">
     <div class="img">
         <% if(category === "wallpapers"){ %>
-        <img src="/uploads/<%= file.referenceFile %>">
+        <img src="/uploads/<%= file.referenceFile %>" alt="<%= 'Thumbnail' + file.filename %>">
         <% }else{ %>
         <% if(category === "apps"){ %>
-        <img src="/thumbnails/<%= file.thumbnail %>" class="circle">
+        <img src="/thumbnails/<%= file.thumbnail %>" class="circle" alt="<%= 'Thumbnail' + file.filename %>">
         <% } else{ %>
-        <img src="/thumbnails/<%= file.thumbnail %>">
+        <img src="/thumbnails/<%= file.thumbnail %>" alt="<%= 'Thumbnail' + file.filename %>">
         <% } %>
         <% } %>
     </div>
@@ -100,7 +100,6 @@
     <h1 class="display-5 text-center">Recommended</h1>
     <p class="xs-small text-gray text-center mb-5">Users also download</p>
     <div class="row main-content justify-content-center bg-white">
-
         <div class="col-sm-8 px-0">
             <div class="bd-example">
                 <div id="products" class="carousel slide" data-ride="carousel">
