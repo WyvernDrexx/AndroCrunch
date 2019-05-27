@@ -41,25 +41,15 @@ server.use(require("./routes/upload"));
 server.use(require("./routes/category"));
 server.use(require("./routes/download"));
 
-server.get("*", (req, res) => {
-    res.render("error", { message: "URL Not found!", code: 404 });
-});
-
 if (typeof process.env.NODE_ENV === "undefined") {
     var options = {
         key: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/cert.pem'),
         ca: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/chain.pem')
     };
-    server.use(function (req, res, next) {
-        if (req.secure) {
-            // request was via https, so do no special handling
-            next();
-        } else {
-            // request was via http, so redirect to https
-            res.redirect('https://androcrunch.in');
-        }
-    });
+    server.get("*", function(request, response){
+        response.redirect("https://" + request.headers.host + request.url);
+      });
     https.createServer(options, server).listen(443, () => {
         console.log("Server is on production mode and listening on 443");
     });
