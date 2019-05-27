@@ -18,7 +18,7 @@ server.use(sanitizer());
 server.use(cookieSession({
     name: 'hookie',
     secret: "XamarinisTheBoss",
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     
 }));
