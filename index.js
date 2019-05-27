@@ -55,7 +55,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         ca: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/chain.pem')
     };
     server.get("*", function (request, response) {
-        if (request.hostname.split("www").length === 2) {
+        if (request.url.split("www").length === 2) {
             response.redirect(request.hostname.split("www")[1].replace(".", "") + request.url);
             return;
         }
