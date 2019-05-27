@@ -56,7 +56,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
     };
     server.get("*", function (request, response) {
         if (request.hostname.split("www").length === 2) {
-            response.redirect("https://" + request.hostname.split("www")[1].replace(".", "") + request.url);
+            response.redirect(request.hostname.split("www")[1].replace(".", "") + request.url);
             return;
         }
         response.redirect("https://" + request.headers.host + request.url);
