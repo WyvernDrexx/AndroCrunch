@@ -53,13 +53,14 @@
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
         <% if(category === "apps") { %>
         <div class="row justify-content-center apps">
+            <%= files %>
             <% for( let i = files.length -1 ; i >= 0; i--){ %>
             <%      file=files[i];  %>
             <% if(i % 2 === 0){ %>
                 <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                     <a href="/<%= category %>/<%= file.name %>">
                         <div class="card m-0">
-                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
+                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                             <div class="card-body">
                                 <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                             </div>
@@ -70,7 +71,7 @@
                 <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                     <a href="/<%= category %>/<%= file.name %>">
                         <div class="card m-0">
-                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
+                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                             <div class="card-body">
                                 <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                             </div>
@@ -84,13 +85,12 @@
         <div class="row justify-content-center">
             <% for( let i = files.length - 1 ; i >= 0; i--){ %>
             <%      file=files[i];  %>
-            <%= file['name'] %>
             <%      if(category === "wallpapers"){ %>
                 <% if(i % 2 === 0){ %>
                 <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                     <a href="/<%= category %>/<%= file.name %>">
                         <div class="card mx-0">
-                            <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
+                            <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                             <div class="card-body">
                                 <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                             </div>
@@ -101,7 +101,7 @@
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
-                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="...">
+                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>
@@ -114,7 +114,7 @@
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <a href="/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
-                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>
@@ -125,7 +125,7 @@
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
-                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="...">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>

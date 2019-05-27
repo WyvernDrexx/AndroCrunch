@@ -95,7 +95,6 @@ const presetSchema             = new mongoose.Schema({
         default: 0
     },
     name: String
-
 });
 const Preset = mongoose.model("Preset", presetSchema);
 
