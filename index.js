@@ -57,7 +57,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
             next();
         } else {
             // request was via http, so redirect to https
-            res.redirect('https://androcrunch.in' + req.url);
+            res.redirect('https://androcrunch.in');
         }
     });
     https.createServer(options, server).listen(443, () => {
