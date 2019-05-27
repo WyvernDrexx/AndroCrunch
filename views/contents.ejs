@@ -33,7 +33,7 @@
             <% for( let i =  3 ; i >= 0; i--){ %>
             <% file=files.audio[i];  %>
             <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/ringtones/<%= file.name %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
@@ -45,7 +45,7 @@
                 </a>
             </div>
             <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <a href="/ringtones/<%= file.name %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
