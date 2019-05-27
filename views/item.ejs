@@ -20,14 +20,14 @@
     <div class="details pt-md-">
         <p class="text-gray small text-center m-0 pt-5"><%= file.downloads %> Downloads</p>
         <p class="text-gray small text-center m-0">by <span class="text-dark"><%= file.uploader %></span> in
-            <span class="text-dark">Ringtones</span> on <%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY") %></p>
+            <span class="text-dark">Ringtones</span> on
+            <%= moment.tz(file.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY") %></p>
         <div class="text-center ">
             <div class="row justify-content-center mt-0 mt-md-3">
                 <div class="col-md-4">
-                    <a href="/<%= category %>/<%= file.name %>/download"
-                        class="btn btn-outline-primary rounded-pill px-5 pt-2 pb-2 active no-border mt-5 mt-md-0">
+                    <button class="btn btn-outline-primary rounded-pill px-5 pt-2 pb-2 active no-border mt-5 mt-md-0">
                         Download
-                    </a>
+                    </button>
                 </div>
                 <div class="col-md-4">
                     <span class="share text-left mt-4 mt-md-0">
