@@ -847,7 +847,7 @@ a:active, a:focus {
     position: absolute;
     z-index: 500;
     width: 80vw;
-    max-height: 60vh;
+    max-height: 70vh;
     top: 0;
     bottom: 0;
     left: 0;
