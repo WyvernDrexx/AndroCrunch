@@ -101,8 +101,6 @@ router.get("/:category/:name", (req, res) => {
 router.get("/:category/:name/download", (req, res) => {
     let category = req.params.category.toLowerCase();
     let name = req.params.name.toLowerCase();
-    console.log("Headers:");
-    console.log(req.headers);
     if(typeof req.headers.referer === "undefined"){
         return res.redirect("/" + category);
     }
