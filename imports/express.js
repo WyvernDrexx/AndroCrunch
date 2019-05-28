@@ -6,13 +6,15 @@ sanitizer = require('express-sanitizer'),
     passport = require("passport"),
     cookieSession = require("cookie-session"),
     flash = require("connect-flash"),
-    helmet = require("helmet");
-server.use(helmet());
+    helmet = require("helmet"),
+    compress = require("compression");
+    server.use(helmet());
 server.use(express.static('public'));
 server.set("view engine", "ejs");
 server.use(bodyParser.urlencoded({
     extended: true
 }));
+server.use(compress());
 server.use(methodOverride("_method"));
 server.use(sanitizer());
 server.use(cookieSession({
