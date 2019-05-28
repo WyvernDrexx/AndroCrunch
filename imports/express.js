@@ -8,13 +8,13 @@ sanitizer = require('express-sanitizer'),
     flash = require("connect-flash"),
     helmet = require("helmet"),
     compress = require("compression");
-    server.use(helmet());
+
+server.use(helmet());
 server.use(express.static('public'));
 server.set("view engine", "ejs");
 server.use(bodyParser.urlencoded({
     extended: true
 }));
-server.use(compress());
 server.use(methodOverride("_method"));
 server.use(sanitizer());
 server.use(cookieSession({
@@ -44,4 +44,6 @@ server.use((err, req, res, next) => {
         next();
     }
 });
+
+server.use(compress());
 module.exports = server;
