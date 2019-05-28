@@ -44,6 +44,9 @@ server.use((err, req, res, next) => {
         next();
     }
 });
-
+server.use((req, res, next) => {
+    res.header('Cache-Control', 'max-age=2592000000');
+    next();
+});
 server.use(compress());
 module.exports = server;
