@@ -31,7 +31,7 @@ Audio.find({}, (err, files) => {
     files.forEach((file) => {
         let referenceFile = file.thumbnail;
         let filename = referenceFile.split(".")[0];
-        let inStream = fs.createReadStream('../public/uploads/' + referenceFile);
+        let inStream = fs.createReadStream('../public/thumbnails/' + referenceFile);
 
         // output stream
         let outStream = fs.createWriteStream('../public/thumbnails/' + filename + ".jpeg", { flags: "w" });
@@ -66,7 +66,7 @@ Audio.find({}, (err, files) => {
 
         // output stream
         outStream = fs.createWriteStream('../public/thumbnails/med-' + filename + ".jpeg", { flags: "w" });
-        inStream = fs.createReadStream('../public/uploads/' + referenceFile);
+        inStream = fs.createReadStream('../public/thumbnails/' + referenceFile);
 
         // on error of output file being saved
         outStream.on('error', function () {
