@@ -285,7 +285,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // Medium size thumbnail
 
         // output stream
-        let outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        let outStream = fs.createWriteStream('./public/thumbnails/med-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
         let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
 
         // on error of output file being saved
@@ -316,13 +316,6 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             res.redirect("back");
             return;
         } else {
-            if (req.file.mimetype.split("/")[0] !== "image") {
-                req.flash("error", "Thumbnail must be an image not a " + req.file.mimetype.split("/")[0]);
-                res.redirect("/files/list");
-                deleteFromSystem("thumbnail", req.file.filename);
-                console.log("deleted!");
-                return;
-            }
             if (mimetype === "image") {
                 Image.findOne({ _id: id }, (err, image) => {
                     if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
