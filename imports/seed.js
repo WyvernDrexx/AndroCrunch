@@ -18,32 +18,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                     return;
                 }
                 data.forEach((elem) => {
-                    let inStream = fs.createReadStream('../public/thumbnails/' + elem.thumbnail);
-
-                    // output stream
-                    let outStream = fs.createWriteStream('../public/thumbnails/' + elem.thumbnail.split(".")[0] + ".jpeg", { flags: "w" });
-
-                    // on error of output file being saved
-                    outStream.on('error', function () {
-                        console.log("Error");
-                    });
-
-                    // on success of output file being saved
-                    outStream.on('close', function () {
-                        console.log("Successfully saved file");
-                    });
-                    elem.thumbnail = elem.thumbnail.split(".")[0] + ".jpeg";
-                    elem.save();
-                    // input stream transformer
-                    // "info" event will be emitted on resize
-                    let transform = sharp()
-                        .jpeg()
-                        .resize({ width: 142, height: 96 })
-                        .on('info', function (fileInfo) {
-                            console.log("Resizing done, file not saved");
-                        });
-
-                    inStream.pipe(transform).pipe(outStream);
+                    
                 });
             });
         }

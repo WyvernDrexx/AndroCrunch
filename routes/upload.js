@@ -53,7 +53,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
     // This code is vulnerable not CRITICAL but problematic to debug if unhandeled>> The hidden input fields on upload.ejs allow the sizes, mimetype
     // referenceFile and size to be modified..
-    
+
     for (let i = 0; i < filesData.title.length; i++) {
         var file = {
             filename: filesData.title[i],
@@ -64,7 +64,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             uploader: req.user.username,
             created: moment()
         }
-        if(filesData.mimetype[i].split("/")[1] === "zip"){
+        if (filesData.mimetype[i].split("/")[1] === "zip") {
             file.mimetype = "zip";
         }
         if (file.mimetype === "image") {
@@ -94,11 +94,11 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                 }
             });
 
-        } else if(file.mimetype === "zip"){
+        } else if (file.mimetype === "zip") {
             Preset.create(file, (err, returnedData) => {
-                if(err){
+                if (err) {
                     console.log(err);
-                }else{
+                } else {
                     return;
                 }
             });
@@ -137,7 +137,7 @@ router.get("/files/list", isLoggedIn, (req, res) => {
                 files.push(apps);
 
                 Preset.find({}, (err, presets) => {
-                    if(err){
+                    if (err) {
                         req.flash("error", "Error retrieving lists of [presets]");
                         return res.redirect("/author/panel");
                     }
@@ -149,7 +149,7 @@ router.get("/files/list", isLoggedIn, (req, res) => {
                     });
 
                 });
-                
+
             });
 
         });
@@ -200,7 +200,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    } else if(mimetype === "zip"){
+    } else if (mimetype === "zip") {
         Preset.findOne({ _id: id }, (err, preset) => {
             if (err) {
                 req.flash("error", "Couldn't find the file!");
@@ -212,7 +212,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }else{
+    } else {
         req.flash("warning", "Category is not present.");
         res.redirect("/author/panel");
     }
@@ -222,13 +222,69 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
     thumbnail(req, res, (err) => {
-        console.log(req.file);
+        var actualfile = req.file.filename;
+        // Creating small size thumbnail
+        let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
+
+        // output stream
+        let outStream = fs.createWriteStream('./public/thumbnails/' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+
+        // on error of output file being saved
+        outStream.on('error', function () {
+            console.log("Error");
+        });
+
+        // on success of output file being saved
+        outStream.on('close', function () {
+            console.log("Successfully saved file");
+        });
+        req.file.filename = req.file.filename.split(".")[0] + ".jpeg";
+        // input stream transformer
+        // "info" event will be emitted on resize
+        let transform = sharp()
+            .jpeg()
+            .resize({ width: 142, height: 96 })
+            .on('info', function (fileInfo) {
+                console.log("Resizing done, file not saved");
+            });
+
+        inStream.pipe(transform).pipe(outStream);
+
+
+        // Medium size thumbnail
+
+        // output stream
+        let outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+
+        // on error of output file being saved
+        outStream.on('error', function () {
+            console.log("Error");
+        });
+
+        // on success of output file being saved
+        outStream.on('close', function () {
+            console.log("Successfully saved file");
+        });
+        // input stream transformer
+        // "info" event will be emitted on resize
+        let transform = sharp()
+            .jpeg()
+            .resize({ width: 288, height: 224 })
+            .on('info', function (fileInfo) {
+                console.log("Resizing done, file not saved");
+            });
+
+        inStream.pipe(transform).pipe(outStream);
+        
+        deleteFromSystem("thumbnail", actualfile);
+
+
         if (err) {
             req.flash("error", "Couldn't upload file!");
             res.redirect("back");
             return;
         } else {
-            if(req.file.mimetype.split("/")[0] !== "image"){
+            if (req.file.mimetype.split("/")[0] !== "image") {
                 req.flash("error", "Thumbnail must be an image not a " + req.file.mimetype.split("/")[0]);
                 res.redirect("/files/list");
                 deleteFromSystem("thumbnail", req.file.filename);
@@ -237,7 +293,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             if (mimetype === "image") {
                 Image.findOne({ _id: id }, (err, image) => {
-                    if(typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg"){
+                    if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", image.thumbnail);
                     }
                     image.thumbnail = req.file.filename;
@@ -246,7 +302,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             else if (mimetype === "audio") {
                 Audio.findOne({ _id: id }, (err, audio) => {
-                    if(typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg"){
+                    if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", audio.thumbnail);
                     }
                     audio.thumbnail = req.file.filename;
@@ -255,15 +311,15 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             }
             else if (mimetype === "application") {
                 App.findOne({ _id: id }, (err, app) => {
-                    if(typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg"){
+                    if (typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", app.thumbnail);
                     }
                     app.thumbnail = req.file.filename;
                     app.save();
                 });
-            } else if(mimetype === "zip"){
+            } else if (mimetype === "zip") {
                 Preset.findOne({ _id: id }, (err, preset) => {
-                    if(typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg"){
+                    if (typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", preset.thumbnail);
                     }
                     preset.thumbnail = req.file.filename;
@@ -441,18 +497,18 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
         });
-    }else{
+    } else {
         req.flash("error", "Category invalid!");
         res.redirect("back");
     }
 });
 
 
-router.get("/files/list/:category", isLoggedIn,(req, res) => {
+router.get("/files/list/:category", isLoggedIn, (req, res) => {
     let category = req.params.category.toLowerCase();
-    if(category === "images"){
+    if (category === "images") {
         Image.find({}, (err, images) => {
-            if(err){
+            if (err) {
                 req.flash("error", "Unable to retrieve images from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
@@ -463,9 +519,9 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
             });
         });
     }
-    else if(category === "audio"){
+    else if (category === "audio") {
         Audio.find({}, (err, audio) => {
-            if(err){
+            if (err) {
                 req.flash("error", "Unable to retrieve Audios from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
@@ -477,9 +533,9 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
         });
     }
 
-    else if(category === "apps"){
+    else if (category === "apps") {
         App.find({}, (err, apps) => {
-            if(err){
+            if (err) {
                 req.flash("error", "Unable to retrieve Apps from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
@@ -490,9 +546,9 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
             });
         });
     }
-    else if(category === "presets"){
+    else if (category === "presets") {
         Preset.find({}, (err, presets) => {
-            if(err){
+            if (err) {
                 req.flash("error", "Unable to retrieve Presets from Database. Contact admin ASAP!");
                 return res.redirect("/author/panel");
             }
@@ -503,7 +559,7 @@ router.get("/files/list/:category", isLoggedIn,(req, res) => {
             });
         });
 
-    }else{
+    } else {
         req.flash("error", "Category not found!");
         res.redirect("back");
     }
