@@ -5,6 +5,7 @@ const mongoose = require("mongoose"),
     Preset = require("../models/uploadsSchema").Preset,
     fs = require("fs");
 
+    
 //joining path of directory 
 const directoryPath = "../public/thumbnails/";
 //passsing directoryPath and callback function
