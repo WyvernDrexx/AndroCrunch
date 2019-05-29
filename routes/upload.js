@@ -309,12 +309,13 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
     thumbnail(req, res, (err) => {
 
-        if(req.file.mimetype.split("/")[1] === "jpeg" || req.file.mimetype.split("/")[0] !== "image"){
+        if(req.file.mimetype.split("/")[0] !== "image"){
             req.flash("error","Image format unsupported: " + req.file.mimetype);
             res.redirect("back");
             deleteFromSystem("thumbnail", req.file.filename);
             return;
         }
+        console.log(req.file);
         var actualfile = req.file.filename;
         if (mimetype === "application") {
             let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
@@ -362,6 +363,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             req.file.filename = req.file.filename.split(".")[0] + ".jpeg";
             // input stream transformer
             // "info" event will be emitted on resize
+            console.log(req.file);
             let transform = sharp()
                 .jpeg()
                 .resize({ width: 142, height: 96 })
@@ -394,7 +396,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             .jpeg()
             .resize({ width: 288, height: 224 })
             .on('info', function (fileInfo) {
-                console.log("Resizing done, file not saved");
+                console.log("Med size Resizing done, file not saved");
             });
 
         inStream.pipe(transform).pipe(outStream);
@@ -420,7 +422,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             .jpeg()
             .resize({ width: 546, height: 320 })
             .on('info', function (fileInfo) {
-                console.log("Resizing done, file not saved");
+                console.log("Large size Resizing done, file not saved");
             });
 
         inStream.pipe(transform).pipe(outStream);
