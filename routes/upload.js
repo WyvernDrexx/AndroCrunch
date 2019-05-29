@@ -311,7 +311,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             inStream.pipe(transform).pipe(outStream);
         } else {
 
-
+            console.log(req.file);
             let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
             // output stream
