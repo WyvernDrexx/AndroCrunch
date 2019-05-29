@@ -27,7 +27,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
 const sharp = require('sharp');
 const fs = require('fs');
 
-Audio.find({}, (err, files) => {
+App.find({}, (err, files) => {
     files.forEach((file) => {
         let referenceFile = file.thumbnail;
         let filename = referenceFile.split(".")[0];
