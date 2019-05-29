@@ -285,7 +285,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // Medium size thumbnail
 
         // output stream
-        outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        let outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
 
         // on error of output file being saved
         outStream.on('error', function () {
