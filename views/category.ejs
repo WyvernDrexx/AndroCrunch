@@ -56,64 +56,42 @@
             <% for( let i = files.length - 1 ; i >= files.length - 5; i--){ %>
             <%      file=files[i];  %>
             <% if(i % 2 === 0){ %>
-                <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                    <a href="/<%= category %>/<%= file.name %>">
-                        <div class="card m-0">
-                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
-                            <div class="card-body">
-                                <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
-                            </div>
+            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+                <a href="/<%= category %>/<%= file.name %>">
+                    <div class="card m-0">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="<%= file.filename + ' Thumbnail' %>">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>
-                    </a>
-                </div>
-            <% }else { %>
-                <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                    <a href="/<%= category %>/<%= file.name %>">
-                        <div class="card m-0">
-                            <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
-                            <div class="card-body">
-                                <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <% } %>
-        <% } %>
+                    </div>
+                </a>
             </div>
+            <% }else { %>
+            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+                <a href="/<%= category %>/<%= file.name %>">
+                    <div class="card m-0">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="<%= file.filename + ' Thumbnail' %>">
+                        <div class="card-body">
+                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+            <% } %>
+        </div>
         <% } else { %>
         <div class="row justify-content-center">
             <% for( let i = files.length - 1 ; i > files.length - 5; i--){ %>
             <%      file=files[i];  %>
-            <%      if(category === "wallpapers"){ %>
-                <% if(i % 2 === 0){ %>
-                <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
-                    <a href="/<%= category %>/<%= file.name %>">
-                        <div class="card mx-0">
-                            <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
-                            <div class="card-body">
-                                <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
-                <a href="/<%= category %>/<%= file.name %>">
-                    <div class="card mx-0">
-                        <img src="/uploads/<%= file.referenceFile %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
-                        <div class="card-body">
-                            <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <% } %>
-            <% } else { %>
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
                 <a href="/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
-                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="<%= file.filename + ' Thumbnail' %>">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>
@@ -124,7 +102,8 @@
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
                 <a href="/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
-                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top" alt="<%= file.filename + ' Thumbnail' %>">
+                        <img src="/thumbnails/<%= file.thumbnail %>" class="card-img-top"
+                            alt="<%= file.filename + ' Thumbnail' %>">
                         <div class="card-body">
                             <p class="card-title small text-black"><%= file.filename.substring(0, 28)%></p>
                         </div>
@@ -134,7 +113,6 @@
             </div>
             <% } %>
             <%      }%>
-            <% } %>
         </div>
         <% } %>
     </div>
