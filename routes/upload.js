@@ -74,7 +74,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // output stream
-            let outStream = fs.createWriteStream('./public/thumbnails/' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            let outStream = fs.createWriteStream('./public/thumbnails/' + "sm-" + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
 
             // on error of output file being saved
             outStream.on('error', function () {
@@ -100,7 +100,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // Medium size thumbnail
 
             // output stream
-            outStream = fs.createWriteStream('./public/thumbnails/med-' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            outStream = fs.createWriteStream('./public/thumbnails/md-' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
             inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // on error of output file being saved
@@ -123,7 +123,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
             inStream.pipe(transform).pipe(outStream);
 
-            file.thumbnail = file.referenceFile.split(".")[0] + ".jpeg";
+            file.thumbnail = "sm-" + file.referenceFile.split(".")[0] + ".jpeg";
 
 
 
