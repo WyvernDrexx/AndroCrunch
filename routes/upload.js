@@ -66,6 +66,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             uploader: req.user.username,
             created: moment()
         }
+        file.name = file.filename.trim().split(" ").join("-").toLowerCase();
         if (filesData.mimetype[i].split("/")[1] === "zip") {
             file.mimetype = "zip";
         }
