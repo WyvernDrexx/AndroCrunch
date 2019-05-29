@@ -367,32 +367,23 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         inStream.pipe(transform).pipe(outStream);
 
 
-            // Large size thumbnail
-
-        referenceFile = file.thumbnail;
-        filename = referenceFile.split(".")[0];
-        inStream = fs.createReadStream('../public/thumbnails/' + referenceFile);
-
+        // Large size thumbnail
         // output stream
-        outStream = fs.createWriteStream('../public/thumbnails/lg-' + filename + ".jpeg", { flags: "w" });
+        outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
+        inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
 
         // on error of output file being saved
         outStream.on('error', function () {
             console.log("Error");
         });
 
-        file.thumbnail = filename + ".jpeg";
-        file.save();
-        console.log("File-------------------");
-        console.log(file);
-        console.log("-------------------------");
         // on success of output file being saved
         outStream.on('close', function () {
             console.log("Successfully saved file");
         });
         // input stream transformer
         // "info" event will be emitted on resize
-        let transform = sharp()
+        transform = sharp()
             .jpeg()
             .resize({ width: 546, height: 320 })
             .on('info', function (fileInfo) {
@@ -400,6 +391,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             });
 
         inStream.pipe(transform).pipe(outStream);
+
+
 
         deleteFromSystem("thumbnail", actualfile);
 
