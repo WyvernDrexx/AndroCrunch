@@ -21,7 +21,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                     let inStream = fs.createReadStream('../public/thumbnails/' + elem.thumbnail);
 
                     // output stream
-                    let outStream = fs.createWriteStream('../public/thumbnails/' + elem.thumbnail.split(".")[0] + ".webp", { flags: "w" });
+                    let outStream = fs.createWriteStream('../public/thumbnails/' + elem.thumbnail.split(".")[0] + ".jpeg", { flags: "w" });
 
                     // on error of output file being saved
                     outStream.on('error', function () {
@@ -32,12 +32,12 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                     outStream.on('close', function () {
                         console.log("Successfully saved file");
                     });
-                    elem.thumbnail = elem.thumbnail.split(".")[0] + ".webp";
+                    elem.thumbnail = elem.thumbnail.split(".")[0] + ".jpeg";
                     elem.save();
                     // input stream transformer
                     // "info" event will be emitted on resize
                     let transform = sharp()
-                        .webp()
+                        .jpeg()
                         .resize({ width: 142, height: 96 })
                         .on('info', function (fileInfo) {
                             console.log("Resizing done, file not saved");
