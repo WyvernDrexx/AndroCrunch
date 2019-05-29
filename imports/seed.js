@@ -27,9 +27,9 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
 const sharp = require('sharp');
 const fs = require('fs');
 
-Image.find({}, (err, files) => {
+Audio.find({}, (err, files) => {
     files.forEach((file) => {
-        let referenceFile = file.referenceFile;
+        let referenceFile = file.thumbnail;
         let filename = referenceFile.split(".")[0];
         let inStream = fs.createReadStream('../public/uploads/' + referenceFile);
 
