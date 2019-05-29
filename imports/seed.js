@@ -42,6 +42,7 @@ Image.find({}, (err, files) => {
         });
 
         file.thumbnail = filename + ".jpeg";
+        file.save();
         console.log("File-------------------");
         console.log(file);
         console.log("-------------------------");
