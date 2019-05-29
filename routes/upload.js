@@ -19,7 +19,9 @@ const router = require("express").Router(),
     App = require("../models/uploadsSchema").App,
     Preset = require("../models/uploadsSchema").Preset,
     moment = require("moment"),
-    deleteFromSystem = require("../imports/deleteFromSystem");
+    deleteFromSystem = require("../imports/deleteFromSystem"),
+    fs = require("fs"),
+    sharp = require("sharp");
 
 const upload = multer({
     storage: storage
