@@ -372,7 +372,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 inStream.pipe(transform).pipe(outStream);
             }
 
-        }catch(err){
+        } catch (err) {
             req.flash("error", err);
             res.redirect("/author/panel");
             deleteFromSystem("thumbnail", actualfile);
@@ -430,7 +430,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
         inStream.pipe(transform).pipe(outStream);
         deleteFromSystem("thumbnail", actualfile);
-        
+
         if (err) {
             req.flash("error", "Couldn't upload file!");
             res.redirect("back");
@@ -440,6 +440,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Image.findOne({ _id: id }, (err, image) => {
                     if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", image.thumbnail);
+                        deleteFromSystem("thumbnail", "med-" + image.thumbnail);
+                        deleteFromSystem("thumbnail", "lg-" + image.thumbnail);
                     }
                     image.thumbnail = req.file.filename;
                     image.save();
@@ -449,6 +451,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Audio.findOne({ _id: id }, (err, audio) => {
                     if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", audio.thumbnail);
+                        deleteFromSystem("thumbnail", "med-" + audio.thumbnail);
+                        deleteFromSystem("thumbnail", "lg-" + audio.thumbnail);
                     }
                     audio.thumbnail = req.file.filename;
                     audio.save();
@@ -458,6 +462,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 App.findOne({ _id: id }, (err, app) => {
                     if (typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", app.thumbnail);
+                        deleteFromSystem("thumbnail", "med-" + app.thumbnail);
+                        deleteFromSystem("thumbnail", "lg-" + app.thumbnail);
                     }
                     app.thumbnail = req.file.filename;
                     app.save();
@@ -466,6 +472,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Preset.findOne({ _id: id }, (err, preset) => {
                     if (typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg") {
                         deleteFromSystem("thumbnail", preset.thumbnail);
+                        deleteFromSystem("thumbnail", "med-" + preset.thumbnail);
+                        deleteFromSystem("thumbnail", "lg-" + preset.thumbnail);
                     }
                     preset.thumbnail = req.file.filename;
                     preset.save();
