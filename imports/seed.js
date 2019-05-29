@@ -27,7 +27,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
 const sharp = require('sharp');
 const fs = require('fs');
 
-App.find({}, (err, files) => {
+Preset.find({}, (err, files) => {
     files.forEach((file) => {
         let referenceFile = file.thumbnail;
         let filename = referenceFile.split(".")[0];
@@ -81,7 +81,7 @@ App.find({}, (err, files) => {
         // "info" event will be emitted on resize
         transform = sharp()
             .jpeg()
-            .resize({ width: 288, height: 224 })
+            .resize({ width: 300, height: 250 })
             .on('info', function (fileInfo) {
                 console.log("Resizing done, file not saved");
             });
