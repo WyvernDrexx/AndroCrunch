@@ -310,7 +310,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     thumbnail(req, res, (err) => {
 
         if(req.file.mimetype.split("/")[1] === "jpeg" || req.file.mimetype.split("/")[0] !== "image"){
-            req.flash("Image format unsupported: " + req.file.mimetype);
+            req.flash("error", "Image format unsupported: " + req.file.mimetype);
             res.redirect("back");
             deleteFromSystem("thumbnail", req.file.filename);
             return;
