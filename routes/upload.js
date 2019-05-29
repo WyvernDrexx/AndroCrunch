@@ -344,8 +344,6 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
             inStream.pipe(transform).pipe(outStream);
         } else {
-
-            console.log(req.file);
             let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
             // output stream
@@ -378,8 +376,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // Medium size thumbnail
 
         // output stream
-        let outStream = fs.createWriteStream('./public/thumbnails/med-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
-        let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
+        let outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
         // on error of output file being saved
         outStream.on('error', function () {
@@ -404,8 +402,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
         // Large size thumbnail
         // output stream
-        outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
-        inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
+        outStream = fs.createWriteStream('./public/thumbnails/lg-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
         // on error of output file being saved
         outStream.on('error', function () {
