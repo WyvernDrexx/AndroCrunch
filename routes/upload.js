@@ -306,7 +306,14 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
+
     thumbnail(req, res, (err) => {
+
+        if(req.file.mimetype.split("/")[0] !== "image" || req.file.mimetype.split("/")[0] === "jpeg"){
+            req.flash("Image format unsupported: " + req.file.mimetype);
+            res.redirect("back");
+            return;
+        }
         var actualfile = req.file.filename;
         if (mimetype === "application") {
             let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
