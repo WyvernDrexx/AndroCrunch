@@ -1,49 +1,70 @@
-// const mongoose = require("mongoose"),
-//     Image = require("../models/uploadsSchema").Image,
-//     Audio = require("../models/uploadsSchema").Audio,
-//     App = require("../models/uploadsSchema").App,
-//     Preset = require("../models/uploadsSchema").Preset;
+const mongoose = require("mongoose"),
+    Image = require("../models/uploadsSchema").Image,
+    Audio = require("../models/uploadsSchema").Audio,
+    App = require("../models/uploadsSchema").App,
+    Preset = require("../models/uploadsSchema").Preset;
 
 
-// mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retryWrites=true",
-//     { useNewUrlParser: true }, (err) => {
-//         if (err) {
-//             console.log("Error connecting to database!");
-//             console.log(err);
-//         } else {
-//             console.log("Connected to dB");
-//             Preset.find({}, (err, data) => {
-//                 if (err) {
-//                     console.log(err);
-//                     return;
-//                 }
-//                 // 
-//                 data.forEach((elem) => {
-//                     elem.name = elem.filename.trim().toLowerCase().replace(/\s/g, "-");
-//                     elem.save()
-//                     console.log("Saved: " + elem.filename + " with: " + elem.name);
-//                 });
-//             });
-//             console.log("Getting all!");
-//             Preset.find({}, (err, data) => {
-//                 console.log(data);
-//             });
-//         }
-//     });
+mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retryWrites=true",
+    { useNewUrlParser: true }, (err) => {
+        if (err) {
+            console.log("Error connecting to database!");
+            console.log(err);
+        } else {
+            console.log("Connected to dB");
+            Preset.find({}, (err, data) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                data.forEach((elem) => {
+                    let inStream = fs.createReadStream('../public/thumbnails/' + elem.thumbnail);
 
-var compress_images = require('compress-images'), INPUT_path_to_your_images, OUTPUT_path;
+                    // output stream
+                    let outStream = fs.createWriteStream('../public/thumbnails/' + elem.thumbnail.split(".")[0] + ".webp", { flags: "w" });
 
-INPUT_path_to_your_images = '../public/imgs/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
-OUTPUT_path = 'build/img/';
+                    // on error of output file being saved
+                    outStream.on('error', function () {
+                        console.log("Error");
+                    });
 
-compress_images(INPUT_path_to_your_images, OUTPUT_path, { compress_force: false, statistic: true, autoupdate: true }, false,
-    { jpg: { engine: 'mozjpeg', command: ['-quality', '60'] } },
-    { png: { engine: 'pngquant', command: ['--quality=20-50'] } },
-    { svg: { engine: 'svgo', command: '--multipass' } },
-    { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web'] } }, function (error, completed, statistic) {
-        console.log('-------------');
-        console.log(error);
-        console.log(completed);
-        console.log(statistic);
-        console.log('-------------');
+                    // on success of output file being saved
+                    outStream.on('close', function () {
+                        console.log("Successfully saved file");
+                    });
+
+                    // input stream transformer
+                    // "info" event will be emitted on resize
+                    let transform = sharp()
+                        .webp()
+                        .resize({ width: 142, height: 96 })
+                        .on('info', function (fileInfo) {
+                            console.log("Resizing done, file not saved");
+                        });
+
+                    inStream.pipe(transform).pipe(outStream);
+                    console.log(file);
+                });
+            });
+        }
     });
+
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require("path");
+
+//passsing directoryPath and callback function
+fs.readdir("../public/thumbnails", function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    //listing all files using forEach
+    files.forEach(function (file) {
+
+    });
+});
+
+
+
+// input stream
