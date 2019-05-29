@@ -88,7 +88,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 128, height: 128 })
+                .resize({ width: 142, height: 196 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
