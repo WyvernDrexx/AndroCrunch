@@ -88,7 +88,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // input stream transformer
             // "info" event will be emitted on resize
             let transform = sharp()
-                .jpeg()
+                
                 .resize({ width: 142, height: 196 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -115,7 +115,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // input stream transformer
             // "info" event will be emitted on resize
             transform = sharp()
-                .jpeg()
+                
                 .resize({ width: 288, height: 224 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -144,7 +144,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // input stream transformer
             // "info" event will be emitted on resize
             transform = sharp()
-                .jpeg()
+                
                 .resize({ width: 546, height: 320 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -335,7 +335,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // input stream transformer
             // "info" event will be emitted on resize
             let transform = sharp()
-                .jpeg()
+                
                 .resize({ width: 128, height: 128 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -363,7 +363,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // input stream transformer
             // "info" event will be emitted on resize
             let transform = sharp()
-                .jpeg()
+                
                 .resize({ width: 142, height: 96 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -391,7 +391,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // input stream transformer
         // "info" event will be emitted on resize
         let transform = sharp()
-            .jpeg()
+            
             .resize({ width: 288, height: 224 })
             .on('info', function (fileInfo) {
                 console.log("Resizing done, file not saved");
@@ -417,7 +417,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // input stream transformer
         // "info" event will be emitted on resize
         transform = sharp()
-            .jpeg()
+            
             .resize({ width: 546, height: 320 })
             .on('info', function (fileInfo) {
                 console.log("Resizing done, file not saved");
