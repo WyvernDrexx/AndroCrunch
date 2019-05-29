@@ -43,7 +43,6 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                         });
 
                     inStream.pipe(transform).pipe(outStream);
-                    console.log(file);
                 });
             });
         }
