@@ -309,7 +309,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
     thumbnail(req, res, (err) => {
 
-        if(req.file.mimetype.split("/")[0] !== "image" || req.file.mimetype.split("/")[0] === "jpeg"){
+        if(req.file.mimetype.split("/")[0] === "jpeg" || req.file.mimetype.split("/")[0] !== "image"){
             req.flash("Image format unsupported: " + req.file.mimetype);
             res.redirect("back");
             return;
