@@ -254,7 +254,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         // Medium size thumbnail
 
         // output stream
-        let outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+        outStream = fs.createWriteStream('./public/thumbnails/med-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
 
         // on error of output file being saved
         outStream.on('error', function () {
@@ -267,7 +267,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         });
         // input stream transformer
         // "info" event will be emitted on resize
-        let transform = sharp()
+        transform = sharp()
             .jpeg()
             .resize({ width: 288, height: 224 })
             .on('info', function (fileInfo) {
