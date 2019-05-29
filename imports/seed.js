@@ -54,7 +54,7 @@ Image.find({}, (err, files) => {
         // "info" event will be emitted on resize
         let transform = sharp()
             .jpeg()
-            .resize({ width: 142, height: 196 })
+            .resize({ width: 142, height: 96 })
             .on('info', function (fileInfo) {
                 console.log("Resizing done, file not saved");
             });
