@@ -315,7 +315,6 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             deleteFromSystem("thumbnail", req.file.filename);
             return;
         }
-        console.log(req.file);
         var actualfile = req.file.filename;
         try {
             if (mimetype === "application") {
@@ -333,7 +332,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 outStream.on('close', function () {
                     console.log("Successfully saved file");
                 });
-                req.file.filename = req.file.filename.split(".")[0] + ".jpeg";
+                req.file.filename = "sm-" + req.file.filename.split(".")[0] + ".jpeg";
                 // input stream transformer
                 // "info" event will be emitted on resize
                 let transform = sharp()
@@ -359,7 +358,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 outStream.on('close', function () {
                     console.log("Successfully saved file");
                 });
-                req.file.filename = req.file.filename.split(".")[0] + ".jpeg";
+                req.file.filename = "sm-" + req.file.filename.split(".")[0] + ".jpeg";
                 // input stream transformer
                 // "info" event will be emitted on resize
                 let transform = sharp()
