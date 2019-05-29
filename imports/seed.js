@@ -33,6 +33,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                         console.log("Successfully saved file");
                     });
                     elem.thumbnail = elem.thumbnail.split(".")[0] + ".webp";
+                    elem.save();
                     // input stream transformer
                     // "info" event will be emitted on resize
                     let transform = sharp()
