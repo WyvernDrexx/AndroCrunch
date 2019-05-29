@@ -31,14 +31,10 @@
 
 <section class="download-item bg-white" aria-label="The main section for download">
     <div class="img">
-        <% if(category === "wallpapers"){ %>
-        <img src="/uploads/<%= file.referenceFile %>" alt="<%= 'Thumbnail' + file.filename %>">
-        <% }else{ %>
         <% if(category === "apps"){ %>
         <img src="/thumbnails/med-<%= file.thumbnail %>" class="circle" alt="<%= 'Thumbnail' + file.filename %>">
         <% } else{ %>
         <img src="/thumbnails/med-<%= file.thumbnail %>" alt="<%= 'Thumbnail' + file.filename %>">
-        <% } %>
         <% } %>
     </div>
     <div class="details">
