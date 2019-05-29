@@ -82,7 +82,7 @@
             </div>
         <% } else { %>
         <div class="row justify-content-center">
-            <% for( let i = files.length - 1 ; i >= files.length - 5; i--){ %>
+            <% for( let i = files.length - 1 ; i > files.length - 5; i--){ %>
             <%      file=files[i];  %>
             <%      if(category === "wallpapers"){ %>
                 <% if(i % 2 === 0){ %>
