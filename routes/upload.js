@@ -361,10 +361,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             req.file.filename = req.file.filename.split(".")[0] + ".jpeg";
             // input stream transformer
             // "info" event will be emitted on resize
-            console.log(req.file);
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 142, height: 96 })
+                .resize({ width: 128, height: 128 })
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
