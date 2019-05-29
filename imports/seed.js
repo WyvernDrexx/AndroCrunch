@@ -18,7 +18,7 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
                     return;
                 }
                 data.forEach((elem) => {
-                    
+
                 });
             });
         }
@@ -28,14 +28,65 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require("path");
 
-//passsing directoryPath and callback function
-fs.readdir("../public/thumbnails", function (err, files) {
-    //handling error
-    if (err) {
-        return console.log('Unable to scan directory: ' + err);
-    }
-    //listing all files using forEach
-    files.forEach(function (file) {
+Image.find({}, (files) => {
+    files.forEach((file) => {
+        let referenceFile = file.referenceFile;
+        let filename = referenceFile.split(".")[0];
+        let inStream = fs.createReadStream('../public/uploads/' + referenceFile);
+
+        // output stream
+        let outStream = fs.createWriteStream('../public/thumbnails/' + filename + ".jpeg", { flags: "w" });
+
+        // on error of output file being saved
+        outStream.on('error', function () {
+            console.log("Error");
+        });
+
+        file.thumbnail = filename + ".jpeg";
+        console.log("File-------------------");
+        console.log(file);
+        console.log("-------------------------");
+        // on success of output file being saved
+        outStream.on('close', function () {
+            console.log("Successfully saved file");
+        });
+        // input stream transformer
+        // "info" event will be emitted on resize
+        let transform = sharp()
+            .jpeg()
+            .resize({ width: 142, height: 196 })
+            .on('info', function (fileInfo) {
+                console.log("Resizing done, file not saved");
+            });
+
+        inStream.pipe(transform).pipe(outStream);
+
+
+        // Medium size thumbnail
+
+        // output stream
+        outStream = fs.createWriteStream('../public/thumbnails/med-' + filename + ".jpeg", { flags: "w" });
+        inStream = fs.createReadStream('../public/uploads/' + referenceFile);
+
+        // on error of output file being saved
+        outStream.on('error', function () {
+            console.log("Error");
+        });
+
+        // on success of output file being saved
+        outStream.on('close', function () {
+            console.log("Successfully saved file");
+        });
+        // input stream transformer
+        // "info" event will be emitted on resize
+        transform = sharp()
+            .jpeg()
+            .resize({ width: 288, height: 224 })
+            .on('info', function (fileInfo) {
+                console.log("Resizing done, file not saved");
+            });
+
+        inStream.pipe(transform).pipe(outStream);
 
     });
 });
