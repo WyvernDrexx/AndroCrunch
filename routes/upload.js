@@ -225,7 +225,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     let id = req.params.id;
     thumbnail(req, res, (err) => {
         var actualfile = req.file.filename;
-        if (mimetype !== "application") {
+        if (mimetype === "application") {
             let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
             // output stream
