@@ -70,6 +70,60 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             file.mimetype = "zip";
         }
         if (file.mimetype === "image") {
+            let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
+
+            // output stream
+            let outStream = fs.createWriteStream('./public/thumbnails/' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+
+            // on error of output file being saved
+            outStream.on('error', function () {
+                console.log("Error");
+            });
+
+            // on success of output file being saved
+            outStream.on('close', function () {
+                console.log("Successfully saved file");
+            });
+            // input stream transformer
+            // "info" event will be emitted on resize
+            let transform = sharp()
+                .jpeg()
+                .resize({ width: 128, height: 128 })
+                .on('info', function (fileInfo) {
+                    console.log("Resizing done, file not saved");
+                });
+
+            inStream.pipe(transform).pipe(outStream);
+
+
+            // Medium size thumbnail
+
+            // output stream
+            outStream = fs.createWriteStream('./public/thumbnails/med-' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
+
+            // on error of output file being saved
+            outStream.on('error', function () {
+                console.log("Error");
+            });
+
+            // on success of output file being saved
+            outStream.on('close', function () {
+                console.log("Successfully saved file");
+            });
+            // input stream transformer
+            // "info" event will be emitted on resize
+            transform = sharp()
+                .jpeg()
+                .resize({ width: 288, height: 224 })
+                .on('info', function (fileInfo) {
+                    console.log("Resizing done, file not saved");
+                });
+
+            inStream.pipe(transform).pipe(outStream);
+
+            file.thumbnail = file.referenceFile.split(".")[0] + ".jpeg";
+
             Image.create(file, (err, returnedData) => {
                 if (err) {
                     message = message + err;
@@ -77,6 +131,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                     message = message + "File [" + returnedData.filename + "] successfully added to database! \n";
                 }
             });
+
+
+
 
         } else if (file.mimetype === "audio") {
             Audio.create(file, (err, returnedData) => {
