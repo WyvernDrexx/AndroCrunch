@@ -26,9 +26,8 @@ mongoose.connect("mongodb+srv://admin:311210187@dev-cbuvl.mongodb.net/test?retry
 
 const sharp = require('sharp');
 const fs = require('fs');
-const path = require("path");
 
-Image.find({}, (files) => {
+Image.find({}, (err, files) => {
     files.forEach((file) => {
         let referenceFile = file.referenceFile;
         let filename = referenceFile.split(".")[0];
