@@ -372,65 +372,68 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 inStream.pipe(transform).pipe(outStream);
             }
 
-        } catch (err) {
-            req.flash("error", err);
-            res.redirect("/author/panel");
+
+            // Medium size thumbnail
+
+            // output stream
+            let outStream = fs.createWriteStream('./public/thumbnails/med-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
+            let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
+
+            // on error of output file being saved
+            outStream.on('error', function () {
+                console.log("Error");
+            });
+
+            // on success of output file being saved
+            outStream.on('close', function () {
+                console.log("Successfully saved file");
+            });
+            // input stream transformer
+            // "info" event will be emitted on resize
+            let transform = sharp()
+                .jpeg()
+                .resize({ width: 288, height: 224 })
+                .on('info', function (fileInfo) {
+                    console.log("Med size Resizing done, file not saved");
+                });
+
+            inStream.pipe(transform).pipe(outStream);
+
+
+            // Large size thumbnail
+            // output stream
+            outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
+            inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
+
+            // on error of output file being saved
+            outStream.on('error', function () {
+                console.log("Error");
+                req.flash("error", "Unable to resize the file, jpeg format not supported!");
+                res.redirect("/author/panel");
+                return;
+            });
+
+            // on success of output file being saved
+            outStream.on('close', function () {
+                console.log("Successfully saved file");
+            });
+            // input stream transformer
+            // "info" event will be emitted on resize
+            transform = sharp()
+                .jpeg()
+                .resize({ width: 546, height: 320 })
+                .on('info', function (fileInfo) {
+                    console.log("Large size Resizing done, file not saved");
+                });
+
+            inStream.pipe(transform).pipe(outStream);
             deleteFromSystem("thumbnail", actualfile);
+        } catch (err) {
+            deleteFromSystem("thumbnail", actualfile);
+            deleteFromSystem("thumbnail", "med-" + actualfile);
+            deleteFromSystem("thumbnail", "lg-" + actualfile);
             return;
         }
-        // Medium size thumbnail
-
-        // output stream
-        let outStream = fs.createWriteStream('./public/thumbnails/med-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
-        let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
-
-        // on error of output file being saved
-        outStream.on('error', function () {
-            console.log("Error");
-        });
-
-        // on success of output file being saved
-        outStream.on('close', function () {
-            console.log("Successfully saved file");
-        });
-        // input stream transformer
-        // "info" event will be emitted on resize
-        let transform = sharp()
-            .jpeg()
-            .resize({ width: 288, height: 224 })
-            .on('info', function (fileInfo) {
-                console.log("Med size Resizing done, file not saved");
-            });
-
-        inStream.pipe(transform).pipe(outStream);
-
-
-        // Large size thumbnail
-        // output stream
-        outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
-        inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
-
-        // on error of output file being saved
-        outStream.on('error', function () {
-            console.log("Error");
-        });
-
-        // on success of output file being saved
-        outStream.on('close', function () {
-            console.log("Successfully saved file");
-        });
-        // input stream transformer
-        // "info" event will be emitted on resize
-        transform = sharp()
-            .jpeg()
-            .resize({ width: 546, height: 320 })
-            .on('info', function (fileInfo) {
-                console.log("Large size Resizing done, file not saved");
-            });
-
-        inStream.pipe(transform).pipe(outStream);
-        deleteFromSystem("thumbnail", actualfile);
-
         if (err) {
             req.flash("error", "Couldn't upload file!");
             res.redirect("back");
