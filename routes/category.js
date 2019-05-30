@@ -120,7 +120,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
     console.log(category);
     let pagenumber = Math.floor(Number(req.params.page));
 
-    if( category !== "wallpapers" || category !== "ringtones" || category !== "apps" || category !== "presets" ){
+    if( category !== "wallpapers" && category !== "ringtones" && category !== "apps" && category !== "presets" ){
         req.flash("error", "No [" + category + "] category found!");
         res.redirect("/contents");
         console.log("httt");
