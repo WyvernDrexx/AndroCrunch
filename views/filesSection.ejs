@@ -16,8 +16,7 @@
                 <a href="/files/list/audio"
                     class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border">Audio</a>
                 <% }else{ %>
-                <a href="/files/list/audio"
-                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Audio</a>
+                <a href="/files/list/audio" class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Audio</a>
                 <% } %>
             </div>
             <div class="mt-4">
@@ -39,7 +38,8 @@
                 <a href="/files/list/presets"
                     class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2 active no-border ">Presets</a>
                 <% }else{ %>
-                <a href="/files/list/presets" class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Presets</a>
+                <a href="/files/list/presets"
+                    class="btn btn-outline-primary rounded-pill px-2 ml-2 pt-2 pb-2">Presets</a>
                 <% } %>
             </div>
         </div>
@@ -54,18 +54,10 @@
                 <% if(typeof file.thumbnail === "undefined" && file.mimetype !== "image"){ %>
                 <p class="tags text-danger">No thumbnail provided</p>
                 <% }else{ %>
-                <% if(file.mimetype === "image") { %>
-                <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
-                <div class="thumbnail text-center">
-                    <img src="/uploads/<%= file.referenceFile %>" class="img-thumbnail mb-3">
-                </div>
-                <% } else {%>
                 <p class="tags"><strong>Thumbnail: </strong><%= file.thumbnail %></p>
                 <div class="thumbnail text-center">
                     <img src="/thumbnails/<%= file.thumbnail %>" class="img-thumbnail mb-3">
                 </div>
-                <% } %>
-                <% } %>
                 <h5 class="card-text"><%= file.description %></h5>
                 <a href="/files/<%= file.mimetype %>/<%= file._id %>/edit" class="btn btn-primary mt-4 mb-4">Edit</a>
                 <form class="d-inline" action="/files/<%= file.mimetype %>/<%= file._id %>?_method=DELETE"
