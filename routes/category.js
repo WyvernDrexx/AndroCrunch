@@ -115,11 +115,15 @@ router.get("/contents", (req, res) => {
 router.get("/contents/:category/page/:page", (req, res) => {
 
     let category = req.params.category.toLowerCase();
+    console.log(typeof category);
+    console.log(category !== "wallpapers");
+    console.log(category);
     let pagenumber = Math.floor(Number(req.params.page));
 
     if(category !== "wallpapers" || category !== "ringtones" || category !== "apps" || category !== "presets"){
         req.flash("error", "No [" + category + "] category found!");
         res.redirect("/contents");
+        console.log("httt");
         return;
     }
     if(typeof pagenumber !== "number"){
