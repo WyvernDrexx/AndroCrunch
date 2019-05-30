@@ -161,7 +161,7 @@ router.get("/:category/:name/download", (req, res) => {
         });
 
     }else {
-        req.flash("error", "Please check your URL and try again.");
+        req.flash("error", "Please check your URL and try again. from downloads");
         res.redirect("back");
     }
     // res.download("public/uploads/1557848448142.jpg");
