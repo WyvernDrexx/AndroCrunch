@@ -111,4 +111,47 @@ router.get("/contents", (req, res) => {
     });
 });
 
+
+router.get("/contents/:category/:page", (req, res) => {
+
+
+    let category = req.params.category.toLowerCase();
+    let pagenumber = Math.floor(Number(req.params.page));
+
+    if(category !== "wallpapers" || category !== "ringtones" || category !== "apps" || category !== "presets"){
+        req.flash("error", "No [" + category + "] category found!");
+        res.redirect("/contents");
+        return;
+    }
+    if(typeof pagenumber !== "number"){
+        req.flash("error", "Page number invalid!");
+        res.redirect("back");
+        return;
+    }
+
+    if(category === "wallpapers"){
+        Image.find({}, (err, images) => {
+            if(err){
+                req.flash("error", "Error! Try again!");
+                res.redirect("/");
+                return;
+            }
+
+            let totalPages = Math.round(images.length/4);
+            let start = (pagenumber - 1) * 4;
+            let end = pagenumber * 4;
+            if(end > images.length){
+                res.redirect("/contents");
+                return;
+            }
+            
+            let extractedImages = images.slice(start, end);
+            res.send(extractedImages);
+        });
+    }
+
+
+});
+
+
 module.exports = router;
