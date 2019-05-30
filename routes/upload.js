@@ -527,7 +527,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     if (mimetype === "image") {
         Image.findOneAndUpdate({ _id: id }, {
             filename: req.body.filename,
-            description: req.body.description
+            description: req.body.description,
+            name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, image) => {
             if (err) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -541,7 +542,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     else if (mimetype === "audio") {
         Audio.findOneAndUpdate({ _id: id }, {
             filename: req.body.filename,
-            description: req.body.description
+            description: req.body.description,
+            name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, audio) => {
             if (err) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -555,7 +557,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     else if (mimetype === "application") {
         App.findOneAndUpdate({ _id: id }, {
             filename: req.body.filename,
-            description: req.body.description
+            description: req.body.description,
+            name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, app) => {
             if (err) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -568,7 +571,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     } else if (mimetype === "zip") {
         Preset.findOneAndUpdate({ _id: id }, {
             filename: req.body.filename,
-            description: req.body.description
+            description: req.body.description,
+            name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, preset) => {
             if (err) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
