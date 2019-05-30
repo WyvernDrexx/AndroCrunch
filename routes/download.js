@@ -30,7 +30,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Image.findOne({ name }, (err, image) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
-                return res.redirect("back");
+                return res.redirect("/");
             }
             res.render("item", {
                 file: image,
@@ -46,7 +46,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Audio.findOne({  name }, (err, audio) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
-                return res.redirect("back");
+                return res.redirect("/");
             }
             res.render("item", {
                 file: audio,
@@ -62,7 +62,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Preset.findOne({  name }, (err, preset) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
-                return res.redirect("back");
+                return res.redirect("/");
             }
             res.render("item", {
                 file: preset,
@@ -78,7 +78,7 @@ router.get("/contents/:category/:name", (req, res) => {
         App.findOne({  name }, (err, app) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
-                return res.redirect("back");
+                return res.redirect("/");
             }
             res.render("item", {
                 file: app,
