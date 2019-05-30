@@ -1,5 +1,5 @@
 const methodOverride = require('method-override'),
-sanitizer = require('express-sanitizer'),
+    sanitizer = require('express-sanitizer'),
     express = require('express'),
     bodyParser = require('body-parser'),
     server = express(),
@@ -22,7 +22,7 @@ server.use(cookieSession({
     secret: "XamarinisTheBoss",
     httpOnly: false,
     secure: true,
-    
+
 }));
 server.use(flash());
 server.use(passport.initialize());
@@ -36,16 +36,17 @@ server.use((req, res, next) => {
 });
 
 server.use((err, req, res, next) => {
-    if(err){
+    if (err) {
         console.log("ERROR ENCOUNTERED ON EXPRESS!");
         console.log(err);
         next();
-    }else{
+    } else {
         next();
     }
 });
 server.use((req, res, next) => {
-    res.header('Cache-Control', 'max-age=31536000');
+    res.setHeader("Cache-Control", "public, max-age=2592000");
+    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
     next();
 });
 server.use(compress());
