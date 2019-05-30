@@ -181,7 +181,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 title: "Wallpapers, ringtones, presets, apps, games for free download",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download",
                 description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
-                last: totalPages,
+                last: totalPages - 1,
                 next: pagenumber + 1,
                 current: pagenumber,
                 previous: pagenumber - 1,
