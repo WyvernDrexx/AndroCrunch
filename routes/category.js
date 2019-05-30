@@ -184,7 +184,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
-                previous: pagenumber - 1
+                previous: pagenumber - 1,
+                category
             });
         });
     }
