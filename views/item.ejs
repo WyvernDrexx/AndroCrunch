@@ -32,9 +32,9 @@
 <section class="download-item bg-white" aria-label="The main section for download">
     <div class="img">
         <% if(category === "apps"){ %>
-        <img src="/thumbnails/med-<%= file.thumbnail %>" class="circle" alt="<%= 'Thumbnail' + file.filename %>">
+        <img src="/thumbnails/md-<%= (file.thumbnail).split('-')[1] %>" class="circle" alt="<%= 'Thumbnail' + file.filename %>">
         <% } else{ %>
-        <img src="/thumbnails/med-<%= file.thumbnail %>" alt="<%= 'Thumbnail' + file.filename %>">
+        <img src="/thumbnails/md-<%= (file.thumbnail).split('-')[1] %>" alt="<%= 'Thumbnail' + file.filename %>">
         <% } %>
     </div>
     <div class="details">
