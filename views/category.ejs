@@ -136,15 +136,15 @@
             <li class="page-item"><a class="page-link"
                     href="/contents/<%= category %> /page/<%= last %>"><%= last %></a></li>
 
-            if(current === last){
+            <% if(current === last){ %>
             <li class="page-item disabled">
                 <a class="page-link next pl-1" href="/contents/<%=category%>/page/<%= next %>">Next</a>
             </li>
-            }else{
+            <% }else{ %>
             <li class="page-item">
                 <a class="page-link next pl-1" href="/contents/<%=category%>/page/<%= next %>">Next</a>
             </li>
-            }
+            <% } %>
         </ul>
     </nav>
     <h2 class="display-5 text-center  mb-3 pt-6s pt-md-5"><span>Our Blogs</span></h2>
