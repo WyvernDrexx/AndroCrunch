@@ -112,7 +112,7 @@ router.get("/contents", (req, res) => {
 });
 
 
-router.get("/contents/:category/:page", (req, res) => {
+router.get("/:category/:page", (req, res) => {
 
 
     let category = req.params.category.toLowerCase();
