@@ -13,12 +13,21 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find apps at the moment.");
                 return res.redirect("/contents");
             }
+
+            var last = Math.round(apps.length / 4);
+            
+
             res.render("category", {
                 category,
                 files: apps,
                 title: "Latest top and premium apps for free download",
                 keywords: "latest, best,  apps, android, free, download, gta, san andreas, ",
-                description: "Download latest and top android apps and games for free. 100% working apps."
+                description: "Download latest and top android apps and games for free. 100% working apps.",
+                last,
+                next: 2,
+                current: 1,
+                previous: 0
+
             });
         })
 
@@ -28,12 +37,18 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Couldn't query the database try again later.");
                 return res.redirect("back");
             }
+            var last = Math.round(images.length / 4);
             res.render("category", {
                 files: images,
                 category,
                 title: "HD Wallpapers for desktop and mobile free download",
                 keywords: "hd wallpapers, hd, desktop, android, for, download, free",
-                description: "Download HD Wallpapers for desktop and mobile for completely free"
+                description: "Download HD Wallpapers for desktop and mobile for completely free",
+                last,
+                next: 2,
+                current: 1,
+                previous: 0
+
             });
         });
 
@@ -43,12 +58,18 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
+            var last = Math.round(audios.length / 4);
             res.render("category", {
                 files: audios,
                 category,
                 title: "Best Ringtones for Free Download",
                 keywords: "rington, ringtones, free download, 2018, 2019, avengers, mp3, midi",
-                description: "Download Latest and high quality ringtones for free."
+                description: "Download Latest and high quality ringtones for free.",
+                last,
+                next: 2,
+                current: 1,
+                previous: 0
+
             });
         });
     }
@@ -58,12 +79,18 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
+            var last = Math.round(presets.length / 4);
             res.render("category", {
                 files: presets,
                 category,
                 title: "Latest beautiful presets",
                 keywords: "presets, photoshop, lightroom, free, premium, download, zip",
-                description: "Download best presets for free"
+                description: "Download best presets for free",
+                last,
+                next: 2,
+                current: 1,
+                previous: 0
+
             });
         });
     }
@@ -149,7 +176,16 @@ router.get("/contents/:category/page/:page", (req, res) => {
             }
             
             let extractedImages = images.slice(start, end);
-            res.send(extractedImages);
+            res.render("contents", {
+                files: extractedImages,
+                title: "Wallpapers, ringtones, presets, apps, games for free download",
+                keywords: "wallpapers, ringtones, apps, games, android, free, download",
+                description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
+                last: totalPages,
+                next: pagenumber + 1,
+                current: pagenumber,
+                previous: pagenumber - 1
+            });
         });
     }
 
