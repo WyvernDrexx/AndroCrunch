@@ -130,16 +130,9 @@
             <%  } %>
             <li class="page-item disabled active no-border "><a class="page-link" href="/"><%= current %><span
                         class="sr-only">(current)</span></a></li>
-            <% if(current !== last){ %>
-            <li class="page-item" aria-current="page">
-                <a class="page-link" href="/contents/<%= category %>/page/<%= next %>"><%= next %> </a>
-            </li>
-            <% } %>
-
             <li class="page-item">
                 <a class="page-link" href="/contents/<%= category %>/page/<%= last %>"><%= last %></a>
             </li>
-
             <% if(current === last){ %>
             <li class="page-item disabled">
                 <a class="page-link next pl-1" href="/contents/<%=category%>/page/<%= next %>">Next</a>
