@@ -21,8 +21,10 @@
                 </div>
             </div>
         </form>
-        <p class="text-center text-center text-white small"><strong>Note:</strong> Presets are seen as zip files so do not upload anything else.</p>
-        <p class="text-center text-center text-white small"> Supported file formats all images other than .webp, audio and zip</p>
+        <p class="text-center text-center text-white small"><strong>Note:</strong> Presets are seen as zip files so do
+            not upload anything else.</p>
+        <p class="text-center text-center text-white small"> Supported file formats all images other than .webp, audio
+            and zip</p>
     </div>
 </div>
 <% } %>
@@ -39,7 +41,7 @@
         STORAGE and now,
         you are just
         posting info about the files which will be added to DATABASE.</p>
-    <p class="text-center text-center text-warning"><strong>WARNING:</strong> <br> 
+    <p class="text-center text-center text-warning"><strong>WARNING:</strong> <br>
         1. Do not leave the page without uploading
         data, the files is not automatically removed since it ia already uploaded.
         <br> 2. Upload files with unique file names for later feature.
@@ -53,12 +55,17 @@
                         class="text-primary small"><%= file.originalname %></span></label>
                 <input type="text" name="title[<%= index %>]" class="form-control" aria-describedby="file"
                     placeholder="File Title for Public!" required>
+
+                <label for="fileName">Custom Url:</label>
+                <input type="text" name="name[<%= index %>]" class="form-control" aria-describedby="file"
+                    placeholder="Custom Url" required>
                 <input type="text" name="mimetype[<%= index %>]" value="<%= file.mimetype %>" hidden>
                 <input type="text" name="size[<%= index %>]" value="<%= file.size %>" hidden>
                 <input type="text" name="referenceFile[<%= index %>]" value="<%= file.filename %>" hidden>
                 <small id="file" class="form-text xs-small">This is the name of the file which will be seen by the
                     public.</small>
-                <small id="file" class="form-text text-info">Try to make the title fit in between 28 characters including spaces for better display.</small>
+                <small id="file" class="form-text text-info">Try to make the title fit in between 28 characters
+                    including spaces for better display.</small>
                 <label for="exampleFormControlTextarea1" class="mt-3">Description:</label>
                 <textarea name="description[<%= index %>]" class="form-control" rows="1"
                     placeholder="File description goes here!" required></textarea>
