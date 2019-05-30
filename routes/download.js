@@ -22,7 +22,7 @@ const router = require("express").Router(),
     deleteFromSystem = require("../imports/deleteFromSystem");
 
 
-router.get("/:category/:name", (req, res) => {
+router.get("/contents/:category/:name", (req, res) => {
     let category = req.params.category.toLowerCase();
     let name = req.params.name;
 
