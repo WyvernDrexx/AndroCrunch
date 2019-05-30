@@ -91,7 +91,7 @@ router.get("/:category/:name", (req, res) => {
         });
 
     }else {
-        req.flash("error", "Please check your URL and try again.");
+        req.flash("error", "Please check your URL and try again. from /cat/name");
         res.redirect("back");
     }
 
