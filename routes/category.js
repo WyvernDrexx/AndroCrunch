@@ -176,7 +176,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
             }
             
             let extractedImages = images.slice(start, end);
-            res.render("contents", {
+            res.render("category", {
                 files: extractedImages,
                 title: "Wallpapers, ringtones, presets, apps, games for free download",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download",
