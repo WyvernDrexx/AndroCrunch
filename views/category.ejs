@@ -53,7 +53,7 @@
         <p class="small text-center text-gray pb-3">Catch up the latest tunes!</p>
         <% if(category === "apps") { %>
         <div class="row justify-content-center apps">
-            <% for( let i = files.length - 1 ; i >= files.length - 5; i--){ %>
+            <% for( let i = files.length - 1 ; i > files.length - 5; i--){ %>
             <%      file=files[i];  %>
             <% if(i % 2 === 0){ %>
             <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
