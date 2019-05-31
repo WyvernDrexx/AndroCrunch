@@ -11,17 +11,6 @@ p {
     letter-spacing: .3px
 }
 
-footer {
-    position: relative;
-    padding: 5rem;
-    text-align: center
-}
-
-footer p {
-    font-size: 2rem;
-    margin-bottom: 0
-}
-
 .fixed-top {
     z-index: 99
 }
@@ -908,14 +897,16 @@ a:active, a:focus {
     color: #fff;
     background-color: #06c
 }
-
+.footer-bg{
+    background-image: url('/imgs/footer-bg.jpg');
+    background-size: 100vw 100%;
+}
 .pb-6 {
     padding-bottom: 4.5rem
 }
 
 .statistics {
     padding-top: 7.5rem;
-    background-image: linear-gradient(to bottom, #306, #60c)
 }
 
 .hits {
