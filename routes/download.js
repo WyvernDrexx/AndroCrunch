@@ -106,8 +106,7 @@ router.get("/:category/:name/download", (req, res) => {
         return res.redirect("/" + category);
     }
     Data.find({}, (err, data) => {
-        data.downloads = Number(data.downloads) + 1;
-        data.save();
+        console.log(data);
     });
     if (category === "wallpapers") {
         Image.findOne({  name }, (err, image) => {
