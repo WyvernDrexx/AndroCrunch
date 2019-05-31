@@ -1125,6 +1125,9 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:768px) {
+    .footer-bg{
+        background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
+    }
     div.footer.container-fluid .container.transparent {
         display: none
     }
