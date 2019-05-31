@@ -106,6 +106,7 @@ router.get("/:category/:name/download", (req, res) => {
         return res.redirect("/" + category);
     }
     Data.find({}, (err, data) => {
+        console.log(data);
         data.list.downloads += 1;
         data.save();
     });
