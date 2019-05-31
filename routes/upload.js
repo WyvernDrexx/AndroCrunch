@@ -74,7 +74,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
         }
         if (file.mimetype === "image") {
             Data.find({}, (err, data) => {
-                data.wallpapers = Number(data.wallpapers) + 1;
+                console.log(data);
+                data[0].list.wallpapers += 1;
+                data[0].save();
             });
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
@@ -168,7 +170,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
         } else if (file.mimetype === "audio") {
             Data.find({}, (err, data) => {
-                data.ringtones = Number(data.ringtones) + 1;
+                console.log(data);
+                data[0].list.ringtones += 1;
+                data[0].save();
             });
             Audio.create(file, (err, returnedData) => {
                 if (err) {
@@ -180,7 +184,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
         } else if (file.mimetype === "application") {
             Data.find({}, (err, data) => {
-                data.apps = Number(data.apps) + 1;
+                console.log(data);
+                data[0].list.apps += 1;
+                data[0].save();
             });
             App.create(file, (err, returnedData) => {
                 if (err) {
@@ -192,7 +198,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
         } else if (file.mimetype === "zip") {
             Data.find({}, (err, data) => {
-                data.presets = Number(data.presets) + 1;
+                console.log(data);
+                data[0].list.presets += 1;
+                data[0].save();
             });
             Preset.create(file, (err, returnedData) => {
                 if (err) {
