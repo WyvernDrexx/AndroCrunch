@@ -105,7 +105,7 @@ router.get("/:category/:name/download", (req, res) => {
     if(typeof req.headers.referer === "undefined"){
         return res.redirect("/" + category);
     }
-    Data.find({list}, (err, data) => {
+    Data.find({}, (err, data) => {
         console.log(data);
     });
     if (category === "wallpapers") {
