@@ -107,7 +107,7 @@ router.get("/:category/:name/download", (req, res) => {
     }
     Data.find({}, (err, data) => {
         console.log(data);
-        data['list'].downloads += 1;
+        data[0].list.downloads += 1;
         data.save();
     });
     if (category === "wallpapers") {
