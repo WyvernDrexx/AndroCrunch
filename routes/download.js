@@ -19,6 +19,7 @@ const router = require("express").Router(),
     App = require("../models/uploadsSchema").App,
     Preset = require("../models/uploadsSchema").Preset,
     moment = require("moment"),
+    Data = require("../models/data"),
     deleteFromSystem = require("../imports/deleteFromSystem");
 
 
@@ -104,6 +105,10 @@ router.get("/:category/:name/download", (req, res) => {
     if(typeof req.headers.referer === "undefined"){
         return res.redirect("/" + category);
     }
+    Data.find({}, (err, data) => {
+        data.downloads = Number(data.downloads) + 1;
+        data.save();
+    });
     if (category === "wallpapers") {
         Image.findOne({  name }, (err, image) => {
             if (err) {
