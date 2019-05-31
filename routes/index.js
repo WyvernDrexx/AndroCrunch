@@ -1,7 +1,8 @@
 const express = require("express"),
     router = express.Router(),
     Subscriber = require("../models/subscribers"),
-    jquery = require("jquery");
+    jquery = require("jquery"),
+    Data = require("../models/data");
 
 router.get("/kickout", (req, res) => {
     req.logout();
@@ -75,6 +76,10 @@ router.post("/subscribe", (req, res) => {
                         response.message = "There was an error subscribing to the newsletter. Try again!";
                         res.send(response);
                     } else {
+                        Data.find({}, (err, data) => {
+                            data[0].list.subscribers += 1;
+                            data[0].save();
+                        });
                         response.message = "Thank you for subscribing!"
                         res.send(response);
                     }
