@@ -332,28 +332,34 @@ input::placeholder {
 
 .hover-option {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 100%;
     width: 100%;
     background: rgba(3, 27, 104, .311);
-    z-index: 2;
+    z-index: 5;
     opacity: 0;
-    border-radius: 11px
+    border-radius: 35px;
 }
 
 .fab.big {
     font-size: 25px
 }
-
+.scroll-item:hover .category{
+    opacity: 0;
+}
 .hover-option a {
     position: absolute;
-    width: 40px;
+    width: 100px;
+    height: 40px;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 40px;
+    color: white !important;
     margin: auto;
-    padding-bottom: 39px
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -811,18 +817,30 @@ a:active, a:focus {
 
 .horizontal-scroll .scroll-item {
     display: inline-block;
-    margin: 5px;
+    margin: 20px;
     margin-top: 1.2rem;
-    height: 9rem;
-    width: 9rem;
+    height: 13rem;
+    width: 10.5rem;
     background-color: #0fc4c4;
-    border-radius: 15px
+    border-radius: 35px;
+    position: relative;
 }
-
+.scroll-item .category{
+    position: absolute;
+    width: 50px;
+    text-align: center;
+    top: 45%;
+    bottom: 0;
+    left:0;
+    right: 20%;
+    color: rgba(249, 249, 250, 0.904);
+    z-index: 5;
+    margin: auto;
+}
 .horizontal-scroll .scroll-item img {
-    width: 9rem;
-    border-radius: 15px;
-    height: 9rem
+    width: 10.5rem;
+    border-radius: 35px;
+    height: 13rem
 }
 
 .horizontal-scroll .scroll-item:hover {
@@ -1116,6 +1134,10 @@ a:active, a:focus {
 @media only screen and (max-width:768px) {
     div.footer.container-fluid .container.transparent {
         display: none
+    }
+
+    .scroll-top{
+        justify-content: initial !important;
     }
     .recommended .card-title {
         font-size: 16px
