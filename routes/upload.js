@@ -21,7 +21,9 @@ const router = require("express").Router(),
     moment = require("moment"),
     deleteFromSystem = require("../imports/deleteFromSystem"),
     fs = require("fs"),
-    sharp = require("sharp");
+    sharp = require("sharp"),
+    Data = require("../models/data");
+
 
 const upload = multer({
     storage: storage
@@ -71,6 +73,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             file.mimetype = "zip";
         }
         if (file.mimetype === "image") {
+            Data.find({}, (err, data) => {
+                data.wallpapers = Number(data.wallpapers) + 1;
+            });
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // output stream
@@ -162,6 +167,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             });
 
         } else if (file.mimetype === "audio") {
+            Data.find({}, (err, data) => {
+                data.ringtones = Number(data.ringtones) + 1;
+            });
             Audio.create(file, (err, returnedData) => {
                 if (err) {
                     message = message.concat(err);
@@ -171,6 +179,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             });
 
         } else if (file.mimetype === "application") {
+            Data.find({}, (err, data) => {
+                data.apps = Number(data.apps) + 1;
+            });
             App.create(file, (err, returnedData) => {
                 if (err) {
                     message = message + err;
@@ -180,6 +191,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             });
 
         } else if (file.mimetype === "zip") {
+            Data.find({}, (err, data) => {
+                data.presets = Number(data.presets) + 1;
+            });
             Preset.create(file, (err, returnedData) => {
                 if (err) {
                     console.log(err);
