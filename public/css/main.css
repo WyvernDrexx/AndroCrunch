@@ -1018,7 +1018,7 @@ a:active, a:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 1s;
-    width: 50px;
+    width: 60vw;
     height: 50px;
     background: #03f;
     box-sizing: border-box;
@@ -1039,7 +1039,6 @@ a:active, a:focus {
     line-height: 30px;
     outline: 0;
     border: 0;
-    display: none;
     font-size: 1em;
     border-radius: 20px;
     padding: 0 20px
@@ -1057,16 +1056,16 @@ a:active, a:focus {
     text-align: center;
     color: #fff;
     font-size: 1.2em;
-    transition: all 1s
+    transition: all 1s;
+    background-color: rgb(4, 22, 184);
+    box-shadow: 10px 30px 50px rgba(2, 38, 104, 0.678)
 }
 
 .srch form:hover {
-    width: 300px;
     cursor: pointer
 }
-
-.srch form:hover input {
-    display: block
+.srch input::placeholder{
+    color: white;
 }
 
 .srch form:hover .fas {
@@ -1164,6 +1163,9 @@ a:active, a:focus {
     #nav {
         display: none
     }
+    .srch form{
+        width: 75vw;
+    }
     .carousel-item img {
         min-height: 12rem;
         max-height: 12rem
@@ -1252,9 +1254,6 @@ a:active, a:focus {
     }
     .subscription {
         margin-bottom: -5.7rem!important
-    }
-    .srch.open {
-        width: 330px
     }
     .blog-details .meta {
         font-size: .8rem
