@@ -906,10 +906,12 @@ a:active, a:focus {
 
 .footer-bg {
     background-image: url('/imgs/footer-bg.jpg');
-    background-size: 100vw 100%;
-    background-attachment: fixed;
+    background-size: 100% 100%;
 }
-
+.testimonial-bg{
+    background-image: url('/imgs/testimonial-bg.jpg');
+    background-size: 100% 100%;
+}
 .pb-6 {
     padding-bottom: 4.5rem
 }
