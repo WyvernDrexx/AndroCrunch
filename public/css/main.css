@@ -824,8 +824,8 @@ a:active, a:focus {
     display: inline-block;
     margin: 20px;
     margin-top: 1.2rem;
-    height: 13rem;
-    width: 10.8rem;
+    height: 14rem;
+    width: 12rem;
     background-color: #0fc4c4;
     border-radius: 35px;
     position: relative;
@@ -846,9 +846,9 @@ a:active, a:focus {
 }
 
 .horizontal-scroll .scroll-item img {
-    width: 10.8rem;
+    width: 12rem;
     border-radius: 35px;
-    height: 13rem
+    height: 14rem
 }
 
 .horizontal-scroll .scroll-item:hover {
