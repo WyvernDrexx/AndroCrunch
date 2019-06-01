@@ -823,11 +823,12 @@ a:active, a:focus {
     text-align: center;
     top: 45%;
     bottom: 0;
-    left: 0;
-    right: 20%;
+    left: 15%;
+    right: 0;
     color: rgba(249, 249, 250, 0.904);
     z-index: 5;
-    margin: auto;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .horizontal-scroll .scroll-item img {
