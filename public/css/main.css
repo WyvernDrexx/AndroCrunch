@@ -336,9 +336,11 @@ input::placeholder {
 .fab.big {
     font-size: 25px
 }
-.scroll-item:hover .category{
+
+.scroll-item:hover .category {
     opacity: 0;
 }
+
 .hover-option a {
     position: absolute;
     width: 100px;
@@ -814,18 +816,20 @@ a:active, a:focus {
     border-radius: 35px;
     position: relative;
 }
-.scroll-item .category{
+
+.scroll-item .category {
     position: absolute;
     width: 50px;
     text-align: center;
     top: 45%;
     bottom: 0;
-    left:0;
+    left: 0;
     right: 20%;
     color: rgba(249, 249, 250, 0.904);
     z-index: 5;
     margin: auto;
 }
+
 .horizontal-scroll .scroll-item img {
     width: 10.5rem;
     border-radius: 35px;
@@ -897,11 +901,13 @@ a:active, a:focus {
     color: #fff;
     background-color: #06c
 }
-.footer-bg{
+
+.footer-bg {
     background-image: url('/imgs/footer-bg.jpg');
     background-size: 100vw 100%;
     background-attachment: fixed;
 }
+
 .pb-6 {
     padding-bottom: 4.5rem
 }
@@ -1074,7 +1080,8 @@ a:active, a:focus {
 .srch form:hover {
     cursor: pointer
 }
-.srch input::placeholder{
+
+.srch input::placeholder {
     color: white;
 }
 
@@ -1110,9 +1117,13 @@ a:active, a:focus {
         min-width: 80vw
     }
     .bg-image {
-        background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
         border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px
+        border-bottom-right-radius: 25px;
+        background-size: cover;
+    }
+    .bg-image {
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
     .site-content .apps a img.card-img-top {
         border-radius: 50%;
@@ -1124,14 +1135,14 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:768px) {
-    .footer-bg{
+    .footer-bg {
         background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
     }
     div.footer.container-fluid .container.transparent {
         display: none
     }
-
-    .scroll-top{
+    
+    .scroll-top {
         justify-content: initial !important;
     }
     .recommended .card-title {
@@ -1180,7 +1191,7 @@ a:active, a:focus {
     #nav {
         display: none
     }
-    .srch form{
+    .srch form {
         width: 75vw;
     }
     .carousel-item img {
