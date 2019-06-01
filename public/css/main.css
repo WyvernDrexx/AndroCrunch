@@ -489,12 +489,13 @@ input::placeholder {
 
 .bg-image {
     background-image: url(/imgs/bg-img.jpg)!important;
-    background-size: 100% 100% !important;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .top-section {
     width: 57vw;
-    margin: auto;
+    margin: auto
 }
 
 .navbar {
@@ -1035,7 +1036,7 @@ a:active, a:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 1s;
-    width: 40vw;
+    width: 50vw;
     height: 50px;
     background: #03f;
     box-sizing: border-box;
