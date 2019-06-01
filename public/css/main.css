@@ -328,22 +328,19 @@ input::placeholder {
     height: 100%;
     width: 100%;
     background: rgba(3, 27, 104, .311);
-    z-index: 5;
+    z-index: 15;
     opacity: 0;
-    border-radius: 35px;
+    border-radius: 8px;
 }
 
 .fab.big {
     font-size: 25px
 }
 
-.scroll-item:hover .category {
-    opacity: 0;
-}
 
 .hover-option a {
     position: absolute;
-    width: 100px;
+    width: 50px;
     height: 40px;
     top: 0;
     right: 0;
@@ -351,6 +348,7 @@ input::placeholder {
     left: 0;
     color: white !important;
     margin: auto;
+    cursor: pointer !important;
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -370,6 +368,21 @@ input::placeholder {
     max-height: 20rem
 }
 
+.most-popular .col-sm {
+    max-width: 15rem;
+    margin-right: 15px;
+}
+
+.most-popular .carousel-item {
+    max-height: 12rem;
+}
+
+.most-popular .carousel-inner {
+    border-radius: 8px;
+}
+.most-popular p{
+    cursor: pointer;
+}
 .hover-option:hover {
     opacity: 1
 }
@@ -790,7 +803,7 @@ a:active, a:focus {
 }
 
 .bg-white {
-    background-color: #f8f8f8!important
+    background-color: #ffffff!important
 }
 
 .border-purple {
@@ -854,7 +867,7 @@ a:active, a:focus {
     background-color: #fff;
     border-radius: 50%;
     padding: 8px 15px;
-    cursor: pointer
+    cursor: pointer !important;
 }
 
 .advert-place {
@@ -908,10 +921,12 @@ a:active, a:focus {
     background-image: url('/imgs/footer-bg.jpg');
     background-size: 100% 100%;
 }
-.testimonial-bg{
+
+.testimonial-bg {
     background-image: url('/imgs/testimonial-bg.jpg');
     background-size: 100% 100%;
 }
+
 .pb-6 {
     padding-bottom: 4.5rem
 }
@@ -1038,7 +1053,7 @@ a:active, a:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 1s;
-    width: 50vw;
+    width: 500px;
     height: 50px;
     background: #03f;
     box-sizing: border-box;
@@ -1117,6 +1132,9 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:992px) {
+    .about-img{
+        display: none;
+    }
     .main-content {
         min-width: 80vw
     }
@@ -1135,13 +1153,13 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:768px) {
+
     .footer-bg {
         background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
     }
     div.footer.container-fluid .container.transparent {
         display: none
     }
-    
     .scroll-top {
         justify-content: initial !important;
     }
