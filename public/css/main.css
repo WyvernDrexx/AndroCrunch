@@ -1122,10 +1122,6 @@ a:active, a:focus {
         border-bottom-right-radius: 25px;
         background-size: cover;
     }
-    .bg-image {
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
     .site-content .apps a img.card-img-top {
         border-radius: 50%;
         min-height: 8rem;
@@ -1194,6 +1190,12 @@ a:active, a:focus {
     }
     .srch form {
         width: 75vw;
+    }
+    .bg-image {
+        background-image: url('/imgs/phone-bg.jpg') !important;
+        background-size: 100vw;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
     .carousel-item img {
         min-height: 12rem;
