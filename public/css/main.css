@@ -487,8 +487,7 @@ input::placeholder {
 
 .bg-image {
     background-image: url(/imgs/bg-img.jpg)!important;
-    background-size: 100vw 100%;
-    background-attachment: fixed;
+    background-size: 100vw;
 }
 
 .top-section {
