@@ -1,7 +1,7 @@
 <% include partials/header %>
 
 <div class="deleteForm">
-    <form method="POST" action="/blogs/delete/<%= id %>?_method=DELETE">  
+    <form method="POST" action="/blogs/delete/<%= status %>/<%= id %>?_method=DELETE">  
         <p class="text-primary">Are you sure you want to delete this post?</p>
         <div>
             <a class="btn btn-primary btn-lg" href="/blogs/list">No</a> 

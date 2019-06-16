@@ -1,6 +1,6 @@
 <% include partials/header %>
 <div class="container-fluid pt-5 pb-6 text-white bg-gradient">
-    <h1 class="display-4 text-center text-white mt-6">Posts List:</h1>
+    <h1 class="display-4 text-center text-white mt-6"><%= title %></h1>
     <p class="lead text-center">Select a post from the list to edit</p>
     <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
 </div>
@@ -10,22 +10,35 @@
         <% posts.forEach((post) => { %>
         <div class="card mt-5">
             <div class="card-header">
-                    <%= post.title %>
+                <%= post.title %>
             </div>
             <% if(typeof post.image === "undefined" || post.image.lenght < 3){ %>
-                <p class="text-dangeer">No Image provided</p>
+            <p class="text-dangeer">No Image provided</p>
 
             <% } else { %>
-                <div class="thumbnail text-center">
-                    <img src="/thumbnails/<%= post.image %>" class="img-thumbnail mb-3">
-                </div>
-           <% } %>
+            <div class="thumbnail text-center">
+                <img src="/thumbnails/<%= post.image %>" class="img-thumbnail mb-3">
+            </div>
+            <% } %>
             <div class="card-body">
                 <h5 class="card-title"><small><%= post.content %></small></h5>
-                <a href="/blogs/edit/<%= post._id %>" class="btn btn-primary mt-4 mb-4">Edit</a>
-                <a href="/blogs/delete/<%= post._id %>" class="btn btn-outline-danger mt-4 mb-4">Remove</a>
-                <a href="/blogs/edit/<%= post._id %>/image" class="btn btn-primary mt-4 mb-4 float-right">Change Image</a>
-                <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %></p>
+                <a href="/blogs/edit/<%= status %>/<%= post._id %>" class="btn btn-primary mt-4 mb-4">Edit</a>
+                <a href="/blogs/delete/<%= status %>/<%= post._id %>"
+                    class="btn btn-outline-danger mt-4 mb-4">Remove</a>
+
+                <% if(status === "published"){ %>
+                    
+                <% }else if(post.draft && !post.published){ %>
+                <form class="d-inline" action="/blogs/<%= post._id %>/publish" method="POST"><button type="submit"
+                    class="btn btn-success btn-md">Publish Now</button></form>
+                <% }else{ %>
+                <button type="submit" class="btn btn-disabled btn-success disabled btn-md">Already Published</button>
+                <% } %>
+                <a href="/blogs/edit/<%= status %>/<%= post._id %>/image"
+                    class="btn btn-primary mt-4 mb-4 float-right">Change
+                    Image</a>
+                <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
+                </p>
                 <p class="tags"><span class="text-dark">by </span> <%= post.author %></p>
             </div>
         </div>

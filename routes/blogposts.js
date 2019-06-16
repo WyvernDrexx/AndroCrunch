@@ -1,5 +1,6 @@
-const Post = require("../models/post"),        //Posts model
+const draftPost = require("../models/postDraft"),        //Posts model
     router = require("express").Router(),
+    Post = require("../models/post"),
     moment = require("moment-timezone"),
     isLoggedIn = require("../middlewares/index").isLoggedIn,
     multer = require("multer"),
@@ -24,7 +25,62 @@ router.get("/author/panel", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/blogs/list", isLoggedIn, (req, res) => {
+
+router.post("/blogs/:id/publish", (req, res) => {
+    draftPost.findById(req.params.id, (err, post) => {
+        console.log(post);
+        if (err) {
+            req.flash("error", "No post found" + err);
+            res.redirect("/author/panel");
+            return;
+        }
+        Post.create({
+            author: post.author,
+            authorId: post.authorId,
+            title: post.title,
+            rating: post.rating,
+            image: post.image,
+            assets: post.assets,
+            content: post.content,
+            created: post.created,
+            tags: post.tags,
+            published: true
+        }, (err, post) => {
+            console.log(post);
+            if (err) {
+                console.log(err);
+                req.flash("error", "Unable to publish!" + err);
+                res.redirect("/author/panel");
+                return;
+            }
+
+            req.flash("success", "Post Published!");
+            res.redirect("/author/panel");
+        });
+        post.published = true;
+        post.save();
+    });
+});
+
+
+router.get("/blogs/list/unpublished", isLoggedIn, (req, res) => {
+    draftPost.find({}, (err, posts) => {
+        if (err) {
+            req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
+            res.render("/author/panel");
+            return;
+        }
+        res.render("postsList", {
+            title: "Unpublished Posts",
+            posts,
+            moment,
+            status: "unpublished"
+        });
+        console.log(posts);
+
+    });
+});
+router.get("/blogs/list/published", isLoggedIn, (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
             req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
@@ -32,103 +88,203 @@ router.get("/blogs/list", isLoggedIn, (req, res) => {
             return;
         }
         res.render("postsList", {
-            title: "Edit posts",
+            title: "Published Posts",
             posts,
-            moment
+            moment,
+            status: "published"
         });
         console.log(posts);
 
     });
 });
 
-router.get("/blogs/edit/:id", isLoggedIn, (req, res) => {
-    Post.findById(req.params.id, (err, post) => {
-        if (err) {
-            req.flash("error", "Error finding posts!");
-            res.redirect("back");
-            return;
-        }
-        res.render("editPost", {
-            post
-        });
-    });
-});
-
-router.put("/blogs/edit/:id", isLoggedIn, (req, res) => {
-    Post.findById(req.params.id, (err, returnedPost) => {
-        if (err) {
-            req.flash("error", "Error finding post!");
-            res.redirect("back");
-            return;
-        }
-        const post = {
-            title: req.body.title,
-            subtitle: req.body.subtitle,
-            image: req.body.image,
-            content: req.body.content
-        }
-        for (const name of Object.keys(post)) {
-            if (post["subtitle"].trim().length <= 64) {
-                res.send({
-                    status: 0,
-                    message: "Subtitle must contain at least 65 characters including spaces"
-                });
-                return;
-            }
-            if (post[name].trim().length <= 6) {
-                res.send({
-                    status: 0,
-                    message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
-                });
-                return;
-            }
-        }
-        console.log(post);
-        post.author = req.user.username;
-        post.authorId = req.user._id;
-        Post.findByIdAndUpdate(req.params.id, post, (err) => {
+router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
+    if (req.params.type === "unpublished") {
+        draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                res.send({
-                    status: 0,
-                    message: "Error updating post contact admin!" + err
-                });
+                req.flash("error", "Error finding posts!");
+                res.redirect("back");
                 return;
             }
-            res.send({
-                status: 1,
+            res.render("editPost", {
+                post,
+                status: "unpublished"
             });
-            return;
         });
-    })
+    } else if (req.params.type === "published") {
+        Post.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "Error finding posts!");
+                res.redirect("back");
+                return;
+            }
+            res.render("editPost", {
+                post,
+                status: "published"
+            });
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
 });
 
-router.get("/blogs/delete/:id", isLoggedIn, (req, res) => {
-    Post.findById(req.params.id, (err, post) => {
-        if (err) {
-            req.flash("error", "Couldn't delete post!");
-            res.redirect("back");
-            return;
-        }
-        res.render("deletePost", {
-            id: req.params.id
+router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
+    if (req.params.type === "unpublished") {
+        draftPost.findById(req.params.id, (err, returnedPost) => {
+            if (err) {
+                req.flash("error", "Error finding post!");
+                res.redirect("back");
+                return;
+            }
+            const post = {
+                title: req.body.title,
+                content: req.body.content
+            }
+            for (const name of Object.keys(post)) {
+                if (post[name].trim().length <= 6) {
+                    res.send({
+                        status: 0,
+                        message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
+                    });
+                    return;
+                }
+            }
+            console.log(post);
+            post.author = req.user.username;
+            post.authorId = req.user._id;
+            draftPost.findByIdAndUpdate(req.params.id, post, (err) => {
+                if (err) {
+                    res.send({
+                        status: 0,
+                        message: "Error updating post contact admin!" + err
+                    });
+                    return;
+                }
+                res.send({
+                    status: 1,
+                });
+                returnedPost.published = false;
+                returnedPost.save();
+                return;
+            });
         });
-    });
+    } else if (req.params.type === "published") {
+        console.log("Publishded post");
+        Post.findById(req.params.id, (err, returnedPost) => {
+            if (err) {
+                req.flash("error", "Error finding post!");
+                res.redirect("back");
+                return;
+            }
+            const post = {
+                title: req.body.title,
+                content: req.body.content
+            }
+            for (const name of Object.keys(post)) {
+                if (post[name].trim().length <= 6) {
+                    res.send({
+                        status: 0,
+                        message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
+                    });
+                    return;
+                }
+            }
+            console.log(post);
+            post.author = req.user.username;
+            post.authorId = req.user._id;
+            Post.findByIdAndUpdate(req.params.id, post, (err) => {
+                if (err) {
+                    res.send({
+                        status: 0,
+                        message: "Error updating post contact admin!" + err
+                    });
+                    return;
+                }
+                res.send({
+                    status: 1,
+                });
+                return;
+            });
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
+
 });
 
-router.delete("/blogs/delete/:id", isLoggedIn, (req, res) => {
-    Post.findOneAndDelete({ _id: req.params.id }, (err, post) => {
-        if (err) {
-            req.flash("error", "This type of actions not allowed against this site quit now!");
-            res.redirect("back");
-            return;
-        }
-        if(typeof post.image !== "undefined"){
-            deleteFromSystem("thumbnail", post.image);
+router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
+    if (req.params.type === "unpublished") {
+        draftPost.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "Couldn't delete post!");
+                res.redirect("back");
+                return;
+            }
+            res.render("deletePost", {
+                id: req.params.id,
+                status: "unpublished"
+            });
+        });
+    } else if (req.params.type === "published") {
+        Post.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "Couldn't delete post!");
+                res.redirect("back");
+                return;
+            }
+            res.render("deletePost", {
+                id: req.params.id,
+                status: "published"
+            });
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
 
-        }
-        req.flash("success", "Post successfully deleted!");
-        res.redirect("/blogs/list");
-    });
+
+
+});
+
+router.delete("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
+
+    if (req.params.type === "unpublished") {
+        draftPost.findOneAndDelete({ _id: req.params.id }, (err, post) => {
+            if (err) {
+                req.flash("error", "This type of actions not allowed against this site quit now!");
+                res.redirect("back");
+                return;
+            }
+            if (typeof post.image !== "undefined") {
+                deleteFromSystem("thumbnail", post.image);
+
+            }
+            req.flash("success", "Post successfully deleted!");
+            res.redirect("/blogs/list/unpublished");
+        });
+    } else if (req.params.type === "published") {
+        Post.findOneAndDelete({ _id: req.params.id }, (err, post) => {
+            if (err) {
+                req.flash("error", "This type of actions not allowed against this site quit now!");
+                res.redirect("back");
+                return;
+            }
+            if (typeof post.image !== "undefined") {
+                deleteFromSystem("thumbnail", post.image);
+
+            }
+            req.flash("success", "Post successfully deleted!");
+            res.redirect("/blogs/list/published");
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
+
+
+
 });
 router.get("/post", (req, res) => {
     res.render("post");
@@ -136,7 +292,7 @@ router.get("/post", (req, res) => {
 
 router.get("/posts", (req, res) => {
     res.render("more-posts", {
-        title:"Recent Blog posts",
+        title: "Recent Blog posts",
         keywords: "androcrunch, blog, posts, tech, security, download, products, mi, apple, android",
         description: "Latest blog posts on various genre including products review, security, tips, tricks and more."
     });
@@ -164,12 +320,14 @@ router.post("/posts", isLoggedIn, (req, res) => {
             return;
         }
     }
-    
+
     console.log(post);
     post.created = moment();
     post.author = req.user.username;
     post.authorId = req.user._id;
-    Post.create(post, (err, returnedPost) => {
+    post.draft = true;
+    post.published = false;
+    draftPost.create(post, (err, returnedPost) => {
         if (err) {
             res.send({
                 status: 0,
@@ -187,66 +345,147 @@ router.post("/posts", isLoggedIn, (req, res) => {
 
 
 
-router.post("/post/:id/upload", isLoggedIn,(req, res) => {
+router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
     let id = req.params.id;
-    thumbnail(req, res, (err) => {
-        if (err) {
-            req.flash("error", "Couldn't upload file!");
-            res.redirect("back");
-            return;
-        } else {
-            Post.findOne({_id: id}, (err, post) => {
-                if(err){
-                    console.log(err);
-                    req.flash("error", "Unable to find post check URL!wwwwwwwwwww");
-                    return res.redirect("/posts/new");
-                }
-                post.image = req.file.filename;
-                post.save();
-                req.flash("success", "Post successfully created!");
-                res.redirect("/author/panel");
-            });
+    if (req.params.type === "unpublished") {
+        thumbnail(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload file!");
+                res.redirect("back");
+                return;
+            } else {
+                draftPost.findOne({ _id: id }, (err, post) => {
+                    if (err) {
+                        console.log(err);
+                        req.flash("error", "Unable to find post check URL!");
+                        return res.redirect("/posts/new");
+                    }
+                    post.image = req.file.filename;
+                    post.save();
+                    req.flash("success", "Post successfully created!");
+                    res.redirect("/author/panel");
+                });
 
-        }
-    });
-});
-
-router.post("/post/:id/update/image", isLoggedIn,(req, res) => {
-    let id = req.params.id;
-    thumbnail(req, res, (err) => {
-        if (err) {
-            req.flash("error", "Couldn't upload file!");
-            res.redirect("back");
-            return;
-        } else {
-            Post.findOne({_id: id}, (err, post) => {
-                if(err){
-                    req.flash("error", "Unable to find post check URLddddddddddd!");
-                    // deleteFromSystem("thumbnail", req.file.filename);
-                    return res.redirect("/posts/new");
-                }
-                if(typeof post.image !== "undefined"){
-                    deleteFromSystem("thumbnail", post.image);
-                }
-                post.image = req.file.filename;
-                post.save();
-                req.flash("success", "Post successfully updated!");
-                res.redirect("/blogs/list");
-            });
-        }
-    });
-});
-
-router.get("/blogs/edit/:id/image", isLoggedIn,  (req, res) => {
-    Post.findOne({_id: req.params.id}, (err, post) => {
-        if(err){
-            req.flash("error", "Couldn't find post!");
-            res.redirect("back");
-            return;
-        }
-        res.render("updatePostImage", {
-            post
+            }
         });
-    });
+    } else if (req.params.type === "published") {
+        thumbnail(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload file!");
+                res.redirect("back");
+                return;
+            } else {
+                Post.findOne({ _id: id }, (err, post) => {
+                    if (err) {
+                        console.log(err);
+                        req.flash("error", "Unable to find post check URL!");
+                        return res.redirect("/posts/new");
+                    }
+                    post.image = req.file.filename;
+                    post.save();
+                    req.flash("success", "Post successfully created!");
+                    res.redirect("/author/panel");
+                });
+
+            }
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
+
+
+});
+
+router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
+    let id = req.params.id;
+
+    if (req.params.type === "unpublished") {
+        thumbnail(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload file!");
+                res.redirect("back");
+                return;
+            } else {
+                draftPost.findOne({ _id: id }, (err, post) => {
+                    if (err) {
+                        req.flash("error", "Unable to find post check URLddddddddddd!");
+                        // deleteFromSystem("thumbnail", req.file.filename);
+                        return res.redirect("/posts/new");
+                    }
+                    if (typeof post.image !== "undefined") {
+                        deleteFromSystem("thumbnail", post.image);
+                    }
+                    post.image = req.file.filename;
+                    post.save();
+                    req.flash("success", "Post successfully updated!");
+                    res.redirect("/blogs/list/unpublished");
+                });
+            }
+        });
+    } else if (req.params.type === "published") {
+        thumbnail(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload file!");
+                res.redirect("back");
+                return;
+            } else {
+                Post.findOne({ _id: id }, (err, post) => {
+                    if (err) {
+                        req.flash("error", "Unable to find post check URLddddddddddd!");
+                        // deleteFromSystem("thumbnail", req.file.filename);
+                        return res.redirect("/posts/new");
+                    }
+                    if (typeof post.image !== "undefined") {
+                        deleteFromSystem("thumbnail", post.image);
+                    }
+                    post.image = req.file.filename;
+                    post.save();
+                    req.flash("success", "Post successfully updated!");
+                    res.redirect("/blogs/list/published");
+                });
+            }
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
+
+
+});
+
+router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
+
+    if (req.params.type === "unpublished") {
+        draftPost.findOne({ _id: req.params.id }, (err, post) => {
+            if (err) {
+                req.flash("error", "Couldn't find post!");
+                res.redirect("back");
+                return;
+            }
+            res.render("updatePostImage", {
+                post,
+                status: "unpublished"
+            });
+        });
+    } else if (req.params.type === "published") {
+        Post.findOne({ _id: req.params.id }, (err, post) => {
+            if (err) {
+                req.flash("error", "Couldn't find post!");
+                res.redirect("back");
+                return;
+            }
+            res.render("updatePostImage", {
+                post,
+                status: "published"
+            });
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
+
+
+
 });
 module.exports = router;

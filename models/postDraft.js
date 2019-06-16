@@ -9,22 +9,23 @@ const postSchema = new mongoose.Schema({
     rating: Number,
     image: String,
     assest: [
+
     ],
-    comments: {
-        type: mongoose.Types.ObjectId,
-        ref: "Comments"
-    },
     content: String,
     created: {
         type: Date,
         default: Date.now()
     },
-    tags: String,
+    tags:String,
     published: {
+        type: Boolean,
+        default: false
+    },
+    draft: {
         type: Boolean,
         default: true
     }
 });
 
-const Post = mongoose.model("Post", postSchema);
-module.exports = Post;
+const postDraft = mongoose.model("postdraft", postSchema);
+module.exports = postDraft;

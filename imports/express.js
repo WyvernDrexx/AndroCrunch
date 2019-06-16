@@ -7,7 +7,8 @@ const methodOverride = require('method-override'),
     cookieSession = require("cookie-session"),
     flash = require("connect-flash"),
     helmet = require("helmet"),
-    compress = require("compression");
+    compress = require("compression"),
+    expressSession = require("express-session");
 
 server.use(helmet());
 server.use(express.static('public'));
@@ -21,8 +22,7 @@ server.use(cookieSession({
     name: 'hookie',
     secret: "XamarinisTheBoss",
     httpOnly: false,
-    secure: true,
-
+    secure: false,
 }));
 server.use(flash());
 server.use(passport.initialize());
@@ -44,10 +44,10 @@ server.use((err, req, res, next) => {
         next();
     }
 });
-server.use((req, res, next) => {
-    res.setHeader("Cache-Control", "public, max-age=2592000");
-    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
-    next();
-});
+// server.use((req, res, next) => {
+//     // res.setHeader("Cache-Control", "public, max-age=300");
+//     // res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+//     next();
+// });
 server.use(compress());
 module.exports = server;

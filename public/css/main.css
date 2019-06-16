@@ -663,16 +663,46 @@ h1 {
 }
 
 .blog-main-title {
-    font-size: 18px;
+    font-size: 28px;
     font-weight: 700;
-    margin-top: 28px;
+    padding-top: 15px;
     letter-spacing: .5px;
     padding-bottom: 28px
 }
 
 .blog-main-image {
     text-align: center;
-    padding-top: 25px
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+blockquote{
+    border-left: 1px solid #2196f3;
+    padding: 15px 25px;
+    font-style: italic;
+    color: #1f2024;
+    font-size: 14px;
+    background-color: rgba(155,155,155,0.05);
+}
+blockquote::before{
+	content: '\f10d';
+	margin: 0 10px 0 0;
+}
+blockquote::after{
+	content: '\f10e';
+	margin: 0 0 0 10px;
+}
+blockquote::before, blockquote::after {
+	display: inline-block;
+	font-family: 'Font Awesome 5 Free';
+	font-style: normal;
+	font-weight: 900;
+	color: #1f2024;
+	line-height: 1;
+}
+.blog-body{
+    font-size: 15px; 
+    color: #656565;
 }
 
 .blog-main-image img {
