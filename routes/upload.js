@@ -456,6 +456,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             inStream.pipe(transform).pipe(outStream);
             deleteFromSystem("thumbnail", actualfile);
         } catch (err) {
+            console.log("Hit here");
             deleteFromSystem("thumbnail", actualfile);
             deleteFromSystem("thumbnail", "md-" + actualfile);
             deleteFromSystem("thumbnail", "lg-" + actualfile);
