@@ -19,10 +19,168 @@ const thumbnail = multer({
     storage: thumbnailStorage
 }).single("thumbnail");
 
+const upload = multer({
+    storage: thumbnailStorage
+}).array("upload", 10);
+
+
+
 router.get("/author/panel", isLoggedIn, (req, res) => {
     res.render("adminPanel", {
         title: "CPanel for author"
     });
+});
+
+router.get("/blogs/images/:type/:id", (req, res) => {
+
+    if (req.params.type === "unpublished") {
+        draftPost.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "Error retrieving Images!");
+                res.redirect("/");
+                return;
+            }
+            res.render("blogImages", {
+                images: post.assets,
+                id: req.params.id,
+                status: "unpublished"
+            });
+        });
+    } else if (req.params.type === "published") {
+        Post.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "Error retrieving Images!");
+                res.redirect("/");
+                return;
+            }
+            res.render("blogImages", {
+                images: post.assets,
+                id: req.params.id,
+                status: "published"
+            });
+        });
+    } else {
+        req.flash("error", "Unknown Category!");
+        res.redirect("/");
+    }
+});
+
+router.get("/blogs/images/upload/:type/:id", (req, res) => {
+    res.render("uploadBlogImages", {
+        id: req.params.id,
+        status: req.params.type
+    });
+});
+
+
+router.delete("/blogs/images/:type/:id/:index", (req, res) => {
+
+    if (req.params.type === "unpublished") {
+
+        draftPost.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "No post found with that id!");
+                res.redirect("back");
+                return;
+            }
+            if (req.params.index >= post.assets.length || req.params.length < req.params.length) {
+                req.flash("error", "Index error!");
+                res.redirect("back");
+                return;
+            }
+            var removed = post.assets.splice(req.params.index, 1);
+            post.save();
+            deleteFromSystem("thumbnail", removed[0]["filename"]);
+            req.flash("success", `Image <strong>${removed[0]["filename"]}</strong> removed!`);
+            res.redirect("back");
+        });
+
+    } else if (req.params.type === "published") {
+
+        Post.findById(req.params.id, (err, post) => {
+            if (err) {
+                req.flash("error", "No post found with that id!");
+                res.redirect("back");
+                return;
+            }
+            if (req.params.index >= post.assets.length || req.params.length < req.params.length) {
+                req.flash("error", "Index error!");
+                res.redirect("back");
+                return;
+            }
+            var removed = post.assets.splice(req.params.index, 1);
+            post.save();
+            deleteFromSystem("thumbnail", removed[0]["filename"]);
+            req.flash("success", `Image <strong>${removed[0]["filename"]}</strong> removed!`);
+            res.redirect("back");
+        });
+
+    } else {
+        req.flash("error", "Check URL.");
+        res.redirect("back");
+        return;
+    }
+});
+
+
+router.post("/blogs/images/:type/:id", (req, res) => {
+    if (req.params.type === "unpublished") {
+        upload(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload images..!");
+                res.redirect("back");
+                return;
+            } else {
+                draftPost.findOne({ _id: req.params.id }, (err, post) => {
+                    if (err) {
+                        console.log(err);
+                        req.flash("error", "Unable to find post check URL!");
+                        return res.redirect("/posts/new");
+                    }
+
+                    req.files.forEach((file) => {
+                        post.assets.push({
+                            filename: file.filename
+                        });
+                    });
+                    post.published = false;
+                    post.save();
+                    req.flash("success", "Images added!");
+                    res.redirect("/blogs/images/unpublished/" + req.params.id);
+                });
+
+            }
+        });
+    } else if (req.params.type === "published") {
+        upload(req, res, (err) => {
+            if (err) {
+                req.flash("error", "Couldn't upload images..!");
+                res.redirect("back");
+                return;
+            } else {
+                Post.findOne({ _id: req.params.id }, (err, post) => {
+                    if (err) {
+                        console.log(err);
+                        req.flash("error", "Unable to find post check URL!");
+                        return res.redirect("/posts/new");
+                    }
+
+                    req.files.forEach((file) => {
+                        post.assets.push({
+                            filename: file.filename
+                        });
+                    });
+                    post.published = false;
+                    post.save();
+                    req.flash("success", "Images added!");
+                    res.redirect("/blogs/images/published/" + req.params.id);
+                });
+            }
+        });
+    } else {
+        req.flash("error", "Cannot find any post.. Contact admin!");
+        res.redirect("/");
+    }
 });
 
 
@@ -416,6 +574,8 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
                     if (typeof post.image !== "undefined") {
                         deleteFromSystem("thumbnail", post.image);
                     }
+
+
                     post.image = req.file.filename;
                     post.save();
                     req.flash("success", "Post successfully updated!");
@@ -433,7 +593,6 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
                 Post.findOne({ _id: id }, (err, post) => {
                     if (err) {
                         req.flash("error", "Unable to find post check URLddddddddddd!");
-                        // deleteFromSystem("thumbnail", req.file.filename);
                         return res.redirect("/posts/new");
                     }
                     if (typeof post.image !== "undefined") {

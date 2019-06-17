@@ -27,19 +27,20 @@
                     class="btn btn-outline-danger mt-4 mb-4">Remove</a>
 
                 <% if(status === "published"){ %>
-                    
+
                 <% }else if(post.draft && !post.published){ %>
                 <form class="d-inline" action="/blogs/<%= post._id %>/publish" method="POST"><button type="submit"
-                    class="btn btn-success btn-md">Publish Now</button></form>
+                        class="btn btn-success btn-md">Publish Now</button></form>
                 <% }else{ %>
                 <button type="submit" class="btn btn-disabled btn-success disabled btn-md">Already Published</button>
                 <% } %>
                 <a href="/blogs/edit/<%= status %>/<%= post._id %>/image"
                     class="btn btn-primary mt-4 mb-4 float-right">Change
                     Image</a>
+                <a href="/blogs/images/<%= status %>/<%= post._id%>" class="btn btn-primary">View Images</a>
                 <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
                 </p>
-                <p class="tags"><span class="text-dark">by </span> <%= post.author %></p>
+                <p class=" tags"><span class="text-dark">by </span> <%= post.author %></p>
             </div>
         </div>
         <% }); %>

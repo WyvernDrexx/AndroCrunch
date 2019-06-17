@@ -1,0 +1,23 @@
+<% include partials/header %>
+
+<div class="container-fluid bg-gradient pb-6 pt-6">
+    <div class=" main-content">
+        <p class="text-center text-center text-white small"><strong>Note:</strong> .webp files is not currently
+            supported.</p>
+        <form action="/blogs/images/<%= status %>/<%= id %>" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="files" name="upload" aria-describedby="files"
+                        multiple>
+                    <label class="custom-file-label overflow-hidden" for="files">You can upload maximum of 10 files at
+                        one time!</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" id="upload">UPLOAD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<% include partials/footer %>

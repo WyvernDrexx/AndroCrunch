@@ -1,0 +1,29 @@
+<% include partials/header %>
+<div class="container-fluid pt-5 pb-6 text-white bg-gradient">
+    <h1 class="display-5 text-center text-white mt-6">Images</h1>
+    <p class="lead text-center">Images list here for post</p>
+    <h5 class="text-center">Logged in as <strong class="text-primary"><%= loggedUser.username %></strong></h5>
+</div>
+
+<div class=" bg-white p-5">
+    <div class="text-center">
+        <a href="/blogs/images/upload/<%= status %>/<%= id %>" class="btn btn-lg btn-primary">Upload Images</a>
+    </div>
+    <% images.forEach((image, index)=> { %>
+    <div class="row p-5 bg-dark text-white mt-4 rounded">
+        <div class="col-sm">
+            <h2>Image Unique Name:</h2>
+            <p class="text-primary"><%= image.filename %></p>
+            <form class="d-inline" method="POST" action="/blogs/images/<%= status %>/<%= id %>/<%= index %>?_method=DELETE">
+                <button type="submit" class="btn btn-danger btn-lg">REMOVE</button>
+            </form>
+        </div>
+        <div class="col-sm">
+            <img style="max-width: 200px; max-height: 500px; right: 0;" src="/thumbnails/<%= image.filename %>">
+        </div>
+    </div>
+    <% }); %>
+</div>
+
+
+<% include partials/footer %>

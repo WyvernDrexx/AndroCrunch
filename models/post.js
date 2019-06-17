@@ -8,7 +8,7 @@ const postSchema = new mongoose.Schema({
     title: String,
     rating: Number,
     image: String,
-    assest: [
+    assets: [
     ],
     comments: {
         type: mongoose.Types.ObjectId,
