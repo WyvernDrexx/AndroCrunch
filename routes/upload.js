@@ -22,7 +22,8 @@ const router = require("express").Router(),
     deleteFromSystem = require("../imports/deleteFromSystem"),
     fs = require("fs"),
     sharp = require("sharp"),
-    Data = require("../models/data");
+    Data = require("../models/data"),
+    cleanFromSystem = require("../imports/cleanFromSystem");
 
 
 const upload = multer({
@@ -482,9 +483,10 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                     console.log(id);
                     if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
                         console.log((audio.thumbnail).split("-")[1]);
-                        deleteFromSystem("thumbnail",audio.thumbnail);
-                        deleteFromSystem("thumbnail", "md-" + (audio.thumbnail).split("-")[1]);
-                        deleteFromSystem("thumbnail", "lg-" + (audio.thumbnail).split("-")[1]);
+                        cleanFromSystem(audio.thumbnail);
+                        // deleteFromSystem("thumbnail",audio.thumbnail);
+                        // deleteFromSystem("thumbnail", "md-" + (audio.thumbnail).split("-")[1]);
+                        // deleteFromSystem("thumbnail", "lg-" + (audio.thumbnail).split("-")[1]);
                     }
                     audio.thumbnail = req.file.filename;
                     audio.save();
