@@ -97,6 +97,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             let transform = sharp()
                 .jpeg()
                 .resize({ width: 142, height: 196 })
+                .max()
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -124,6 +125,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             transform = sharp()
                 .jpeg()
                 .resize({ width: 288, height: 224 })
+                .max()
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -360,6 +362,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 let transform = sharp()
                     .jpeg()
                     .resize({ width: 128, height: 128 })
+                    .max()
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
                     });
@@ -385,6 +388,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 // "info" event will be emitted on resize
                 let transform = sharp()
                     .jpeg()
+                    .max()
                     .resize({ width: 142, height: 96 })
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
@@ -414,6 +418,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             let transform = sharp()
                 .jpeg()
                 .resize({ width: 288, height: 224 })
+                .max()
                 .on('info', function (fileInfo) {
                     console.log("Med size Resizing done, file not saved");
                 });
@@ -443,6 +448,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             transform = sharp()
                 .jpeg()
                 .resize({ width: 546, height: 320 })
+                .max()
                 .on('info', function (fileInfo) {
                     console.log("Large size Resizing done, file not saved");
                 });
