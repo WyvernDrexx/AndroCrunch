@@ -7,7 +7,10 @@ const postSchema = new mongoose.Schema({
     },
     title: String,
     rating: Number,
-    image: String,
+    image: {
+        type: String,
+        default: "default.jpg"
+    },
     assets: [
 
     ],

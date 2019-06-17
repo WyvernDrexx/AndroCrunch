@@ -31,6 +31,41 @@ router.get("/author/panel", isLoggedIn, (req, res) => {
     });
 });
 
+router.get("/blogs/preview/:type/:id", (req, res) => {
+
+
+    if (req.params.type === "unpublished") {
+
+        draftPost.findById(req.params.id, (err, post)=> {
+            if(err){
+                req.flash("error", "Couldn't preview post");
+                res.redirect("back");
+                return;
+            }
+            res.render("preview", {
+                post,
+                status : "unpublished"
+            });
+        });
+
+    } else if (req.params.type === "published") {
+        Post.findById(req.params.id, (err, post)=> {
+            if(err){
+                req.flash("error", "Couldn't preview post");
+                res.redirect("back");
+                return;
+            }
+            res.render("preview", {
+                post,
+                status : "published"
+            });
+        });
+    } else {
+        req.flash("error", "Unknown Category!");
+        res.redirect("/");
+    }
+});
+
 router.get("/blogs/images/:type/:id", (req, res) => {
 
     if (req.params.type === "unpublished") {

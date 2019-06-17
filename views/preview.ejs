@@ -1,0 +1,61 @@
+<% include partials/header %>
+<div class="container-fluid pt-5  pb-6 text-white bg-gradient">
+    <h1 class="display-4 text-center text-white mt-6">Blogs</h1>
+    <p class="lead text-center">Home > Blog</p>
+</div>
+
+<section class="blog-single bg-white pb-6">
+    <div class="main-content blog-body">
+        <h1 class="blog-main-title"><%= post.title %></h1>
+        <p class="text-gray small pb-2">by <span class="text-dark"><%= post.author %></span> 10 FEB, 2019</p>
+        <div class="line bg-gray mb-3"></div>
+
+        <div class="blog-main-image">
+            <% if(typeof post.image === "undefined"){ %>
+                <img src="/thumbnails/default.jpg">
+            <% }else{ %>
+            <img src="/thumbnails/<%= post.image %>">
+            <% } %>
+        </div>
+        <section aria-label="Blog Content">
+            <%- post.content %>
+        </section>
+        <div class=" pt-5 pb-5">
+            <span class="share text-left mt-4 mt-md-0">
+                <span class="purple-text-color text-left ml-2">Share</span>
+                <a class="ml-3" href="/"><i class="fab fa-facebook-f big" aria-label="facebook connect"></i></a>
+                <a href="/"><i class="fab fa-whatsapp big" aria-label="whatsapp connect"></i></a>
+                <a href="/"><i class="fab fa-instagram big" aria-label="instagram connect"></i></a>
+            </span>
+        </div>
+    </div>
+    <div class="container main-content pt-6s pb-5">
+        <h1 class="display-5 text-center">Share Your Opinions</h1>
+        <p class="xs-small text-gray text-center">Your email address will not be published. Required fields are marked
+            with *</p>
+        <form class="comment mt-3 text-center">
+            <div class="row">
+                <div class="col-sm">
+                    <textarea class=" bg-white rounded" placeholder="Write Your Comment *"></textarea>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm">
+                    <input class="bg-white rounded" type="text" placeholder="Name *" required>
+                </div>
+                <div class="col-sm">
+                    <input class="bg-white  rounded" type="email" placeholder="Email *" required>
+                </div>
+                <div class="col-sm">
+                    <input class="bg-white rounded" type="text" placeholder="Website" required>
+                </div>
+            </div>
+            <button class="btn btn-primary text-white btn-md rounded-pill mt-4 text-center px-4 pt-2 pb-2"
+                type="submit">Post
+                Comment</button>
+        </form>
+    </div>
+
+</section>
+
+<% include partials/footer %>

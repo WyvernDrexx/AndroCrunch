@@ -21,7 +21,7 @@
             </div>
             <% } %>
             <div class="card-body">
-                <h5 class="card-title"><small><%= post.content %></small></h5>
+                <h5 class="card-title"><small><%= post.content.substring(0, 300) %>..</small></h5>
                 <a href="/blogs/edit/<%= status %>/<%= post._id %>" class="btn btn-primary mt-4 mb-4">Edit</a>
                 <a href="/blogs/delete/<%= status %>/<%= post._id %>"
                     class="btn btn-outline-danger mt-4 mb-4">Remove</a>
@@ -37,6 +37,8 @@
                 <a href="/blogs/edit/<%= status %>/<%= post._id %>/image"
                     class="btn btn-primary mt-4 mb-4 float-right">Change
                     Image</a>
+                <a href="/blogs/preview/<%= status %>/<%= post._id %>"
+                    class="btn btn-success mt-4 mb-4 float-right m-2">Preview</a>
                 <a href="/blogs/images/<%= status %>/<%= post._id%>" class="btn btn-primary">View Images</a>
                 <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("dddd, MMMM Do YYYY, h:mm:ss a") %>
                 </p>
