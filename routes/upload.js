@@ -79,7 +79,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                 data[0].list.wallpapers += 1;
                 data[0].save();
             });
-            
+
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // output stream
@@ -98,8 +98,8 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 142, height: 196 })
-                
+                .resize({ width: 142, height: 196 , fit: 'inside', withoutEnlargement: true })
+
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -126,8 +126,8 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 288, height: 224 })
-                
+                .resize({ width: 288, height: 224 , fit: 'inside', withoutEnlargement: true })
+
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -156,7 +156,8 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 546, height: 320 })
+                .resize({ width: 546, height: 320, fit: 'inside', withoutEnlargement: true  })
+                
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -363,7 +364,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 // "info" event will be emitted on resize
                 let transform = sharp()
                     .jpeg()
-                    .resize({ width: 128, height: 128 })
+                    .resize({ width: 128, height: 128 , fit: 'inside', withoutEnlargement: true })
                     
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
@@ -390,8 +391,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 // "info" event will be emitted on resize
                 let transform = sharp()
                     .jpeg()
-                    
-                    .resize({ width: 142, height: 96 })
+
+                    .resize({ width: 142, height: 96 , fit: 'inside', withoutEnlargement: true })
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
                     });
@@ -419,7 +420,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 288, height: 224 })
+                .resize({ width: 288, height: 224, fit: 'inside', withoutEnlargement: true  })
                 
                 .on('info', function (fileInfo) {
                     console.log("Med size Resizing done, file not saved");
@@ -449,7 +450,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 546, height: 320 })
+                .resize({ width: 546, height: 320, fit: 'inside', withoutEnlargement: true })
                 .on('info', function (fileInfo) {
                     console.log("Large size Resizing done, file not saved");
                 });
@@ -457,7 +458,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             inStream.pipe(transform).pipe(outStream);
             deleteFromSystem("thumbnail", actualfile);
         } catch (err) {
-            console.log("Hit here");
+            console.log(err);
             cleanFromSystem(actualfile);
             return;
         }
