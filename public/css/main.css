@@ -1198,6 +1198,7 @@ a:active, a:focus {
     }
     .scroll-top {
         justify-content: initial !important;
+        padding-left: 15%;        
     }
     .recommended .card-title {
         font-size: 16px
