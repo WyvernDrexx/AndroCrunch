@@ -79,6 +79,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
                 data[0].list.wallpapers += 1;
                 data[0].save();
             });
+            
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // output stream
@@ -457,9 +458,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             deleteFromSystem("thumbnail", actualfile);
         } catch (err) {
             console.log("Hit here");
-            deleteFromSystem("thumbnail", actualfile);
-            deleteFromSystem("thumbnail", "md-" + actualfile);
-            deleteFromSystem("thumbnail", "lg-" + actualfile);
+            cleanFromSystem(actualfile);
             return;
         }
         if (err) {
@@ -470,9 +469,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             if (mimetype === "image") {
                 Image.findOne({ _id: id }, (err, image) => {
                     if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
-                        deleteFromSystem("thumbnail",image.thumbnail);
-                        deleteFromSystem("thumbnail", "md-" + (image.thumbnail).split("-")[1]);
-                        deleteFromSystem("thumbnail", "lg-" + (image.thumbnail).split("-")[1]);
+                        cleanFromSystem(image.thumbnail);
                     }
                     image.thumbnail = req.file.filename;
                     image.save();
@@ -483,10 +480,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                     console.log(id);
                     if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
                         console.log((audio.thumbnail).split("-")[1]);
+                        console.log("Cleaning");
                         cleanFromSystem(audio.thumbnail);
-                        // deleteFromSystem("thumbnail",audio.thumbnail);
-                        // deleteFromSystem("thumbnail", "md-" + (audio.thumbnail).split("-")[1]);
-                        // deleteFromSystem("thumbnail", "lg-" + (audio.thumbnail).split("-")[1]);
                     }
                     audio.thumbnail = req.file.filename;
                     audio.save();
@@ -495,9 +490,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             else if (mimetype === "application") {
                 App.findOne({ _id: id }, (err, app) => {
                     if (typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg") {
-                        deleteFromSystem("thumbnail",app.thumbnail);
-                        deleteFromSystem("thumbnail", "md-" + (app.thumbnail).split("-")[1]);
-                        deleteFromSystem("thumbnail", "lg-" + (app.thumbnail).split("-")[1]);
+                        cleanFromSystem(app.thumbnail);
                     }
                     app.thumbnail = req.file.filename;
                     app.save();
@@ -505,9 +498,7 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             } else if (mimetype === "zip") {
                 Preset.findOne({ _id: id }, (err, preset) => {
                     if (typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg") {
-                        deleteFromSystem("thumbnail",preset.thumbnail);
-                        deleteFromSystem("thumbnail", "md-" + (preset.thumbnail).split("-")[1]);
-                        deleteFromSystem("thumbnail", "lg-" + (preset.thumbnail).split("-")[1]);
+                        cleanFromSystem(preset.thumbnail);
                     }
                     preset.thumbnail = req.file.filename;
                     preset.save();
@@ -632,9 +623,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             }
             deleteFromSystem("upload", file.referenceFile);
             if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
-                deleteFromSystem("thumbnail",file.thumbnail);
-                deleteFromSystem("thumbnail", "md-" + (file.thumbnail).split("-")[1]);
-                deleteFromSystem("thumbnail", "lg-" + (file.thumbnail).split("-")[1]);
+                cleanFromSystem(file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
@@ -651,9 +640,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             }
             deleteFromSystem("upload", file.referenceFile);
             if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
-                deleteFromSystem("thumbnail",file.thumbnail);
-                deleteFromSystem("thumbnail", "md-" + (file.thumbnail).split("-")[1]);
-                deleteFromSystem("thumbnail", "lg-" + (file.thumbnail).split("-")[1]);
+                cleanFromSystem(file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
@@ -670,9 +657,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             }
             deleteFromSystem("upload", file.referenceFile);
             if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
-                deleteFromSystem("thumbnail", file.thumbnail);
-                deleteFromSystem("thumbnail", "md-" + (file.thumbnail).split("-")[1]);
-                deleteFromSystem("thumbnail", "lg-" + (file.thumbnail).split("-")[1]);
+                cleanFromSystem(file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
@@ -689,9 +674,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             }
             deleteFromSystem("upload", file.referenceFile);
             if (typeof file.thumbnail !== "undefined" && file.thumbnail.length > 0 && file.thumbnail !== "default.jpg") {
-                deleteFromSystem("thumbnail", file.thumbnail);
-                deleteFromSystem("thumbnail", "md-" + (file.thumbnail).split("-")[1]);
-                deleteFromSystem("thumbnail", "lg-" + (file.thumbnail).split("-")[1]);
+                cleanFromSystem(file.thumbnail);
             }
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
