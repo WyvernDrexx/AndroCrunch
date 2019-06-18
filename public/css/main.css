@@ -825,7 +825,9 @@ a:active, a:focus {
 .jumbo-button a {
     font-size: 16px!important
 }
-
+.h-13{
+    height: 13rem !important;
+}
 .no-border {
     border: none!important
 }
@@ -845,7 +847,8 @@ a:active, a:focus {
 .horizontal-scroll {
     padding-top: 20px;
     overflow-y: auto;
-    white-space: nowrap
+    /* white-space: nowrap; */
+    height: 28rem;;
 }
 
 .card {
@@ -856,8 +859,8 @@ a:active, a:focus {
     display: inline-block;
     margin: 20px;
     margin-top: 1.2rem;
-    height: 14rem;
-    width: 12rem;
+    height: 17.5rem;
+    width: 13rem;
     background-color: #0fc4c4;
     border-radius: 35px;
     position: relative;
@@ -878,9 +881,9 @@ a:active, a:focus {
 }
 
 .horizontal-scroll .scroll-item img {
-    width: 12rem;
+    width: 13rem;
     border-radius: 35px;
-    height: 14rem
+    height: 17.5rem
 }
 
 .horizontal-scroll .scroll-item:hover {
