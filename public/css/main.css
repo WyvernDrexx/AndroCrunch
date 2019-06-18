@@ -416,7 +416,7 @@ input::placeholder {
 }
 
 .line {
-    padding-left: 13rem;
+    /* padding-left: 13rem; */
     border-top: 1px solid purple
 }
 
@@ -484,11 +484,11 @@ input::placeholder {
 }
 
 .bg-gradient {
-    background-image: linear-gradient(40deg, #003, #03c, #3cc)!important
+    background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
 }
 
 .bg-gradient-bottom {
-    background-image: linear-gradient(180deg, #003, #03c, #3cc)!important
+    background-image: linear-gradient(180deg, #003, #03c, #3cc)!important;
 }
 
 .compact-form {
@@ -863,10 +863,23 @@ a:active, a:focus {
     width: 13rem;
     background-color: #0fc4c4;
     border-radius: 35px;
-    box-shadow: 3px 3px 15px rgba(48, 47, 47, 0.795);
+    box-shadow: 3px 3px 15px rgba(48, 47, 47, 0.288);
     position: relative;
 }
-
+.app-banner{
+    width: 100vw;
+    height: 24rem;
+    background-color: #0383b6;
+    margin-top: 10rem;
+    background-image: url('/imgs/app-banner.webp');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-bottom: 10rem;
+}
+.app-banner div{
+    margin-right: 15rem;
+    padding-top: 4rem;
+}
 .scroll-item .category {
     position: absolute;
     width: 50px;
@@ -1168,6 +1181,13 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:992px) {
+    .app-banner{
+        background-image: none;
+        background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
+    }
+    .app-banner div{
+        margin-right: 0px;
+    }
     .about-img{
         display: none;
     }

@@ -41,9 +41,11 @@
             <% for( let i =  files.images.length - 1 ; i >= files.images.length - 4; i--){ %>
             <% file=files.images[i];  %>
             <a href="/contents/wallpapers/<%= file.name %>">
-                <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');" class="scroll-item">
+                <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
+                    class="scroll-item">
                     <!-- <img class="" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select"> -->
-                    <p style="padding-top: 19rem;" class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
+                    <p style="padding-top: 19rem;" class="mx-3 small mt-4 text-dark text-center"><%= file.filename %>
+                    </p>
                 </div>
             </a>
             <% } %>
@@ -64,7 +66,7 @@
                     <p class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
                 </div>
             </a>
-            
+
             <% } %>
         </div>
     </div>
@@ -123,12 +125,18 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="text-center mt-6 mt-md-5">
-        <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
+            <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
+        </div>
+    <div class="container-fluid app-banner text-white">
+        <div class="">
+                <p class="display-4 text-center text-lg-right font-weight-bold">Apps</p><br>
+                <p class="text-center text-lg-right px-0">Checkout Our Amazing handpicked collection <br> Recommended using on mobile <br> for better exerience</p>
+                <a href="/contents/apps" class="btn btn-primary float-right rounded-pill mt-5">Browse Now</a>
+        </div>
     </div>
+
+
     <h2 class="display-5 text-center  mb-3 pt-5"><span>Our Blogs</span></h2>
     <div class="text-center w-25 m-auto"><span class="line d-block"></span></div>
     <div class="container-fluid bg-white blog-posts pb-6">
