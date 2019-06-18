@@ -38,57 +38,40 @@
     <p class="small text-center text-gray pb-3 bg-white">Get the latest and trendy wallpapers available!</p>
     <div class="container-fluid  horizontal-scroll px-0">
         <div class="scroll-top d-flex justify-content-center">
-            <% for( let i =  0 ; i <= 3; i++){ %>
+            <% for( let i =  files.images.length - 1 ; i >= files.images.length - 4; i--){ %>
             <% file=files.images[i];  %>
-            <% if(i % 2 === 0){ %>
             <a href="/contents/wallpapers/<%= file.name %>">
-                <div class="scroll-item">
-                    <img class="" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select">
-                    <p class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
+                <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');" class="scroll-item">
+                    <!-- <img class="" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select"> -->
+                    <p class="mx-3 small mt-4 text-light text-center"><%= file.filename %></p>
                 </div>
             </a>
-            <% }else { %>
-            <a href="/contents/wallpapers/<%= file.name %>">
-                <div class="scroll-item">
-                    <img class="" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select">
-                    <p class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
-                </div>
-            </a>
-            <% } %>
             <% } %>
         </div>
     </div>
     <div class="text-center mb-6 mt-5">
-            <a href="/contents/wallpapers" class="btn btn-primary small rounded-pill">Browse More</a>
-        </div>
+        <a href="/contents/wallpapers" class="btn btn-primary small rounded-pill">Browse More</a>
+    </div>
     <h1 class=" text-center pt-5 pb-1 bg-white">Ringtones</h1>
     <p class="small text-center text-gray pb-3 bg-white">Browse through our latest collection!</p>
     <div class="container-fluid  horizontal-scroll px-0">
         <div class="scroll-top d-flex justify-content-center">
             <% for( let i =  0 ; i <= 3; i++){ %>
             <% file=files.audio[i];  %>
-            <% if(i % 2 === 0){ %>
             <a href="/contents/ringtones/<%= file.name %>">
                 <div class="scroll-item h-13">
                     <img class="h-13" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select">
                     <p class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
                 </div>
             </a>
-            <% }else { %>
-            <a href="/contents/wallpapers/<%= file.name %>">
-                <div class="scroll-item h-13">
-                    <img class="h-13" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select">
-                    <p class="mx-3 small mt-4 text-dark text-center"><%= file.filename %></p>
-                </div>
-            </a>
-            <% } %>
+            
             <% } %>
         </div>
     </div>
     <div class="text-center mt-2 mb-5">
         <a href="/contents/ringtones" class="btn btn-primary small rounded-pill">Browse More</a>
     </div>
-    
+
     <h1 class="display-5 text-center pt-6s pb-1">Presets & Plugins</h1>
     <p class="small text-center text-gray pb-3">Enhance yourself with the best!</p>
     <div class="row main-content justify-content-center">
@@ -144,53 +127,53 @@
 
 
     <div class="text-center mt-6 mt-md-5">
-            <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
-        </div>
+        <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
+    </div>
     <h2 class="display-5 text-center  mb-3 pt-5"><span>Our Blogs</span></h2>
     <div class="text-center w-25 m-auto"><span class="line d-block"></span></div>
     <div class="container-fluid bg-white blog-posts pb-6">
-            <div class="row main-content justify-content-center">
-                <div class="col-md">
-                    <div class="card mx-sm-1 mt-5 ">
-                        <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="tags">ANDROID, TRICKS</p>
-                            <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the
-                                card's content.</p>
-                            <p class="date">FEB 10, 2019</p>
-                        </div>
+        <div class="row main-content justify-content-center">
+            <div class="col-md">
+                <div class="card mx-sm-1 mt-5 ">
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="tags">ANDROID, TRICKS</p>
+                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <p class="date">FEB 10, 2019</p>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="card mx-sm-1 mt-5 ">
-                        <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="tags">ANDROID, TRICKS</p>
-                            <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the
-                                card's content.</p>
-                            <p class="date">FEB 10, 2019</p>
-                        </div>
+            </div>
+            <div class="col-md">
+                <div class="card mx-sm-1 mt-5 ">
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="tags">ANDROID, TRICKS</p>
+                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <p class="date">FEB 10, 2019</p>
                     </div>
                 </div>
-                <div class="col-md ">
-                    <div class="card mx-sm-1 mt-5 ">
-                        <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="tags">ANDROID, TRICKS</p>
-                            <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the
-                                card's content.</p>
-                            <p class="date">FEB 10, 2019</p>
-                        </div>
+            </div>
+            <div class="col-md ">
+                <div class="card mx-sm-1 mt-5 ">
+                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="tags">ANDROID, TRICKS</p>
+                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <p class="date">FEB 10, 2019</p>
                     </div>
                 </div>
-            </div>      
+            </div>
         </div>
+    </div>
     <div class="text-center mt-5 mt-md-5">
         <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
     </div>
