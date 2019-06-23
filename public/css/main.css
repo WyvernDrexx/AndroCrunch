@@ -972,7 +972,11 @@ a:active, a:focus {
 
 .footer-bg {
     background-image: url('/imgs/footer-bg.jpg');
-    background-size: 100% 100%;
+    background-color: #03c;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .testimonial-bg {
