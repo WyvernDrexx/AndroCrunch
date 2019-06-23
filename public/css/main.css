@@ -867,14 +867,14 @@ a:active, a:focus {
     position: relative;
 }
 .app-banner{
-    width: 100vw;
-    height: 24rem;
-    background-color: #0383b6;
-    margin-top: 10rem;
+    margin-top: 150px;
     background-image: url('/imgs/app-banner.webp');
-    background-size: 100% 100%;
+    background-color: #03c;
+    height: 500px;
+    background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: 10rem;
+    background-size: cover;
+    position: relative;
 }
 .app-banner div{
     margin-right: 15rem;
@@ -1181,10 +1181,10 @@ a:active, a:focus {
 }
 
 @media only screen and (max-width:992px) {
-    .app-banner{
+    /* .app-banner{
         background-image: none;
         background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
-    }
+    } */
     .app-banner div{
         margin-right: 0px;
     }
