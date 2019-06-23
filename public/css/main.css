@@ -1006,7 +1006,6 @@ a:focus {
 .testimonial-bg {
     background-image: url('/imgs/testimonial-bg.jpg');
     background-color: #03c;
-    height: 500px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1242,6 +1241,15 @@ textarea.form-control {
     white-space: normal;
 }
 
+
+
+
+
+
+
+
+/* ------------------------------------------- */
+
 @media only screen and (max-width:992px) {
 
     /* .app-banner{
@@ -1287,7 +1295,7 @@ textarea.form-control {
 
     .scroll-top {
         justify-content: initial !important;
-        padding-left: 18%;
+        padding-left: 21%;
     }
 
     .recommended .card-title {
