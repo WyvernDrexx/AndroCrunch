@@ -46,7 +46,9 @@ router.post("/files/upload", isLoggedIn, (req, res) => {
             res.redirect("back");
         } else {
             req.flash("success", "File successfully added! Number of files uploaded: " + req.files.length);
-            res.render("upload", { files: req.files });
+            res.render("upload", {
+                files: req.files
+            });
         }
     });
 });
@@ -60,6 +62,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
     // referenceFile and size to be modified..
 
     for (let i = 0; i < filesData.title.length; i++) {
+        tempMime = String(filesData.mimetype[i].split("/")[1].toLowerCase());
         var file = {
             filename: filesData.title[i],
             mimetype: filesData.mimetype[i].split("/")[0],
@@ -70,7 +73,7 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             name: filesData.name[i].trim().split(" ").join("-").toLowerCase(),
             created: moment()
         }
-        if (filesData.mimetype[i].split("/")[1].toLowerCase() === "zip") {
+        if (tempMime === "zip" || tempMime === "x-adobe-dng" || tempMime === "x-sony-arw" || tempMime === "x-panasonic-raw" || tempMime === "x-rar-compressed" || file.referenceFile.split(".")[1].toLowerCase() === "awg") {
             file.mimetype = "zip";
         }
         if (file.mimetype === "image") {
@@ -83,7 +86,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             let inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // output stream
-            let outStream = fs.createWriteStream('./public/thumbnails/' + "sm-" + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            let outStream = fs.createWriteStream('./public/thumbnails/' + "sm-" + file.referenceFile.split(".")[0] + ".jpeg", {
+                flags: "w"
+            });
 
             // on error of output file being saved
             outStream.on('error', function () {
@@ -98,7 +103,12 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 142, height: 196 , fit: 'inside', withoutEnlargement: true })
+                .resize({
+                    width: 142,
+                    height: 196,
+                    fit: 'inside',
+                    withoutEnlargement: true
+                })
 
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -110,7 +120,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // Medium size thumbnail
 
             // output stream
-            outStream = fs.createWriteStream('./public/thumbnails/md-' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            outStream = fs.createWriteStream('./public/thumbnails/md-' + file.referenceFile.split(".")[0] + ".jpeg", {
+                flags: "w"
+            });
             inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // on error of output file being saved
@@ -126,7 +138,12 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 288, height: 224 , fit: 'inside', withoutEnlargement: true })
+                .resize({
+                    width: 288,
+                    height: 224,
+                    fit: 'inside',
+                    withoutEnlargement: true
+                })
 
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
@@ -140,7 +157,9 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
             // Large image
             // output stream
-            outStream = fs.createWriteStream('./public/thumbnails/lg-' + file.referenceFile.split(".")[0] + ".jpeg", { flags: "w" });
+            outStream = fs.createWriteStream('./public/thumbnails/lg-' + file.referenceFile.split(".")[0] + ".jpeg", {
+                flags: "w"
+            });
             inStream = fs.createReadStream('./public/uploads/' + file.referenceFile);
 
             // on error of output file being saved
@@ -156,8 +175,13 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 546, height: 320, fit: 'inside', withoutEnlargement: true  })
-                
+                .resize({
+                    width: 546,
+                    height: 320,
+                    fit: 'inside',
+                    withoutEnlargement: true
+                })
+
                 .on('info', function (fileInfo) {
                     console.log("Resizing done, file not saved");
                 });
@@ -275,7 +299,9 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
     if (mimetype === "image") {
-        Image.findOne({ _id: id }, (err, image) => {
+        Image.findOne({
+            _id: id
+        }, (err, image) => {
             if (err) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
@@ -286,9 +312,10 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }
-    else if (mimetype === "audio") {
-        Audio.findOne({ _id: id }, (err, audio) => {
+    } else if (mimetype === "audio") {
+        Audio.findOne({
+            _id: id
+        }, (err, audio) => {
             if (err) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
@@ -299,9 +326,10 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }
-    else if (mimetype === "application") {
-        App.findOne({ _id: id }, (err, app) => {
+    } else if (mimetype === "application") {
+        App.findOne({
+            _id: id
+        }, (err, app) => {
             if (err) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
@@ -313,7 +341,9 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             });
         });
     } else if (mimetype === "zip") {
-        Preset.findOne({ _id: id }, (err, preset) => {
+        Preset.findOne({
+            _id: id
+        }, (err, preset) => {
             if (err) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
@@ -348,7 +378,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
                 // output stream
-                let outStream = fs.createWriteStream('./public/thumbnails/sm-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+                let outStream = fs.createWriteStream('./public/thumbnails/sm-' + req.file.filename.split(".")[0] + ".jpeg", {
+                    flags: "w"
+                });
 
                 // on error of output file being saved
                 outStream.on('error', function () {
@@ -364,8 +396,13 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 // "info" event will be emitted on resize
                 let transform = sharp()
                     .jpeg()
-                    .resize({ width: 128, height: 128 , fit: 'inside', withoutEnlargement: true })
-                    
+                    .resize({
+                        width: 128,
+                        height: 128,
+                        fit: 'inside',
+                        withoutEnlargement: true
+                    })
+
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
                     });
@@ -375,7 +412,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 let inStream = fs.createReadStream('./public/thumbnails/' + req.file.filename);
 
                 // output stream
-                let outStream = fs.createWriteStream('./public/thumbnails/sm-' + req.file.filename.split(".")[0] + ".jpeg", { flags: "w" });
+                let outStream = fs.createWriteStream('./public/thumbnails/sm-' + req.file.filename.split(".")[0] + ".jpeg", {
+                    flags: "w"
+                });
 
                 // on error of output file being saved
                 outStream.on('error', function () {
@@ -392,7 +431,12 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 let transform = sharp()
                     .jpeg()
 
-                    .resize({ width: 142, height: 96 , fit: 'inside', withoutEnlargement: true })
+                    .resize({
+                        width: 142,
+                        height: 96,
+                        fit: 'inside',
+                        withoutEnlargement: true
+                    })
                     .on('info', function (fileInfo) {
                         console.log("Resizing done, file not saved");
                     });
@@ -404,7 +448,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // Medium size thumbnail
 
             // output stream
-            let outStream = fs.createWriteStream('./public/thumbnails/md-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
+            let outStream = fs.createWriteStream('./public/thumbnails/md-' + actualfile.split(".")[0] + ".jpeg", {
+                flags: "w"
+            });
             let inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
 
             // on error of output file being saved
@@ -420,8 +466,13 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             let transform = sharp()
                 .jpeg()
-                .resize({ width: 288, height: 224, fit: 'inside', withoutEnlargement: true  })
-                
+                .resize({
+                    width: 288,
+                    height: 224,
+                    fit: 'inside',
+                    withoutEnlargement: true
+                })
+
                 .on('info', function (fileInfo) {
                     console.log("Med size Resizing done, file not saved");
                 });
@@ -431,7 +482,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
 
             // Large size thumbnail
             // output stream
-            outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", { flags: "w" });
+            outStream = fs.createWriteStream('./public/thumbnails/lg-' + actualfile.split(".")[0] + ".jpeg", {
+                flags: "w"
+            });
             inStream = fs.createReadStream('./public/thumbnails/' + actualfile);
 
             // on error of output file being saved
@@ -450,7 +503,12 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             // "info" event will be emitted on resize
             transform = sharp()
                 .jpeg()
-                .resize({ width: 546, height: 320, fit: 'inside', withoutEnlargement: true })
+                .resize({
+                    width: 546,
+                    height: 320,
+                    fit: 'inside',
+                    withoutEnlargement: true
+                })
                 .on('info', function (fileInfo) {
                     console.log("Large size Resizing done, file not saved");
                 });
@@ -468,16 +526,19 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             return;
         } else {
             if (mimetype === "image") {
-                Image.findOne({ _id: id }, (err, image) => {
+                Image.findOne({
+                    _id: id
+                }, (err, image) => {
                     if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
                         cleanFromSystem(image.thumbnail);
                     }
                     image.thumbnail = req.file.filename;
                     image.save();
                 });
-            }
-            else if (mimetype === "audio") {
-                Audio.findOne({ _id: id }, (err, audio) => {
+            } else if (mimetype === "audio") {
+                Audio.findOne({
+                    _id: id
+                }, (err, audio) => {
                     console.log(id);
                     if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
                         console.log((audio.thumbnail).split("-")[1]);
@@ -487,9 +548,10 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                     audio.thumbnail = req.file.filename;
                     audio.save();
                 });
-            }
-            else if (mimetype === "application") {
-                App.findOne({ _id: id }, (err, app) => {
+            } else if (mimetype === "application") {
+                App.findOne({
+                    _id: id
+                }, (err, app) => {
                     if (typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg") {
                         cleanFromSystem(app.thumbnail);
                     }
@@ -497,7 +559,9 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                     app.save();
                 });
             } else if (mimetype === "zip") {
-                Preset.findOne({ _id: id }, (err, preset) => {
+                Preset.findOne({
+                    _id: id
+                }, (err, preset) => {
                     if (typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg") {
                         cleanFromSystem(preset.thumbnail);
                     }
@@ -516,27 +580,33 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
     if (mimetype === "image") {
-        Image.findOne({ _id: id }, (err, image) => {
+        Image.findOne({
+            _id: id
+        }, (err, image) => {
             res.render("updateFile", {
                 file: image
             });
         });
-    }
-    else if (mimetype === "audio") {
-        Audio.findOne({ _id: id }, (err, audio) => {
+    } else if (mimetype === "audio") {
+        Audio.findOne({
+            _id: id
+        }, (err, audio) => {
             res.render("updateFile", {
                 file: audio
             });
         });
-    }
-    else if (mimetype === "application") {
-        App.findOne({ _id: id }, (err, app) => {
+    } else if (mimetype === "application") {
+        App.findOne({
+            _id: id
+        }, (err, app) => {
             res.render("updateFile", {
                 file: app
             });
         });
     } else if (mimetype === "zip") {
-        Preset.findOne({ _id: id }, (err, preset) => {
+        Preset.findOne({
+            _id: id
+        }, (err, preset) => {
             res.render("updateFile", {
                 file: preset
             });
@@ -549,7 +619,9 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
     let mimetype = req.params.mimetype;
     let id = req.params.id;
     if (mimetype === "image") {
-        Image.findOneAndUpdate({ _id: id }, {
+        Image.findOneAndUpdate({
+            _id: id
+        }, {
             filename: req.body.filename,
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
@@ -562,9 +634,10 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             req.flash("success", "File <strong>" + image.filename + "</strong> updated successfully!");
             res.redirect("back");
         });
-    }
-    else if (mimetype === "audio") {
-        Audio.findOneAndUpdate({ _id: id }, {
+    } else if (mimetype === "audio") {
+        Audio.findOneAndUpdate({
+            _id: id
+        }, {
             filename: req.body.filename,
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
@@ -577,9 +650,10 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             req.flash("success", "File <strong>" + audio.filename + "</strong> updated successfully!");
             res.redirect("back");
         });
-    }
-    else if (mimetype === "application") {
-        App.findOneAndUpdate({ _id: id }, {
+    } else if (mimetype === "application") {
+        App.findOneAndUpdate({
+            _id: id
+        }, {
             filename: req.body.filename,
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
@@ -593,7 +667,9 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             res.redirect("back");
         });
     } else if (mimetype === "zip") {
-        Preset.findOneAndUpdate({ _id: id }, {
+        Preset.findOneAndUpdate({
+            _id: id
+        }, {
             filename: req.body.filename,
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
@@ -629,8 +705,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
         });
-    }
-    else if (mimetype === "audio") {
+    } else if (mimetype === "audio") {
         Audio.findOneAndDelete({
             _id: id
         }, (err, file) => {
@@ -646,8 +721,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
         });
-    }
-    else if (mimetype === "application") {
+    } else if (mimetype === "application") {
         App.findOneAndDelete({
             _id: id
         }, (err, file) => {
@@ -663,8 +737,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
             req.flash("success", "File deleted successfully!");
             res.redirect("back");
         });
-    }
-    else if (mimetype === "zip") {
+    } else if (mimetype === "zip") {
         Preset.findOneAndDelete({
             _id: id
         }, (err, file) => {
@@ -701,8 +774,7 @@ router.get("/files/list/:category", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }
-    else if (category === "audio") {
+    } else if (category === "audio") {
         Audio.find({}, (err, audio) => {
             if (err) {
                 req.flash("error", "Unable to retrieve Audios from Database. Contact admin ASAP!");
@@ -714,9 +786,7 @@ router.get("/files/list/:category", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }
-
-    else if (category === "apps") {
+    } else if (category === "apps") {
         App.find({}, (err, apps) => {
             if (err) {
                 req.flash("error", "Unable to retrieve Apps from Database. Contact admin ASAP!");
@@ -728,8 +798,7 @@ router.get("/files/list/:category", isLoggedIn, (req, res) => {
                 moment
             });
         });
-    }
-    else if (category === "presets") {
+    } else if (category === "presets") {
         Preset.find({}, (err, presets) => {
             if (err) {
                 req.flash("error", "Unable to retrieve Presets from Database. Contact admin ASAP!");
