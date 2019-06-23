@@ -1288,9 +1288,6 @@ a:active, a:focus {
     }
     .bg-image {
         background-image: url('/imgs/phone-bg.jpg') !important;
-        background-size: 100vw;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
     }
     .carousel-item img {
         min-height: 12rem;
