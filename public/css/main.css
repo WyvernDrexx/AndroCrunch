@@ -1228,6 +1228,7 @@ textarea.form-control {
     overflow: auto;
     white-space: nowrap;
     padding-left: 10%;
+    touch-action: initial;
 }
 
 .scroll-item-flex {
