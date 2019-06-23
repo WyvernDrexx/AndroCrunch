@@ -359,7 +359,7 @@ input::placeholder {
 
 .carousel-control-next,
 .carousel-control-prev {
-    z-index: 3
+    z-index: 16;
 }
 
 .carousel-item:hover .hover-option {
@@ -1222,6 +1222,7 @@ textarea.form-control {
 .trending-posts .col-md-4:hover p {
     opacity: 0
 }
+
 
 .horizontal-scroll-flex-box {
     padding: 10px;
