@@ -1002,10 +1002,14 @@ a:active, a:focus {
     top: 33%
 }
 
+.monteserrat{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
 .hits span {
     color: #2c008b;
     font-size: 2rem;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .hits span.lead {
