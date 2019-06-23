@@ -4,11 +4,12 @@
 
 body {
     background-image: linear-gradient(to left, #306, #609, #60c);
-    font-family: proxima-nova, sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 
 p {
-    letter-spacing: .3px
+    letter-spacing: .3px;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .fixed-top {
