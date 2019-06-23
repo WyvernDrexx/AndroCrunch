@@ -30,7 +30,7 @@ h1.display-4 {
 }
 
 .nav-item .nav-link:hover {
-    color: #96f!important
+    color: #96f !important
 }
 
 .btn:hover {
@@ -38,7 +38,7 @@ h1.display-4 {
 }
 
 .transparent {
-    background: 0 0!important
+    background: 0 0 !important
 }
 
 #myBtn {
@@ -59,7 +59,7 @@ h1.display-4 {
 }
 
 .disclaimer-gradient {
-    background-image: linear-gradient(to bottom, #990, #303)!important
+    background-image: linear-gradient(to bottom, #990, #303) !important
 }
 
 .deleteForm {
@@ -77,7 +77,7 @@ h1.display-4 {
 }
 
 .thumbnail img {
-    max-height: 300px!important
+    max-height: 300px !important
 }
 
 .deleteForm form {
@@ -91,7 +91,7 @@ h1.display-4 {
 }
 
 .advert-gradient {
-    background-image: linear-gradient(to bottom, #03c, #003)!important
+    background-image: linear-gradient(to bottom, #03c, #003) !important
 }
 
 .edit-list .row {
@@ -99,20 +99,22 @@ h1.display-4 {
     padding: 20px
 }
 
-.edit-list .col-md-2, .edit-list .col-md-4, .edit-list .col-md-6 {
+.edit-list .col-md-2,
+.edit-list .col-md-4,
+.edit-list .col-md-6 {
     background-color: #dcdcdc
 }
 
 .privacy-policy-gradient {
-    background-image: linear-gradient(to bottom, #f03, #300)!important
+    background-image: linear-gradient(to bottom, #f03, #300) !important
 }
 
 .about-us-gradient {
-    background-image: linear-gradient(to bottom, #909, #303)!important
+    background-image: linear-gradient(to bottom, #909, #303) !important
 }
 
 .contact-us-gradient {
-    background-image: linear-gradient(to bottom, #099, #303)!important
+    background-image: linear-gradient(to bottom, #099, #303) !important
 }
 
 #myBtn:hover {
@@ -141,30 +143,31 @@ h1.display-4 {
 
 .pagination {
     padding: 4px;
-    max-width: 15rem!important;
+    max-width: 15rem !important;
     margin-left: auto;
     border-radius: 25px;
     border: 1px solid #03f
 }
 
 .pagination .active a {
-    color: #fff!important;
-    background-color: #335bd4d8!important
+    color: #fff !important;
+    background-color: #335bd4d8 !important
 }
 
 .pagination a {
     background-color: transparent;
     border: none;
-    border-radius: 50%!important
+    border-radius: 50% !important
 }
 
-.pagination a.next, .pagination a.previous {
-    border-radius: 0!important;
-    background-color: transparent!important
+.pagination a.next,
+.pagination a.previous {
+    border-radius: 0 !important;
+    background-color: transparent !important
 }
 
 .small-ht {
-    max-height: 12rem!important
+    max-height: 12rem !important
 }
 
 .main .col-md-4 {
@@ -184,7 +187,7 @@ h1.display-4 {
 }
 
 a {
-    text-decoration: none!important
+    text-decoration: none !important
 }
 
 .site-content .apps a img.card-img-top {
@@ -217,7 +220,7 @@ a {
     bottom: initial;
     left: initial;
     right: initial;
-    text-align: center!important
+    text-align: center !important
 }
 
 .apps .card p {
@@ -225,7 +228,7 @@ a {
 }
 
 .card-body {
-    padding: .5rem!important;
+    padding: .5rem !important;
     padding-top: 1rem
 }
 
@@ -243,7 +246,8 @@ a {
     margin: 1rem
 }
 
-.main .row .col-sm, .main .row .col-sm-4 {
+.main .row .col-sm,
+.main .row .col-sm-4 {
     margin: 10px;
     background-color: #099;
     height: 11rem;
@@ -270,7 +274,7 @@ a {
 }
 
 .input-group-text {
-    width: auto!important
+    width: auto !important
 }
 
 input::placeholder {
@@ -302,10 +306,11 @@ input::placeholder {
     border-radius: 25px;
     padding: 38px 35px;
     box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, .1);
-    margin-bottom: -5.7rem!important
+    margin-bottom: -5.7rem !important
 }
 
-.date, .tags {
+.date,
+.tags {
     color: #4267f8;
     font-size: 15px;
     margin-bottom: 1.5rem
@@ -352,7 +357,8 @@ input::placeholder {
     cursor: pointer !important;
 }
 
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
     z-index: 3
 }
 
@@ -381,17 +387,19 @@ input::placeholder {
 .most-popular .carousel-inner {
     border-radius: 8px;
 }
-.most-popular p{
+
+.most-popular p {
     cursor: pointer;
 }
+
 .hover-option:hover {
     opacity: 1
 }
 
 .home-selected .card {
     min-height: 11rem;
-    margin: 16px!important;
-    margin-bottom: 15px!important;
+    margin: 16px !important;
+    margin-bottom: 15px !important;
     box-shadow: 5px 5px 18px rgba(0, 0, 0, .185)
 }
 
@@ -399,7 +407,8 @@ input::placeholder {
     padding: 15px
 }
 
-.absolutte-card-title, .recommended .card-title {
+.absolutte-card-title,
+.recommended .card-title {
     position: absolute;
     top: 5%;
     color: #fff;
@@ -451,7 +460,7 @@ input::placeholder {
 }
 
 .card {
-    border-radius: 11px!important;
+    border-radius: 11px !important;
     margin: 2px
 }
 
@@ -485,11 +494,11 @@ input::placeholder {
 }
 
 .bg-gradient {
-    background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
+    background-image: linear-gradient(40deg, #003, #03c, #3cc) !important;
 }
 
 .bg-gradient-bottom {
-    background-image: linear-gradient(180deg, #003, #03c, #3cc)!important;
+    background-image: linear-gradient(180deg, #003, #03c, #3cc) !important;
 }
 
 .compact-form {
@@ -502,7 +511,7 @@ input::placeholder {
 }
 
 .bg-image {
-    background-image: url(/imgs/bg-img.jpg)!important;
+    background-image: url(/imgs/bg-img.jpg) !important;
     background-color: #03c;
     background-position: center;
     background-repeat: no-repeat;
@@ -530,7 +539,7 @@ input:focus {
 }
 
 .text-dark-purple {
-    color: #580096!important
+    color: #580096 !important
 }
 
 .btn-purple-color {
@@ -564,7 +573,7 @@ input:focus {
 }
 
 .font-lg {
-    font-size: 1.5rem!important
+    font-size: 1.5rem !important
 }
 
 #sidenavs {
@@ -634,6 +643,7 @@ input:focus {
     .sidenav {
         padding-top: 15px
     }
+
     .sidenav a {
         font-size: 18px
     }
@@ -679,38 +689,44 @@ h1 {
     padding-top: 25px;
     padding-bottom: 25px;
 }
+
 .blog-main-image img {
     width: 100%;
     max-height: 50%;
     border-radius: 5px
 }
 
-blockquote{
+blockquote {
     border-left: 1px solid #2196f3;
     padding: 15px 25px;
     font-style: italic;
     color: #1f2024;
     font-size: 14px;
-    background-color: rgba(155,155,155,0.05);
+    background-color: rgba(155, 155, 155, 0.05);
 }
-blockquote::before{
-	content: '\f10d';
-	margin: 0 10px 0 0;
+
+blockquote::before {
+    content: '\f10d';
+    margin: 0 10px 0 0;
 }
-blockquote::after{
-	content: '\f10e';
-	margin: 0 0 0 10px;
+
+blockquote::after {
+    content: '\f10e';
+    margin: 0 0 0 10px;
 }
-blockquote::before, blockquote::after {
-	display: inline-block;
-	font-family: 'Font Awesome 5 Free';
-	font-style: normal;
-	font-weight: 900;
-	color: #1f2024;
-	line-height: 1;
+
+blockquote::before,
+blockquote::after {
+    display: inline-block;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    color: #1f2024;
+    line-height: 1;
 }
-.blog-body{
-    font-size: 15px; 
+
+.blog-body {
+    font-size: 15px;
     color: #656565;
 }
 
@@ -724,7 +740,7 @@ blockquote::before, blockquote::after {
 
 .jumbo-button .btn {
     font-weight: 400;
-    font-size: 14px!important
+    font-size: 14px !important
 }
 
 .btn.btn-purple-color:hover {
@@ -750,7 +766,7 @@ blockquote::before, blockquote::after {
 }
 
 .btn-outline-secondary:hover {
-    color: #fff!important
+    color: #fff !important
 }
 
 .social a:hover {
@@ -762,7 +778,7 @@ blockquote::before, blockquote::after {
 }
 
 .circle {
-    border-radius: 50%!important
+    border-radius: 50% !important
 }
 
 .download-item img {
@@ -781,10 +797,11 @@ blockquote::before, blockquote::after {
 }
 
 .carousel-item img {
-    border-radius: 10px!important
+    border-radius: 10px !important
 }
 
-a:active, a:focus {
+a:active,
+a:focus {
     outline: 0;
     border: none;
     -moz-outline-style: none;
@@ -827,32 +844,35 @@ a:active, a:focus {
 }
 
 .jumbo-button a {
-    font-size: 16px!important
+    font-size: 16px !important
 }
-.h-13{
+
+.h-13 {
     height: 13rem !important;
 }
+
 .no-border {
-    border: none!important
+    border: none !important
 }
 
 .no-border-radius {
-    border-radius: 0!important
+    border-radius: 0 !important
 }
 
 .bg-white {
-    background-color: #ffffff!important
+    background-color: #ffffff !important
 }
 
 .border-purple {
-    border: 2px solid #60f!important
+    border: 2px solid #60f !important
 }
 
 .horizontal-scroll {
     padding-top: 20px;
     overflow-y: auto;
     /* white-space: nowrap; */
-    height: 28rem;;
+    height: 28rem;
+    ;
 }
 
 .card {
@@ -870,7 +890,8 @@ a:active, a:focus {
     box-shadow: 3px 3px 15px rgba(48, 47, 47, 0.288);
     position: relative;
 }
-.app-banner{
+
+.app-banner {
     margin-top: 150px;
     background-image: url('/imgs/app-banner.webp');
     background-color: #03c;
@@ -880,10 +901,12 @@ a:active, a:focus {
     background-size: cover;
     position: relative;
 }
-.app-banner div{
+
+.app-banner div {
     margin-right: 15rem;
     padding-top: 4rem;
 }
+
 .scroll-item .category {
     position: absolute;
     width: 50px;
@@ -932,11 +955,11 @@ a:active, a:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto!important;
+    margin: auto !important;
     padding: 10px;
     position: fixed;
     display: none;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, .199)!important
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, .199) !important
 }
 
 .advert-place .box {
@@ -952,7 +975,7 @@ a:active, a:focus {
 }
 
 .main-carousel .col-md {
-    min-height: 12rem!important
+    min-height: 12rem !important
 }
 
 .mt-6 {
@@ -1002,7 +1025,7 @@ a:active, a:focus {
     top: 33%
 }
 
-.monteserrat{
+.monteserrat {
     font-family: 'Montserrat', sans-serif !important;
 }
 
@@ -1029,7 +1052,7 @@ a:active, a:focus {
 }
 
 .text-gray {
-    color: #999!important
+    color: #999 !important
 }
 
 .main-content {
@@ -1050,26 +1073,28 @@ a:active, a:focus {
     letter-spacing: 0
 }
 
-.comment input, .comment textarea {
+.comment input,
+.comment textarea {
     width: 100%;
     padding: 16px;
     color: #4d4c4c;
     border: 1px solid #03f;
-    border-radius: 15px!important;
-    font-size: 10px!important
+    border-radius: 15px !important;
+    font-size: 10px !important
 }
 
 .comment input {
     margin: 12px 0;
     padding: 15px 10px;
-    border-radius: 10px!important
+    border-radius: 10px !important
 }
 
 .comment ::placeholder {
     color: gray
 }
 
-.comment textarea, textarea.form-control {
+.comment textarea,
+textarea.form-control {
     height: 17rem
 }
 
@@ -1108,6 +1133,7 @@ a:active, a:focus {
     0% {
         transform: rotate(0)
     }
+
     100% {
         transform: rotate(360deg)
     }
@@ -1197,25 +1223,45 @@ a:active, a:focus {
     opacity: 0
 }
 
+.horizontal-scroll-flex-box {
+    padding: 10px;
+    overflow: auto;
+    white-space: nowrap;
+    padding-left: 10%;
+}
+
+.scroll-item-flex {
+    display: inline-block;
+}
+
+.scroll-item-flex p{
+    white-space: normal;
+}
+
 @media only screen and (max-width:992px) {
+
     /* .app-banner{
         background-image: none;
         background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
     } */
-    .app-banner div{
+    .app-banner div {
         margin-right: 0px;
     }
-    .about-img{
+
+    .about-img {
         display: none;
     }
+
     .main-content {
         min-width: 80vw
     }
+
     .bg-image {
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
         background-size: cover;
     }
+
     .site-content .apps a img.card-img-top {
         border-radius: 50%;
         min-height: 8rem;
@@ -1228,54 +1274,70 @@ a:active, a:focus {
 @media only screen and (max-width:768px) {
 
     .footer-bg {
-        background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
+        background-image: linear-gradient(40deg, #003, #03c, #3cc) !important;
     }
+
     div.footer.container-fluid .container.transparent {
         display: none
     }
+
     .scroll-top {
         justify-content: initial !important;
-        padding-left: 15%;        
+        padding-left: 15%;
     }
+
     .recommended .card-title {
         font-size: 16px
     }
+
     nav.fixed-top div.container {
         width: 100vw
     }
+
     .blog-icon {
         display: none
     }
+
     .details {
         padding-top: 11rem
     }
+
     .pt-6s {
         padding-top: 6rem
     }
+
     .input-group {
-        width: 98%!important
+        width: 98% !important
     }
+
     .lead {
         font-size: 1rem
     }
+
     .main-content {
         width: 85vw
     }
-    .blog-posts .card, .main-carousel .col-md {
+
+    .blog-posts .card,
+    .main-carousel .col-md {
         margin-bottom: 1rem
     }
+
     .card {
         margin: 15px;
         margin-top: 1rem
     }
+
     .subscription {
-        margin-bottom: -4.7rem!important
+        margin-bottom: -4.7rem !important
     }
+
     .pt-6 {
         padding-top: 8rem
     }
+
     .home-selected .card {
-        margin-bottom: 2.5rem!important
+        margin-bottom: 2.5rem !important
     }
 }
 
@@ -1283,16 +1345,20 @@ a:active, a:focus {
     #nav {
         display: none
     }
+
     .srch form {
         width: 75vw;
     }
+
     .bg-image {
         background-image: url('/imgs/phone-bg.jpg') !important;
     }
+
     .carousel-item img {
         min-height: 12rem;
         max-height: 12rem
     }
+
     .site-content .apps a img.card-img-top {
         border-radius: 50%;
         min-height: 4rem;
@@ -1300,110 +1366,145 @@ a:active, a:focus {
         max-width: 4rem;
         max-height: 4rem
     }
+
     #side-toggler {
         padding: 1rem 3px;
         display: inline-block
     }
+
     .scroll-flex .col-md {
         flex: 0 0 auto;
         width: 14.2rem
     }
-    .absolute-card-title, .recommended .card-title {
+
+    .absolute-card-title,
+    .recommended .card-title {
         font-size: 1rem
     }
+
     h1.display-4 {
         font-size: 2.5rem
     }
+
     section.container-fluid {
         padding-left: 0
     }
+
     .compact-form {
         max-width: 100%
     }
+
     .blog-posts h2 {
         font-size: 1.2rem
     }
+
     .brand-name {
         display: none
     }
+
     .home-selected .card {
-        margin: 0!important;
-        margin-bottom: 3.5rem!important
+        margin: 0 !important;
+        margin-bottom: 3.5rem !important
     }
+
     .comment .row div.col-sm {
         padding-left: 0;
         padding-right: 0
     }
+
     .display-5 {
         font-size: 1.5rem
     }
+
     .jumbo-button .btn.btn-purple-color {
         border-radius: none
     }
-    .main-content, .right-side-bar {
+
+    .main-content,
+    .right-side-bar {
         width: 100%
     }
+
     .mb-6 {
         margin-bottom: 1rem
     }
+
     .mt-6 {
         margin-top: 6rem
     }
+
     .display-6 {
         font-size: 1.5rem
     }
+
     .main {
-        min-width: 100vw!important;
-        min-height: 40vh!important
+        min-width: 100vw !important;
+        min-height: 40vh !important
     }
+
     .blog-head {
         text-align: center
     }
+
     .font-size-md {
         font-size: 1.5rem
     }
+
     .post-image {
         max-height: 20rem
     }
+
     .statistics .container-fluid .row div:first-of-type {
         margin-top: -4rem
     }
+
     .statistics .container-fluid .row div {
         margin: 0;
         margin-top: -1.5rem
     }
+
     .top-section {
         width: 90%
     }
+
     .subscription {
-        margin-bottom: -5.7rem!important
+        margin-bottom: -5.7rem !important
     }
+
     .blog-details .meta {
         font-size: .8rem
     }
+
     .post-image {
         padding: initial 0
     }
+
     .scroll-flex {
         flex-wrap: nowrap;
         overflow-x: auto
     }
+
     .subscribe {
-        margin-bottom: -6rem!important
+        margin-bottom: -6rem !important
     }
+
     .download-item .img img {
         max-width: 18rem
     }
+
     .scroll-flex .col-sm {
         min-width: 73vw
     }
+
     .tags {
         font-size: 12px
     }
+
     h5.card-title {
         font-size: 16px;
         font-weight: 700
     }
+
     .scroll-flex .card-title {
         padding-top: 1rem
     }
