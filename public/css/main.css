@@ -909,16 +909,17 @@ a:focus {
 
 .scroll-item .category {
     position: absolute;
-    width: 50px;
+    width: 100px;
     text-align: center;
     top: 45%;
     bottom: 0;
-    left: 15%;
+    left: 0;
     right: 0;
     color: rgba(249, 249, 250, 0.904);
     z-index: 5;
     font-weight: bold;
     font-size: 18px;
+    margin: auto;
 }
 
 .horizontal-scroll .scroll-item img {
