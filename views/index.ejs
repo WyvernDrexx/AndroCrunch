@@ -20,9 +20,10 @@
         </div>
         <p class="pt-6s text-center text-white small">What are you looking for?</p>
         <div class="position-relative pt-5 srch">
-            <form action="">
-                <input type="search" placeholder="Wallpapers, apps and ringtones">
-                <i class="fas fa-search"></i>
+            <form action="http://www.google.com/search" method="GET">
+                <input name="sitesearch" type="hidden" value="androcrunch.in">
+                <input name="q" type="search" placeholder="Wallpapers, apps and ringtones">
+                <button type="submit"> <i class="fas fa-search"></i> </button>
             </form>
         </div>
     </div>
@@ -48,7 +49,8 @@
                                     <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
-                                            <a href="/contents/wallpapers/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/wallpapers/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
@@ -59,7 +61,8 @@
                                     <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
-                                            <a href="/contents/wallpapers/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/wallpapers/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
@@ -97,7 +100,8 @@
                                     <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
-                                            <a href="/contents/ringtones/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/ringtones/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
@@ -108,7 +112,8 @@
                                     <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
-                                            <a href="/contents/ringtones/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/ringtones/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
@@ -143,7 +148,8 @@
                                     <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
-                                            <a href="/contents/presets/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/presets/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
@@ -154,7 +160,8 @@
                                     <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
-                                            <a href="/contents/presets/<%= file.name %>"><span class="plus-symbol">+</span></a>
+                                            <a href="/contents/presets/<%= file.name %>"><span
+                                                    class="plus-symbol">+</span></a>
                                         </div>
                                         <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
                                             class="d-block w-100 h-100" alt="Free <%= file.filename %>">
