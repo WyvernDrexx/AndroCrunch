@@ -1302,6 +1302,7 @@ textarea.form-control {
 
     .horizontal-scroll-flex-box {
         padding-left: 18%;
+        padding-right: 18%;
     }
 
     .scroll-top {
