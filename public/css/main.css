@@ -1036,10 +1036,12 @@ a:focus {
     font-size: 2rem;
     font-weight: 600;
 }
-.container-fluid{
+
+.container-fluid {
     padding-left: 0px;
     padding-right: 0px;
 }
+
 .hits span.lead {
     font-size: 1rem;
     font-weight: 700
@@ -1230,16 +1232,19 @@ textarea.form-control {
 
 
 .horizontal-scroll-flex-box {
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
     touch-action: initial;
+    height: 15.8rem;
+    width: 100%;
 }
 
 .scroll-item-flex {
     display: inline-block;
 }
 
-.scroll-item-flex p{
+.scroll-item-flex p {
     white-space: normal;
 }
 
@@ -1293,6 +1298,10 @@ textarea.form-control {
 
     div.footer.container-fluid .container.transparent {
         display: none
+    }
+
+    .horizontal-scroll-flex-box {
+        padding-left: 18%;
     }
 
     .scroll-top {
