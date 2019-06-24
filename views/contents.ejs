@@ -58,7 +58,7 @@
     <p class="small text-center text-gray pb-3 bg-white">Browse through our latest collection!</p>
     <div class="container-fluid  horizontal-scroll px-0">
         <div class="scroll-top d-flex justify-content-center">
-            <% for( let i =  0 ; i <= 3; i++){ %>
+            <% for( let i =  files.audio.length - 1 ; i >= files.audio.length - 4; i--){ %>
             <% file=files.audio[i];  %>
             <a href="/contents/ringtones/<%= file.name %>">
                 <div class="scroll-item h-13">
@@ -86,9 +86,9 @@
                         <li data-target="#products" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <% for( let i = 3; i >= 0; i--){ %>
+                        <% for( let i = files.presets.length - 1; i >= files.presets.length - 4; i--){ %>
                         <% let file = files.presets[i];  %>
-                        <% if( i === 3){ %>
+                        <% if( i === files.length - 1){ %>
                         <div class="carousel-item active">
                             <div class="hover-option">
                                 <a href="/contents/presets/<%= file.name %>"><span class="plus-symbol">+</span></a>
@@ -126,13 +126,14 @@
         </div>
     </div>
     <div class="text-center mt-6 mt-md-5">
-            <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
-        </div>
+        <a href="/contents/presets" class="btn btn-primary small rounded-pill">Browse More</a>
+    </div>
     <div class="container-fluid app-banner text-white">
         <div class="">
-                <p class="display-4 text-center text-lg-right font-weight-bold">Apps</p><br>
-                <p class="text-center text-lg-right px-0">Checkout Our Amazing handpicked collection <br> Recommended using on mobile <br> for better exerience</p>
-                <a href="/contents/apps" class="btn btn-primary float-right rounded-pill mt-5">Browse Now</a>
+            <p class="display-4 text-center text-lg-right font-weight-bold">Apps</p><br>
+            <p class="text-center text-lg-right px-0">Checkout Our Amazing handpicked collection <br> Recommended using
+                on mobile <br> for better exerience</p>
+            <a href="/contents/apps" class="btn btn-primary float-right rounded-pill mt-5">Browse Now</a>
         </div>
     </div>
 
