@@ -27,9 +27,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         }
     });
 }
-server.get("/", (req, res) => {
-    res.render("index");
-});
+
 const serverFavicon = require("serve-favicon");
 server.use((request, response, next) => {
     console.log(request.hostname);

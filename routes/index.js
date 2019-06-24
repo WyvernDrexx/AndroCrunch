@@ -4,6 +4,23 @@ const express = require("express"),
     jquery = require("jquery"),
     Data = require("../models/data");
 
+
+router.get("/", (req, res) => {
+    Data.find({}, (err, data) => {
+        if(err){
+            console.log("Error getting data:");
+            console.log(err);
+            res.send("Please contact the Admin now!");
+            return;
+        }
+
+        res.render("index", {
+            trending: data[0].list.trending
+        });
+
+    });
+
+});
 router.get("/kickout", (req, res) => {
     req.logout();
     req.flash("success", "Successfully logged you out!");
@@ -12,7 +29,7 @@ router.get("/kickout", (req, res) => {
 
 router.get("/blogs", (req, res) => {
     res.render("blogs", {
-        title:"Latest And Top Blog Posts",
+        title: "Latest And Top Blog Posts",
         keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
         description: "Read latest posts on Android, technology, security, Apple and mobile devices"
     });
@@ -20,15 +37,15 @@ router.get("/blogs", (req, res) => {
 
 router.get("/advertisement", (req, res) => {
     res.render("advert", {
-        title:"AndroCrunch | Advertisement",
+        title: "AndroCrunch | Advertisement",
         keywords: "androcrunch, advertisement",
         description: "Advertisement information for AndroCrunch"
     });
 })
 
 router.get("/privacy_policy", (req, res) => {
-    res.render("privacy_policy",{
-        title:"AndroCrunch | Privacy Policy",
+    res.render("privacy_policy", {
+        title: "AndroCrunch | Privacy Policy",
         keywords: "androcrunch, privacy policy",
         description: "Privacy Policy of AndroCrunch"
     });
@@ -58,8 +75,8 @@ router.post("/subscribe", (req, res) => {
         return;
     }
     Subscriber.findOne({
-        email
-    })
+            email
+        })
         .then((data) => {
             console.log(data);
             if (Boolean(data)) {

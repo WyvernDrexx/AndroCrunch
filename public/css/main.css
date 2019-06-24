@@ -375,9 +375,10 @@ input::placeholder {
     max-height: 20rem
 }
 
-.most-popular .col-sm {
+.most-popular .col-md {
     max-width: 15rem;
     margin-right: 15px;
+    margin-bottom: 80px;
 }
 
 .most-popular .carousel-item {
@@ -1350,9 +1351,6 @@ textarea.form-control {
 
     .home-selected .card {
         margin-bottom: 2.5rem !important
-    }
-    .horizontal-scroll-flex-box{
-        padding-left: 10%;
     }
 }
 

@@ -34,8 +34,8 @@
         <p class="small text-center text-gray pb-3">We handpicked these items below!</p>
         <div class="justify-content-center most-popular">
             <div class="d-flex justify-content-center">
-                <div class="horizontal-scroll-flex-box">
-                    <div class="col-sm px-0 mt-4 scroll-item-flex">
+                <div class="row horizontal-scroll-flex-box justify-content-center">
+                    <div class="col-md px-0 mt-4 scroll-item-flex">
                         <div class="bd-example">
                             <div id="wallpapers" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -44,33 +44,31 @@
                                     <li data-target="#wallpapers" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
+                                    <% trending.wallpapers.forEach((file, i) => { %>
+                                    <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
+                                    <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-2.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="hover-option">
-                                            <a href="/"><span class="plus-symbol">+</span></a>
-                                        </div>
-                                        <img src="/imgs/blog11.webp" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption   d-md-block">
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
-                                    </div>
+                                    <% } %>
+                                    <% }); %>
                                 </div>
                                 <a class="carousel-control-prev" href="#wallpapers" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -85,7 +83,7 @@
                     </div>
 
 
-                    <div class="col-sm px-0 mt-4 scroll-item-flex">
+                    <div class="col-md px-0 mt-4 scroll-item-flex">
 
                         <div class="bd-example">
                             <div id="ringtones" class="carousel slide" data-ride="carousel">
@@ -95,33 +93,31 @@
                                     <li data-target="#ringtones" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
+                                    <% trending.ringtones.forEach((file, i) => { %>
+                                    <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
+                                    <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-2.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="hover-option">
-                                            <a href="/"><span class="plus-symbol">+</span></a>
-                                        </div>
-                                        <img src="/imgs/blog11.webp" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption   d-md-block">
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
-                                    </div>
+                                    <% } %>
+                                    <% }); %>
                                 </div>
                                 <a class="carousel-control-prev" href="#ringtones" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -134,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm px-0 mt-4 scroll-item-flex">
+                    <div class="col-md px-0 mt-4 scroll-item-flex">
                         <div class="bd-example">
                             <div id="apps" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -143,33 +139,31 @@
                                     <li data-target="#apps" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
+                                    <% trending.presets.forEach((file, i) => { %>
+                                    <% if(i === 0){ %>
                                     <div class="carousel-item active">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
+                                    <% }else{ %>
                                     <div class="carousel-item">
                                         <div class="hover-option">
                                             <a href="/"><span class="plus-symbol">+</span></a>
                                         </div>
-                                        <img src="/imgs/blog-2.webp" class="d-block w-100" alt="...">
+                                        <img src="/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>"
+                                            class="d-block w-100" alt="Free <%= file.filename %>">
                                         <div class="carousel-caption   d-md-block">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p><%= file.filename %></p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="hover-option">
-                                            <a href="/"><span class="plus-symbol">+</span></a>
-                                        </div>
-                                        <img src="/imgs/blog11.webp" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption   d-md-block">
-                                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                        </div>
-                                    </div>
+                                    <% } %>
+                                    <% }); %>
                                 </div>
                                 <a class="carousel-control-prev" href="#apps" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
