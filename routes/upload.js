@@ -73,9 +73,12 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             name: filesData.name[i].trim().split(" ").join("-").toLowerCase(),
             created: moment()
         }
+        console.log(file);
         if (tempMime === "zip" || tempMime === "x-adobe-dng" || tempMime === "x-sony-arw" || tempMime === "x-panasonic-raw" || tempMime === "x-rar-compressed" || file.referenceFile.split(".")[1].toLowerCase() === "awg") {
             file.mimetype = "zip";
         }
+        console.log("--------------------");
+        console.log(file);
         if (file.mimetype === "image") {
             Data.find({}, (err, data) => {
                 console.log(data);
