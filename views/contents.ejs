@@ -88,7 +88,7 @@
                     <div class="carousel-inner">
                         <% for( let i = files.presets.length - 1; i >= files.presets.length - 4; i--){ %>
                         <% let file = files.presets[i];  %>
-                        <% if( i === files.length - 1){ %>
+                        <% if( i === files.presets.length - 1){ %>
                         <div class="carousel-item active">
                             <div class="hover-option">
                                 <a href="/contents/presets/<%= file.name %>"><span class="plus-symbol">+</span></a>
