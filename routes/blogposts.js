@@ -31,7 +31,7 @@ router.get("/author/panel", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/blogs/preview/:type/:id", (req, res) => {
+router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
 
 
     if (req.params.type === "unpublished") {
@@ -66,7 +66,7 @@ router.get("/blogs/preview/:type/:id", (req, res) => {
     }
 });
 
-router.get("/blogs/images/:type/:id", (req, res) => {
+router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
@@ -100,7 +100,7 @@ router.get("/blogs/images/:type/:id", (req, res) => {
     }
 });
 
-router.get("/blogs/images/upload/:type/:id", (req, res) => {
+router.get("/blogs/images/upload/:type/:id", isLoggedIn, (req, res) => {
     res.render("uploadBlogImages", {
         id: req.params.id,
         status: req.params.type
@@ -108,7 +108,7 @@ router.get("/blogs/images/upload/:type/:id", (req, res) => {
 });
 
 
-router.delete("/blogs/images/:type/:id/:index", (req, res) => {
+router.delete("/blogs/images/:type/:id/:index",isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
 
@@ -158,7 +158,7 @@ router.delete("/blogs/images/:type/:id/:index", (req, res) => {
 });
 
 
-router.post("/blogs/images/:type/:id", (req, res) => {
+router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         upload(req, res, (err) => {
             if (err) {
@@ -219,7 +219,7 @@ router.post("/blogs/images/:type/:id", (req, res) => {
 });
 
 
-router.post("/blogs/:id/publish", (req, res) => {
+router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
     draftPost.findById(req.params.id, (err, post) => {
         console.log(post);
         if (err) {
@@ -256,7 +256,7 @@ router.post("/blogs/:id/publish", (req, res) => {
 });
 
 
-router.get("/blogs/list/unpublished", isLoggedIn, (req, res) => {
+router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
     draftPost.find({}, (err, posts) => {
         if (err) {
             req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
@@ -273,7 +273,7 @@ router.get("/blogs/list/unpublished", isLoggedIn, (req, res) => {
 
     });
 });
-router.get("/blogs/list/published", isLoggedIn, (req, res) => {
+router.get("/blogs/list/published", isLoggedIn, isLoggedIn, (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
             req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
