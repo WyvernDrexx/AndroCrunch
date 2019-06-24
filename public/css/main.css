@@ -371,7 +371,7 @@ input::placeholder {
 }
 
 .carousel-item img {
-    /* min-height: 20rem; */
+    /* min-height: 18rem; */
     max-height: 20rem
 }
 
