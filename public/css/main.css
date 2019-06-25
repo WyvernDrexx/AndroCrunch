@@ -183,7 +183,7 @@ h1.display-4 {
 }
 
 .site-content .col-md-3 {
-    max-width: 9rem
+    max-width: 11rem
 }
 
 a {
@@ -1531,5 +1531,8 @@ textarea.form-control {
 
     .scroll-flex .card-title {
         padding-top: 1rem
+    }
+    .site-content .col-md-3 {
+        max-width: 9rem;
     }
 }
