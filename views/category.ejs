@@ -57,7 +57,7 @@
             <% for( let i = 0 ; i < files.length; i++){ %>
             <%      file=files[i];  %>
             <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 px-md-2 ml-4 ml-md-4 pt-sm-5">
                 <a href="/contents/<%= category %>/<%= file.name %>">
                     <div class="card m-0">
                         <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
@@ -69,7 +69,7 @@
                 </a>
             </div>
             <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 px-md-2 ml-0 ml-md-4 pt-sm-5">
                 <a href="/contents/<%= category %>/<%= file.name %>">
                     <div class="card m-0">
                         <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
@@ -88,7 +88,7 @@
             <% for( let i = 0 ; i < files.length; i++){ %>
             <%      file=files[i];  %>
             <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 ml-0 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 px-md-2 ml-0 ml-md-4 pt-sm-5">
                 <a href="/contents/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
@@ -100,7 +100,7 @@
                 </a>
             </div>
             <% }else { %>
-            <div class="col-6 col-md-3 px-0 ml-4 ml-md-4 mt-2">
+            <div class="col-6 col-md-3 px-0 px-md-2 ml-4 ml-md-4 pt-sm-5">
                 <a href="/contents/<%= category %>/<%= file.name %>">
                     <div class="card mx-0">
                         <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
