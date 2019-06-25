@@ -178,7 +178,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
         res.redirect("/contents");
         return;
     }
-    if (typeof pagenumber !== "number") {
+    if (typeof pagenumber !== "Number") {
         req.flash("error", "Page number invalid!");
         res.redirect("back");
         return;
