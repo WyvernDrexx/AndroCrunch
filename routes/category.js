@@ -70,9 +70,15 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
-            var last = Math.round(audios.length / 12);
+            var last = audios.length / 12;
+
+            if (last > Math.floor(last)) {
+                last = Math.floor(last) + 1;
+            } else {
+                last = Math.floor(last);
+            }
             res.render("category", {
-                files: audios,
+                files: audios.slice(0, 12),
                 category,
                 title: "Ringtones | Best Ringtones for Free Download",
                 keywords: "rington, ringtones, free download, 2018, 2019, avengers, mp3, midi",
@@ -90,9 +96,16 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
-            var last = Math.round(presets.length / 12);
+            var last = presets.length / 12;
+
+            if (last > Math.floor(last)) {
+                last = Math.floor(last) + 1;
+            } else {
+                last = Math.floor(last);
+            }
+
             res.render("category", {
-                files: presets,
+                files: presets.slice(0, 12),
                 category,
                 title: "Presets | Latest beautiful lightroom presets",
                 keywords: "presets, photoshop, lightroom, free, premium, download, zip",
@@ -200,8 +213,6 @@ router.get("/contents/:category/page/:page", (req, res) => {
 
             console.log("totalpages: " + totalPages);
             console.log("pagenumber: " + pagenumber);
-            // console.log("totalpages: " + totalPages);
-            // console.log("totalpages: " + totalPages);
             let extractedImages = images.slice(start, end);
             res.render("category", {
                 files: extractedImages,
@@ -270,12 +281,27 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 return;
             }
 
-            let totalPages = Math.round(audios.length / 4);
-            let start = (pagenumber - 1) * 4;
-            let end = pagenumber * 4;
-            if (end > audios.length) {
+            var totalPages = audios.length / 12;
+
+            if (totalPages > Math.floor(totalPages)) {
+                totalPages = Math.floor(totalPages) + 1;
+            } else {
+                totalPages = Math.floor(totalPages);
+            }
+            console.log("totalpages: " + totalPages);
+            let start = (pagenumber - 1) * 12;
+            let end = pagenumber * 12;
+            console.log("END: " + end);
+            console.log("length : " + audios.length);
+
+            if (end - audios.length > 12) {
+                req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
+            }else{
+                if(totalPages === pagenumber){
+                    end = audios.length;
+                }
             }
 
             let extractedAudios = audios.slice(start, end);
@@ -284,7 +310,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 title: "Wallpapers, ringtones, presets, apps, games for free download",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download",
                 description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
-                last: totalPages - 1,
+                last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
                 previous: pagenumber - 1,
@@ -299,13 +325,29 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 return;
             }
 
-            let totalPages = Math.round(presets.length / 4);
-            let start = (pagenumber - 1) * 4;
-            let end = pagenumber * 4;
-            if (end > presets.length) {
+            var totalPages = presets.length / 12;
+
+            if (totalPages > Math.floor(totalPages)) {
+                totalPages = Math.floor(totalPages) + 1;
+            } else {
+                totalPages = Math.floor(totalPages);
+            }
+            console.log("totalpages: " + totalPages);
+            let start = (pagenumber - 1) * 12;
+            let end = pagenumber * 12;
+            console.log("END: " + end);
+            console.log("length : " + presets.length);
+
+            if (end - presets.length > 12) {
+                req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
+            }else{
+                if(totalPages === pagenumber){
+                    end = presets.length;
+                }
             }
+
 
             let extractedPresets = presets.slice(start, end);
             res.render("category", {
@@ -313,7 +355,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 title: "Wallpapers, ringtones, presets, apps, games for free download",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download",
                 description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
-                last: totalPages - 1,
+                last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
                 previous: pagenumber - 1,
