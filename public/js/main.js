@@ -1,33 +1,78 @@
 function openNav() {
-    document.getElementById("mySidenav").style.width = "80vw", document.getElementById("sidenavs").style.display = "none", $("#side-toggler .closebtn").css("display", "block")
+    document.getElementById("mySidenav").style.width = "80vw";
+    document.getElementById("sidenavs").style.display = "none";
+    $("#side-toggler .closebtn").css("display", "block");
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0", $("#side-toggler .closebtn").css("display", "none"), document.getElementById("sidenavs").style.display = "inline-block"
+    document.getElementById("mySidenav").style.width = "0";
+    $("#side-toggler .closebtn").css("display", "none");
+    document.getElementById("sidenavs").style.display = "inline-block";
 }
+
+
 window.onload = function () {
-
-
     // TAKE A TOUR BUTTON
     window.scrollDown = function scrollDown() {
         $("html, body").animate({
-            scrollTop:$("#about").offset().top - 55
+            scrollTop: $("#about").offset().top - 55
         }, 5000);
     }
 
-
+    $("body").css("opacity", "1");
+    $(".loader-div").remove();
 
     $(".srch-btn").click(function () {
-        $(this).parent().toggleClass("open")
+        $(this).parent().toggleClass("open");
     });
+
     var e = document.getElementById("nav"),
         t = !0;
-    window.pageYOffset > 50 ? (e.style.backgroundColor = "#ededee", $(".nav-link").addClass("text-dark-purple"), $(".navbar-brand").addClass("text-dark-purple"), document.getElementById("side-toggler").style.backgroundColor = "#ededee") : (e.style.backgroundColor = "transparent", document.getElementById("side-toggler").style.backgroundColor = "transparent"), window.addEventListener("scroll", () => {
-        window.pageYOffset > 50 ? (e.style.backgroundColor = "#ededee", $(".nav-link").addClass("text-dark-purple"), $(".navbar-brand").addClass("text-dark-purple"), document.getElementById("side-toggler").style.backgroundColor = "#ededee") : t && (e.style.backgroundColor = "transparent", $(".nav-link").removeClass("text-dark-purple"), $(".navbar-brand").removeClass("text-dark-purple"), document.getElementById("side-toggler").style.backgroundColor = "transparent")
-    }), e.addEventListener("click", () => {
+
+    e.addEventListener("click", () => {
         t = !t
-    }), $("body").css("opacity", "1"), $(".loader-div").remove()
-}, $(document).ready(function () {
+    });
+
+    if (window.pageYOffset > 50) {
+        $("#side-toggler").addClass("bottom-shadow");
+        $(e).addClass("bottom-shadow");
+        e.style.backgroundColor = "#ededee";
+        $(".nav-link").addClass("text-dark-purple");
+        $(".navbar-brand").addClass("text-dark-purple");
+        document.getElementById("side-toggler").style.backgroundColor = "#ededee";
+    } else {
+        e.style.backgroundColor = "transparent";
+        document.getElementById("side-toggler").style.backgroundColor = "transparent";
+        $(".nav-link").addClass("text-white");
+        $(".navbar-brand").addClass("text-white");
+        $(".nav-link").removeClass("text-dark-purple");
+        $(".navbar-brand").removeClass("text-dark-purple");
+    }
+
+
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 50) {
+            $(e).addClass("bottom-shadow");
+            $("#side-toggler").addClass("bottom-shadow");
+            e.style.backgroundColor = "#ededee";
+            $(".nav-link").addClass("text-dark-purple");
+            $(".navbar-brand").addClass("text-dark-purple");
+            document.getElementById("side-toggler").style.backgroundColor = "#ededee";
+        } else {
+            $("#side-toggler").removeClass("bottom-shadow");
+            $(e).removeClass("bottom-shadow");
+            e.style.backgroundColor = "transparent";
+            document.getElementById("side-toggler").style.backgroundColor = "transparent";
+            $(".nav-link").addClass("text-white");
+            $(".navbar-brand").addClass("text-white");
+            $(".nav-link").removeClass("text-dark-purple");
+            $(".navbar-brand").removeClass("text-dark-purple");
+        }
+    });
+}
+
+
+$(document).ready(function () {
     $("body").css("opacity", "1"), $(".loader-div").remove(), window.subscribe = function () {
         let e = $(".subscription input[name=email]").val();
         $(".subscribe .spinner-border.spinner-border-sm").removeClass("d-none"), $.ajax("/subscribe", {
