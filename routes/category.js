@@ -13,7 +13,7 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find apps at the moment.");
                 return res.redirect("/contents");
             }
-
+            apps = apps.reverse();
             var last = apps.length / 12;
 
             if (last > Math.floor(last)) {
@@ -42,6 +42,7 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Couldn't query the database try again later.");
                 return res.redirect("back");
             }
+            images = images.reverse();
             var last = images.length / 12;
 
             if (last > Math.floor(last)) {
@@ -70,6 +71,7 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
+            audios = audios.reverse();
             var last = audios.length / 12;
 
             if (last > Math.floor(last)) {
@@ -96,6 +98,7 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Unable to find ringtones at the moment.");
                 return res.redirect("/contents");
             }
+            presets = presets.reverse();
             var last = presets.length / 12;
 
             if (last > Math.floor(last)) {
@@ -188,7 +191,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 res.redirect("/");
                 return;
             }
-
+            images = images.reverse();
             var totalPages = images.length / 12;
 
             if (totalPages > Math.floor(totalPages)) {
@@ -233,7 +236,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 res.redirect("/");
                 return;
             }
-
+            apps = apps.reverse();
             var totalPages = apps.length / 12;
 
             if (totalPages > Math.floor(totalPages)) {
@@ -280,7 +283,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 res.redirect("/");
                 return;
             }
-
+            audios = audios.reverse();
             var totalPages = audios.length / 12;
 
             if (totalPages > Math.floor(totalPages)) {
@@ -324,7 +327,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 res.redirect("/");
                 return;
             }
-
+            presets = presets.reverse();
             var totalPages = presets.length / 12;
 
             if (totalPages > Math.floor(totalPages)) {
