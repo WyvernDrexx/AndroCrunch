@@ -186,7 +186,7 @@ h1.display-4 {
     max-width: 11rem
 }
 .bottom-shadow{
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, .199);
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
 }
 a {
     text-decoration: none !important
