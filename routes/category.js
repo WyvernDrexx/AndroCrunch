@@ -178,8 +178,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
         res.redirect("/contents");
         return;
     }
-    if (typeof pagenumber !== "Number") {
-        req.flash("error", "Page number invalid!");
+    if (isNaN(pagenumber)) {
+        req.flash("error", "Invalid Page Number!");
         res.redirect("back");
         return;
     }
