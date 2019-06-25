@@ -42,9 +42,16 @@ router.get("/contents/:category", (req, res) => {
                 req.flash("error", "Couldn't query the database try again later.");
                 return res.redirect("back");
             }
-            var last = Math.round(images.length / 12);
+            var last = images.length / 12;
+
+            if (last > Math.floor(last)) {
+                last = Math.floor(last) + 1;
+            } else {
+                last = Math.floor(last);
+            }
+
             res.render("category", {
-                files: images,
+                files: images.slice(0,12),
                 category,
                 title: "Wallpapers | HD Wallpapers for desktop and mobile free download",
                 keywords: "hd wallpapers, hd, desktop, android, for, download, free",
@@ -169,14 +176,32 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 return;
             }
 
-            let totalPages = Math.round(images.length / 4);
-            let start = (pagenumber - 1) * 4;
-            let end = pagenumber * 4;
-            if (end > images.length) {
+            var totalPages = images.length / 12;
+
+            if (totalPages > Math.floor(totalPages)) {
+                totalPages = Math.floor(totalPages) + 1;
+            } else {
+                totalPages = Math.floor(totalPages);
+            }
+            console.log("totalpages: " + totalPages);
+            let start = (pagenumber - 1) * 12;
+            let end = pagenumber * 12;
+            console.log("END: " + end);
+            console.log("length : " + images.length);
+            if (end - images.length > 12) {
+                req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
+            }else{
+                if(totalPages === pagenumber){
+                    end = images.length;
+                }
             }
 
+            console.log("totalpages: " + totalPages);
+            console.log("pagenumber: " + pagenumber);
+            // console.log("totalpages: " + totalPages);
+            // console.log("totalpages: " + totalPages);
             let extractedImages = images.slice(start, end);
             res.render("category", {
                 files: extractedImages,
@@ -219,15 +244,6 @@ router.get("/contents/:category/page/:page", (req, res) => {
                     end = apps.length;
                 }
             }
-
-            // TOTAL FILES = 55
-            // TOTAL PAGES = 5
-            // page number = 5th
-            // start = 4 * 12 = 48
-            // end = 5 * 12 = 60
-            // 60 - 55 = 5 !> 12 so,
-            //       5 = 5 
-            // end = 55
 
             console.log("totalpages: " + totalPages);
             console.log("pagenumber: " + pagenumber);
