@@ -41,14 +41,14 @@
         <div class="scroll-top d-flex justify-content-center">
             <% for( let i =  files.images.length - 1 ; i >= files.images.length - 4; i--){ %>
             <% file=files.images[i];  %>
-            <a href="/contents/wallpapers/<%= file.name %>">
                 <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
                     class="scroll-item">
-                    <!-- <img class="" src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" alt="Select"> -->
                     <p style="padding-top: 19rem;" class="mx-3 small mt-4 text-dark text-center"><%= file.filename %>
                     </p>
+                    <div class="scroll-item-hover-option">
+                        <a class="scroll-item-hover-link monteserrat" href="/contents/wallpapers/<%= file.name %>">Download</a>
+                    </div>
                 </div>
-            </a>
             <% } %>
         </div>
     </div>

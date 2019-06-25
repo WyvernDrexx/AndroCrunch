@@ -181,6 +181,40 @@ h1.display-4 {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px
 }
+.scroll-item-hover-option{
+    position: absolute;
+    background: rgba(23, 45, 247, .493);
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    border-radius: 35px;
+    opacity: 0;
+    /* opacity: 0.7; */
+}
+.scroll-item-hover-link{
+    font-size: 12px;
+    display: block;
+    position: relative;
+    width: 100px;
+    top: 43%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    padding: 5px 5px 5px 5px;
+    border: 3px solid white;
+    background: rgba(57, 75, 240, 0.493);
+    color: white;
+}
+.scroll-item:hover .scroll-item-hover-option{
+    opacity: 1;
+}
+.scroll-item-hover-link:hover{
+    background-color: white;
+    color: rgba(57, 75, 240);
+}
 
 .site-content .col-md-3 {
     max-width: 11rem
