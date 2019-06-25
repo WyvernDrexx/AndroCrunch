@@ -12,9 +12,9 @@
             <div class="jumbo-button p-1 pt-5">
                 <a class="btn  text-white btn-purple-color rounded-pill btn-md px-3 px-sm-4 font-weight-bold"
                     href="/contents" role="button">EXPLORE...</a>
-                <a class="btn btn-outline rounded-pill btn-md px-3 px-sm-4  ml-3 font-weight-bold" href="#"
-                    role="button">Take a
-                    Tour</a>
+                <button class="btn btn-outline rounded-pill btn-md px-3 px-sm-4  ml-3 font-weight-bold"
+                    onclick="scrollDown()" role="button">Take a
+                    Tour</button>
             </div>
         </div>
         <p class="pt-6s text-center text-white small">What are you looking for?</p>
@@ -193,22 +193,36 @@
     <p class="small text-gray text-center">select the specific genre</p>
     <div class="container-fluid  horizontal-scroll px-0">
         <div class="scroll-top d-flex justify-content-center">
-            <div class="scroll-item">
-                <img src="/imgs/wallpapers.jpg" alt="Select">
-                <p class="category">Wallpapers</p>
-            </div>
-            <div class="scroll-item">
-                <img src="/imgs/ringtones.jpg" alt="Select">
-                <p class="category">Ringtones</p>
-            </div>
-            <div class="scroll-item">
-                <img src="/imgs/apps.jpg" alt="Select">
-                <p class="category">Applications</p>
-            </div>
-            <div class="scroll-item">
-                <img src="/imgs/presets.jpg" alt="Select">
-                <p class="category pl-4">Presets</p>
-            </div>
+            <a href="/contents/wallpapers">
+                <div class="scroll-item">
+                    <img src="/imgs/wallpapers.jpg" alt="Select">
+                    <p class="category">Wallpapers</p>
+                </div>
+            </a>
+
+
+            <a href="/contents/ringtones">
+                <div class="scroll-item">
+                    <img src="/imgs/ringtones.jpg" alt="Select">
+                    <p class="category">Ringtones</p>
+                </div>
+            </a>
+
+
+            <a href="/contents/apps">
+                <div class="scroll-item">
+                    <img src="/imgs/apps.jpg" alt="Select">
+                    <p class="category">Applications</p>
+                </div>
+            </a>
+
+
+            <a href="/contents/presets">
+                <div class="scroll-item">
+                    <img src="/imgs/presets.jpg" alt="Select">
+                    <p class="category pl-4">Presets</p>
+                </div>
+            </a>
         </div>
     </div>
     <div class="text-center mt-6">
@@ -296,7 +310,7 @@
     </div>
 </div>
 
-<div class="testimonial-bg pt-3">
+<div id="about" class="testimonial-bg pt-3">
     <div class="container-fluid pt-6s pb-6 mx-0 justify-content-center">
         <img class="d-block  ml-auto mr-auto mb-5" src="/imgs/test-1.png">
         <div>
@@ -320,9 +334,10 @@
                 all kinds
                 of wallpapers, ringtones, apps and more. So, that everytime
                 you use your smartphone you feel yourself inside :)</p>
-            <a class="btn btn-md float-right btn-primary rounded-pill text-white">Learn More</a>
+            <a class="btn btn-md float-md-right btn-primary rounded-pill text-white">Learn More</a>
         </div>
     </div>
 </div>
+
 
 <% include partials/footer %>

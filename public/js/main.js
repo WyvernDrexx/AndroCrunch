@@ -6,6 +6,17 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0", $("#side-toggler .closebtn").css("display", "none"), document.getElementById("sidenavs").style.display = "inline-block"
 }
 window.onload = function () {
+
+
+    // TAKE A TOUR BUTTON
+    window.scrollDown = function scrollDown() {
+        $("html, body").animate({
+            scrollTop:$("#about").offset().top - 55
+        }, 5000);
+    }
+
+
+
     $(".srch-btn").click(function () {
         $(this).parent().toggleClass("open")
     });
