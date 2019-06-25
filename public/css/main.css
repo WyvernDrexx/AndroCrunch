@@ -183,7 +183,7 @@ h1.display-4 {
 }
 .scroll-item-hover-option{
     position: absolute;
-    background: rgba(23, 45, 247, .493);
+    background: rgba(23, 45, 247, 0.418);
     top: 0;
     z-index: 4;
     border-radius: 35px;
