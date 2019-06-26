@@ -18,15 +18,18 @@ p {
 
 nav.fixed-top div.container {
     width: 65vw;
-    padding-top: 20px
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
-
+nav *{
+    color: #580096;
+}
 h1.display-4 {
     font-weight: 700
 }
 
 .nav-item .nav-link {
-    color: #fff
+    color: rgb(33, 11, 228)
 }
 
 .nav-item .nav-link:hover {
@@ -570,8 +573,7 @@ input::placeholder {
 
 .navbar {
     background-color: #fffffffb;
-    padding: 2rem 3rem;
-    padding-top: 0
+    padding-top: 0;
 }
 
 input:focus {
@@ -654,7 +656,8 @@ input:focus {
     font-size: 21px;
     color: #fff;
     display: block;
-    transition: .3s
+    transition: .7s;
+    white-space: nowrap;
 }
 
 .blog-posts div.row div.col-lg .row {
@@ -1483,7 +1486,7 @@ textarea.form-control {
     }
 
     #side-toggler {
-        padding: 1rem 3px;
+        padding: 9px 3px;
         display: inline-block
     }
 

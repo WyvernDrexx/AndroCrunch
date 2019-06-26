@@ -36,17 +36,6 @@ window.onload = function () {
     if (window.pageYOffset > 50) {
         $("#side-toggler").addClass("bottom-shadow");
         $(e).addClass("bottom-shadow");
-        e.style.backgroundColor = "#ededee";
-        $(".nav-link").addClass("text-dark-purple");
-        $(".navbar-brand").addClass("text-dark-purple");
-        document.getElementById("side-toggler").style.backgroundColor = "#ededee";
-    } else {
-        e.style.backgroundColor = "transparent";
-        document.getElementById("side-toggler").style.backgroundColor = "transparent";
-        $(".nav-link").addClass("text-white");
-        $(".navbar-brand").addClass("text-white");
-        $(".nav-link").removeClass("text-dark-purple");
-        $(".navbar-brand").removeClass("text-dark-purple");
     }
 
 
@@ -54,19 +43,9 @@ window.onload = function () {
         if (window.pageYOffset > 50) {
             $(e).addClass("bottom-shadow");
             $("#side-toggler").addClass("bottom-shadow");
-            e.style.backgroundColor = "#ededee";
-            $(".nav-link").addClass("text-dark-purple");
-            $(".navbar-brand").addClass("text-dark-purple");
-            document.getElementById("side-toggler").style.backgroundColor = "#ededee";
         } else {
             $("#side-toggler").removeClass("bottom-shadow");
             $(e).removeClass("bottom-shadow");
-            e.style.backgroundColor = "transparent";
-            document.getElementById("side-toggler").style.backgroundColor = "transparent";
-            $(".nav-link").addClass("text-white");
-            $(".navbar-brand").addClass("text-white");
-            $(".nav-link").removeClass("text-dark-purple");
-            $(".navbar-brand").removeClass("text-dark-purple");
         }
     });
 }
