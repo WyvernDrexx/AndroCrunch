@@ -26,7 +26,8 @@ const postSchema = new mongoose.Schema({
     published: {
         type: Boolean,
         default: true
-    }
+    },
+    customUrl: String
 });
 
 const Post = mongoose.model("Post", postSchema);

@@ -237,6 +237,7 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
             content: post.content,
             created: post.created,
             tags: post.tags,
+            customUrl: post.customUrl,
             published: true
         }, (err, post) => {
             console.log(post);
@@ -332,7 +333,8 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             }
             const post = {
                 title: req.body.title,
-                content: req.body.content
+                content: req.body.content,
+                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
             }
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6) {
@@ -500,7 +502,8 @@ router.post("/posts", isLoggedIn, (req, res) => {
     const post = {
         title: req.body.title,
         content: req.body.content,
-        tags: req.body.tags
+        tags: req.body.tags,
+        customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
     }
 
     for (const name of Object.keys(post)) {

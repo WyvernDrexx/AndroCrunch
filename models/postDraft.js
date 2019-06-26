@@ -27,7 +27,8 @@ const postSchema = new mongoose.Schema({
     draft: {
         type: Boolean,
         default: true
-    }
+    },
+    customUrl: String
 });
 
 const postDraft = mongoose.model("postdraft", postSchema);
