@@ -142,8 +142,8 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
             transform = sharp()
                 .jpeg()
                 .resize({
-                    width: 288,
-                    height: 224,
+                    width: 208,
+                    height: 280,
                     fit: 'inside',
                     withoutEnlargement: true
                 })
@@ -470,8 +470,8 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
             let transform = sharp()
                 .jpeg()
                 .resize({
-                    width: 288,
-                    height: 224,
+                    width: 208,
+                    height: 280,
                     fit: 'inside',
                     withoutEnlargement: true
                 })
