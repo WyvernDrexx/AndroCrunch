@@ -942,9 +942,9 @@ a:focus {
     margin-top: 1.2rem;
     height: 17.5rem !important;
     width: 13rem !important;
-    background-color: #0fc4c4;
+    min-height: 17.5rem !important;
+    min-width: 13rem !important;
     border-radius: 35px;
-    box-shadow: 3px 3px 15px rgba(48, 47, 47, 0.288);
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
@@ -983,6 +983,10 @@ a:focus {
     margin: auto;
 }
 
+.scroll-item-hover-option:hover{
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, .199);
+}
+
 .horizontal-scroll .scroll-item img {
     width: 13rem;
     border-radius: 35px;
@@ -991,7 +995,7 @@ a:focus {
 
 .scroll-item:hover {
     transform: translateY(-15px);
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, .199)
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, .199);
 }
 
 .pt-6 {
