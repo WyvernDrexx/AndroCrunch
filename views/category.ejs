@@ -65,7 +65,7 @@
             <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
                 class="scroll-item mt-6">
                 <p style="padding-top: 17.5rem; margin-bottom: 3rem;" class="mx-3 small mt-4 text-dark text-center">
-                    <%= file.filename %>
+                    <%= file.filename.substring(0,28) %>
                 </p>
                 <div class="scroll-item-hover-option">
                     <a class="scroll-item-hover-link monteserrat"
