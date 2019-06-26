@@ -983,6 +983,12 @@ a:focus {
     width: 13rem;
     border-radius: 35px;
     height: 17.5rem;
+    background-color: #03c;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
 }
 
 .scroll-item:hover {
