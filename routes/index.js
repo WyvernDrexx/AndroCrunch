@@ -15,12 +15,13 @@ router.get("/", (req, res) => {
         }
 
         res.render("index", {
+            title: "AndroCrunch | Official website of AndroCruch Youtube",
             trending: data[0].list.trending
         });
-
     });
-
 });
+
+
 router.get("/kickout", (req, res) => {
     req.logout();
     req.flash("success", "Successfully logged you out!");
@@ -41,7 +42,7 @@ router.get("/advertisement", (req, res) => {
         keywords: "androcrunch, advertisement",
         description: "Advertisement information for AndroCrunch"
     });
-})
+});
 
 router.get("/privacy_policy", (req, res) => {
     res.render("privacy_policy", {
@@ -51,7 +52,12 @@ router.get("/privacy_policy", (req, res) => {
     });
 });
 router.get("/about_us", (req, res) => {
-    res.render("about_us");
+    res.render("about_us", 
+    {
+        title: "AndroCrunch | About Us ",
+        keywords: "androcrunch, advertisement",
+        description: "About Page for AndroCrunch Digital Store"
+    });
 });
 
 router.get("/disclaimer", (req, res) => {
@@ -59,7 +65,10 @@ router.get("/disclaimer", (req, res) => {
 });
 
 router.get("/contact", (req, res) => {
-    res.render("contact");
+    res.render("contact", {
+        title: "Contact Page | AndroCrunch",
+        description: "Contact the developer and site manager from directly here"
+    });
 });
 
 router.post("/subscribe", (req, res) => {

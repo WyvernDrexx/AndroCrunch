@@ -37,8 +37,8 @@ router.get("/contents/:category/:name", (req, res) => {
                 file: image,
                 category,
                 moment,
-                title: "Wallpapers | " + image.filename,
-                keywords: image.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                title: "Wallpapers | " + image.filename + " download high quality wallpaper for  free. ",
+                keywords: image.filename + ", latest, wallpapers,  apps, android, free, download, gta, san andreas, best, high quality, androcrunch",
                 description: image.description
             });
         });
@@ -53,8 +53,8 @@ router.get("/contents/:category/:name", (req, res) => {
                 file: audio,
                 category,
                 moment,
-                title: "Ringtones | " + audio.filename,
-                keywords: audio.filename + " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, ",
+                title: "Ringtones | " + audio.filename + " High sound quality ringtone for free.",
+                keywords: audio.filename + " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, androcrunch",
                 description: audio.description
             });
         });
@@ -69,7 +69,7 @@ router.get("/contents/:category/:name", (req, res) => {
                 file: preset,
                 category,
                 moment,
-                title:"Presets | " + preset.filename,
+                title:"Presets | " + preset.filename + " Download lightroom presets and use it to personalize your photo collection",
                 keywords: preset.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
                 description: preset.description
             });
@@ -85,7 +85,7 @@ router.get("/contents/:category/:name", (req, res) => {
                 file: app,
                 category,
                 moment,
-                title: "Apps and games | " + app.filename,
+                title: "Apps and games | " + app.filename + " stock android applications download fo free",
                 keywords: app.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
                 description: app.description
             });

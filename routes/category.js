@@ -25,9 +25,9 @@ router.get("/contents/:category", (req, res) => {
             res.render("category", {
                 category,
                 files: apps.slice(0,12),
-                title: "Android Apps | Latest top and premium apps for free download",
-                keywords: "latest, best,  apps, android, free, download, gta, san andreas, ",
-                description: "Download latest and top android apps and games for free. 100% working apps. We have various categories of apps. From utilities to productivity and beautification apps",
+                title: "Android Apps | Latest top and premium apps for free download from Androcrunch",
+                keywords: "latest, best,  apps, android, free, download, gta, san andreas, androcrunch",
+                description: "Download latest and top android apps and games for free. 100% working apps. We have various categories of apps. From utilities to productivity and beautification apps like TikTok and Beauty Plus",
                 last,
                 next: 2,
                 current: 1,
@@ -55,8 +55,8 @@ router.get("/contents/:category", (req, res) => {
                 files: images.slice(0,12),
                 category,
                 title: "Wallpapers | HD Wallpapers for desktop and mobile free download",
-                keywords: "hd wallpapers, hd, desktop, android, for, download, free",
-                description: "Download HD Wallpapers for desktop and mobile for completely free",
+                keywords: "hd wallpapers, hd, desktop, android, for, download, free, androcrunch",
+                description: "Download HD Wallpapers for desktop and mobile for completely free from Androcrunch",
                 last,
                 next: 2,
                 current: 1,
@@ -82,9 +82,9 @@ router.get("/contents/:category", (req, res) => {
             res.render("category", {
                 files: audios.slice(0, 12),
                 category,
-                title: "Ringtones | Best Ringtones for Free Download",
-                keywords: "rington, ringtones, free download, 2018, 2019, avengers, mp3, midi",
-                description: "Download Latest and high quality ringtones for free.",
+                title: "Ringtones | Best Ringtones for Free Download only in Androcrunch",
+                keywords: "rington, ringtones, free download, 2018, 2019, avengers, mp3, midi, high quality, androcrunch",
+                description: "Download Latest and high quality ringtones for free. Visit Androcrunch to download most hit ringtones. Look through our professional collections of ringtones and find your match.",
                 last,
                 next: 2,
                 current: 1,
@@ -111,8 +111,8 @@ router.get("/contents/:category", (req, res) => {
                 files: presets.slice(0, 12),
                 category,
                 title: "Presets | Latest beautiful lightroom presets",
-                keywords: "presets, photoshop, lightroom, free, premium, download, zip",
-                description: "Download best presets for free",
+                keywords: "presets, photoshop, lightroom, free, premium, download, zip, lr, androcrunch",
+                description: "Download best presets for free from AndroCrunch that suits your photo. Customize your looks using these free presets",
                 last,
                 next: 2,
                 current: 1,
@@ -154,9 +154,9 @@ router.get("/contents", (req, res) => {
                     files.presets = presets;
                     res.render("contents", {
                         files,
-                        title: "Wallpapers, ringtones, presets, apps, games for free download",
-                        keywords: "wallpapers, ringtones, apps, games, android, free, download",
-                        description: "Latest apps, games, wallpapers, ringtones and presets for free download."
+                        title: "AndroCrunch | Contents | Wallpapers, ringtones, presets, apps, games for free download",
+                        keywords: "wallpapers, ringtones, apps, games, android, free, download, AndroCrunch",
+                        description: "Latest apps, games, wallpapers, ringtones and presets for free download. We provide latest apps, hd wallpapers. high quality ringtones and personalized presets for absolutely free."
                     });
                 });
             });
@@ -219,9 +219,9 @@ router.get("/contents/:category/page/:page", (req, res) => {
             let extractedImages = images.slice(start, end);
             res.render("category", {
                 files: extractedImages,
-                title: "Wallpapers, ringtones, presets, apps, games for free download",
-                keywords: "wallpapers, ringtones, apps, games, android, free, download",
-                description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
+                title: "Wallpapers | Page " + pagenumber + " Download free wallpapers from this page.",
+                keywords: "wallpapers, ringtones, apps, games, android, free, download, list",
+                description: "List of high quality wallpapers that will make your desktop or mobile a stock device. We have all kinds of wallpapers from Stock wallpapers, Nature wallpapers and animated wallpapers and much more.",
                 last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
@@ -266,9 +266,9 @@ router.get("/contents/:category/page/:page", (req, res) => {
             let extractedApps = apps.slice(start, end);
             res.render("category", {
                 files: extractedApps,
-                title: "Wallpapers, ringtones, presets, apps, games for free download",
-                keywords: "wallpapers, ringtones, apps, games, android, free, download",
-                description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
+                title: "Android Apps | Page " + pagenumber + " | Download these free android apps from Androcrunch faster than anywhere else. All apps are genuine apps.",
+                keywords: "wallpapers, ringtones, apps, games, android, free, download, vivo wallpapers, stock, genuine apps",
+                description: "Android Apps of your mobile phone for free. Download from our selected collections of apps free from any bloatware and personalize your mobile phone.",
                 last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
@@ -310,9 +310,9 @@ router.get("/contents/:category/page/:page", (req, res) => {
             let extractedAudios = audios.slice(start, end);
             res.render("category", {
                 files: extractedAudios,
-                title: "Wallpapers, ringtones, presets, apps, games for free download",
-                keywords: "wallpapers, ringtones, apps, games, android, free, download",
-                description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
+                title: "Ringtones | Page  " + pagenumber  + " | High quality ringtones from selected areas. Download for free now.",
+                keywords: "wallpapers, ringtones, apps, games, android, free, download, high quality, better, sound",
+                description: "High Quality ringtones for professionals as well as normal users to download for free. Never miss downloading the ringtones.",
                 last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
@@ -355,9 +355,9 @@ router.get("/contents/:category/page/:page", (req, res) => {
             let extractedPresets = presets.slice(start, end);
             res.render("category", {
                 files: extractedPresets,
-                title: "Wallpapers, ringtones, presets, apps, games for free download",
+                title: "Presets | Page " + pagenumber + " | Presets for Lightroom in zip format and others free download.",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download",
-                description: "Latest apps, games, wallpapers, ringtones and presets for free download.",
+                description: "Select from our collection the best presets that suits your need. Download and customize the presets as your needs.",
                 last: totalPages,
                 next: pagenumber + 1,
                 current: pagenumber,
