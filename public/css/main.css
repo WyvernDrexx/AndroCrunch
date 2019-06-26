@@ -979,7 +979,7 @@ a:focus {
     margin: auto;
 }
 
-.horizontal-scroll .scroll-item img {
+.scroll-item img {
     width: 13rem;
     border-radius: 35px;
     height: 17.5rem;
