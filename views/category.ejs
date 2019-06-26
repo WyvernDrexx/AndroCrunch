@@ -5,11 +5,11 @@
         <p class="lead pb-5 text-center text-white">Home > Content</p>
         <h5 class=" pt-6s pt-sm-5 text-center text-white">What are you looking for?</h5>
         <div class="position-relative pt-5 srch">
-                <form action="https://www.google.com/search" method="GET">
-                    <input name="sitesearch" type="hidden" value="https://androcrunch.in">
-                    <input name="q" type="search" placeholder="Wallpapers, apps and ringtones">
-                    <button type="submit"> <i class="fas fa-search"></i> </button>
-                </form>
+            <form action="https://www.google.com/search" method="GET">
+                <input name="sitesearch" type="hidden" value="https://androcrunch.in">
+                <input name="q" type="search" placeholder="Wallpapers, apps and ringtones">
+                <button type="submit"> <i class="fas fa-search"></i> </button>
+            </form>
         </div>
     </div>
 </div>
@@ -50,72 +50,30 @@
                 <% } %>
             </div>
         </div>
+    </div>
+    <div class="site-content w-75 m-auto">
         <h1 class="display-5 text-center pt-5 pb-1"><%= category.toUpperCase() %></h1>
         <p class="small text-center text-gray pb-3">Catch up the latest contents!</p>
-        <% if(category === "apps") { %>
-        <div class="row justify-content-center apps">
+        <div class="w-100 m-auto justify-content-center text-center">
             <% for( let i = 0 ; i < files.length; i++){ %>
             <%      file=files[i];  %>
-            <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 px-md-2 ml-4 ml-md-4 pt-sm-5">
-                <a href="/contents/<%= category %>/<%= file.name %>">
-                    <div class="card m-0">
-                        <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
-                            alt="<%= file.filename + ' Thumbnail' %>">
-                        <div class="card-body">
-                            <p class="card-title small text-black text-center "><%= file.filename.substring(0, 28)%></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <% }else { %>
-            <div class="col-6 col-md-3 px-0 px-md-2 ml-0 ml-md-4 pt-sm-5">
-                <a href="/contents/<%= category %>/<%= file.name %>">
-                    <div class="card m-0">
-                        <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
-                            alt="<%= file.filename + ' Thumbnail' %>">
-                        <div class="card-body">
-                            <p class="card-title small text-black text-center "><%= file.filename.substring(0, 28)%></p>
-                        </div>
-                    </div>
-                </a>
+            <% if(i === 8){ %>
+            <div class="advertisement flex-nowrap bg-dark">
+                <p class="text-center text-white" style="font-size: 22px;">Advertisement</p>
             </div>
             <% } %>
+            <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
+                class="scroll-item mt-6">
+                <p style="padding-top: 17.5rem; margin-bottom: 3rem;" class="mx-3 small mt-4 text-dark text-center">
+                    <%= file.filename %>
+                </p>
+                <div class="scroll-item-hover-option">
+                    <a class="scroll-item-hover-link monteserrat"
+                        href="/contents/<%= category %>/<%= file.name %>">Download</a>
+                </div>
+            </div>
             <% } %>
         </div>
-        <% } else { %>
-        <div class="row justify-content-center">
-            <% for( let i = 0 ; i < files.length; i++){ %>
-            <%      file=files[i];  %>
-            <% if(i % 2 === 0){ %>
-            <div class="col-6 col-md-3 px-0 px-md-2 ml-0 ml-md-4 pt-sm-5">
-                <a href="/contents/<%= category %>/<%= file.name %>">
-                    <div class="card mx-0">
-                        <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
-                            alt="<%= file.filename + ' Thumbnail' %>">
-                        <div class="card-body">
-                            <p class="card-title small text-black text-center "><%= file.filename.substring(0, 28)%></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <% }else { %>
-            <div class="col-6 col-md-3 px-0 px-md-2 ml-4 ml-md-4 pt-sm-5">
-                <a href="/contents/<%= category %>/<%= file.name %>">
-                    <div class="card mx-0">
-                        <img src="/thumbnails/md-<%= file.thumbnail.split('-')[1] %>" class="card-img-top"
-                            alt="<%= file.filename + ' Thumbnail' %>">
-                        <div class="card-body">
-                            <p class="card-title small text-black text-center "><%= file.filename.substring(0, 28)%></p>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-            <% } %>
-            <%      }%>
-        </div>
-        <% } %>
     </div>
     <nav class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5" aria-label="Pagination">
         <ul class="pagination d-flex ml-0">

@@ -918,7 +918,25 @@ a:focus {
     color: #0f0e0fd3
 }
 
-.horizontal-scroll .scroll-item {
+.advertisement{
+    position: relative;
+    padding: 10px;
+    height: 15rem;
+    border-radius: 15px;
+    margin-top: 5rem;
+}
+
+.advertisement p{
+    position: absolute;
+    width: 15rem;
+    top: 40%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.scroll-item {
     display: inline-block;
     margin: 20px;
     margin-top: 1.2rem;
