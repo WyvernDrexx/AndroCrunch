@@ -1,22 +1,24 @@
 <% include partials/header %>
 <div class="bg-white">
-        <section class="bg-image bg-white" aria-labelledby="Header for blog post">
-            <div class="main-content pt-6s">
-                <div class="row">
-                    <div class="col-sm px-0">
-                        <p class=" text-center text-sm-left post-default-header">
-                            Blog Post
-                        </p>
-                    </div>
-                    <div class="col-sm px-0">
-                        <p class="text-center d-block  post-title small text-sm-right">
-                            Home > Blog > Posttitle
-                        </p>
-                    </div>
+    <section style="background-color: #000000;
+        background-image: linear-gradient(180deg, #c2bfbf 0%, #ffffff 74%);
+        " class="" aria-labelledby="Header for blog post">
+        <div class="main-content pt-6s">
+            <div class="row">
+                <div class="col-sm px-0">
+                    <p class="text-dark font-weight-bold text-center text-sm-left post-default-header">
+                        Blog Post
+                    </p>
+                </div>
+                <div class="col-sm px-0">
+                    <p class="text-dark text-center d-block  post-title small text-sm-right">
+                        Home > Blog > <span class="font-weight-bold">Posttitle</span>
+                    </p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
 <section class="bg-white pt-5" aria-labelledby="The main content for the blog post">
     <div class="main-content">
@@ -190,30 +192,30 @@
         </div>
     </div>
     <div class="container main-content pt-5 pb-5">
-            <h1 class="display-5 text-center">Share Your Opinions</h1>
-            <p class="xs-small text-gray text-center">Your email address will not be published. Required fields are marked
-                with *</p>
-            <form class="comment mt-3 text-center">
-                <div class="row">
-                    <div class="col-sm">
-                        <textarea class=" bg-white rounded" placeholder="Write Your Comment *"></textarea>
-                    </div>
+        <h1 class="display-5 text-center">Share Your Opinions</h1>
+        <p class="xs-small text-gray text-center">Your email address will not be published. Required fields are marked
+            with *</p>
+        <form class="comment mt-3 text-center">
+            <div class="row">
+                <div class="col-sm">
+                    <textarea class=" bg-white rounded" placeholder="Write Your Comment *"></textarea>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-sm">
-                        <input class="bg-white rounded" type="text" placeholder="Name *" required>
-                    </div>
-                    <div class="col-sm">
-                        <input class="bg-white  rounded" type="email" placeholder="Email *" required>
-                    </div>
-                    <div class="col-sm">
-                        <input class="bg-white rounded" type="text" placeholder="Website" required>
-                    </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm">
+                    <input class="bg-white rounded" type="text" placeholder="Name *" required>
                 </div>
-                <button class="btn btn-primary text-white btn-md rounded-pill mt-4 text-center px-4 pt-2 pb-2"
-                    type="submit">Post
-                    Comment</button>
-            </form>
+                <div class="col-sm">
+                    <input class="bg-white  rounded" type="email" placeholder="Email *" required>
+                </div>
+                <div class="col-sm">
+                    <input class="bg-white rounded" type="text" placeholder="Website" required>
+                </div>
+            </div>
+            <button class="btn btn-primary text-white btn-md rounded-pill mt-4 text-center px-4 pt-2 pb-2"
+                type="submit">Post
+                Comment</button>
+        </form>
     </div>
 </section>
 
