@@ -54,7 +54,7 @@
     <div class="site-content w-75 m-auto">
         <h1 class="display-5 text-center pt-5 pb-1"><%= category.toUpperCase() %></h1>
         <p class="small text-center text-gray pb-3">Catch up the latest contents!</p>
-        <div class="w-100 m-auto justify-content-center text-center">
+        <div style="max-width: 65rem;" class="w-100 m-auto justify-content-center text-center">
             <% for( let i = 0 ; i < files.length; i++){ %>
             <%      file=files[i];  %>
             <% if(i === 8){ %>

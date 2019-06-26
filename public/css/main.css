@@ -1371,6 +1371,7 @@ textarea.form-control {
     .scroll-top {
         justify-content: initial !important;
         padding-left: 3rem;
+        padding-right: 3rem;
     }
 
     .recommended .card-title {
