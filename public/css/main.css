@@ -946,6 +946,10 @@ a:focus {
     border-radius: 35px;
     box-shadow: 3px 3px 15px rgba(48, 47, 47, 0.288);
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .app-banner {
@@ -979,16 +983,10 @@ a:focus {
     margin: auto;
 }
 
-.scroll-item img {
+.horizontal-scroll .scroll-item img {
     width: 13rem;
     border-radius: 35px;
     height: 17.5rem;
-    background-color: #03c;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-
 }
 
 .scroll-item:hover {
