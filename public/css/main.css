@@ -469,6 +469,11 @@ input::placeholder {
     border-top: 1px solid purple
 }
 
+.line-dark {
+    /* padding-left: 13rem; */
+    border-top: 1px solid rgb(189, 186, 189)
+}
+
 .latest-posts .row {
     padding: 4px;
     margin: 3px;
@@ -1313,10 +1318,32 @@ textarea.form-control {
 
 
 
+/* BLOG CLASSES */
+
+.post-title{
+    color: white;
+    margin-top: 25px;
+}
+
+.post-default-header{
+    font-size: 3rem;
+    font-weight: 500;
+    color: white;
+}
 
 
+.blog-main-content{
 
+}
 
+.blog-sub-content{
+
+}
+
+.post-header{
+    font-size: 28px;
+    padding-top: 2rem;
+}
 
 /* ------------------------------------------- */
 
