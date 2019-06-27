@@ -72,17 +72,27 @@ router.get("/contact", (req, res) => {
 });
 
 router.post("/subscribe", (req, res) => {
-    let response = new Object();
+    let response = {};
     response.status = true;
-    let email = req.body.email;
-    email = email.toLowerCase();
+    let email = String(req.body.email).toLowerCase();
     console.log("email: " + email);
     if (!email) {
         response.status = false;
-        response.message = "Field cannot be empty!"
+        response.message = "Field cannot be empty!";
         res.send(response);
         return;
     }
+
+    let flag = true;
+
+    if(!email.includes("@") || email.split("@").length > 2 || email.split(".").length > 2 || email.split(".").length === 1){
+        flag = false;
+        response.status = false;
+        response.message = "Invalid Input!";
+        res.send(response);
+        return;
+    }
+
     Subscriber.findOne({
             email
         })
@@ -90,7 +100,7 @@ router.post("/subscribe", (req, res) => {
             console.log(data);
             if (Boolean(data)) {
                 response.status = false;
-                response.message = "You have already subscribed!"
+                response.message = "You have already subscribed!";
                 res.send(response);
                 return;
             } else {

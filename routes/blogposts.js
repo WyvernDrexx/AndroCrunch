@@ -682,7 +682,5 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
         res.redirect("/");
     }
 
-
-
 });
 module.exports = router;

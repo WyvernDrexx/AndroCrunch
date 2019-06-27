@@ -27,7 +27,11 @@ const postSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
-    customUrl: String
+    customUrl: String,
+    views: {
+        type: Number,
+        default: 0
+    }
 });
 
 const Post = mongoose.model("Post", postSchema);
