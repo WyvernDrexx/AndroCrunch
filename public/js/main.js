@@ -32,22 +32,6 @@ window.onload = function () {
     e.addEventListener("click", () => {
         t = !t
     });
-
-    if (window.pageYOffset > 50) {
-        $("#side-toggler").addClass("bottom-shadow");
-        $(e).addClass("bottom-shadow");
-    }
-
-
-    window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 50) {
-            $(e).addClass("bottom-shadow");
-            $("#side-toggler").addClass("bottom-shadow");
-        } else {
-            $("#side-toggler").removeClass("bottom-shadow");
-            $(e).removeClass("bottom-shadow");
-        }
-    });
 }
 
 

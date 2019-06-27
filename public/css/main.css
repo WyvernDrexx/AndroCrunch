@@ -22,14 +22,14 @@ nav.fixed-top div.container {
     padding-bottom: 8px;
 }
 nav *{
-    color: #580096;
+    color: #fcfcfc;
 }
 h1.display-4 {
     font-weight: 700
 }
 
 .nav-item .nav-link {
-    color: rgb(33, 11, 228)
+    color: rgb(255, 255, 255)
 }
 
 .nav-item .nav-link:hover {
@@ -572,8 +572,8 @@ input::placeholder {
 }
 
 .navbar {
-    background-color: #fffffffb;
     padding-top: 0;
+    position: absolute;
 }
 
 input:focus {
@@ -618,6 +618,8 @@ input:focus {
     width: 50px
 }
 
+
+
 .font-lg {
     font-size: 1.5rem !important
 }
@@ -630,9 +632,8 @@ input:focus {
 #side-toggler {
     z-index: 99;
     padding: 9px 0;
-    position: fixed;
+    position: absolute;
     top: 0;
-    background-color: #feffff;
     padding: 0;
     display: none
 }
