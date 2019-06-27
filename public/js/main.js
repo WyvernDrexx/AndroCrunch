@@ -118,3 +118,8 @@ $(window).scroll(function () {
     var e = $(this).val();
     null == (e = e.replace("C:\\fakepath\\", "")) && "" == e || ($(this).next(".custom-file-label").attr("data-content", e), $(this).next(".custom-file-label").text(e))
 });
+
+
+$('.carousel').carousel({
+    interval: 2500
+});
