@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
         }
 
         res.render("index", {
-            title: "AndroCrunch | Official website of AndroCruch Youtube",
+            title: "AndroCrunch | Beyond The Infinity |  Official Website of AndroCruch Youtube",
             trending: data[0].list.trending
         });
     });
