@@ -254,6 +254,29 @@ a {
     box-shadow: none
 }
 
+.no-box-shadow{
+    box-shadow: none !important;
+}
+
+.presets-content .card{
+    max-height: 15rem;
+    min-height: 15rem;
+}
+
+.presets-content .hover-option{
+    height: 73.8% !important;
+}
+
+.presets-content .card:hover{
+    transform: translateY(-15px);
+    box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.116) !important;
+    background: transparent;
+}
+
+/* .presets-content .card:hover .card-body{
+    opacity: 0;
+} */
+
 .site-content .apps a .card-title {
     position: relative;
     top: initial;
