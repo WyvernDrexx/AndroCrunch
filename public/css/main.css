@@ -460,7 +460,8 @@ input::placeholder {
 }
 
 .card-text {
-    font-size: 13px
+    font-size: 13px;
+    font-weight: normal;
 }
 
 .latest-posts .col.justify-content-end {
