@@ -1080,6 +1080,10 @@ a:focus {
     background-color: #06c
 }
 
+footer a:hover{
+    color: rgb(155, 154, 153) !important;
+}
+
 .footer-bg {
     background-image: url('/imgs/footer-bg.jpg');
     background-color: #03c;
