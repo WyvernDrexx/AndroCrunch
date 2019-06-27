@@ -714,7 +714,7 @@ h1 {
 }
 
 .btn-outline {
-    border: 1px solid #06c;
+    border: 2px solid #06c;
     background-color: #ffffff00;
     color: #fff
 }
@@ -984,7 +984,7 @@ a:focus {
     position: relative;
 }
 
-.app-banner div {
+.app-banner div .context{
     margin-right: 15rem;
     padding-top: 4rem;
 }
@@ -1370,7 +1370,7 @@ textarea.form-control {
         background-image: none;
         background-image: linear-gradient(40deg, #003, #03c, #3cc)!important;
     } */
-    .app-banner div {
+    .app-banner div .context{
         margin-right: 0px;
     }
 

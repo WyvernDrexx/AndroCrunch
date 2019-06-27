@@ -1,9 +1,9 @@
 <% include partials/header %>
 <div class="container-fluid bg-white px-0">
-    <div class="container-fluid pt-6s pb-4 bg-gradient bottom-rounded">
+    <div class="container-fluid pt-6s pb-4 bg-image bottom-rounded">
         <h1 class="text-center text-white display-5 mb-3">Content</h1>
         <p class="lead pb-5 text-center text-white">Home > Content</p>
-        <h5 class=" pt-6s pt-sm-5 text-center text-white">What are you looking for?</h5>
+        <p class=" pt-6s pt-sm-5 small font-weight-normal text-center text-white">What are you looking for?</p>
         <div class="position-relative pt-5 srch">
             <form action="https://www.google.com/search" method="GET">
                 <input name="sitesearch" type="hidden" value="https://androcrunch.in">
@@ -105,10 +105,12 @@
     </div>
     <div class="container-fluid app-banner text-white">
         <div class="">
-            <p class="display-4 text-center text-lg-right font-weight-bold">Apps</p><br>
-            <p class="text-center text-lg-right px-0">Checkout Our Amazing handpicked collection <br> Recommended using
+            <p class="display-4 context text-center text-lg-right font-weight-bolder">Apps</p><br>
+            <p class="text-center context text-lg-right px-0">Checkout Our Amazing handpicked collection <br> Recommended using
                 on mobile <br> for better exerience</p>
-            <a href="/contents/apps" class="btn btn-primary float-right rounded-pill mt-5">Browse Now</a>
+                <div class="text-center text-sm-right context">
+                    <a href="/contents/apps" class="btn btn-primary rounded-pill mt-5">Browse Now</a>
+                </div>
         </div>
     </div>
 
