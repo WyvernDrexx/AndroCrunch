@@ -263,10 +263,6 @@ a {
     min-height: 15rem;
 }
 
-.presets-content .hover-option{
-    height: 73.8% !important;
-}
-
 .presets-content .card:hover{
     transform: translateY(-15px);
     box-shadow: 10px 30px 50px 20px rgba(0, 0, 0, 0.116) !important;
