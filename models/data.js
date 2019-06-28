@@ -32,7 +32,8 @@ const dataSchema = new mongoose.Schema({
             wallpapers: Array,
             presets: Array,
             blogs: Array
-        }
+        },
+        latestPosts: Array
     }
 });
 
