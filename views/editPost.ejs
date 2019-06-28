@@ -11,6 +11,7 @@
                 <input type="text" class="form-control" name="title" placeholder="Title" aria-label="Title"
                     aria-describedby="basic-addon1" value="<%= post.title %>">
             </div>
+            <marquee class=" text-white small">Maximum of 104 character allowed!</marquee>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Custom Url</span>
@@ -89,7 +90,6 @@
         let content = $("textarea[name=content]").val();
         let subtitle = $("input[name=subtitle]").val();
         let customUrl = $("input[name=customUrl]").val();
-        console.log(customUrl);
         let post = {
             title,
             subtitle,

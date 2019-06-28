@@ -350,10 +350,10 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                 }
             }
 
-            if(post.title.length > 84){
+            if(post.title.length > 104){
                 res.send({
                     status: 0,
-                    message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
                 });
                 return;
             }
@@ -396,10 +396,10 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
             }
-            if(post.title.length > 84){
+            if(post.title.length > 104){
                 res.send({
                     status: 0,
-                    message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
                 });
                 return;
             }
@@ -537,10 +537,10 @@ router.post("/posts", isLoggedIn, (req, res) => {
         }
     }
 
-    if(post.title.length > 84){
+    if(post.title.length > 104){
         res.send({
             status: 0,
-            message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+            message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
         });
         return;
     }
