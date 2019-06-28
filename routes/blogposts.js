@@ -796,8 +796,10 @@ router.get("/blogs/view/:customUrl", (req, res) => {
                     latest,
                     moment
                 });
+                
             });
-
+            post.views += 1;
+            post.save();
         })
         .catch(err => {
             req.flash("error", "Please check your url and try again!");
