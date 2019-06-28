@@ -5,6 +5,7 @@ const mongoose = require("mongoose"),
     Preset = require("../models/uploadsSchema").Preset,
     fs = require("fs"),
     Data = require("../models/data"),
+    Post = require("../models/post"),
     Image = require("../models/uploadsSchema").Image;
 
 
@@ -37,6 +38,7 @@ let presets = [];
 let ringtones = [];
 let wallpapers = [];
 var max = [];
+let blogs = [];
 var maxIndex = [1, 0, 3];
 var maxDownloads = [0, 0, 0];
 
@@ -248,33 +250,83 @@ Image.find({}, (err, files) => {
                         maxIndex = [0, 0, 0];
                         maxDownloads = [0, 0, 0];
 
-                        Data.find({})
-                            .then((data) => {
-                                data[0].list.trending.ringtones = ringtones;
-                                data[0].list.trending.wallpapers = wallpapers;
-                                data[0].list.trending.presets = presets;
-                                data[0].list.trending.apps = apps;
-                                data[0].save((err, docs) => {
-                                    if (err) {
-                                        console.log("ERROR! posting  data!");
+                        Post.find({})
+                            .then(posts => {
+                                posts.forEach((post, index) => {
+                                    /* If current element is greater than first*/
+                                    if (post.views > maxDownloads[0]) {
+                                        maxDownloads[2] = maxDownloads[1];
+                                        maxDownloads[1] = maxDownloads[0];
+                                        maxDownloads[0] = post.views;
+                                        maxIndex[2] = maxIndex[1];
+                                        maxIndex[1] = maxIndex[0];
+                                        maxIndex[0] = index;
+                                    } /* If arr[i] is in between first and second then update second  */
+                                    else if (post.views > maxDownloads[1]) {
+                                        maxDownloads[2] = maxDownloads[1];
+                                        maxDownloads[1] = post.views;
+                                        maxIndex[2] = maxIndex[1];
+                                        maxIndex[1] = index;
+                                    } else if (post.views > maxDownloads[2]) {
+                                        third = post.views;
+                                        maxIndex[2] = index;
+                                    }
+                                });
+                                blogs[0] = posts[maxIndex[0]];
+                                blogs[1] = posts[maxIndex[1]];
+                                blogs[2] = posts[maxIndex[2]];
+
+
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Ringtones/Audio Sent~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log(posts);
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Downloads~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log(maxDownloads);
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Index~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                                console.log(maxIndex);
+                                console.log("\n\n============================================================================");
+                                console.log("============================================================================\n\n");
+
+
+
+                                maxIndex = [0, 0, 0];
+                                maxDownloads = [0, 0, 0];
+                                Data.find({})
+                                    .then((data) => {
+                                        data[0].list.trending.ringtones = ringtones;
+                                        data[0].list.trending.wallpapers = wallpapers;
+                                        data[0].list.trending.presets = presets;
+                                        data[0].list.trending.apps = apps;
+                                        data[0].list.trending.blogs = blogs;
+                                        data[0].save((err, docs) => {
+                                            if (err) {
+                                                console.log("ERROR! posting  data!");
+                                                console.log(err);
+                                                return;
+                                            }
+                                            console.log("Data posted!");
+                                            console.log("\n\n============================================================================");
+                                            console.log("============================================================================");
+                                            console.log(docs);
+                                            console.log("============================================================================");
+                                            console.log("============================================================================");
+                                            process.exit(0);
+                                        });
+
+                                    })
+                                    .catch(err => {
+                                        console.log("ERROR! Getting data!");
                                         console.log(err);
                                         return;
-                                    }
-                                    console.log("Data posted!");
-                                    console.log("\n\n============================================================================");
-                                    console.log("============================================================================");
-                                    console.log(docs);
-                                    console.log("============================================================================");
-                                    console.log("============================================================================");
-                                    process.exit(0);
-                                });
-
+                                    })
                             })
                             .catch(err => {
-                                console.log("ERROR! Getting data!");
                                 console.log(err);
-                                return;
-                            })
+                            });
+
+
                     })
 
             })

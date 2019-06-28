@@ -30,7 +30,8 @@ const dataSchema = new mongoose.Schema({
             apps: Array,
             ringtones: Array,
             wallpapers: Array,
-            presets: Array
+            presets: Array,
+            blogs: Array
         }
     }
 });

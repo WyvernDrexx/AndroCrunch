@@ -609,7 +609,9 @@ input:focus {
 .blog-posts .container div div {
     margin: 1rem
 }
-
+.blog-posts a .col-md-6{
+    max-width: none;
+}
 .border-bottom-light {
     border-bottom: 1px solid rgba(0, 0, 0, .151)
 }

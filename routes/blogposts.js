@@ -753,6 +753,28 @@ router.get("/blogs", (req, res) => {
 
 
 
+router.get("/blogs/view/:customUrl", (req,res) => {
+
+    const customUrl = req.params.customUrl.trim().toLowerCase();
+    Post.findOne({
+        customUrl: customUrl
+    })
+    .then((post) => {
+        res.render("postView", {
+            post
+        });
+        post.views += 1;
+        post.save();
+    })
+    .catch(err => {
+        req.flash("error", "Please check your url and try again!");
+        res.redirect("/blogs");
+    });
+
+});
+
+
+
 
 
 module.exports = router;
