@@ -523,10 +523,11 @@ input::placeholder {
     transform: translateY(-10px);
 }
 .recommended .card:hover img{
-    filter: blur(1px)
+    filter: blur(1px);
+    filter: grayscale(1);
 }
 .recommended .card:hover .card-title{
-    color: #76cbec;
+    color: #f15b5b;
 }
 .card:hover {
     box-shadow: none
