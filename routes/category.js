@@ -3,7 +3,8 @@ const router = require("express").Router(),
     Audio = require("../models/uploadsSchema").Audio,
     App = require("../models/uploadsSchema").App,
     moment = require("moment"),
-    Preset = require("../models/uploadsSchema").Preset;
+    Preset = require("../models/uploadsSchema").Preset,
+    Data = require("../models/data");
 
 router.get("/contents/:category", (req, res) => {
     let category = req.params.category.toLowerCase();
@@ -24,7 +25,7 @@ router.get("/contents/:category", (req, res) => {
 
             res.render("category", {
                 category,
-                files: apps.slice(0,12),
+                files: apps.slice(0, 12),
                 title: "Android Apps | Latest top and premium apps for free download from Androcrunch",
                 keywords: "latest, best,  apps, android, free, download, gta, san andreas, androcrunch",
                 description: "Download latest and top android apps and games for free. 100% working apps. We have various categories of apps. From utilities to productivity and beautification apps like TikTok and Beauty Plus",
@@ -52,7 +53,7 @@ router.get("/contents/:category", (req, res) => {
             }
 
             res.render("category", {
-                files: images.slice(0,12),
+                files: images.slice(0, 12),
                 category,
                 title: "Wallpapers | HD Wallpapers for desktop and mobile free download",
                 keywords: "hd wallpapers, hd, desktop, android, for, download, free, androcrunch",
@@ -151,13 +152,24 @@ router.get("/contents", (req, res) => {
                         req.flash("error", "Unable to find Presets");
                         return res.redirect("/");
                     }
-                    files.presets = presets;
-                    res.render("contents", {
-                        files,
-                        title: "AndroCrunch | Contents | Wallpapers, ringtones, presets, apps, games for free download",
-                        keywords: "wallpapers, ringtones, apps, games, android, free, download, AndroCrunch",
-                        description: "Latest apps, games, wallpapers, ringtones and presets for free download. We provide latest apps, hd wallpapers. high quality ringtones and personalized presets for absolutely free."
+                    Data.find({}, (err, data) => {
+                        if (err) {
+                            req.flash("error", "Please try visiting again later!");
+                            res.redirect("back");
+                            return;
+                        }
+                        let recommended = data[0].list.trending.blogs;
+                        files.presets = presets;
+                        res.render("contents", {
+                            files,
+                            title: "AndroCrunch | Contents | Wallpapers, ringtones, presets, apps, games for free download",
+                            keywords: "wallpapers, ringtones, apps, games, android, free, download, AndroCrunch",
+                            description: "Latest apps, games, wallpapers, ringtones and presets for free download. We provide latest apps, hd wallpapers. high quality ringtones and personalized presets for absolutely free.",
+                            recommended,
+                            moment
+                        });
                     });
+
                 });
             });
         });
@@ -202,8 +214,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
-            }else{
-                if(totalPages === pagenumber){
+            } else {
+                if (totalPages === pagenumber) {
                     end = images.length;
                 }
             }
@@ -247,8 +259,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
-            }else{
-                if(totalPages === pagenumber){
+            } else {
+                if (totalPages === pagenumber) {
                     end = apps.length;
                 }
             }
@@ -295,8 +307,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
-            }else{
-                if(totalPages === pagenumber){
+            } else {
+                if (totalPages === pagenumber) {
                     end = audios.length;
                 }
             }
@@ -304,7 +316,7 @@ router.get("/contents/:category/page/:page", (req, res) => {
             let extractedAudios = audios.slice(start, end);
             res.render("category", {
                 files: extractedAudios,
-                title: "Ringtones | Page  " + pagenumber  + " | High quality ringtones from selected areas. Download for free now.",
+                title: "Ringtones | Page  " + pagenumber + " | High quality ringtones from selected areas. Download for free now.",
                 keywords: "wallpapers, ringtones, apps, games, android, free, download, high quality, better, sound",
                 description: "High Quality ringtones for professionals as well as normal users to download for free. Never miss downloading the ringtones.",
                 last: totalPages,
@@ -339,8 +351,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
                 return;
-            }else{
-                if(totalPages === pagenumber){
+            } else {
+                if (totalPages === pagenumber) {
                     end = presets.length;
                 }
             }
