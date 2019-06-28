@@ -2,7 +2,7 @@
 <div class="container-fluid bg-white px-0">
     <div class="container-fluid pt-6s pb-4 bg-image bottom-rounded">
         <h1 class="text-center text-white display-5 mb-3">Content</h1>
-        <p class="lead pb-5 text-center text-white">Home > Content</p>
+        <p class="lead pb-5 text-center mt-6 text-white">Home > Content</p>
         <p class=" pt-6s pt-sm-5 small font-weight-normal text-center text-white">What are you looking for?</p>
         <div class="position-relative pt-5 srch">
             <form action="https://www.google.com/search" method="GET">
@@ -82,7 +82,7 @@
         <div class=" row justify-content-center mx-0">
             <% for( let i = files.presets.length - 1; i >= files.presets.length - 3; i--){ %>
             <% let file = files.presets[i];  %>
-            <div class="col-sm-3">
+            <div class="col-sm-3 mx-4">
                 <div class="card no-border no-box-shadow">
                     <div class="hover-option rounded">
                         <a href="/contents/presets/<%= file.name %>"><span class="plus-symbol">+</span></a>
