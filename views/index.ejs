@@ -264,7 +264,7 @@
 <div class="container-fluid bg-white blog-posts pb-6">
     <h1 class="display-5 text-center text-dark mb-5 pt-5"><span>Latest Blog Posts</span></h1>
     <div class="row main-content justify-content-center">
-        <% latest.forEach((post) => { %>
+        <% latest.reverse().forEach((post) => { %>
         <div class="col-md">
             <a href="/blogs/view/<%= post.customUrl %>">
                 <div class="card mx-sm-1 mt-5 ">
