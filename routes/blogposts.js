@@ -384,7 +384,8 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             }
             const post = {
                 title: req.body.title,
-                content: req.body.content
+                content: req.body.content,
+                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
             }
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6) {
