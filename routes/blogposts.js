@@ -338,10 +338,11 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             const post = {
                 title: req.body.title,
                 content: req.body.content,
-                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
+                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase(),
+                tags: req.body.tags.toUpperCase()
             }
             for (const name of Object.keys(post)) {
-                if (post[name].trim().length <= 6) {
+                if (post[name].trim().length <= 6 && String(name) !== "tags") {
                     res.send({
                         status: 0,
                         message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
@@ -385,10 +386,11 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             const post = {
                 title: req.body.title,
                 content: req.body.content,
-                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
+                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase(),
+                tags: req.body.tags.toUpperCase()
             }
             for (const name of Object.keys(post)) {
-                if (post[name].trim().length <= 6) {
+                if (post[name].trim().length <= 6 && String(name) !== "tags") {
                     res.send({
                         status: 0,
                         message: "Less than <strong>six</strong> characters not allowed in " + name + "!"

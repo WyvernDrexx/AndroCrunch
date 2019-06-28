@@ -14,6 +14,14 @@
             <marquee class=" text-white small">Maximum of 104 character allowed!</marquee>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
+                    <span class="input-group-text">Tags</span>
+                </div>
+                <input type="text" class="form-control" name="tags"
+                    placeholder="Url must be unique separeted by single space" value="<%= post.tags %>"
+                    aria-label="tags" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
                     <span class="input-group-text">Custom Url</span>
                 </div>
                 <input type="text" class="form-control" name="customUrl"
@@ -36,52 +44,52 @@
     </div>
 </section>
 <div class="container-fluid bg-dark text-white p-5">
-        <h1 class=" text-center  text-white">Cheatsheet</h1>
-        <div style="border: 1px solid gray;background-color: #30343a;" class="main-content p-4">
-            <span class="text-danger">1.</span><span class="text-white"> All the HTML tags works here including links,
-                buttons, Bootstrap classes..</span>
+    <h1 class=" text-center  text-white">Cheatsheet</h1>
+    <div style="border: 1px solid gray;background-color: #30343a;" class="main-content p-4">
+        <span class="text-danger">1.</span><span class="text-white"> All the HTML tags works here including links,
+            buttons, Bootstrap classes..</span>
+        <span class="line d-block mt-4 mb-4"></span>
+        <span class="text-danger">2.</span>
+        <span class="text-white"> For images in content use: <span style="font-style: italic;">
+                < img src="/thumbnails/<strong>UNIQUE IMAGE TITLE</strong>"> <span class="small text-gray">[Remove
+                        spaces]</span>
+            </span>
             <span class="line d-block mt-4 mb-4"></span>
-            <span class="text-danger">2.</span>
-            <span class="text-white"> For images in content use: <span style="font-style: italic;">
-                    < img src="/thumbnails/<strong>UNIQUE IMAGE TITLE</strong>"> <span class="small text-gray">[Remove
-                            spaces]</span>
-                </span>
-                <span class="line d-block mt-4 mb-4"></span>
-                <span class="text-danger">3.</span>
-                <span class="text-white"> For block of quote like: </span> <br>
-                <div class="bg-white p-5 m-5">
-                    <blockquote class="bg-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur
-                        minima, aspernatur sequi
-                        ratione quidem quos modi voluptates dolor!</blockquote>
-                </div>
-    
-                <p class="text-white">Use the following syntax in content:</p>
-                <textarea class="w-100 p-4 pt-5" readonly>
+            <span class="text-danger">3.</span>
+            <span class="text-white"> For block of quote like: </span> <br>
+            <div class="bg-white p-5 m-5">
+                <blockquote class="bg-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur
+                    minima, aspernatur sequi
+                    ratione quidem quos modi voluptates dolor!</blockquote>
+            </div>
+
+            <p class="text-white">Use the following syntax in content:</p>
+            <textarea class="w-100 p-4 pt-5" readonly>
                 <blockquote> Your block of text quote goes here </blockquote>
                         </textarea>
-                <p class="text-white pt-4">Basically just put your text between <strong
-                        class="text-danger">"blockquote"</strong> tag</p>
-                <span class="line d-block mt-4 mb-4"></span>
-                <span class="text-danger">4.</span>
-                <span class="text-white"> For links use <span class="text-gray" style="font-style: italic">
-                        < a href="http://our link here"> Link Text < / a>
-                    </span>.. </span> <br>
-                <span class="line d-block mt-4 mb-4"></span>
-    
-                <span class="text-danger">5.</span>
-                <span class="text-white"> For bold text use <span class="text-gray" style="font-style: italic">
-                        < strong> Make text bold < / strong>
-                    </span>.. </span> <br>
-                <hr>
-                <span class="text-danger">6.</span>
-                <span class="text-danger font-weight-bold"> It is encouraged to use Bootstrap classes instead of traditional
-                    inline CSS. Click here to go to <a
-                        href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap Docs</a>
-                </span><br>
-    
-    
-        </div>
+            <p class="text-white pt-4">Basically just put your text between <strong
+                    class="text-danger">"blockquote"</strong> tag</p>
+            <span class="line d-block mt-4 mb-4"></span>
+            <span class="text-danger">4.</span>
+            <span class="text-white"> For links use <span class="text-gray" style="font-style: italic">
+                    < a href="http://our link here"> Link Text < / a>
+                </span>.. </span> <br>
+            <span class="line d-block mt-4 mb-4"></span>
+
+            <span class="text-danger">5.</span>
+            <span class="text-white"> For bold text use <span class="text-gray" style="font-style: italic">
+                    < strong> Make text bold < / strong>
+                </span>.. </span> <br>
+            <hr>
+            <span class="text-danger">6.</span>
+            <span class="text-danger font-weight-bold"> It is encouraged to use Bootstrap classes instead of traditional
+                inline CSS. Click here to go to <a
+                    href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap Docs</a>
+            </span><br>
+
+
     </div>
+</div>
 <script>
     function edit() {
         $(".spinner-border.spinner-border-sm").removeClass("d-none");
@@ -90,12 +98,14 @@
         let content = $("textarea[name=content]").val();
         let subtitle = $("input[name=subtitle]").val();
         let customUrl = $("input[name=customUrl]").val();
+        let tags = $("input[name=tags]").val();
         let post = {
             title,
             subtitle,
             image,
             content,
-            customUrl
+            customUrl,
+            tags
         }
         $.ajax("/blogs/edit/<%= status %>/<%= post._id %>?_method=PUT", {
             method: "POST",
