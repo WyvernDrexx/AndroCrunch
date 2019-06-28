@@ -11,13 +11,10 @@
         <h1 class="display-5 text-center text-dark mb-5 pt-5"><span>Latest Blog Posts</span></h1>
         <div class="line w-85 m-auto"></div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md">
                 <div class="blog-posts pb-6">
                     <div class="row main-content justify-content-center">
                         <% for(let i = posts.length - 1; i >= 0; i--){ %>
-                        <% if(i === posts.length - 4){ %>
-                        <%    break; %>
-                        <% } %>
                         <div class="col-md-6">
                             <a href="/blogs/view/<%= posts[i].customUrl %>">
                                 <div class="card mx-sm-1 mt-5 ">
@@ -38,58 +35,12 @@
                         </div>
                         <% } %>
                     </div>
-                    <div class="text-center mt-6 pt-6s mt-sm-4 main-content">
-                        <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>
-                    </div>
                 </div>
             </div>
 
 
             <!-- Ninty six 96 characters on three line || 32 characters per line -->
-            <h1 class="display-5 text-center text-dark-purple mb-5 pt-5 w-100 d-block d-md-none">Recent Posts</h1>
-            <div class="line w-75 pl-6 m-auto d-block d-md-none"></div>
-            <div class="col-md mt-md-0">
-                <div class="row side-posts mt-5 align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -111,17 +62,33 @@
     </div>
     <nav class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5" aria-label="Pagination">
         <ul class="pagination d-flex ml-0">
+            <% if(previous === 0){ %>
             <li class="page-item disabled">
-                <a class="page-link previous" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                <a class="page-link previous" href="/" tabindex="-1" aria-disabled="true">Prev</a>
             </li>
-            <li class="page-item disabled active no-border "><a class="page-link" href="#">1</a></li>
-            <li class="page-item  " aria-current="page">
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <% }else{ %>
             <li class="page-item">
-                <a class="page-link next pl-1" href="/posts">Next</a>
+                <a class="page-link previous" href="/blogs/page/<%= previous %>" tabindex="-1"
+                    aria-disabled="true">Prev</a>
             </li>
+            <%  } %>
+            <li class="page-item disabled active no-border "><a class="page-link" href="/"><%= current %><span
+                        class="sr-only">(current)</span></a></li>
+            <% if( current !== last){ %>
+            <li class="page-item">
+                <a class="page-link" href="/blogs/page/<%= last %>"><%= last %></a>
+            </li>
+            <% } %>
+
+            <% if(current === last){ %>
+            <li class="page-item disabled">
+                <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
+            </li>
+            <% }else{ %>
+            <li class="page-item">
+                <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
+            </li>
+            <% } %>
         </ul>
     </nav>
 </section>

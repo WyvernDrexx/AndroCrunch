@@ -168,9 +168,6 @@ router.get("/contents", (req, res) => {
 router.get("/contents/:category/page/:page", (req, res) => {
 
     let category = req.params.category.toLowerCase();
-    console.log(typeof category);
-    console.log(category !== "wallpapers");
-    console.log(category);
     let pagenumber = Math.floor(Number(req.params.page));
 
     if (category !== "wallpapers" && category !== "ringtones" && category !== "apps" && category !== "presets") {
@@ -199,11 +196,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
             } else {
                 totalPages = Math.floor(totalPages);
             }
-            console.log("totalpages: " + totalPages);
             let start = (pagenumber - 1) * 12;
             let end = pagenumber * 12;
-            console.log("END: " + end);
-            console.log("length : " + images.length);
             if (end - images.length > 12) {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");

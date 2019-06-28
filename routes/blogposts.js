@@ -737,6 +737,16 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
 router.get("/blogs", (req, res) => {
     Post.find({})
         .then((posts) => {
+            posts = posts.reverse();
+            var last = posts.length / 4;
+
+            if (last > Math.floor(last)) {
+                last = Math.floor(last) + 1;
+            } else {
+                last = Math.floor(last);
+            }
+
+
             let recommended = {};
             Data.find({})
                 .then(data => {
@@ -745,9 +755,13 @@ router.get("/blogs", (req, res) => {
                         title: "Latest And Top Blog Posts",
                         keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
                         description: "Read latest posts on Android, technology, security, Apple and mobile devices",
-                        posts,
+                        posts: posts.splice(0,4),
                         recommended,
-                        moment
+                        moment,
+                        next: 2,
+                        current: 1,
+                        previous: 0,
+                        last
                     });
                 })
                 .catch(err => {
@@ -792,6 +806,59 @@ router.get("/blogs/view/:customUrl", (req, res) => {
 
 });
 
+
+
+router.get("/blogs/page/:page", (req, res) => {
+    let pagenumber = Math.floor(Number(req.params.page));
+
+    if (isNaN(pagenumber)) {
+        req.flash("error", "Invalid Page Number!");
+        res.redirect("back");
+        return;
+    }
+
+    Post.find({}, (err, posts) => {
+        let totalPages = posts.length / 4;
+        if (totalPages > Math.floor(totalPages)) {
+            totalPages = Math.floor(totalPages) + 1;
+        } else {
+            totalPages = Math.floor(totalPages);
+        }
+
+        let start = (pagenumber - 1) * 4;
+        let end = pagenumber * 4;
+
+        if (end - posts.length > 4) {
+            req.flash("error", "No page number " + pagenumber + " found!");
+            res.redirect("/contents");
+            return;
+        } else {
+            if (totalPages === pagenumber) {
+                end = posts.length;
+            }
+        }
+
+        let viewPosts = posts.slice(start, end);
+        Data.find({})
+            .then(data => {
+                recommended = data[0].list.trending.blogs;
+                res.render("blogs", {
+                    posts: viewPosts,
+                    last: totalPages,
+                    next: pagenumber + 1,
+                    current: pagenumber,
+                    previous: pagenumber - 1,
+                    moment
+                });
+            })
+            .catch(err => {
+                req.flash("error", "Internal Server error encountered!");
+                res.redirect("/");
+            })
+
+    });
+
+});
 
 
 
