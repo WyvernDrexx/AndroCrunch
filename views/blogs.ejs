@@ -30,7 +30,7 @@
                                             <%= posts[i].tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
                                         <h5 style="font-size: 0.99rem;" class="card-title"><%= posts[i].title %></h5>
                                         <p class="card-text">
-                                            <%= posts[i].content.substring(0, 100).replace(/<[^>]*>?/gm, ''); %>..</p>
+                                            <%= posts[i].content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
                                         <p class="date">FEB 10, 2019</p>
                                     </div>
                                 </div>
