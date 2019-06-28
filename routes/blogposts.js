@@ -349,7 +349,14 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
             }
-            console.log(post);
+
+            if(post.title.length > 84){
+                res.send({
+                    status: 0,
+                    message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+                });
+                return;
+            }
             post.author = req.user.username;
             post.authorId = req.user._id;
             draftPost.findByIdAndUpdate(req.params.id, post, (err) => {
@@ -369,7 +376,6 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else if (req.params.type === "published") {
-        console.log("Publishded post");
         Post.findById(req.params.id, (err, returnedPost) => {
             if (err) {
                 req.flash("error", "Error finding post!");
@@ -389,7 +395,13 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
             }
-            console.log(post);
+            if(post.title.length > 84){
+                res.send({
+                    status: 0,
+                    message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+                });
+                return;
+            }
             post.author = req.user.username;
             post.authorId = req.user._id;
             Post.findByIdAndUpdate(req.params.id, post, (err) => {
@@ -515,14 +527,21 @@ router.post("/posts", isLoggedIn, (req, res) => {
     }
 
     for (const name of Object.keys(post)) {
-        if (post[name].trim().length <= 6) {
+        if (post[name].trim().length <= 6 && String(name) !== "tags") {
             res.send({
                 status: 0,
                 message: "Less than <strong>six</strong> characters not allowed in " + name + "!",
-
             });
             return;
         }
+    }
+
+    if(post.title.length > 84){
+        res.send({
+            status: 0,
+            message: "More than <strong>84</strong> characters not allowed in Title Current length:   " + post.title.length
+        });
+        return;
     }
 
     console.log(post);
