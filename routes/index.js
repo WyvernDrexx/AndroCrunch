@@ -2,25 +2,36 @@ const express = require("express"),
     router = express.Router(),
     Subscriber = require("../models/subscribers"),
     jquery = require("jquery"),
-    Data = require("../models/data");
+    Data = require("../models/data"),
+    Post = require("../models/post"),
+    moment = require("moment-timezone");
 
 
 router.get("/", (req, res) => {
     Data.find({}, (err, data) => {
-        if(err){
+        if (err) {
             console.log("Error getting data:");
             console.log(err);
             res.send("Please contact the Admin now!");
             return;
         }
+        Post.find({}, (err, posts) => {
+            if (err) {
+                req.flash("error", "Please check your url and try again!");
+                return res.redirect("/blogs");
+            }
 
-        res.render("index", {
-            title: "AndroCrunch | Beyond The Infinity |  Official Website of AndroCruch Youtube",
-            trending: data[0].list.trending
+            let latest = posts.splice(posts.length - 3, posts.length);
+
+            res.render("index", {
+                title: "AndroCrunch | Beyond The Infinity |  Official Website of AndroCruch Youtube",
+                trending: data[0].list.trending,
+                latest,
+                moment
+            });
         });
     });
 });
-
 
 router.get("/kickout", (req, res) => {
     req.logout();
@@ -44,8 +55,7 @@ router.get("/privacy_policy", (req, res) => {
     });
 });
 router.get("/about_us", (req, res) => {
-    res.render("about_us", 
-    {
+    res.render("about_us", {
         title: "AndroCrunch | About Us ",
         keywords: "androcrunch, advertisement",
         description: "About Page for AndroCrunch Digital Store"
@@ -77,7 +87,7 @@ router.post("/subscribe", (req, res) => {
 
     let flag = true;
 
-    if(!email.includes("@") || email.split("@").length > 2 || email.split(".").length > 2 || email.split(".").length === 1){
+    if (!email.includes("@") || email.split("@").length > 2 || email.split(".").length > 2 || email.split(".").length === 1) {
         flag = false;
         response.status = false;
         response.message = "Invalid Input!";

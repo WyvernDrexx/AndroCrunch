@@ -700,7 +700,8 @@ input:focus {
 
 
 .blog-posts .card{
-    height: 90%;
+    height: 26rem;
+    widows: 14.5rem;
 }
 .blog-posts .card-img-top{
     height: 9.5rem;
