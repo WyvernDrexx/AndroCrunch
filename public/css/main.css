@@ -512,7 +512,12 @@ input::placeholder {
 }
 
 .recommended .card img {
-    border-radius: 11px
+    border-radius: 11px;
+    height: 100%;
+}
+
+.recommended .card{
+    height: 10rem !important;
 }
 
 .card:hover {
