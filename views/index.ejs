@@ -266,18 +266,18 @@
     <div class="row main-content justify-content-center">
         <% latest.forEach((post) => { %>
         <div class="col-md">
-
-            <div class="card mx-sm-1 mt-5 ">
-                <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image | <%= post.image %>">
-                <div class="card-body">
-                    <p class="tags"><%= post.tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
-                    <h5 class="card-title"><%= post.title %></h5>
-                    <p class="card-text"><%= post.content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
-                    <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("MMMM Do YYYY") %></p>
+            <a href="/blogs/view/<%= post.customUrl %>">
+                <div class="card mx-sm-1 mt-5 ">
+                    <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image | <%= post.image %>">
+                    <div class="card-body">
+                        <p class="tags"><%= post.tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
+                        <h5 class="card-title"><%= post.title %></h5>
+                        <p class="card-text"><%= post.content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
+                        <p class="date"><%= moment.tz(post.created, "Asia/Calcutta").format("MMMM Do YYYY") %></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-
         <% })%>
     </div>
     <div class="text-center mt-5 pb-6">
