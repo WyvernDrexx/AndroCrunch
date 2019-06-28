@@ -507,9 +507,8 @@ input::placeholder {
     cursor: pointer
 }
 
-.recommended .card-body {
-    padding-bottom: 0;
-    padding-top: 0
+.recommended div.card-body {
+    padding: 0px !important;
 }
 
 .recommended .card img {

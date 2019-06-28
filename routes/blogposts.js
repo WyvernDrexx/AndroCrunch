@@ -5,6 +5,7 @@ const draftPost = require("../models/postDraft"), //Posts model
     isLoggedIn = require("../middlewares/index").isLoggedIn,
     multer = require("multer"),
     path = require("path"),
+    Data = require("../models/data"),
     deleteFromSystem = require("../imports/deleteFromSystem");
 
 
@@ -351,7 +352,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                 }
             }
 
-            if(post.title.length > 104){
+            if (post.title.length > 104) {
                 res.send({
                     status: 0,
                     message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
@@ -398,7 +399,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
             }
-            if(post.title.length > 104){
+            if (post.title.length > 104) {
                 res.send({
                     status: 0,
                     message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
@@ -539,7 +540,7 @@ router.post("/posts", isLoggedIn, (req, res) => {
         }
     }
 
-    if(post.title.length > 104){
+    if (post.title.length > 104) {
         res.send({
             status: 0,
             message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
@@ -734,42 +735,60 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
 
 
 router.get("/blogs", (req, res) => {
-
     Post.find({})
-        .then(posts => {
-            res.render("blogs", {
-                title: "Latest And Top Blog Posts",
-                keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
-                description: "Read latest posts on Android, technology, security, Apple and mobile devices",
-                posts
-            });
+        .then((posts) => {
+            let recommended = {};
+            Data.find({})
+                .then(data => {
+                    recommended = data[0].list.trending.blogs;
+                    res.render("blogs", {
+                        title: "Latest And Top Blog Posts",
+                        keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
+                        description: "Read latest posts on Android, technology, security, Apple and mobile devices",
+                        posts,
+                        recommended
+                    });
+                })
+                .catch(err => {
+                    req.flash("error", "Internal Server error encountered!");
+                    res.redirect("/");
+                })
         })
         .catch(err => {
-            req.flash("error", "Couldn't fetch any data. Try again later!");
+            req.flash("error", "Internal Server error encountered!");
             res.redirect("/");
-        });
-
+        })
 });
 
 
-
-router.get("/blogs/view/:customUrl", (req,res) => {
-
+router.get("/blogs/view/:customUrl", (req, res) => {
     const customUrl = req.params.customUrl.trim().toLowerCase();
+    let recommened = {};
+
     Post.findOne({
-        customUrl: customUrl
-    })
-    .then((post) => {
-        res.render("postView", {
-            post
+            customUrl: customUrl
+        })
+        .then((post) => {
+            Data.find({})
+                .then(data => {
+                    recommened = data[0].list.trending.blogs;
+                })
+                .then(() => {
+                    res.render("postView", {
+                        post
+                    });
+                    post.views += 1;
+                    post.save();
+                })
+                .catch(err => {
+                    req.flash("error", "Please check your url and try again!");
+                    res.redirect("/blogs");
+                })
+        })
+        .catch(err => {
+            req.flash("error", "Please check your url and try again!");
+            res.redirect("/blogs");
         });
-        post.views += 1;
-        post.save();
-    })
-    .catch(err => {
-        req.flash("error", "Please check your url and try again!");
-        res.redirect("/blogs");
-    });
 
 });
 
