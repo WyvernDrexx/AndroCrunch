@@ -28,70 +28,110 @@ router.get("/contents/:category/:name", (req, res) => {
     let name = req.params.name;
 
     if (category === "wallpapers") {
-        Image.findOne({ name }, (err, image) => {
+        Image.findOne({
+            name
+        }, (err, image) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
-            res.render("item", {
-                file: image,
-                category,
-                moment,
-                title: "Wallpapers | " + image.filename + " download high quality wallpaper for  free. ",
-                keywords: image.filename + ", latest, wallpapers,  apps, android, free, download, gta, san andreas, best, high quality, androcrunch",
-                description: image.description
+            Data.find({}, (err, data) => {
+                if (err) {
+                    req.flash("error", "Try again later!");
+                    return res.redirect("/");
+                }
+                res.render("item", {
+                    file: image,
+                    category,
+                    moment,
+                    title: "Wallpapers | " + image.filename + " download high quality wallpaper for  free. ",
+                    keywords: image.filename + ", latest, wallpapers,  apps, android, free, download, gta, san andreas, best, high quality, androcrunch",
+                    description: image.description,
+                    trending: data[0].list.trending
+                });
+
             });
+
         });
 
     } else if (category === "ringtones") {
-        Audio.findOne({  name }, (err, audio) => {
+        Audio.findOne({
+            name
+        }, (err, audio) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
-            res.render("item", {
-                file: audio,
-                category,
-                moment,
-                title: "Ringtones | " + audio.filename + " High sound quality ringtone for free.",
-                keywords: audio.filename + " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, androcrunch",
-                description: audio.description
+            Data.find({}, (err, data) => {
+                if (err) {
+                    req.flash("error", "Try again later!");
+                    return res.redirect("/");
+                }
+                res.render("item", {
+                    file: audio,
+                    category,
+                    moment,
+                    title: "Ringtones | " + audio.filename + " High sound quality ringtone for free.",
+                    keywords: audio.filename + " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, androcrunch",
+                    description: audio.description,
+                    trending: data[0].list.trending
+                });
+
             });
         });
 
     } else if (category === "presets") {
-        Preset.findOne({  name }, (err, preset) => {
+        Preset.findOne({
+            name
+        }, (err, preset) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
-            res.render("item", {
-                file: preset,
-                category,
-                moment,
-                title:"Presets | " + preset.filename + " Download lightroom presets and use it to personalize your photo collection",
-                keywords: preset.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
-                description: preset.description
+            Data.find({}, (err, data) => {
+                if (err) {
+                    req.flash("error", "Try again later!");
+                    return res.redirect("/");
+                }
+                res.render("item", {
+                    file: preset,
+                    category,
+                    moment,
+                    title: "Presets | " + preset.filename + " Download lightroom presets and use it to personalize your photo collection",
+                    keywords: preset.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                    description: preset.description,
+                    trending: data[0].list.trending
+                });
+
             });
         });
 
     } else if (category === "apps") {
-        App.findOne({  name }, (err, app) => {
+        App.findOne({
+            name
+        }, (err, app) => {
             if (err) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
-            }
-            res.render("item", {
-                file: app,
-                category,
-                moment,
-                title: "Apps and games | " + app.filename + " stock android applications download fo free",
-                keywords: app.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
-                description: app.description
+            }Data.find({}, (err, data) => {
+                if (err) {
+                    req.flash("error", "Try again later!");
+                    return res.redirect("/");
+                }
+                res.render("item", {
+                    file: app,
+                    category,
+                    moment,
+                    title: "Apps and games | " + app.filename + " stock android applications download fo free",
+                    keywords: app.filename + " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                    description: app.description,
+                    trending: data[0].list.trending
+                });
+
             });
         });
 
-    }else {
+    } else {
         req.flash("error", "Please check your URL and try again. from /cat/name");
         res.redirect("back");
     }
@@ -102,7 +142,7 @@ router.get("/contents/:category/:name", (req, res) => {
 router.get("/:category/:name/download", (req, res) => {
     let category = req.params.category.toLowerCase();
     let name = req.params.name.toLowerCase();
-    if(typeof req.headers.referer === "undefined"){
+    if (typeof req.headers.referer === "undefined") {
         return res.redirect("/" + category);
     }
     Data.find({}, (err, data) => {
@@ -111,7 +151,9 @@ router.get("/:category/:name/download", (req, res) => {
         data[0].save();
     });
     if (category === "wallpapers") {
-        Image.findOne({  name }, (err, image) => {
+        Image.findOne({
+            name
+        }, (err, image) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -125,7 +167,9 @@ router.get("/:category/:name/download", (req, res) => {
         });
 
     } else if (category === "ringtones") {
-        Audio.findOne({  name }, (err, audio) => {
+        Audio.findOne({
+            name
+        }, (err, audio) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -139,7 +183,9 @@ router.get("/:category/:name/download", (req, res) => {
         });
 
     } else if (category === "presets") {
-        Preset.findOne({  name }, (err, preset) => {
+        Preset.findOne({
+            name
+        }, (err, preset) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -153,7 +199,9 @@ router.get("/:category/:name/download", (req, res) => {
         });
 
     } else if (category === "apps") {
-        App.findOne({  name }, (err, app) => {
+        App.findOne({
+            name
+        }, (err, app) => {
             if (err) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
@@ -166,7 +214,7 @@ router.get("/:category/:name/download", (req, res) => {
             res.download("public/uploads/" + app.referenceFile, filename);
         });
 
-    }else {
+    } else {
         req.flash("error", "Please check your URL and try again. from downloads");
         res.redirect("back");
     }

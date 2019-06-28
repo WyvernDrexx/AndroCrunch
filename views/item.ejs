@@ -7,10 +7,10 @@
 </div>
 
 <div id="download-now" class="advert-place card mx-0 rounded">
-    <h1 class="small text-center mb-2 mb-sm-5 mt-2 text-white">Please Wait <br>Your Download Will Start In <span
+    <h1 class="small text-center mb-2 mb-sm-5 mt-2 text-dark">Please Wait <br>Your Download Will Start In <span
             class="text-danger font-weight-bold" id="download-time">10</span>s</h1>
     <div class="box mb-2  mb-sm-5">
-       
+
     </div>
     <div class="card-body">
         <h5 class="card-text text-center font-weight-bold">
@@ -32,7 +32,8 @@
 <section class="download-item bg-white" aria-label="The main section for download">
     <div class="img">
         <% if(category === "apps"){ %>
-        <img src="/thumbnails/lg-<%= (file.thumbnail).split('-')[1] %>" class="circle" alt="<%= 'Thumbnail' + file.filename %>">
+        <img src="/thumbnails/lg-<%= (file.thumbnail).split('-')[1] %>" class="circle"
+            alt="<%= 'Thumbnail' + file.filename %>">
         <% } else{ %>
         <img src="/thumbnails/lg-<%= (file.thumbnail).split('-')[1] %>" alt="<%= 'Thumbnail' + file.filename %>">
         <% } %>
@@ -54,8 +55,10 @@
                     <span class="share text-left mt-4 mt-md-0">
                         <span class="purple-text-color text-left ml-2">Share</span>
                         <a class="ml-3" href="/"><i class="fab fa-facebook-f big" aria-label="facebook connect"></i></a>
-                        <a href="https://youtube.com/AndroCrunch"><i class="fab fa-youtube big" aria-label="youtube connect"></i></a>
-                        <a href="https://instagram.com/androcrunch.in"><i class="fab fa-instagram big" aria-label="instagram connect"></i></a>
+                        <a href="https://youtube.com/AndroCrunch"><i class="fab fa-youtube big"
+                                aria-label="youtube connect"></i></a>
+                        <a href="https://instagram.com/androcrunch.in"><i class="fab fa-instagram big"
+                                aria-label="instagram connect"></i></a>
                     </span>
                 </div>
             </div>
@@ -82,29 +85,35 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="hover-option">
-                                <a href="/"><span class="plus-symbol">+</span></a>
+                                <a href="/contents/wallpapers/<%= trending.wallpapers[0].name %>/"><span
+                                        class="plus-symbol">+</span></a>
                             </div>
-                            <img src="/imgs/blog-9.webp" class="d-block w-100" alt="...">
+                            <img src="/thumbnails/lg-<%= trending.wallpapers[0].thumbnail.split('-')[1] %>"
+                                class="d-block w-100" alt="Thumbnail | <%= trending.wallpapers[0].filename %>">
                             <div class="carousel-caption   d-md-block">
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <p><%= trending.wallpapers[0].filename %></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="hover-option">
-                                <a href="/"><span class="plus-symbol">+</span></a>
+                                <a href="/contents/ringtones/<%= trending.ringtones[0].name %>/"><span
+                                        class="plus-symbol">+</span></a>
                             </div>
-                            <img src="/imgs/blog-2.webp" class="d-block w-100" alt="...">
+                            <img src="/thumbnails/lg-<%= trending.ringtones[0].thumbnail.split('-')[1] %>"
+                                class="d-block w-100" alt="Thumbnail | <%= trending.ringtones[0].filename %>">
                             <div class="carousel-caption   d-md-block">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p><%= trending.ringtones[0].filename %></p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="hover-option">
-                                <a href="/"><span class="plus-symbol">+</span></a>
+                                <a href="/contents/presets/<%= trending.presets[0].name %>/"><span
+                                        class="plus-symbol">+</span></a>
                             </div>
-                            <img src="/imgs/blog11.webp" class="d-block w-100" alt="...">
+                            <img src="/thumbnails/lg-<%= trending.presets[0].thumbnail.split('-')[1] %>"
+                                class="d-block w-100" alt="Thumbnail | <%= trending.presets[0].filename %>">
                             <div class="carousel-caption   d-md-block">
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                <p><%= trending.presets[0].filename %></p>
                             </div>
                         </div>
                     </div>
