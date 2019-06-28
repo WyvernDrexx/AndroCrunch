@@ -36,6 +36,8 @@ server.use((request, response, next) => {
     console.log(request.baseUrl);
     next()
 });
+
+server.use(express.static("google7cdf1d4ddb320ba1.html"));
 //  Required routes
 server.use(serverFavicon(__dirname + '/public/imgs/favicon.ico'));
 server.use(require("./routes/index"));
