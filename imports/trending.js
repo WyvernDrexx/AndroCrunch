@@ -148,70 +148,13 @@ Image.find({}, (err, files) => {
 
 
         Preset.find({}, (err, files) => {
-            if (err) {
-                console.log("Error retrieving Presets! Exiting execution!");
-                console.log("============================================================================");
-                console.log("============================================================================");
-                console.log(err);
-                console.log("\n\n============================================================================");
-                console.log("============================================================================\n\n");
-                return;
-            }
-
-            files.forEach((file, index) => {
-                if (file.downloads > maxDownloads[0]) {
-                    maxDownloads[2] = maxDownloads[1];
-                    maxDownloads[1] = maxDownloads[0];
-                    maxDownloads[0] = file.downloads;
-                    maxIndex[2] = maxIndex[1];
-                    maxIndex[1] = maxIndex[0];
-                    maxIndex[0] = index;
-                } /* If arr[i] is in between first and second then update second  */
-                else if (file.downloads > maxDownloads[1]) {
-                    maxDownloads[2] = maxDownloads[1];
-                    maxDownloads[1] = file.downloads;
-                    maxIndex[2] = maxIndex[1];
-                    maxIndex[1] = index;
-                } else if (file.downloads > maxDownloads[2]) {
-                    third = file.downloads;
-                    maxIndex[2] = index;
-                }
-            });
-
-            presets[0] = files[maxIndex[0]];
-            presets[1] = files[maxIndex[1]];
-            presets[2] = files[maxIndex[2]];
-
-
-
-
-            console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Presets Sent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log(presets);
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Downloads~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log(maxDownloads);
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Index~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            console.log(maxIndex);
-            console.log("\n\n============================================================================");
-            console.log("============================================================================\n\n");
-
-
-
-
-            maxIndex = [0, 0, 0];
-            maxDownloads = [0, 0, 0];
-
-
-            Audio.find({}, (err, files) => {
                 if (err) {
-                    console.log("Error retrieving Audio! Exiting execution!");
+                    console.log("Error retrieving Presets! Exiting execution!");
                     console.log("============================================================================");
                     console.log("============================================================================");
                     console.log(err);
-                    console.log("============================================================================");
-                    console.log("============================================================================");
+                    console.log("\n\n============================================================================");
+                    console.log("============================================================================\n\n");
                     return;
                 }
 
@@ -235,15 +178,16 @@ Image.find({}, (err, files) => {
                     }
                 });
 
-                ringtones[0] = files[maxIndex[0]];
-                ringtones[1] = files[maxIndex[1]];
-                ringtones[2] = files[maxIndex[2]];
+                presets[0] = files[maxIndex[0]];
+                presets[1] = files[maxIndex[1]];
+                presets[2] = files[maxIndex[2]];
 
 
 
-                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Ringtones/Audio Sent~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                console.log(ringtones);
+
+                console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Presets Sent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                console.log(presets);
                 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Downloads~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 console.log(maxDownloads);
@@ -254,39 +198,98 @@ Image.find({}, (err, files) => {
                 console.log("============================================================================\n\n");
 
 
+
+
                 maxIndex = [0, 0, 0];
                 maxDownloads = [0, 0, 0];
 
-                Data.find({}, (err, data) => {
-                    if (err) {
-                        console.log("ERROR! Getting data!");
-                        console.log(err);
-                        return;
-                    }
-                    data[0].list.trending.ringtones = ringtones;
-                    data[0].list.trending.wallpapers = wallpapers;
-                    data[0].list.trending.presets = presets;
-                    data[0].list.trending.apps = apps;
-                    data[0].save((err, docs) => {
-                        if (err) {
-                            console.log("ERROR! posting  data!");
-                            console.log(err);
-                            return;
-                        }
-                        console.log("Data posted!");
+
+                Audio.find({})
+                    .then(files => {
+                        files.forEach((file, index) => {
+                            if (file.downloads > maxDownloads[0]) {
+                                maxDownloads[2] = maxDownloads[1];
+                                maxDownloads[1] = maxDownloads[0];
+                                maxDownloads[0] = file.downloads;
+                                maxIndex[2] = maxIndex[1];
+                                maxIndex[1] = maxIndex[0];
+                                maxIndex[0] = index;
+                            } /* If arr[i] is in between first and second then update second  */
+                            else if (file.downloads > maxDownloads[1]) {
+                                maxDownloads[2] = maxDownloads[1];
+                                maxDownloads[1] = file.downloads;
+                                maxIndex[2] = maxIndex[1];
+                                maxIndex[1] = index;
+                            } else if (file.downloads > maxDownloads[2]) {
+                                third = file.downloads;
+                                maxIndex[2] = index;
+                            }
+                        });
+
+                        ringtones[0] = files[maxIndex[0]];
+                        ringtones[1] = files[maxIndex[1]];
+                        ringtones[2] = files[maxIndex[2]];
+
+
+
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Ringtones/Audio Sent~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log(ringtones);
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Downloads~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log(maxDownloads);
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Max Index~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        console.log(maxIndex);
                         console.log("\n\n============================================================================");
-                        console.log("============================================================================");
-                        console.log(docs);
-                        console.log("============================================================================");
-                        console.log("============================================================================");
-                        process.exit(0);
-                    });
+                        console.log("============================================================================\n\n");
 
-                });
 
-            });
-        });
-    });
+                        maxIndex = [0, 0, 0];
+                        maxDownloads = [0, 0, 0];
+
+                        Data.find({})
+                            .then((data) => {
+                                data[0].list.trending.ringtones = ringtones;
+                                data[0].list.trending.wallpapers = wallpapers;
+                                data[0].list.trending.presets = presets;
+                                data[0].list.trending.apps = apps;
+                                data[0].save((err, docs) => {
+                                    if (err) {
+                                        console.log("ERROR! posting  data!");
+                                        console.log(err);
+                                        return;
+                                    }
+                                    console.log("Data posted!");
+                                    console.log("\n\n============================================================================");
+                                    console.log("============================================================================");
+                                    console.log(docs);
+                                    console.log("============================================================================");
+                                    console.log("============================================================================");
+                                    process.exit(0);
+                                });
+
+                            })
+                            .catch(err => {
+                                console.log("ERROR! Getting data!");
+                                console.log(err);
+                                return;
+                            })
+                    })
+
+            })
+            .catch(err => {
+                if (err) {
+                    console.log("Error retrieving Audio! Exiting execution!");
+                    console.log("============================================================================");
+                    console.log("============================================================================");
+                    console.log(err);
+                    console.log("============================================================================");
+                    console.log("============================================================================");
+                    return;
+                }
+            })
+    })
 });
 
 

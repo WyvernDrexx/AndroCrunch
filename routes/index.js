@@ -28,14 +28,6 @@ router.get("/kickout", (req, res) => {
     res.redirect("/");
 });
 
-router.get("/blogs", (req, res) => {
-    res.render("blogs", {
-        title: "Latest And Top Blog Posts",
-        keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
-        description: "Read latest posts on Android, technology, security, Apple and mobile devices"
-    });
-});
-
 router.get("/advertisement", (req, res) => {
     res.render("advert", {
         title: "AndroCrunch | Advertisement",

@@ -1,79 +1,45 @@
 <% include partials/header %>
-<div class="container-fluid pt-5 bg-gradient  pb-6 text-white">
-    <h1 class="display-4 text-center text-white mt-6">Blogs</h1>
-    <p class="lead text-center">Home > Blog</p>
+<div class="bg-white">
+    <div class="container-fluid pt-5 bg-image  pb-6 text-white">
+        <h1 class="display-4 text-center text-white mt-6">Blogs</h1>
+        <p class="lead text-center">Home > Blog</p>
+    </div>
 </div>
 
 <section class="bg-white pt-3 pt-sm-0">
     <div class="main-content">
-        <h1 class="display-5 text-center text-dark-purple mb-5 pt-5"><span>Trending Blog Posts</span></h1>
+        <h1 class="display-5 text-center text-dark-purple mb-5 pt-5"><span>Latest Blog Posts</span></h1>
         <div class="line w-85 m-auto"></div>
         <div class="row">
             <div class="col-md-8">
                 <div class="blog-posts pb-6">
                     <div class="row main-content justify-content-center">
+
+
+                        <% for(let i = posts.length - 1; i >= 0; i--){ %>
+                        <% if(i === 3){ %>
+                        <%    break; %>
+                        <% } %>
                         <div class="col-md-6">
                             <div class="card mx-sm-1 mt-5 ">
-                                <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
+                                <img src="/thumbnails/<%= posts[i].image %>" class="card-img-top"
+                                    alt="Thumbnail | <%= posts[i].title %>">
                                 <div class="card-body">
-                                    <p class="tags">ANDROID, TRICKS</p>
-                                    <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of
-                                        the
-                                        card's content.</p>
+                                    <p class="tags"><%= posts[i].tags %></p>
+                                    <h5 class="card-title"><%= posts[i].title %></h5>
+                                    <p class="card-text"><%= posts[i].content.substring(0, 100) %></p>
                                     <p class="date">FEB 10, 2019</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mx-sm-1 mt-5 ">
-                                <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="tags">ANDROID, TRICKS</p>
-                                    <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of
-                                        the
-                                        card's content.</p>
-                                    <p class="date">FEB 10, 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mx-sm-1 mt-5 ">
-                                <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="tags">ANDROID, TRICKS</p>
-                                    <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of
-                                        the
-                                        card's content.</p>
-                                    <p aria-labelledby="date of post publication" class="date">FEB 10, 2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mx-sm-1 mt-5 ">
-                                <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="tags">ANDROID, TRICKS</p>
-                                    <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of
-                                        the
-                                        card's content.</p>
-                                    <p class="date">FEB 10, 2019</p>
-                                </div>
-                            </div>
-                        </div>
+                        <% } %>
                     </div>
                     <div class="text-center mt-6 mt-sm-4 main-content">
                         <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>
                     </div>
                 </div>
             </div>
+
 
             <!-- Ninty six 96 characters on three line || 32 characters per line -->
             <h1 class="display-5 text-center text-dark-purple mb-5 pt-5 w-100 d-block d-md-none">Recent Posts</h1>

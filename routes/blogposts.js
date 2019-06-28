@@ -1,4 +1,4 @@
-const draftPost = require("../models/postDraft"),        //Posts model
+const draftPost = require("../models/postDraft"), //Posts model
     router = require("express").Router(),
     Post = require("../models/post"),
     moment = require("moment-timezone"),
@@ -36,28 +36,28 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
 
-        draftPost.findById(req.params.id, (err, post)=> {
-            if(err){
+        draftPost.findById(req.params.id, (err, post) => {
+            if (err) {
                 req.flash("error", "Couldn't preview post");
                 res.redirect("back");
                 return;
             }
             res.render("preview", {
                 post,
-                status : "unpublished"
+                status: "unpublished"
             });
         });
 
     } else if (req.params.type === "published") {
-        Post.findById(req.params.id, (err, post)=> {
-            if(err){
+        Post.findById(req.params.id, (err, post) => {
+            if (err) {
                 req.flash("error", "Couldn't preview post");
                 res.redirect("back");
                 return;
             }
             res.render("preview", {
                 post,
-                status : "published"
+                status: "published"
             });
         });
     } else {
@@ -108,7 +108,7 @@ router.get("/blogs/images/upload/:type/:id", isLoggedIn, (req, res) => {
 });
 
 
-router.delete("/blogs/images/:type/:id/:index",isLoggedIn, (req, res) => {
+router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
 
@@ -166,7 +166,9 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                draftPost.findOne({ _id: req.params.id }, (err, post) => {
+                draftPost.findOne({
+                    _id: req.params.id
+                }, (err, post) => {
                     if (err) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
@@ -193,7 +195,9 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                Post.findOne({ _id: req.params.id }, (err, post) => {
+                Post.findOne({
+                    _id: req.params.id
+                }, (err, post) => {
                     if (err) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
@@ -446,7 +450,9 @@ router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
 router.delete("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
-        draftPost.findOneAndDelete({ _id: req.params.id }, (err, post) => {
+        draftPost.findOneAndDelete({
+            _id: req.params.id
+        }, (err, post) => {
             if (err) {
                 req.flash("error", "This type of actions not allowed against this site quit now!");
                 res.redirect("back");
@@ -460,7 +466,9 @@ router.delete("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
             res.redirect("/blogs/list/unpublished");
         });
     } else if (req.params.type === "published") {
-        Post.findOneAndDelete({ _id: req.params.id }, (err, post) => {
+        Post.findOneAndDelete({
+            _id: req.params.id
+        }, (err, post) => {
             if (err) {
                 req.flash("error", "This type of actions not allowed against this site quit now!");
                 res.redirect("back");
@@ -550,7 +558,9 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                draftPost.findOne({ _id: id }, (err, post) => {
+                draftPost.findOne({
+                    _id: id
+                }, (err, post) => {
                     if (err) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
@@ -571,7 +581,9 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                Post.findOne({ _id: id }, (err, post) => {
+                Post.findOne({
+                    _id: id
+                }, (err, post) => {
                     if (err) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
@@ -603,7 +615,9 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                draftPost.findOne({ _id: id }, (err, post) => {
+                draftPost.findOne({
+                    _id: id
+                }, (err, post) => {
                     if (err) {
                         req.flash("error", "Unable to find post check URLddddddddddd!");
                         // deleteFromSystem("thumbnail", req.file.filename);
@@ -628,7 +642,9 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
                 res.redirect("back");
                 return;
             } else {
-                Post.findOne({ _id: id }, (err, post) => {
+                Post.findOne({
+                    _id: id
+                }, (err, post) => {
                     if (err) {
                         req.flash("error", "Unable to find post check URLddddddddddd!");
                         return res.redirect("/posts/new");
@@ -654,7 +670,9 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
 router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
 
     if (req.params.type === "unpublished") {
-        draftPost.findOne({ _id: req.params.id }, (err, post) => {
+        draftPost.findOne({
+            _id: req.params.id
+        }, (err, post) => {
             if (err) {
                 req.flash("error", "Couldn't find post!");
                 res.redirect("back");
@@ -666,7 +684,9 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
             });
         });
     } else if (req.params.type === "published") {
-        Post.findOne({ _id: req.params.id }, (err, post) => {
+        Post.findOne({
+            _id: req.params.id
+        }, (err, post) => {
             if (err) {
                 req.flash("error", "Couldn't find post!");
                 res.redirect("back");
@@ -683,4 +703,34 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
     }
 
 });
+
+
+
+
+// Routes for the public
+
+
+
+router.get("/blogs", (req, res) => {
+
+    Post.find({})
+        .then(posts => {
+            res.render("blogs", {
+                title: "Latest And Top Blog Posts",
+                keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
+                description: "Read latest posts on Android, technology, security, Apple and mobile devices",
+                posts
+            });
+        })
+        .catch(err => {
+            req.flash("error", "Couldn't fetch any data. Try again later!");
+            res.redirect("/");
+        });
+
+});
+
+
+
+
+
 module.exports = router;
