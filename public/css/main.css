@@ -519,7 +519,15 @@ input::placeholder {
 .recommended .card{
     height: 10rem !important;
 }
-
+.recommended .card:hover{
+    transform: translateY(-10px);
+}
+.recommended .card:hover img{
+    filter: blur(1px)
+}
+.recommended .card:hover .card-title{
+    color: #76cbec;
+}
 .card:hover {
     box-shadow: none
 }
