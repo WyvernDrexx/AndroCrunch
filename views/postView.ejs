@@ -1,6 +1,6 @@
 <% include partials/header %>
 <div class="bg-white">
-    <section  class="bg-image pt-6s" aria-labelledby="Header for blog post">
+    <section class="bg-image pt-6s" aria-labelledby="Header for blog post">
         <div class="main-content pt-6s">
             <div class="row">
                 <div class="col-sm px-0">
@@ -36,47 +36,6 @@
                 </section>
             </div>
             <div class="col-sm-4 blog-sub-content h-50 px-3 px-sm-4">
-                <h5 class="font-weight-bold ml-3">Latest Posts</h5>
-                <div class="row side-posts mt-5 align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
-                <div class="row side-posts align-items-center border-bottom-light">
-                    <div class="col-2 col-md-3 img-icon px-0">
-                        <img class="align-self-center" src="/imgs/logo.png">
-                    </div>
-                    <div class="col px-0 ml-3">
-                        <p class="tags mb-0">ANDROID, APPS</p>
-                        <p class="blog-title px-0">Lorem ipsum dolor sit amet elit. Explicabo,
-                            debitis.</p>
-                    </div>
-                </div>
                 <div class="advertisement bg-dark">
                     <p class="text-white ml-5 pl-4">Advertisement</p>
                 </div>
@@ -107,47 +66,24 @@
         </div>
     </div>
     <div class="container-fluid bg-white blog-posts pb-6">
-        <h1 class="display-5 text-center text-dark-purple mb-5 pt-5"><span>Latest Blog Posts</span></h1>
+        <h1 class="display-5 text-center text-dark mb-5 pt-5"><span>Latest Blog Posts</span></h1>
         <div class="row main-content justify-content-center">
+            <% latest.forEach(post => { %>
             <div class="col-md">
-                <div class="card mx-sm-1 mt-5 ">
-                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="tags">ANDROID, TRICKS</p>
-                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <p class="date">FEB 10, 2019</p>
+                <a href="/blogs/view/<%= post.customUrl %>">
+                    <div class="card mx-sm-1 mt-5 ">
+                        <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="<%= post.title %>">
+                        <div class="card-body">
+                            <p class="tags"><%= post.tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
+                            <p class="card-title"><%= post.title %></p>
+                            <p class="card-text"><%= post.content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
+                            <p class="date">
+                                <%= moment.tz(post.created, "Asia/Calcutta").format("MMMM Do YYYY") %></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-            <div class="col-md">
-                <div class="card mx-sm-1 mt-5 ">
-                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="tags">ANDROID, TRICKS</p>
-                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <p class="date">FEB 10, 2019</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md ">
-                <div class="card mx-sm-1 mt-5 ">
-                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="tags">ANDROID, TRICKS</p>
-                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <p class="date">FEB 10, 2019</p>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
         <div class="text-center mt-5 pb-6">
             <a href="#" class="btn btn-outline load-more small rounded-pill">Browse More</a>

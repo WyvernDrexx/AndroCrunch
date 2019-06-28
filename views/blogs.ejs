@@ -14,8 +14,6 @@
             <div class="col-md-8">
                 <div class="blog-posts pb-6">
                     <div class="row main-content justify-content-center">
-
-
                         <% for(let i = posts.length - 1; i >= 0; i--){ %>
                         <% if(i === posts.length - 4){ %>
                         <%    break; %>
@@ -31,12 +29,12 @@
                                         <h5 style="font-size: 0.99rem;" class="card-title"><%= posts[i].title %></h5>
                                         <p class="card-text">
                                             <%= posts[i].content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
-                                        <p class="date">FEB 10, 2019</p>
+                                        <p class="date">
+                                            <%= moment.tz(posts[i].created, "Asia/Calcutta").format("MMMM Do YYYY") %>
+                                        </p>
                                     </div>
                                 </div>
-
                             </a>
-
                         </div>
                         <% } %>
                     </div>

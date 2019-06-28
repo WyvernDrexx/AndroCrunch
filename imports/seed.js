@@ -40,11 +40,11 @@ Data.find({})
         Post.find({})
             .then(posts => {
                 console.log(posts);
-                posts.forEach((post, i) => {
+                for(let i = 0; i < 3; i++){
                     data[0].list.latestPosts[i] = {
-                        postId: post._id
+                        postId: posts[i]._id
                     };
-                });
+                }
                 data[0].save(saved => {
                     console.log(saved);
                 });

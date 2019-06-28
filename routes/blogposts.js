@@ -746,7 +746,8 @@ router.get("/blogs", (req, res) => {
                         keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
                         description: "Read latest posts on Android, technology, security, Apple and mobile devices",
                         posts,
-                        recommended
+                        recommended,
+                        moment
                     });
                 })
                 .catch(err => {
@@ -763,27 +764,26 @@ router.get("/blogs", (req, res) => {
 
 router.get("/blogs/view/:customUrl", (req, res) => {
     const customUrl = req.params.customUrl.trim().toLowerCase();
-    let recommened = {};
 
     Post.findOne({
             customUrl: customUrl
         })
         .then((post) => {
-            Data.find({})
-                .then(data => {
-                    recommened = data[0].list.trending.blogs;
-                })
-                .then(() => {
-                    res.render("postView", {
-                        post
-                    });
-                    post.views += 1;
-                    post.save();
-                })
-                .catch(err => {
+
+            Post.find({}, (err, posts) => {
+                if (err) {
                     req.flash("error", "Please check your url and try again!");
-                    res.redirect("/blogs");
-                })
+                    return res.redirect("/blogs");
+                }
+
+                let latest = posts.splice(posts.length - 3, posts.length);
+                res.render("postView", {
+                    post,
+                    latest,
+                    moment
+                });
+            });
+
         })
         .catch(err => {
             req.flash("error", "Please check your url and try again!");
