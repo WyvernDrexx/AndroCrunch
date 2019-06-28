@@ -9,12 +9,12 @@ const mongoose = require("mongoose"),
     Image = require("../models/uploadsSchema").Image;
 
 
-if (typeof process.env.NODE_ENV === "undefined") {
+if (typeof process.env.NODE_ENV === "production") {
     mongoose.connect("mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27017,dev-shard-00-01-cbuvl.mongodb.net:27017,dev-shard-00-02-cbuvl.mongodb.net:27017/test?ssl=true&replicaSet=dev-shard-0&authSource=admin&retryWrites=true", {
         useNewUrlParser: true
     }, (err) => {
         if (err) {
-            console.log("Couldn't connect to database from Develpoment environment!");
+            console.log("Couldn't connect to database from pRODUCTION environment!");
             console.log(err);
         } else {
             console.log("Database connected to Production environment!");
