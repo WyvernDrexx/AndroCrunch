@@ -25,9 +25,9 @@
                                 <img src="/thumbnails/<%= posts[i].image %>" class="card-img-top"
                                     alt="Thumbnail | <%= posts[i].title %>">
                                 <div class="card-body">
-                                    <p class="tags"><%= posts[i].tags %></p>
+                                    <p class="tags"><%= posts[i].tags.split(" ").splice(0,2).join(", ") %></p>
                                     <h5 class="card-title"><%= posts[i].title %></h5>
-                                    <p class="card-text"><%= posts[i].content.substring(0, 100) %></p>
+                                    <p class="card-text"><%= posts[i].content.substring(0, 100) %>..</p>
                                     <p class="date">FEB 10, 2019</p>
                                 </div>
                             </div>
