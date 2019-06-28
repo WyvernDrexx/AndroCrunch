@@ -40,18 +40,19 @@
                     <p class="text-white ml-5 pl-4">Advertisement</p>
                 </div>
 
-                <div class="card mx-sm-1 mt-5 ">
-                    <img src="/imgs/blog11.webp" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="tags">ANDROID, TRICKS</p>
-                        <h5 class="card-title">Android Q Latest Top 5 Features!</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up
-                            the bulk of
-                            the
-                            card's content.</p>
-                        <p class="date">FEB 10, 2019</p>
+                <a role="link" href="/blogs/view/<%= latest[2].customUrl %>">
+                    <div class="card mx-sm-1 mt-5 ">
+                        <img src="/thumbnails/<%= latest[2].image %>" class="card-img-top" alt="<%= latest[2].title %>">
+                        <div class="card-body">
+                            <p class="tags"><%= latest[2].tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
+                            <h5 class="card-title"><%= latest[2].title %></h5>
+                            <p class="card-text"><%= latest[2].content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..
+                            </p>
+                            <p class="date"> <%= moment.tz(latest[2].created, "Asia/Calcutta").format("MMMM Do YYYY") %>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <div class="advertisement bg-dark">
                     <p class="text-white ml-5 pl-4">Advertisement</p>
                 </div>
