@@ -698,13 +698,19 @@ input:focus {
     border-left: 4px solid #60f
 }
 
+.blog-posts .card-text{
+    font-size: 10px;
+}
 
 .blog-posts .card{
-    height: 26rem;
+    height: 22rem;
     width: 14.5rem;
 }
 .blog-posts .card-img-top{
     height: 9.5rem;
+}
+.blog-posts .card-title{
+    font-size: 14px;
 }
 .sidenav a:hover {
     color: #0f0e0f
@@ -1132,7 +1138,21 @@ footer a:hover{
 }
 
 .statistics {
+    background-image: url('/imgs/stats-bg.png');
+    background-color: #03c;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     padding-top: 5rem;
+}
+.app-image{
+    background-image: url('/imgs/app-image.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 35rem;
 }
 
 .hits {
@@ -1145,7 +1165,7 @@ footer a:hover{
 }
 
 .hits span {
-    color: #2c008b;
+    color: #2b2b2c;
     font-size: 2rem;
     font-weight: 600;
 }
@@ -1402,7 +1422,9 @@ textarea.form-control {
     .app-banner div .context{
         margin-right: 0px;
     }
-
+    .app-image{
+        background-image: none;
+    }
     .about-img {
         display: none;
     }
@@ -1554,7 +1576,7 @@ textarea.form-control {
         max-width: 100%
     }
 
-    .blog-posts h2 {
+    .blog-posts .card-title {
         font-size: 1.2rem
     }
 
