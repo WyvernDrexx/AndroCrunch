@@ -1150,7 +1150,7 @@ footer a:hover{
     background-image: url('/imgs/app-image.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     position: relative;
     height: 35rem;
 }
