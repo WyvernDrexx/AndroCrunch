@@ -305,7 +305,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         Image.findOne({
             _id: id
         }, (err, image) => {
-            if (err) {
+            if (err || !image) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
                 return;
@@ -319,7 +319,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         Audio.findOne({
             _id: id
         }, (err, audio) => {
-            if (err) {
+            if (err || !audio) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
                 return;
@@ -333,7 +333,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         App.findOne({
             _id: id
         }, (err, app) => {
-            if (err) {
+            if (err || !app) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
                 return;
@@ -347,7 +347,7 @@ router.get("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
         Preset.findOne({
             _id: id
         }, (err, preset) => {
-            if (err) {
+            if (err || !preset) {
                 req.flash("error", "Couldn't find the file!");
                 res.redirect("/author/panel");
                 return;
@@ -532,6 +532,11 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Image.findOne({
                     _id: id
                 }, (err, image) => {
+                    if (err || !image) {
+                        req.flash("error", "Couldn't save file!");
+                        res.redirect("back");
+                        return;
+                    }
                     if (typeof image.thumbnail !== "undefined" && image.thumbnail.length > 0 && image.thumbnail !== "default.jpg") {
                         cleanFromSystem(image.thumbnail);
                     }
@@ -542,10 +547,13 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Audio.findOne({
                     _id: id
                 }, (err, audio) => {
-                    console.log(id);
+                    if (err || !audio) {
+                        req.flash("error", "Couldn't save file!");
+                        res.redirect("back");
+                        return;
+                    }
+
                     if (typeof audio.thumbnail !== "undefined" && audio.thumbnail.length > 0 && audio.thumbnail !== "default.jpg") {
-                        console.log((audio.thumbnail).split("-")[1]);
-                        console.log("Cleaning");
                         cleanFromSystem(audio.thumbnail);
                     }
                     audio.thumbnail = req.file.filename;
@@ -555,6 +563,12 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 App.findOne({
                     _id: id
                 }, (err, app) => {
+                    if (err || !app) {
+                        req.flash("error", "Couldn't save file!");
+                        res.redirect("back");
+                        return;
+                    }
+
                     if (typeof app.thumbnail !== "undefined" && app.thumbnail.length > 0 && app.thumbnail !== "default.jpg") {
                         cleanFromSystem(app.thumbnail);
                     }
@@ -565,6 +579,11 @@ router.post("/files/:mimetype/thumbnail/:id", isLoggedIn, (req, res) => {
                 Preset.findOne({
                     _id: id
                 }, (err, preset) => {
+                    if (err || !preset) {
+                        req.flash("error", "Couldn't save file!");
+                        res.redirect("back");
+                        return;
+                    }
                     if (typeof preset.thumbnail !== "undefined" && preset.thumbnail.length > 0 && preset.thumbnail !== "default.jpg") {
                         cleanFromSystem(preset.thumbnail);
                     }
@@ -586,6 +605,11 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         Image.findOne({
             _id: id
         }, (err, image) => {
+            if (err || !image) {
+                req.flash("error", "Couldn't save file!");
+                res.redirect("back");
+                return;
+            }
             res.render("updateFile", {
                 file: image
             });
@@ -594,6 +618,11 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         Audio.findOne({
             _id: id
         }, (err, audio) => {
+            if (err || !audio) {
+                req.flash("error", "Couldn't save file!");
+                res.redirect("back");
+                return;
+            }
             res.render("updateFile", {
                 file: audio
             });
@@ -602,6 +631,11 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         App.findOne({
             _id: id
         }, (err, app) => {
+            if (err || !app) {
+                req.flash("error", "Couldn't save file!");
+                res.redirect("back");
+                return;
+            }
             res.render("updateFile", {
                 file: app
             });
@@ -610,6 +644,11 @@ router.get("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         Preset.findOne({
             _id: id
         }, (err, preset) => {
+            if (err || !preset) {
+                req.flash("error", "Couldn't save file!");
+                res.redirect("back");
+                return;
+            }
             res.render("updateFile", {
                 file: preset
             });
@@ -629,7 +668,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, image) => {
-            if (err) {
+            if (err || !image) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -645,7 +684,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, audio) => {
-            if (err) {
+            if (err || !audio) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -661,7 +700,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, app) => {
-            if (err) {
+            if (err || !app) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -677,7 +716,7 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
             description: req.body.description,
             name: req.body.name.trim().split(" ").join("-").toLowerCase()
         }, (err, preset) => {
-            if (err) {
+            if (err || !preset) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
                 res.redirect("back");
                 return;
@@ -696,7 +735,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
         Image.findOneAndDelete({
             _id: id
         }, (err, file) => {
-            if (err) {
+            if (err || !file) {
                 req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
@@ -712,7 +751,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
         Audio.findOneAndDelete({
             _id: id
         }, (err, file) => {
-            if (err) {
+            if (err || !file) {
                 req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
@@ -728,7 +767,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
         App.findOneAndDelete({
             _id: id
         }, (err, file) => {
-            if (err) {
+            if (err || !file) {
                 req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;
@@ -744,7 +783,7 @@ router.delete("/files/:mimetype/:id", isLoggedIn, (req, res) => {
         Preset.findOneAndDelete({
             _id: id
         }, (err, file) => {
-            if (err) {
+            if (err || !file) {
                 req.flash("error", "Unable to find the file");
                 res.redirect("back");
                 return;

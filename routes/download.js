@@ -58,7 +58,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Audio.findOne({
             name
         }, (err, audio) => {
-            if (err) {
+            if (err || !audio) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
@@ -84,7 +84,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Preset.findOne({
             name
         }, (err, preset) => {
-            if (err) {
+            if (err || !preset) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
@@ -110,7 +110,7 @@ router.get("/contents/:category/:name", (req, res) => {
         App.findOne({
             name
         }, (err, app) => {
-            if (err) {
+            if (err || !app) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }Data.find({}, (err, data) => {
@@ -154,7 +154,7 @@ router.get("/:category/:name/download", (req, res) => {
         Image.findOne({
             name
         }, (err, image) => {
-            if (err) {
+            if (err || !image) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
             }
@@ -170,7 +170,7 @@ router.get("/:category/:name/download", (req, res) => {
         Audio.findOne({
             name
         }, (err, audio) => {
-            if (err) {
+            if (err || !audio) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
             }
@@ -186,7 +186,7 @@ router.get("/:category/:name/download", (req, res) => {
         Preset.findOne({
             name
         }, (err, preset) => {
-            if (err) {
+            if (err || !preset) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
             }
@@ -202,7 +202,7 @@ router.get("/:category/:name/download", (req, res) => {
         App.findOne({
             name
         }, (err, app) => {
-            if (err) {
+            if (err || !app) {
                 req.flash("error", "Error downloading file!");
                 return res.redirect("back");
             }

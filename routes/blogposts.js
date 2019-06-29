@@ -199,7 +199,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                 Post.findOne({
                     _id: req.params.id
                 }, (err, post) => {
-                    if (err) {
+                    if (err || !post) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
@@ -485,7 +485,7 @@ router.delete("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
         Post.findOneAndDelete({
             _id: req.params.id
         }, (err, post) => {
-            if (err) {
+            if (err || !post) {
                 req.flash("error", "This type of actions not allowed against this site quit now!");
                 res.redirect("back");
                 return;
@@ -607,7 +607,7 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
                 Post.findOne({
                     _id: id
                 }, (err, post) => {
-                    if (err) {
+                    if (err || post) {
                         console.log(err);
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
@@ -668,7 +668,7 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
                 Post.findOne({
                     _id: id
                 }, (err, post) => {
-                    if (err) {
+                    if (err || !post) {
                         req.flash("error", "Unable to find post check URLddddddddddd!");
                         return res.redirect("/posts/new");
                     }
@@ -696,7 +696,7 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
         draftPost.findOne({
             _id: req.params.id
         }, (err, post) => {
-            if (err) {
+            if (err || !post) {
                 req.flash("error", "Couldn't find post!");
                 res.redirect("back");
                 return;
@@ -710,7 +710,7 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
         Post.findOne({
             _id: req.params.id
         }, (err, post) => {
-            if (err) {
+            if (err || !post) {
                 req.flash("error", "Couldn't find post!");
                 res.redirect("back");
                 return;
