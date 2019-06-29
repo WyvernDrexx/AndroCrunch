@@ -132,7 +132,7 @@ router.get("/contents/:category/:name", (req, res) => {
         });
 
     } else {
-        req.flash("error", "Please check your URL and try again. from /cat/name");
+        req.flash("error", "Please check your URL and try again.");
         res.redirect("back");
     }
 
@@ -146,7 +146,6 @@ router.get("/:category/:name/download", (req, res) => {
         return res.redirect("/" + category);
     }
     Data.find({}, (err, data) => {
-        console.log(data);
         data[0].list.downloads += 1;
         data[0].save();
     });
@@ -215,7 +214,7 @@ router.get("/:category/:name/download", (req, res) => {
         });
 
     } else {
-        req.flash("error", "Please check your URL and try again. from downloads");
+        req.flash("error", "Please check your URL and try again.");
         res.redirect("back");
     }
     // res.download("public/uploads/1557848448142.jpg");

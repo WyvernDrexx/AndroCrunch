@@ -10,9 +10,7 @@ const express = require("express"),
 router.get("/", (req, res) => {
     Data.find({}, (err, data) => {
         if (err) {
-            console.log("Error getting data:");
-            console.log(err);
-            res.send("Please contact the Admin now!");
+            res("Please contact the Admin now!");
             return;
         }
         Post.find({}, (err, posts) => {
@@ -77,7 +75,6 @@ router.post("/subscribe", (req, res) => {
     let response = {};
     response.status = true;
     let email = String(req.body.email).toLowerCase();
-    console.log("email: " + email);
     if (!email) {
         response.status = false;
         response.message = "Field cannot be empty!";
@@ -99,7 +96,6 @@ router.post("/subscribe", (req, res) => {
             email
         })
         .then((data) => {
-            console.log(data);
             if (Boolean(data)) {
                 response.status = false;
                 response.message = "You have already subscribed!";

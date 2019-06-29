@@ -11,7 +11,6 @@ function deleteFromSystem(place, filename){
     }
     fs.unlink(path.join(dir, filename), (err) =>{
         if(err){
-            console.log(err)
             return;
         }
     });

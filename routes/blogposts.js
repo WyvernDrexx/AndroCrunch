@@ -171,7 +171,6 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                     _id: req.params.id
                 }, (err, post) => {
                     if (err) {
-                        console.log(err);
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
                     }
@@ -200,7 +199,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                     _id: req.params.id
                 }, (err, post) => {
                     if (err || !post) {
-                        console.log(err);
+                        
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
                     }
@@ -226,7 +225,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
 
 router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
     draftPost.findById(req.params.id, (err, post) => {
-        console.log(post);
+        
         if (err) {
             req.flash("error", "No post found" + err);
             res.redirect("/author/panel");
@@ -245,9 +244,9 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
             customUrl: post.customUrl,
             published: true
         }, (err, post) => {
-            console.log(post);
+            
             if (err) {
-                console.log(err);
+                
                 req.flash("error", "Unable to publish!" + err);
                 res.redirect("/author/panel");
                 return;
@@ -275,7 +274,7 @@ router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
             moment,
             status: "unpublished"
         });
-        console.log(posts);
+        
 
     });
 });
@@ -292,7 +291,7 @@ router.get("/blogs/list/published", isLoggedIn, isLoggedIn, (req, res) => {
             moment,
             status: "published"
         });
-        console.log(posts);
+        
 
     });
 });
@@ -548,7 +547,7 @@ router.post("/posts", isLoggedIn, (req, res) => {
         return;
     }
 
-    console.log(post);
+    
     post.created = moment();
     post.author = req.user.username;
     post.authorId = req.user._id;
@@ -560,7 +559,7 @@ router.post("/posts", isLoggedIn, (req, res) => {
                 status: 0,
                 message: "Error submitting post! Report it to admin ASAP!"
             });
-            console.log(err);
+            
         } else {
             res.render("newPost", {
                 post: returnedPost
@@ -585,7 +584,7 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
                     _id: id
                 }, (err, post) => {
                     if (err) {
-                        console.log(err);
+                        
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
                     }
@@ -608,7 +607,7 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
                     _id: id
                 }, (err, post) => {
                     if (err || post) {
-                        console.log(err);
+                        
                         req.flash("error", "Unable to find post check URL!");
                         return res.redirect("/posts/new");
                     }

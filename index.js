@@ -29,13 +29,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
 }
 
 const serverFavicon = require("serve-favicon");
-server.use((request, response, next) => {
-    console.log(request.hostname);
-    console.log(request.headers.host);
-    console.log(request.url);
-    console.log(request.baseUrl);
-    next()
-});
+
 
 //  Required routes
 server.use(serverFavicon(__dirname + '/public/imgs/favicon.ico'));

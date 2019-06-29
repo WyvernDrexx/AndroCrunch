@@ -147,7 +147,6 @@
             num = Number(num);
             num = num - 1;
             document.getElementById("download-time").innerText = num;
-            console.log(num);
             if (num === 0) {
                 window.location = "/<%= category %>/<%= file.name %>/download"
                 clearInterval(window.refreshId);

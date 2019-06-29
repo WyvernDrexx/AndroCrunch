@@ -220,8 +220,8 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 }
             }
 
-            console.log("totalpages: " + totalPages);
-            console.log("pagenumber: " + pagenumber);
+            
+            
             let extractedImages = images.slice(start, end);
             res.render("category", {
                 files: extractedImages,
@@ -250,11 +250,11 @@ router.get("/contents/:category/page/:page", (req, res) => {
             } else {
                 totalPages = Math.floor(totalPages);
             }
-            console.log("totalpages: " + totalPages);
+            
             let start = (pagenumber - 1) * 12;
             let end = pagenumber * 12;
-            console.log("END: " + end);
-            console.log("length : " + apps.length);
+            
+            
             if (end - apps.length > 12) {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");
@@ -265,10 +265,10 @@ router.get("/contents/:category/page/:page", (req, res) => {
                 }
             }
 
-            console.log("totalpages: " + totalPages);
-            console.log("pagenumber: " + pagenumber);
-            // console.log("totalpages: " + totalPages);
-            // console.log("totalpages: " + totalPages);
+            
+            
+            // 
+            // 
             let extractedApps = apps.slice(start, end);
             res.render("category", {
                 files: extractedApps,
@@ -297,11 +297,11 @@ router.get("/contents/:category/page/:page", (req, res) => {
             } else {
                 totalPages = Math.floor(totalPages);
             }
-            console.log("totalpages: " + totalPages);
+            
             let start = (pagenumber - 1) * 12;
             let end = pagenumber * 12;
-            console.log("END: " + end);
-            console.log("length : " + audios.length);
+            
+            
 
             if (end - audios.length > 12) {
                 req.flash("error", "No page number " + pagenumber + " found!");
@@ -341,12 +341,10 @@ router.get("/contents/:category/page/:page", (req, res) => {
             } else {
                 totalPages = Math.floor(totalPages);
             }
-            console.log("totalpages: " + totalPages);
+            
             let start = (pagenumber - 1) * 12;
             let end = pagenumber * 12;
-            console.log("END: " + end);
-            console.log("length : " + presets.length);
-
+            
             if (end - presets.length > 12) {
                 req.flash("error", "No page number " + pagenumber + " found!");
                 res.redirect("/contents");

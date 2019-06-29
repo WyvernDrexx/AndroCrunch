@@ -35,15 +35,6 @@ server.use((req, res, next) => {
     next();
 });
 
-server.use((err, req, res, next) => {
-    if (err) {
-        console.log("ERROR ENCOUNTERED ON EXPRESS!");
-        console.log(err);
-        next();
-    } else {
-        next();
-    }
-});
 // server.use((req, res, next) => {
 //     // res.setHeader("Cache-Control", "public, max-age=300");
 //     // res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());

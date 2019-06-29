@@ -57,8 +57,6 @@ router.post('/login', function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            console.log("Logged in ");
-            console.log(user);
             return res.send({
                 status: true
             });       //If login succeeded
@@ -71,7 +69,6 @@ router.post('/login', function (req, res, next) {
 
 
 router.get("/success", (req, res) => {
-    console.log(req.user);
     req.flash("success", "Successfully logged in " + req.user.username);
     res.redirect("/");
 });
