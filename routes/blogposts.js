@@ -793,7 +793,10 @@ router.get("/blogs/view/:customUrl", (req, res) => {
                 res.render("postView", {
                     post,
                     latest,
-                    moment
+                    moment,
+                    title: post.title,
+                    description: post.description,
+                    keywords: post.tags.split(" ").join(",").toLowerCase()
                 });
                 
             });
