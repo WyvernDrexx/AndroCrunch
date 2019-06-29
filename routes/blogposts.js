@@ -795,7 +795,7 @@ router.get("/blogs/view/:customUrl", (req, res) => {
                     latest,
                     moment,
                     title: post.title,
-                    description: post.content,
+                    description: post.content.replace(/<[^>]*>?/gm, ''),
                     keywords: post.tags.toLowerCase()
                 });
                 
