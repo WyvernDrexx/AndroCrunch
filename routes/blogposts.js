@@ -796,7 +796,7 @@ router.get("/blogs/view/:customUrl", (req, res) => {
                     moment,
                     title: post.title,
                     description: post.description,
-                    keywords: post.tags.split(" ").join(",").toLowerCase()
+                    keywords: post.tags.toLowerCase()
                 });
                 
             });
