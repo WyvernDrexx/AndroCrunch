@@ -31,7 +31,7 @@ router.get("/contents/:category/:name", (req, res) => {
         Image.findOne({
             name
         }, (err, image) => {
-            if (err) {
+            if (err || !image) {
                 req.flash("error", "Couldn't find the file.");
                 return res.redirect("/");
             }
