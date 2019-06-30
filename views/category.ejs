@@ -58,11 +58,17 @@
             <% for( let i = 0 ; i < files.length; i++){ %>
             <%      file=files[i];  %>
             <% if(i === 8){ %>
-            <div class="advertisemen pt-6s">
-                <iframe src="//d3t5ngjixpjdho.cloudfront.net/br?jgntd=791966" width="950" height="320" scrolling="no"
-                    frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-top-navigation">
-                </iframe>
+
+            <div class="advertisement bg-dark pt-6s">
+                <noscript>
+                    <a href="https://yllix.com/publishers/251359" target="_blank">
+                        <img src="//ylx-aff.advertica-cdn.com/pub/120x600.png"
+                            style="border:none;margin:0;padding:0;vertical-align:baseline;" />
+                    </a>
+                </noscript>
             </div>
+
+
             <% } %>
             <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
                 class="scroll-item mt-6">
@@ -118,4 +124,5 @@
         <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
     </div>
 </div>
+<script type="text/javascript" src="//uprimp.com/bnr.php?section=General&pub=251359&format=120x600&ga=g"></script>
 <% include partials/footer %>
