@@ -970,6 +970,30 @@ a:focus {
     color: #0f0e0fd3
 }
 
+.anti-adblock{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.671);
+    z-index: 599;
+    position: fixed;
+    display: none;
+}
+.anti-adblock div{
+    width: 70%;
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 80%;
+    border-radius: 15px;
+    padding: 50px;
+}
+.anti-adblock div .head{
+    font-size: 3.5rem;
+}
 .advertisement{
     position: relative;
     padding: 10px;
@@ -1524,6 +1548,14 @@ textarea.form-control {
 }
 
 @media only screen and (max-width:576px) {
+    .anti-adblock div{
+        width: 95%;
+        height: 60%;
+        padding: 30px;
+    }
+    .anti-adblock div .head{
+        font-size: 40px;
+    }
     #nav {
         display: none
     }

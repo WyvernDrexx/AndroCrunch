@@ -36,6 +36,10 @@ window.onload = function () {
 
 
 $(document).ready(function () {
+    if (window.canRunAds === undefined) {
+        // adblocker detected, show fallback
+        $(".anti-adblock").css("display", "block");
+    }
     $("body").css("opacity", "1"), $(".loader-div").remove(), window.subscribe = function () {
         let e = $(".subscription input[name=email]").val();
         $(".subscribe .spinner-border.spinner-border-sm").removeClass("d-none"), $.ajax("/subscribe", {
