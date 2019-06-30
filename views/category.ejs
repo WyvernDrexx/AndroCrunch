@@ -1,18 +1,18 @@
 <% include partials/header %>
 <div class="container-fluid bg-white px-0">
-        <div class="container-fluid pt-6s pb-4 bg-image bottom-rounded">
-            <h1 class="text-center text-white display-5 mb-3">Content</h1>
-            <p class="lead pb-5 text-center mt-6 text-white">Home > Content</p>
-            <p class=" pt-6s pt-sm-5 small font-weight-normal text-center text-white">What are you looking for?</p>
-            <div class="position-relative pt-5 srch">
-                <form action="https://www.google.com/search" method="GET">
-                    <input name="sitesearch" type="hidden" value="https://androcrunch.in">
-                    <input name="q" type="search" placeholder="Wallpapers, apps and ringtones">
-                    <button type="submit"> <i class="fas fa-search"></i> </button>
-                </form>
-            </div>
+    <div class="container-fluid pt-6s pb-4 bg-image bottom-rounded">
+        <h1 class="text-center text-white display-5 mb-3">Content</h1>
+        <p class="lead pb-5 text-center mt-6 text-white">Home > Content</p>
+        <p class=" pt-6s pt-sm-5 small font-weight-normal text-center text-white">What are you looking for?</p>
+        <div class="position-relative pt-5 srch">
+            <form action="https://www.google.com/search" method="GET">
+                <input name="sitesearch" type="hidden" value="https://androcrunch.in">
+                <input name="q" type="search" placeholder="Wallpapers, apps and ringtones">
+                <button type="submit"> <i class="fas fa-search"></i> </button>
+            </form>
         </div>
     </div>
+</div>
 <div class="bg-white container-fluid px-0 pb-6 pt-3">
     <div class="main-content site-content">
         <div class="pt-6s text-center pb-5">
@@ -59,16 +59,19 @@
             <%      file=files[i];  %>
             <% if(i === 8){ %>
             <div class="advertisement flex-nowrap bg-dark">
-                <p class="text-center text-white" style="font-size: 22px;">Advertisement</p>
+
+                <iframe src="//d3t5ngjixpjdho.cloudfront.net/br?jgntd=791966" width="950" height="320" scrolling="no"
+                    frameborder="0" sandbox="allow-same-origin allow-scripts allow-popups allow-top-navigation">
+                </iframe>
             </div>
             <% } %>
             <div style="background-size: cover; background-image: url('/thumbnails/lg-<%= file.thumbnail.split('-')[1] %>');"
                 class="scroll-item mt-6">
                 <p style="padding-top: 17.5rem; margin-bottom: 3rem;" class="mx-3 small mt-4 text-dark text-center">
                     <% if(file.filename.length >= 23){ %>
-                        <%= file.filename.substring(0,23) %>..
+                    <%= file.filename.substring(0,23) %>..
                     <% }else{ %>
-                        <%= file.filename%>
+                    <%= file.filename%>
                     <% } %>
                 </p>
                 <div class="scroll-item-hover-option">
