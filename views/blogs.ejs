@@ -16,7 +16,7 @@
                     <div class="row main-content justify-content-center">
                         <% for(let i = posts.length - 1; i >= 0; i--){ %>
                         <div class="col-md-6">
-                            <a href="/blogs/view/<%= posts[i].customUrl %>">
+                            <a href="/blogs/<%= posts[i].customUrl %>">
                                 <div class="card mx-sm-1 mt-5 ">
                                     <img src="/thumbnails/<%= posts[i].image %>" class="card-img-top"
                                         alt="Thumbnail | <%= posts[i].title %>">
@@ -49,7 +49,7 @@
     <div class="row main-content recommended scroll-flex">
         <% recommended.forEach(post => { %>
         <div class=" col-md px-0 pl-1 mb-4 px-1 zoom-ft">
-            <a href="/blogs/view/<%= post.customUrl %>">
+            <a href="/blogs/<%= post.customUrl %>">
                 <div class="card">
                     <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image <%= post.title %>">
                     <div class="card-body">

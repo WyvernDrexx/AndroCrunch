@@ -40,7 +40,7 @@
                 </section>
             </div>
             <div class="col-sm-4 blog-sub-content h-50 px-3 px-sm-4">
-                <a role="link" href="/blogs/view/<%= latest[2].customUrl %>">
+                <a role="link" href="/blogs/<%= latest[2].customUrl %>">
                     <div class="card mx-sm-1 mt-5 ">
                         <img src="/thumbnails/<%= latest[2].image %>" class="card-img-top" alt="<%= latest[2].title %>">
                         <div class="card-body">
@@ -75,7 +75,7 @@
         <div class="row main-content justify-content-center">
             <% latest.forEach(post => { %>
             <div class="col-md">
-                <a href="/blogs/view/<%= post.customUrl %>">
+                <a href="/blogs/<%= post.customUrl %>">
                     <div class="card mx-sm-1 mt-5 ">
                         <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="<%= post.title %>">
                         <div class="card-body">

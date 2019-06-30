@@ -775,7 +775,7 @@ router.get("/blogs", (req, res) => {
 });
 
 
-router.get("/blogs/view/:customUrl", (req, res) => {
+router.get("/blogs/:customUrl", (req, res) => {
     const customUrl = req.params.customUrl.trim().toLowerCase();
 
     Post.findOne({

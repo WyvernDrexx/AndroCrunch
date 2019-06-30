@@ -269,7 +269,7 @@
     <div class="row main-content d-flex justify-content-center">
         <% latest.reverse().forEach((post) => { %>
         <div style="max-width: 17rem;" class="col-md-4">
-            <a href="/blogs/view/<%= post.customUrl %>">
+            <a href="/blogs/<%= post.customUrl %>">
                 <div class="card mx-sm-1 mt-5 ">
                     <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image | <%= post.image %>">
                     <div class="card-body">

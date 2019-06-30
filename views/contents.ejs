@@ -131,7 +131,7 @@
         <div class="row main-content justify-content-center">
             <% recommended.forEach((post) => { %>
             <div class="col-md">
-                <a href="/blogs/view/<%= post.customUrl %>">
+                <a href="/blogs/<%= post.customUrl %>">
                     <div class="card mx-sm-1 mt-5 ">
                         <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image | <%= post.title %>">
                         <div class="card-body">
