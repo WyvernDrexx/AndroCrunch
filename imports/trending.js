@@ -69,7 +69,7 @@ Image.find({}, (err, files) => {
             maxIndex[2] = maxIndex[1];
             maxIndex[1] = index;
         } else if (file.downloads > maxDownloads[2]) {
-            third = file.downloads;
+            maxDownloads[2] = file.downloads;
             maxIndex[2] = index;
         }
     });
@@ -121,7 +121,7 @@ Image.find({}, (err, files) => {
                 maxIndex[2] = maxIndex[1];
                 maxIndex[1] = index;
             } else if (file.downloads > maxDownloads[2]) {
-                third = file.downloads;
+                maxDownloads[2] = file.downloads;
                 maxIndex[2] = index;
             }
         });
@@ -175,7 +175,7 @@ Image.find({}, (err, files) => {
                         maxIndex[2] = maxIndex[1];
                         maxIndex[1] = index;
                     } else if (file.downloads > maxDownloads[2]) {
-                        third = file.downloads;
+                        maxDownloads[2] = file.downloads;
                         maxIndex[2] = index;
                     }
                 });
@@ -223,7 +223,7 @@ Image.find({}, (err, files) => {
                                 maxIndex[2] = maxIndex[1];
                                 maxIndex[1] = index;
                             } else if (file.downloads > maxDownloads[2]) {
-                                third = file.downloads;
+                                maxDownloads[2] = file.downloads;
                                 maxIndex[2] = index;
                             }
                         });
@@ -268,7 +268,7 @@ Image.find({}, (err, files) => {
                                         maxIndex[2] = maxIndex[1];
                                         maxIndex[1] = index;
                                     } else if (post.views > maxDownloads[2]) {
-                                        third = post.views;
+                                        maxDownloads[2] = post.views;
                                         maxIndex[2] = index;
                                     }
                                 });
