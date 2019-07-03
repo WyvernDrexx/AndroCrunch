@@ -252,11 +252,10 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
                 return;
             }
 
-            req.flash("success", "Post Published!");
+            req.flash("success", "Post Published and removed from Unpublished Posts!");
             res.redirect("/author/panel");
         });
-        post.published = true;
-        post.save();
+        post.remove();
     });
 });
 
