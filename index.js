@@ -61,9 +61,21 @@ if (typeof process.env.NODE_ENV === "undefined") {
     cert: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/cert.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/chain.pem")
   };
-  https.createServer(options, server).listen(PORT = 443, () => {
+  https.createServer(options, server).listen((PORT = 443), () => {
     console.log(`Server is on production mode and listening on ${PORT}`);
   });
+  
+  var http = require("http");
+  http
+    .createServer(function(req, res) {
+      res.writeHead(301, {
+        Location: "https://" + req.headers["host"] + req.url
+      });
+      res.end();
+    })
+    .listen(80, () => {
+      console.log("[+] Another server listening on port 80");
+    });
 } else {
   server.listen(PORT, () => {
     console.log(`Server listening on PORT ${PORT}`);
