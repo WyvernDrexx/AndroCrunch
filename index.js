@@ -56,12 +56,13 @@ server.get("*", (req, res) => {
 });
 
 if (typeof process.env.NODE_ENV === "undefined") {
+  PORT = 443;
   var options = {
     key: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/cert.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/chain.pem")
   };
-  https.createServer(options, server).listen(PORT = 443, () => {
+  https.createServer(options, server).listen(, () => {
     console.log(`Server is on production mode and listening on ${PORT}`);
   });
 } else {
