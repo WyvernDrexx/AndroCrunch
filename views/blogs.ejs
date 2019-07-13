@@ -1,142 +1,98 @@
 <% include partials/header %>
 <div class="bg-white">
-  <div class="container-fluid pt-5 bg-image  pb-6 text-white">
-    <h1 class="display-4 text-center text-white mt-6">Blogs</h1>
-    <p class="lead text-center">Home > Blog</p>
-  </div>
-</div>
-<section class="bg-white pt-3 pt-sm-0">
-  <div class="main-content">
-    <h1 class="display-5 text-center text-dark mb-5 pt-5">
-      <span>Latest Blog Posts</span>
-    </h1>
-    <div class="line w-85 m-auto"></div>
-    <div class="row">
-      <div class="col-md">
-        <div class="blog-posts pb-6">
-          <div class="row main-content justify-content-center">
-            <% for(let i = posts.length - 1; i >= 0; i--){ %>
-            <div class="col-md-6">
-              <a href="/blogs/<%= posts[i].customUrl %>">
-                <div class="card mx-sm-1 mt-5 ">
-                  <img
-                    src="/thumbnails/<%= posts[i].image %>"
-                    class="card-img-top"
-                    alt="Thumbnail | <%= posts[i].title %>"
-                  />
-                  <div class="card-body">
-                    <p class="tags">
-                      <%= posts[i].tags.split(" ").splice(0,2).join(",
-                      ").toUpperCase() %>
-                    </p>
-                    <h5 style="font-size: 0.99rem;" class="card-title">
-                      <%= posts[i].title %>
-                    </h5>
-                    <p class="card-text">
-                      <%= posts[i].content.replace(/<[^>]*>?/gm,
-                      '').substring(0, 100); %>..
-                    </p>
-                    <p class="date">
-                      <%= moment.tz(posts[i].created,
-                      "Asia/Calcutta").format("MMMM Do YYYY") %>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <% } %>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ninty six 96 characters on three line || 32 characters per line -->
+    <div class="container-fluid pt-5 bg-image  pb-6 text-white">
+        <h1 class="display-4 text-center text-white mt-6">Blogs</h1>
+        <p class="lead text-center">Home > Blog</p>
     </div>
-  </div>
-  <div class="advertisement d-flex justify-content-center mt-0 pt-2 pb-5">
-    <script type="text/javascript">
-      atOptions = {
-        key: "215a414d22219faa377d4015652d2490",
-        format: "iframe",
-        height: 90,
-        width: 728,
-        params: {}
-      };
-      document.write(
-        "<scr" +
-          'ipt type="text/javascript" src="http' +
-          (location.protocol === "https:" ? "s" : "") +
-          '://www.bcloudhost.com/215a414d22219faa377d4015652d2490/invoke.js"></scr' +
-          "ipt>"
-      );
-    </script>
-  </div>
+</div>
+
+<section class="bg-white pt-3 pt-sm-0">
+    <div class="main-content">
+        <h1 class="display-5 text-center text-dark mb-5 pt-5"><span>Latest Blog Posts</span></h1>
+        <div class="line w-85 m-auto"></div>
+        <div class="row">
+            <div class="col-md">
+                <div class="blog-posts pb-6">
+                    <div class="row main-content justify-content-center">
+                        <% for(let i = posts.length - 1; i >= 0; i--){ %>
+                        <div class="col-md-6">
+                            <a href="/blogs/<%= posts[i].customUrl %>">
+                                <div class="card mx-sm-1 mt-5 ">
+                                    <img src="/thumbnails/<%= posts[i].image %>" class="card-img-top"
+                                        alt="Thumbnail | <%= posts[i].title %>">
+                                    <div class="card-body">
+                                        <p class="tags">
+                                            <%= posts[i].tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
+                                        <h5 style="font-size: 0.99rem;" class="card-title"><%= posts[i].title %></h5>
+                                        <p class="card-text">
+                                            <%= posts[i].content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..</p>
+                                        <p class="date">
+                                            <%= moment.tz(posts[i].created, "Asia/Calcutta").format("MMMM Do YYYY") %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Ninty six 96 characters on three line || 32 characters per line -->
+
+        </div>
+    </div>
+
+    
 </section>
 <section class="bg-white pt-6s">
-  <div class="main-content blog-head mb-3"><span>Recommended</span></div>
-  <div class="row main-content recommended scroll-flex">
-    <% recommended.forEach(post => { %>
-    <div class=" col-md px-0 pl-1 mb-4 px-1 zoom-ft">
-      <a href="/blogs/<%= post.customUrl %>">
-        <div class="card">
-          <img
-            src="/thumbnails/<%= post.image %>"
-            class="card-img-top"
-            alt="Image <%= post.title %>"
-          />
-          <div class="card-body">
-            <p class="card-title"><%= post.title %></p>
-          </div>
+    <div class="main-content blog-head mb-3"><span>Recommended</span></div>
+    <div class="row main-content recommended scroll-flex">
+        <% recommended.forEach(post => { %>
+        <div class=" col-md px-0 pl-1 mb-4 px-1 zoom-ft">
+            <a href="/blogs/<%= post.customUrl %>">
+                <div class="card">
+                    <img src="/thumbnails/<%= post.image %>" class="card-img-top" alt="Image <%= post.title %>">
+                    <div class="card-body">
+                        <p class="card-title"><%= post.title %></p>
+                    </div>
+                </div>
+            </a>
         </div>
-      </a>
+        <% }); %>
     </div>
-    <% }); %>
-  </div>
-  <nav
-    class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5"
-    aria-label="Pagination"
-  >
-    <ul class="pagination d-flex ml-0">
-      <% if(previous === 0){ %>
-      <li class="page-item disabled">
-        <a
-          class="page-link previous"
-          href="/"
-          tabindex="-1"
-          aria-disabled="true"
-          >Prev</a
-        >
-      </li>
-      <% }else{ %>
-      <li class="page-item">
-        <a
-          class="page-link previous"
-          href="/blogs/page/<%= previous %>"
-          tabindex="-1"
-          aria-disabled="true"
-          >Prev</a
-        >
-      </li>
-      <% } %>
-      <li class="page-item disabled active no-border ">
-        <a class="page-link" href="/"
-          ><%= current %><span class="sr-only">(current)</span></a
-        >
-      </li>
-      <% if( current !== last){ %>
-      <li class="page-item">
-        <a class="page-link" href="/blogs/page/<%= last %>"><%= last %></a>
-      </li>
-      <% } %> <% if(current === last){ %>
-      <li class="page-item disabled">
-        <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
-      </li>
-      <% }else{ %>
-      <li class="page-item">
-        <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
-      </li>
-      <% } %>
-    </ul>
-  </nav>
+    <nav class="container main-content d-flex justify-content-center pb-4 pt-6s pt-md-5" aria-label="Pagination">
+        <ul class="pagination d-flex ml-0">
+            <% if(previous === 0){ %>
+            <li class="page-item disabled">
+                <a class="page-link previous" href="/" tabindex="-1" aria-disabled="true">Prev</a>
+            </li>
+            <% }else{ %>
+            <li class="page-item">
+                <a class="page-link previous" href="/blogs/page/<%= previous %>" tabindex="-1"
+                    aria-disabled="true">Prev</a>
+            </li>
+            <%  } %>
+            <li class="page-item disabled active no-border "><a class="page-link" href="/"><%= current %><span
+                        class="sr-only">(current)</span></a></li>
+            <% if( current !== last){ %>
+            <li class="page-item">
+                <a class="page-link" href="/blogs/page/<%= last %>"><%= last %></a>
+            </li>
+            <% } %>
+
+            <% if(current === last){ %>
+            <li class="page-item disabled">
+                <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
+            </li>
+            <% }else{ %>
+            <li class="page-item">
+                <a class="page-link next pl-1" href="/blogs/page/<%= next %>">Next</a>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
 </section>
 
 <% include partials/footer %>
