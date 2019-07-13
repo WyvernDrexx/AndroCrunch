@@ -4,7 +4,7 @@ var https = require("https");
 var fs = require("fs");
 var PORT = 3000;
 
-if (typeof process.env.NODE_ENV === "undefined") {
+if (process.env.NODE_ENV === "undefined" || process.env.NODE_ENV === "production" ) {
   mongoose.connect(
     "mongodb://admin:311210187@dev-shard-00-00-cbuvl.mongodb.net:27017,dev-shard-00-01-cbuvl.mongodb.net:27017,dev-shard-00-02-cbuvl.mongodb.net:27017/test?ssl=true&replicaSet=dev-shard-0&authSource=admin&retryWrites=true",
     {
