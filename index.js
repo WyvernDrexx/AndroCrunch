@@ -9,7 +9,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         useNewUrlParser: true
     }, (err) => {
         if (err) {
-            console.log("Couldn't connect to database from Develpoment environment!");
+            console.log("Couldn't connect to database from Development environment!");
             console.log(err);
         } else {
             console.log("Database connected to Production environment!");
@@ -20,10 +20,10 @@ if (typeof process.env.NODE_ENV === "undefined") {
         useNewUrlParser: true
     }, (err) => {
         if (err) {
-            console.log("Couldn't connect to database from Develpoment environment!");
+            console.log("Couldn't connect to database from Development environment!");
             console.log(err);
         } else {
-            console.log("Database connected to Develpoment environment!");
+            console.log("Database connected to Development environment!");
         }
     });
 }
@@ -50,13 +50,6 @@ if (typeof process.env.NODE_ENV === "undefined") {
         cert: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/cert.pem'),
         ca: fs.readFileSync('/etc/letsencrypt/live/androcrunch.in/chain.pem')
     };
-    server.get("*", function (request, response) {
-        if (request.headers.host.split("www").length >= 2) {
-            response.redirect(request.hostname.split("www")[1].replace(".", "") + request.url);
-            return;
-        }
-        response.redirect("https://" + request.headers.host + request.url);
-    });
     https.createServer(options, server).listen(443, () => {
         console.log("Server is on production mode and listening on 443");
     });
