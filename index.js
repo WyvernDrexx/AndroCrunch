@@ -62,7 +62,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
     cert: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/cert.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/chain.pem")
   };
-  https.createServer(options, server).listen(, () => {
+  https.createServer(options, server).listen(() => {
     console.log(`Server is on production mode and listening on ${PORT}`);
   });
 } else {
