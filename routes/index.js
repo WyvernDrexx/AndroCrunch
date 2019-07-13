@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
             let latest = posts.splice(posts.length - 3, posts.length);
 
             res.render("index", {
-                title: "AndroCrunch | Beyond The Infinity |  Official Website of AndroCruch Youtube",
+                title: "AndroCrunch | Beyond The Infinity |  Official Website of AndroCrunch Youtube",
                 trending: data[0].list.trending,
                 latest,
                 moment
