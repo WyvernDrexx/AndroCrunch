@@ -20,7 +20,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
             console.log("Couldn't connect to database from Development environment!");
             console.log(err);
         } else {
-            console.log("Database connected to Development environment!");
+            console.log("Database connected to Production environment!");
         }
     });
 }
