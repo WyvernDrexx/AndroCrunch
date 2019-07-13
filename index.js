@@ -1,8 +1,8 @@
 const server = require("./imports/express"),
-  PORT = 3000,
   mongoose = require("mongoose");
 var https = require("https");
 var fs = require("fs");
+var PORT = 3000;
 
 if (typeof process.env.NODE_ENV === "production") {
   mongoose.connect(
@@ -56,13 +56,12 @@ server.get("*", (req, res) => {
 });
 
 if (typeof process.env.NODE_ENV === "undefined") {
-  PORT = 443;
   var options = {
     key: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/cert.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/androcrunch.in/chain.pem")
   };
-  https.createServer(options, server).listen(() => {
+  https.createServer(options, server).listen(PORT = 443, () => {
     console.log(`Server is on production mode and listening on ${PORT}`);
   });
 } else {
