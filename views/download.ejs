@@ -53,7 +53,7 @@
         document.getElementById("download-time").innerText = num;
         if (num === 0) {
             document.getElementById("secret-link").innerHTML =
-                "< href=\"/<%= category %>/<%= name %>/download/get\" class='btn btn-lg btn-primary'>Download Link </a>"
+                "<a href=\"/<%= category %>/<%= name %>/download/get\" class='btn btn-lg btn-primary'>Download Link </a>"
             clearInterval(window.refreshId);
             var downloadBox = document.getElementById("download-now");
             downloadBox.style.display = "none";
