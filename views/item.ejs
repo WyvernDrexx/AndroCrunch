@@ -5,28 +5,6 @@
         <p class="small text-gray text-center pt-5 pb-6 mb-5">Home > Contents > <%= category.toUpperCase() %></p>
     </div>
 </div>
-<div id="download-now" class="advert-place card mx-0 rounded">
-    <h1 class="small text-center mb-2 mb-sm-5 mt-2 text-dark">Please Wait <br>Your Download Will Start In <span
-            class="text-danger font-weight-bold" id="download-time">10</span>s</h1>
-    <div class="box mb-2  mb-sm-5">
-
-    </div>
-    <div class="card-body">
-        <h5 class="card-text text-center font-weight-bold">
-            We're Happy To Serve You :)
-        </h5>
-        <p class="text-gray text-center small">Our creators love hearing from you and seeing how you've used our
-            products, <br>
-            Show your appreciation by tagging us.
-        </p>
-        <div class="w-75 m-auto d-flex justify-content-between">
-            <a href="/"><i class="fab fa-facebook-f text-primary small" aria-label="facebook connect"></i></a>
-            <a href="/"><i class="fab fa-youtube text-danger small" aria-label="whatsapp connect"></i></a>
-            <a href="/"><i class="fab fa-instagram text-danger small" aria-label="instagram connect"></i></a>
-            <a href="/"><i class="fab fa-twitter small" aria-label="twitter connect"></i></a>
-        </div>
-    </div>
-</div>
 <div class="advertisement mt-0 d-flex justify-content-center pt-5">
     <script src="//pushsar.com/ntfc.php?p=2717616" data-cfasync="false" async></script>
 </div>
@@ -47,7 +25,7 @@
         <div class="text-center ">
             <div class="row justify-content-center mt-0 mt-md-3 mx-0">
                 <div class="col-md-4">
-                    <button onclick="download()"
+                    <button onclick="window.location='/<%= category %>/<%= file.name %>/download'"
                         class="btn btn-outline-primary rounded-pill px-5 pt-2 pb-2 active no-border mt-5 mt-md-0">
                         Download
                     </button>
@@ -136,32 +114,24 @@
     <div class="text-center mt-4 pb-6">
         <a href="/blogs" class="btn btn-outline load-more small rounded-pill">Browse Now</a>
     </div>
-    
 
+    <div class="d-flex justify-content-center">
+        <div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'a23c977fd91f4f9f6bf811246e62cc5d',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' :
+                    '') + '://www.bcloudhost.com/a23c977fd91f4f9f6bf811246e62cc5d/invoke.js"></scr' + 'ipt>');
+            </script>
+        </div>
+    </div>
 </section>
 <script type="text/javascript" src="//deloplen.com/apu.php?zoneid=2717612" async data-cfasync="false"></script>
-<script>
-    function download() {
-        window.open('http://deloplen.com/afu.php?zoneid=2717753', '_blank');
-        window.focus();
-        var downloadBox = document.getElementById("download-now");
-        downloadBox.style.display = "block";
-        // setTimeout(() => {
-        // }, 10000);
-        window.refreshId = setInterval(() => {
-            var num = document.getElementById("download-time").innerText;
-            num = Number(num);
-            num = num - 1;
-            document.getElementById("download-time").innerText = num;
-            if (num === 0) {
-                window.location = "/<%= category %>/<%= file.name %>/download"
-                clearInterval(window.refreshId);
-                var downloadBox = document.getElementById("download-now");
-                downloadBox.style.display = "none";
-                document.getElementById("download-time").innerText = 10;
-            }
-        }, 1000);
-    }
-</script>
+
 
 <% include partials/footer %>

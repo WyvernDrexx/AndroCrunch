@@ -1,0 +1,49 @@
+<% include partials/header %>
+<div class="bg-dark text-white">
+    <h1 class="display-4 text-center pt-6s pb-6 mb-0 text-white">Download</h1>
+</div>
+<div id="download-now" class="advert-place card mx-0 rounded">
+    <h1 class="small text-center mb-2 mb-sm-5 mt-2 text-dark">
+        Please Wait <br />Your Download Will Start In
+        <span class="text-danger font-weight-bold" id="download-time">10</span>s
+    </h1>
+    <div class="box mb-2  mb-sm-5"></div>
+    <div class="card-body">
+        <h5 class="card-text text-center font-weight-bold">
+            We're Happy To Serve You :)
+        </h5>
+        <p class="text-gray text-center small">
+            Our creators love hearing from you and seeing how you've used our
+            products, <br />
+            Show your appreciation by tagging us.
+        </p>
+        <div class="w-75 m-auto d-flex justify-content-between">
+            <a href="/"><i class="fab fa-facebook-f text-primary small" aria-label="facebook connect"></i></a>
+            <a href="/"><i class="fab fa-youtube text-danger small" aria-label="whatsapp connect"></i></a>
+            <a href="/"><i class="fab fa-instagram text-danger small" aria-label="instagram connect"></i></a>
+            <a href="/"><i class="fab fa-twitter small" aria-label="twitter connect"></i></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = () => {
+        var downloadBox = document.getElementById("download-now");
+        downloadBox.style.display = "block";
+        window.refreshId = setInterval(() => {
+            var num = document.getElementById("download-time").innerText;
+            num = Number(num);
+            num = num - 1;
+            document.getElementById("download-time").innerText = num;
+            if (num === 0) {
+                window.location = "/<%= category %>/<%= name %>/download/get";
+                clearInterval(window.refreshId);
+                var downloadBox = document.getElementById("download-now");
+                downloadBox.style.display = "none";
+                document.getElementById("download-time").innerText = 10;
+            }
+        }, 1000);
+    }
+</script>
+
+<% include partials/footer %>
