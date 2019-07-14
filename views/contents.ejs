@@ -1,4 +1,25 @@
 <% include partials/header %>
+<script type="text/javascript" data-cfasync="false">
+    var _pop = _pop || [];
+    _pop.push(['siteId', 3433111]);
+    _pop.push(['minBid', 0]);
+    _pop.push(['popundersPerIP', 0]);
+    _pop.push(['delayBetween', 0]);
+    _pop.push(['default', false]);
+    _pop.push(['defaultPerDay', 0]);
+    _pop.push(['topmostLayer', false]);
+    (function() {
+      var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+      var s = document.getElementsByTagName('script')[0]; 
+      pa.src = '//c1.popads.net/pop.js';
+      pa.onerror = function() {
+        var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+        sa.src = '//c2.popads.net/pop.js';
+        s.parentNode.insertBefore(sa, s);
+      };
+      s.parentNode.insertBefore(pa, s);
+    })();
+  </script>
 <div class="container-fluid bg-white px-0">
     <div class="container-fluid pt-6s pb-4 bg-image bottom-rounded">
         <h1 class="text-center text-white display-5 mb-3">Content</h1>
