@@ -35,10 +35,9 @@ server.use((req, res, next) => {
     next();
 });
 
-// server.use((req, res, next) => {
-//     // res.setHeader("Cache-Control", "public, max-age=300");
-//     // res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
-//     next();
-// });
+server.use((req, res, next) => {
+    res.setHeader("Cache-Control", "public, max-age=300");
+    next();
+});
 server.use(compress());
 module.exports = server;
