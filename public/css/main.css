@@ -1088,8 +1088,7 @@ a:focus {
 }
 
 .advert-place {
-    position: absolute;
-    z-index: 500;
+    position: relative;
     width: 80vw;
     max-height: 90vh;
     top: 0;
@@ -1098,7 +1097,6 @@ a:focus {
     right: 0;
     margin: auto !important;
     padding: 10px;
-    position: fixed;
     display: none;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, .199) !important
 }
