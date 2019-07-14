@@ -161,6 +161,7 @@ router.get("/contents/:category/:name", (req, res) => {
 });
 
 router.get("/:category/:name/download/get", (req, res) => {
+    console.log("hit");
   let category = req.params.category.toLowerCase();
   let name = req.params.name.toLowerCase();
   if (typeof req.headers.referer === "undefined") {
