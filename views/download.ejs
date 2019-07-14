@@ -35,8 +35,7 @@
 <script>
     blueLinkClick = false;
     function getLink() {
-        window.open("/<%= category %>/<%= name %>/download/get");
-        // window.open('http://deloplen.com/afu.php?zoneid=2717709');
+        window.open('http://deloplen.com/afu.php?zoneid=2717709');
     }
     function blueLink(){
         if(!blueLinkClick){
@@ -54,7 +53,7 @@
         document.getElementById("download-time").innerText = num;
         if (num === 0) {
             document.getElementById("secret-link").innerHTML =
-                "<button onClick='getLink()' class='btn btn-lg btn-primary'>Download Link </button>"
+                "< href=\"/<%= category %>/<%= name %>/download/get\" class='btn btn-lg btn-primary'>Download Link </a>"
             clearInterval(window.refreshId);
             var downloadBox = document.getElementById("download-now");
             downloadBox.style.display = "none";
