@@ -186,7 +186,7 @@ router.get("/:category/:name/download/get", (req, res) => {
         let filename = image.filename.trim() + "." + ext;
         image.downloads = image.downloads + 1;
         image.save();
-        console("sec hit");
+        console.log(image);
         res.download("public/uploads/" + image.referenceFile, filename);
       }
     );
