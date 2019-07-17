@@ -33,6 +33,11 @@ if (typeof process.env.NODE_ENV == "undefined") {
     });
 }
 
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+
 let apps = [];
 let presets = [];
 let ringtones = [];
@@ -312,6 +317,7 @@ Image.find({}, (err, files) => {
                                             console.log(docs);
                                             console.log("============================================================================");
                                             console.log("============================================================================");
+                                            console.log(`Date: ${dateTime}`);
                                             process.exit(0);
                                         });
 
