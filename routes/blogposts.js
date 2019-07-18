@@ -2,12 +2,16 @@ const draftPost = require("../models/postDraft"), //Posts model
     router = require("express").Router(),
     Post = require("../models/post"),
     moment = require("moment-timezone"),
-    isLoggedIn = require("../middlewares/index").isLoggedIn,
+    isLoggedIn = require("../middlewares").isLoggedIn,
     multer = require("multer"),
     path = require("path"),
     Data = require("../models/data"),
-    deleteFromSystem = require("../imports/deleteFromSystem");
+    deleteFromSystem = require("../imports/deleteFromSystem"),
+    onError = require("../middlewares").onError;
 
+const {
+    INTERNAL_SERVER_ERROR, PAGE_NOT_FOUND
+} = require("../imports/config").errorCodes;
 
 const thumbnailStorage = multer.diskStorage({
     destination: "./public/thumbnails",
@@ -25,7 +29,6 @@ const upload = multer({
 }).array("upload", 10);
 
 
-
 router.get("/author/panel", isLoggedIn, (req, res) => {
     res.render("adminPanel", {
         title: "CPanel for author"
@@ -33,14 +36,10 @@ router.get("/author/panel", isLoggedIn, (req, res) => {
 });
 
 router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
-
-
     if (req.params.type === "unpublished") {
-
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Couldn't preview post");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
             res.render("preview", {
@@ -48,12 +47,10 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
                 status: "unpublished"
             });
         });
-
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Couldn't preview post");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
             res.render("preview", {
@@ -62,18 +59,16 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        req.flash("error", "Unknown Category!");
-        res.redirect("/");
+        onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+        return;
     }
 });
 
 router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
-
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Error retrieving Images!");
-                res.redirect("/");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
             res.render("blogImages", {
@@ -85,8 +80,7 @@ router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Error retrieving Images!");
-                res.redirect("/");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
             res.render("blogImages", {
@@ -96,8 +90,7 @@ router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        req.flash("error", "Unknown Category!");
-        res.redirect("/");
+        onError(res, INTERNAL_SERVER_ERROR, "Check URL and try again.");
     }
 });
 
@@ -108,38 +101,39 @@ router.get("/blogs/images/upload/:type/:id", isLoggedIn, (req, res) => {
     });
 });
 
-
 router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
-
     if (req.params.type === "unpublished") {
-
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "No post found with that id!");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
-            if (req.params.index >= post.assets.length || req.params.length < req.params.length) {
-                req.flash("error", "Index error!");
-                res.redirect("back");
+            if (
+                req.params.index >= post.assets.length ||
+                req.params.length < req.params.length
+            ) {
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
             var removed = post.assets.splice(req.params.index, 1);
             post.save();
             deleteFromSystem("thumbnail", removed[0]["filename"]);
-            req.flash("success", `Image <strong>${removed[0]["filename"]}</strong> removed!`);
+            req.flash(
+                "success",
+                `Image <strong>${removed[0]["filename"]}</strong> removed!`
+            );
             res.redirect("back");
         });
-
     } else if (req.params.type === "published") {
-
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "No post found with that id!");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
                 return;
             }
-            if (req.params.index >= post.assets.length || req.params.length < req.params.length) {
+            if (
+                req.params.index >= post.assets.length ||
+                req.params.length < req.params.length
+            ) {
                 req.flash("error", "Index error!");
                 res.redirect("back");
                 return;
@@ -147,89 +141,83 @@ router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
             var removed = post.assets.splice(req.params.index, 1);
             post.save();
             deleteFromSystem("thumbnail", removed[0]["filename"]);
-            req.flash("success", `Image <strong>${removed[0]["filename"]}</strong> removed!`);
+            req.flash(
+                "success",
+                `Image <strong>${removed[0]["filename"]}</strong> removed!`
+            );
             res.redirect("back");
         });
-
     } else {
-        req.flash("error", "Check URL.");
-        res.redirect("back");
+        onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
         return;
     }
 });
 
-
 router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
-        upload(req, res, (err) => {
+        upload(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload images..!");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to upload images.");
                 return;
             } else {
                 draftPost.findOne({
                     _id: req.params.id
-                }, (err, post) => {
-                    if (err) {
-                        req.flash("error", "Unable to find post check URL!");
-                        return res.redirect("/posts/new");
-                    }
+                },
+                    (err, post) => {
+                        if (err) {
+                            req.flash("error", "Unable to find post check URL!");
+                            return res.redirect("/posts/new");
+                        }
 
-                    req.files.forEach((file) => {
-                        post.assets.push({
-                            filename: file.filename
+                        req.files.forEach(file => {
+                            post.assets.push({
+                                filename: file.filename
+                            });
                         });
-                    });
-                    post.published = false;
-                    post.save();
-                    req.flash("success", "Images added!");
-                    res.redirect("/blogs/images/unpublished/" + req.params.id);
-                });
-
+                        post.published = false;
+                        post.save();
+                        req.flash("success", "Images added!");
+                        res.redirect("/blogs/images/unpublished/" + req.params.id);
+                    }
+                );
             }
         });
     } else if (req.params.type === "published") {
-        upload(req, res, (err) => {
+        upload(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload images..!");
-                res.redirect("back");
+                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Unable to upload images.");
                 return;
             } else {
                 Post.findOne({
                     _id: req.params.id
-                }, (err, post) => {
-                    if (err || !post) {
-                        
-                        req.flash("error", "Unable to find post check URL!");
-                        return res.redirect("/posts/new");
-                    }
+                },
+                    (err, post) => {
+                        if (err || !post) {
+                            return onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to upload images.");
+                        }
 
-                    req.files.forEach((file) => {
-                        post.assets.push({
-                            filename: file.filename
+                        req.files.forEach(file => {
+                            post.assets.push({
+                                filename: file.filename
+                            });
                         });
-                    });
-                    post.published = false;
-                    post.save();
-                    req.flash("success", "Images added!");
-                    res.redirect("/blogs/images/published/" + req.params.id);
-                });
+                        post.published = false;
+                        post.save();
+                        req.flash("success", "Images added!");
+                        res.redirect("/blogs/images/published/" + req.params.id);
+                    }
+                );
             }
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to find that post.");
     }
 });
 
-
 router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
     draftPost.findById(req.params.id, (err, post) => {
-        
         if (err) {
-            req.flash("error", "No post found" + err);
-            res.redirect("/author/panel");
-            return;
+            return onError(res, INTERNAL_SERVER_ERROR, "Selected post not found. Message admin.");
         }
         Post.create({
             author: post.author,
@@ -243,29 +231,27 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
             tags: post.tags,
             customUrl: post.customUrl,
             published: true
-        }, (err, post) => {
-            
-            if (err) {
-                
-                req.flash("error", "Unable to publish!" + err);
-                res.redirect("/author/panel");
-                return;
-            }
+        },
+            (err, post) => {
+                if (err) {
+                    return onError(res, INTERNAL_SERVER_ERROR, "Couldn't publish post. Try again later.");
+                }
 
-            req.flash("success", "Post Published and removed from Unpublished Posts!");
-            res.redirect("/author/panel");
-        });
+                req.flash(
+                    "success",
+                    "Post Published and removed from Unpublished Posts!"
+                );
+                res.redirect("/author/panel");
+            }
+        );
         post.remove();
     });
 });
 
-
 router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
     draftPost.find({}, (err, posts) => {
         if (err) {
-            req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
-            res.render("/author/panel");
-            return;
+            return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
         }
         res.render("postsList", {
             title: "Unpublished Posts",
@@ -273,16 +259,12 @@ router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
             moment,
             status: "unpublished"
         });
-        
-
     });
 });
 router.get("/blogs/list/published", isLoggedIn, isLoggedIn, (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
-            req.flash("warning", "Cannot process at the moment! Contact the ADMIN ASAP! <br> ERROR: <br>" + err);
-            res.render("/author/panel");
-            return;
+            return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
         }
         res.render("postsList", {
             title: "Published Posts",
@@ -290,8 +272,6 @@ router.get("/blogs/list/published", isLoggedIn, isLoggedIn, (req, res) => {
             moment,
             status: "published"
         });
-        
-
     });
 });
 
@@ -299,9 +279,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Error finding posts!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get post for editing. Contact admin.");
             }
             res.render("editPost", {
                 post,
@@ -311,9 +289,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Error finding posts!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get post for editing contact admin.");
             }
             res.render("editPost", {
                 post,
@@ -321,8 +297,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
     }
 });
 
@@ -330,21 +305,25 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, returnedPost) => {
             if (err) {
-                req.flash("error", "Error finding post!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
             }
             const post = {
                 title: req.body.title,
                 content: req.body.content,
-                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase(),
+                customUrl: req.body.customUrl
+                    .trim()
+                    .split(" ")
+                    .join("-")
+                    .toLowerCase(),
                 tags: req.body.tags.toUpperCase()
-            }
+            };
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6 && String(name) !== "tags") {
                     res.send({
                         status: 0,
-                        message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
+                        message: "Less than <strong>six</strong> characters not allowed in " +
+                            name +
+                            "!"
                     });
                     return;
                 }
@@ -353,13 +332,14 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             if (post.title.length > 104) {
                 res.send({
                     status: 0,
-                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
+                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " +
+                        post.title.length
                 });
                 return;
             }
             post.author = req.user.username;
             post.authorId = req.user._id;
-            draftPost.findByIdAndUpdate(req.params.id, post, (err) => {
+            draftPost.findByIdAndUpdate(req.params.id, post, err => {
                 if (err) {
                     res.send({
                         status: 0,
@@ -368,7 +348,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
                 res.send({
-                    status: 1,
+                    status: 1
                 });
                 returnedPost.published = false;
                 returnedPost.save();
@@ -378,21 +358,25 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, returnedPost) => {
             if (err) {
-                req.flash("error", "Error finding post!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
             }
             const post = {
                 title: req.body.title,
                 content: req.body.content,
-                customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase(),
+                customUrl: req.body.customUrl
+                    .trim()
+                    .split(" ")
+                    .join("-")
+                    .toLowerCase(),
                 tags: req.body.tags.toUpperCase()
-            }
+            };
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6 && String(name) !== "tags") {
                     res.send({
                         status: 0,
-                        message: "Less than <strong>six</strong> characters not allowed in " + name + "!"
+                        message: "Less than <strong>six</strong> characters not allowed in " +
+                            name +
+                            "!"
                     });
                     return;
                 }
@@ -400,13 +384,14 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             if (post.title.length > 104) {
                 res.send({
                     status: 0,
-                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
+                    message: "More than <strong>104</strong> characters not allowed in Title Current length:   " +
+                        post.title.length
                 });
                 return;
             }
             post.author = req.user.username;
             post.authorId = req.user._id;
-            Post.findByIdAndUpdate(req.params.id, post, (err) => {
+            Post.findByIdAndUpdate(req.params.id, post, err => {
                 if (err) {
                     res.send({
                         status: 0,
@@ -415,25 +400,21 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     return;
                 }
                 res.send({
-                    status: 1,
+                    status: 1
                 });
                 return;
             });
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, "IBM Error", "Check URL and try again.");
     }
-
 });
 
 router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Couldn't delete post!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "The selected post is not present in Database.");
             }
             res.render("deletePost", {
                 id: req.params.id,
@@ -443,9 +424,7 @@ router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                req.flash("error", "Couldn't delete post!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "The selected post is not present in Database.");
             }
             res.render("deletePost", {
                 id: req.params.id,
@@ -453,55 +432,55 @@ router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, "IBM Error", "Check URL and try again.");
     }
-
-
-
 });
 
 router.delete("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
-
     if (req.params.type === "unpublished") {
         draftPost.findOneAndDelete({
             _id: req.params.id
-        }, (err, post) => {
-            if (err) {
-                req.flash("error", "This type of actions not allowed against this site quit now!");
-                res.redirect("back");
-                return;
+        },
+            (err, post) => {
+                if (err) {
+                    req.flash(
+                        "error",
+                        "This type of actions not allowed against this site quit now!"
+                    );
+                    res.redirect("back");
+                    return;
+                }
+                if (typeof post.image !== "undefined") {
+                    deleteFromSystem("thumbnail", post.image);
+                }
+                req.flash("success", "Post successfully deleted!");
+                res.redirect("/blogs/list/unpublished");
             }
-            if (typeof post.image !== "undefined") {
-                deleteFromSystem("thumbnail", post.image);
-
-            }
-            req.flash("success", "Post successfully deleted!");
-            res.redirect("/blogs/list/unpublished");
-        });
+        );
     } else if (req.params.type === "published") {
         Post.findOneAndDelete({
             _id: req.params.id
-        }, (err, post) => {
-            if (err || !post) {
-                req.flash("error", "This type of actions not allowed against this site quit now!");
-                res.redirect("back");
-                return;
+        },
+            (err, post) => {
+                if (err || !post) {
+                    req.flash(
+                        "error",
+                        "This type of actions not allowed against this site quit now!"
+                    );
+                    res.redirect("back");
+                    return;
+                }
+                if (typeof post.image !== "undefined") {
+                    deleteFromSystem("thumbnail", post.image);
+                }
+                req.flash("success", "Post successfully deleted!");
+                res.redirect("/blogs/list/published");
             }
-            if (typeof post.image !== "undefined") {
-                deleteFromSystem("thumbnail", post.image);
-
-            }
-            req.flash("success", "Post successfully deleted!");
-            res.redirect("/blogs/list/published");
-        });
+        );
     } else {
         req.flash("error", "Cannot find any post.. Contact admin!");
         res.redirect("/");
     }
-
-
-
 });
 router.get("/post", (req, res) => {
     res.render("post");
@@ -525,14 +504,20 @@ router.post("/posts", isLoggedIn, (req, res) => {
         title: req.body.title,
         content: req.body.content,
         tags: req.body.tags,
-        customUrl: req.body.customUrl.trim().split(" ").join("-").toLowerCase()
-    }
+        customUrl: req.body.customUrl
+            .trim()
+            .split(" ")
+            .join("-")
+            .toLowerCase()
+    };
 
     for (const name of Object.keys(post)) {
         if (post[name].trim().length <= 6 && String(name) !== "tags") {
             res.send({
                 status: 0,
-                message: "Less than <strong>six</strong> characters not allowed in " + name + "!",
+                message: "Less than <strong>six</strong> characters not allowed in " +
+                    name +
+                    "!"
             });
             return;
         }
@@ -541,12 +526,12 @@ router.post("/posts", isLoggedIn, (req, res) => {
     if (post.title.length > 104) {
         res.send({
             status: 0,
-            message: "More than <strong>104</strong> characters not allowed in Title Current length:   " + post.title.length
+            message: "More than <strong>104</strong> characters not allowed in Title Current length:   " +
+                post.title.length
         });
         return;
     }
 
-    
     post.created = moment();
     post.author = req.user.username;
     post.authorId = req.user._id;
@@ -558,183 +543,156 @@ router.post("/posts", isLoggedIn, (req, res) => {
                 status: 0,
                 message: "Error submitting post! Report it to admin ASAP!"
             });
-            
         } else {
             res.render("newPost", {
                 post: returnedPost
             });
         }
     });
-
 });
-
-
 
 router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
     let id = req.params.id;
     if (req.params.type === "unpublished") {
-        thumbnail(req, res, (err) => {
+        thumbnail(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload file!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
             } else {
                 draftPost.findOne({
                     _id: id
-                }, (err, post) => {
-                    if (err) {
-                        
-                        req.flash("error", "Unable to find post check URL!");
-                        return res.redirect("/posts/new");
+                },
+                    (err, post) => {
+                        if (err) {
+                            return onError(res, INTERNAL_SERVER_ERROR, "Error contacting database. Contact admin.");
+                        }
+                        post.image = req.file.filename;
+                        post.save();
+                        req.flash("success", "Post successfully created!");
+                        res.redirect("/author/panel");
                     }
-                    post.image = req.file.filename;
-                    post.save();
-                    req.flash("success", "Post successfully created!");
-                    res.redirect("/author/panel");
-                });
-
+                );
             }
         });
     } else if (req.params.type === "published") {
-        thumbnail(req, res, (err) => {
+        thumbnail(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload file!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
             } else {
                 Post.findOne({
                     _id: id
-                }, (err, post) => {
-                    if (err || post) {
-                        
-                        req.flash("error", "Unable to find post check URL!");
-                        return res.redirect("/posts/new");
-                    }
-                    post.image = req.file.filename;
-                    post.save();
-                    req.flash("success", "Post successfully created!");
-                    res.redirect("/author/panel");
-                });
+                },
+                    (err, post) => {
+                        if (err || post) {
+                            return onError(res, INTERNAL_SERVER_ERROR, "The post was not found.");
 
+                        }
+                        post.image = req.file.filename;
+                        post.save();
+                        req.flash("success", "Post successfully created!");
+                        res.redirect("/author/panel");
+                    }
+                );
             }
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, "IBM Error", "Check URL and try again.");
     }
-
-
 });
 
 router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
     let id = req.params.id;
 
     if (req.params.type === "unpublished") {
-        thumbnail(req, res, (err) => {
+        thumbnail(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload file!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
             } else {
                 draftPost.findOne({
                     _id: id
-                }, (err, post) => {
-                    if (err) {
-                        req.flash("error", "Unable to find post check URLddddddddddd!");
-                        // deleteFromSystem("thumbnail", req.file.filename);
-                        return res.redirect("/posts/new");
-                    }
-                    if (typeof post.image !== "undefined") {
-                        deleteFromSystem("thumbnail", post.image);
-                    }
+                },
+                    (err, post) => {
+                        if (err) {
+                            return onError(res, INTERNAL_SERVER_ERROR, "Database Error.");
+                        }
+                        if (typeof post.image !== "undefined") {
+                            deleteFromSystem("thumbnail", post.image);
+                        }
 
-
-                    post.image = req.file.filename;
-                    post.save();
-                    req.flash("success", "Post successfully updated!");
-                    res.redirect("/blogs/list/unpublished");
-                });
+                        post.image = req.file.filename;
+                        post.save();
+                        req.flash("success", "Post successfully updated!");
+                        res.redirect("/blogs/list/unpublished");
+                    }
+                );
             }
         });
     } else if (req.params.type === "published") {
-        thumbnail(req, res, (err) => {
+        thumbnail(req, res, err => {
             if (err) {
-                req.flash("error", "Couldn't upload file!");
-                res.redirect("back");
-                return;
+                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
             } else {
                 Post.findOne({
                     _id: id
-                }, (err, post) => {
-                    if (err || !post) {
-                        req.flash("error", "Unable to find post check URLddddddddddd!");
-                        return res.redirect("/posts/new");
+                },
+                    (err, post) => {
+                        if (err || !post) {
+                            return onError(res, INTERNAL_SERVER_ERROR, "Post not found in Database.");
+                        }
+                        if (typeof post.image !== "undefined") {
+                            deleteFromSystem("thumbnail", post.image);
+                        }
+                        post.image = req.file.filename;
+                        post.save();
+                        req.flash("success", "Post successfully updated!");
+                        res.redirect("/blogs/list/published");
                     }
-                    if (typeof post.image !== "undefined") {
-                        deleteFromSystem("thumbnail", post.image);
-                    }
-                    post.image = req.file.filename;
-                    post.save();
-                    req.flash("success", "Post successfully updated!");
-                    res.redirect("/blogs/list/published");
-                });
+                );
             }
         });
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, "IBM Error", "Check URL and try again.");
     }
-
-
 });
 
 router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
-
     if (req.params.type === "unpublished") {
         draftPost.findOne({
             _id: req.params.id
-        }, (err, post) => {
-            if (err || !post) {
-                req.flash("error", "Couldn't find post!");
-                res.redirect("back");
-                return;
+        },
+            (err, post) => {
+                if (err || !post) {
+                    return onError(res, INTERNAL_SERVER_ERROR, "Post not found.");
+                }
+                res.render("updatePostImage", {
+                    post,
+                    status: "unpublished"
+                });
             }
-            res.render("updatePostImage", {
-                post,
-                status: "unpublished"
-            });
-        });
+        );
     } else if (req.params.type === "published") {
         Post.findOne({
             _id: req.params.id
-        }, (err, post) => {
-            if (err || !post) {
-                req.flash("error", "Couldn't find post!");
-                res.redirect("back");
-                return;
+        },
+            (err, post) => {
+                if (err || !post) {
+                    return onError(res, INTERNAL_SERVER_ERROR, "Post not found.");
+                }
+                res.render("updatePostImage", {
+                    post,
+                    status: "published"
+                });
             }
-            res.render("updatePostImage", {
-                post,
-                status: "published"
-            });
-        });
+        );
     } else {
-        req.flash("error", "Cannot find any post.. Contact admin!");
-        res.redirect("/");
+        return onError(res, "IBM Error", "Check URL and try again.");
     }
-
 });
-
-
-
 
 // Routes for the public
 
-
-
 router.get("/blogs", (req, res) => {
     Post.find({})
-        .then((posts) => {
+        .then(posts => {
             posts = posts.reverse();
             var last = posts.length / 4;
 
@@ -744,7 +702,6 @@ router.get("/blogs", (req, res) => {
                 last = Math.floor(last);
             }
 
-
             let recommended = {};
             Data.find({})
                 .then(data => {
@@ -753,7 +710,7 @@ router.get("/blogs", (req, res) => {
                         title: "Latest And Top Blog Posts",
                         keywords: "Latest posts, blog posts, tech, technology, products, mi, apple, android",
                         description: "Read latest posts on Android, technology, security, Apple and mobile devices",
-                        posts: posts.splice(0,4),
+                        posts: posts.splice(0, 4),
                         recommended,
                         moment,
                         next: 2,
@@ -765,27 +722,23 @@ router.get("/blogs", (req, res) => {
                 .catch(err => {
                     req.flash("error", "Internal Server error encountered!");
                     res.redirect("/");
-                })
+                });
         })
         .catch(err => {
-            req.flash("error", "Internal Server error encountered!");
-            res.redirect("/");
-        })
+            return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+        });
 });
-
 
 router.get("/blogs/:customUrl", (req, res) => {
     const customUrl = req.params.customUrl.trim().toLowerCase();
 
     Post.findOne({
-            customUrl: customUrl
-        })
-        .then((post) => {
-
+        customUrl: customUrl
+    })
+        .then(post => {
             Post.find({}, (err, posts) => {
                 if (err) {
-                    req.flash("error", "Please check your url and try again!");
-                    return res.redirect("/blogs");
+                    return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
                 }
 
                 let latest = posts.splice(posts.length - 3, posts.length);
@@ -794,30 +747,23 @@ router.get("/blogs/:customUrl", (req, res) => {
                     latest,
                     moment,
                     title: post.title,
-                    description: post.content.replace(/<[^>]*>?/gm, ''),
+                    description: post.content.replace(/<[^>]*>?/gm, ""),
                     keywords: post.tags.toLowerCase()
                 });
-                
             });
             post.views += 1;
             post.save();
         })
         .catch(err => {
-            req.flash("error", "Please check your url and try again!");
-            res.redirect("/blogs");
+            return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
         });
-
 });
-
-
 
 router.get("/blogs/page/:page", (req, res) => {
     let pagenumber = Math.floor(Number(req.params.page));
 
     if (isNaN(pagenumber)) {
-        req.flash("error", "Invalid Page Number!");
-        res.redirect("back");
-        return;
+        return onError(res, "IBM Error", "Please check your URL and try again.");
     }
 
     Post.find({}, (err, posts) => {
@@ -832,9 +778,7 @@ router.get("/blogs/page/:page", (req, res) => {
         let end = pagenumber * 4;
 
         if (end - posts.length > 4) {
-            req.flash("error", "No page number " + pagenumber + " found!");
-            res.redirect("/contents");
-            return;
+            return onError(res, PAGE_NOT_FOUND, "Page number limit exceeded.");
         } else {
             if (totalPages === pagenumber) {
                 end = posts.length;
@@ -855,15 +799,9 @@ router.get("/blogs/page/:page", (req, res) => {
                 });
             })
             .catch(err => {
-                req.flash("error", "Internal Server error encountered!");
-                res.redirect("/");
-            })
-
+                return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+            });
     });
-
 });
-
-
-
 
 module.exports = router;

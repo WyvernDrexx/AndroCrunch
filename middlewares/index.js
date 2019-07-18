@@ -8,6 +8,12 @@ const middlewares = {
         }else{
             next();
         }
+    },
+    onError: function(res, code, message){
+        res.render("error", {
+            message,
+            code
+        });  
     }
 }
 
