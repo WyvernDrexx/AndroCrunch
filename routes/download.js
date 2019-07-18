@@ -1,28 +1,20 @@
 const router = require("express").Router(),
-    isLoggedIn = require("../middlewares/index").isLoggedIn,
-    multer = require("multer"),
-    path = require("path"),
-    storage = multer.diskStorage({
-        destination: "./public/uploads",
-        filename: (req, file, cb) => {
-            cb(null, Date.now() + path.extname(file.originalname));
-        }
-    }),
-    thumbnailStorage = multer.diskStorage({
-        destination: "./public/thumbnails",
-        filename: (req, file, cb) => {
-            cb(null, Date.now() + path.extname(file.originalname));
-        }
-    }),
     Image = require("../models/uploadsSchema").Image,
     Audio = require("../models/uploadsSchema").Audio,
     App = require("../models/uploadsSchema").App,
     Preset = require("../models/uploadsSchema").Preset,
     moment = require("moment"),
     Data = require("../models/data"),
-    deleteFromSystem = require("../imports/deleteFromSystem");
+    rateLimit = require("express-rate-limit");
 
-router.get("/contents/:category/:name", (req, res) => {
+
+const downloadLimiter = rateLimit({
+    windowMs:30000,
+    max: 15,
+    message: "Too many download requests please wait for sometime and try again. This is just a DOS Protection nothing else."
+});
+
+router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
     let category = req.params.category.toLowerCase();
     let name = req.params.name;
 
@@ -148,8 +140,7 @@ router.get("/contents/:category/:name", (req, res) => {
     }
 });
 
-router.get("/:category/:name/download/get", (req, res) => {
-    console.log("hit");
+router.get("/:category/:name/download/get", downloadLimiter, (req, res) => {
     let category = req.params.category.toLowerCase();
     let name = req.params.name.toLowerCase();
     if (typeof req.headers.referer === "undefined") {
