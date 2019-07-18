@@ -29,13 +29,13 @@
     "express-sanitizer": "^1.0.5",
     "express-session": "^1.16.2",
     "forever": "^1.0.0",
-    "helmet": "^3.16.0",
+    "helmet": "^3.19.0",
     "jquery": "^3.4.1",
     "method-override": "^3.0.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25",
-    "mongoose": "^5.5.2",
-    "multer": "^1.4.1",
+    "moment-timezone": "^0.5.26",
+    "mongoose": "^5.6.5",
+    "multer": "^1.4.2",
     "nodemon": "^1.18.11",
     "package.json": "^2.0.1",
     "passport": "^0.4.0",
@@ -43,7 +43,7 @@
     "passport-local-mongoose": "^5.0.1",
     "serve-favicon": "^2.5.0",
     "sharp": "^0.22.1",
-    "snyk": "^1.163.3"
+    "snyk": "^1.193.3"
   },
   "devDependencies": {}
 }
