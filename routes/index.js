@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 
         res.render("index", {
           title:
-            "AndroCrunch Andro Crunch | Beyond The Infinity |  Official Website of AndroCrunch Youtube",
+            "AndroCrunch - Beyond The Infinity |  Official Website of AndroCrunch Youtube",
           trending: data[0].list.trending,
           latest,
           moment,
