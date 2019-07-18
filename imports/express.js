@@ -7,9 +7,7 @@ const methodOverride = require('method-override'),
     cookieSession = require("cookie-session"),
     flash = require("connect-flash"),
     helmet = require("helmet"),
-    compress = require("compression"),
-    expressSession = require("express-session");
-
+    compress = require("compression");
 server.use(helmet());
 server.use(express.static('public'));
 server.set("view engine", "ejs");
