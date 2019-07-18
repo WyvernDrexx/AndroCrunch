@@ -1076,7 +1076,9 @@ a:focus {
 .pt-6 {
     padding-top: 15rem
 }
-
+.text-underline{
+    text-decoration: underline !important;
+}
 .plus-symbol {
     font-weight: 400;
     font-size: 25px;
