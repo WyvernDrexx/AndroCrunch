@@ -77,7 +77,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
             console.log("[+] Another server listening on port 80");
         });
 
-    server.use((req, res, next)){
+    server.use((req, res, next)=>{
         if (req.headers.host.split("www").length === 1) {
             res.writeHead(301, {
                 Location: "https://www." + req.headers["host"] + req.url
@@ -86,7 +86,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         }else{
             next();
         }
-    }
+    });
 
 } else {
     server.listen(PORT, () => {
