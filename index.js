@@ -69,7 +69,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
   http
     .createServer(function(req, res) {
       res.writeHead(301, {
-        Location: "https://" + req.headers["host"] + req.url
+        Location: "https://www" + req.headers["host"] + req.url
       });
       res.end();
     })
