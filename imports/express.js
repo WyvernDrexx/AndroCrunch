@@ -37,5 +37,7 @@ server.use((req, res, next) => {
     res.setHeader("Cache-Control", "public, max-age=60");
     next();
 });
+
+
 server.use(compress());
 module.exports = server;
