@@ -77,19 +77,6 @@ if (typeof process.env.NODE_ENV === "undefined") {
             console.log("[+] Another server listening on port 80");
         });
 
-    server.use((req, res, next)=>{
-        console.log("hit");
-        if (req.headers.hostname === "androcrunch.in") {
-            console.log("hit")
-            res.writeHead(301, {
-                Location: "https://www." + req.headers["hostname"] + req.url
-            });
-            res.end();
-        }else{
-            next();
-        }
-    });
-
 } else {
     server.listen(PORT, () => {
         console.log(`Server listening on ${process.env.NODE_ENV} and PORT ${PORT}`);
