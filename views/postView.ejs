@@ -40,15 +40,15 @@
                 </section>
             </div>
             <div class="col-sm-4 blog-sub-content h-50 px-3 px-sm-4">
-                <a role="link" href="/blogs/<%= latest[2].customUrl %>">
+                <a role="link" href="/blogs/<%= trending.customUrl %>">
                     <div class="card mx-sm-1 mt-5 ">
-                        <img src="/thumbnails/<%= latest[2].image %>" class="card-img-top" alt="<%= latest[2].title %>">
+                        <img src="/thumbnails/<%= trending.image %>" class="card-img-top" alt="<%= trending.title %>">
                         <div class="card-body">
-                            <p class="tags"><%= latest[2].tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
-                            <h5 class="card-title"><%= latest[2].title %></h5>
-                            <p class="card-text"><%= latest[2].content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..
+                            <p class="tags"><%= trending.tags.split(" ").splice(0,2).join(", ").toUpperCase() %></p>
+                            <h5 class="card-title"><%= trending.title %></h5>
+                            <p class="card-text"><%= trending.content.replace(/<[^>]*>?/gm, '').substring(0, 100); %>..
                             </p>
-                            <p class="date"> <%= moment.tz(latest[2].created, "Asia/Calcutta").format("MMMM Do YYYY") %>
+                            <p class="date"> <%= moment.tz(trending.created, "Asia/Calcutta").format("MMMM Do YYYY") %>
                             </p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
     <div class="container-fluid bg-white blog-posts pb-6">
         <h1 class="display-5 text-center text-dark mb-5 pt-5"><span>Latest Blog Posts</span></h1>
         <div class="row main-content justify-content-center">
-            <% latest.forEach(post => { %>
+            <% latest.reverse().forEach(post => { %>
             <div class="col-md">
                 <a href="/blogs/<%= post.customUrl %>">
                     <div class="card mx-sm-1 mt-5 ">

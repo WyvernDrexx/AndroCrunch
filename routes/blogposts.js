@@ -740,15 +740,17 @@ router.get("/blogs/:customUrl", (req, res) => {
                 if (err) {
                     return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
                 }
-
-                let latest = posts.splice(posts.length - 3, posts.length);
-                res.render("postView", {
-                    post,
-                    latest,
-                    moment,
-                    title: post.title,
-                    description: post.content.replace(/<[^>]*>?/gm, ""),
-                    keywords: post.tags.toLowerCase().split(" ").join(", ")
+                Data.find({}, (err, data) => {
+                    let latest = posts.splice(posts.length - 3, posts.length);
+                    res.render("postView", {
+                        post,
+                        latest,
+                        moment,
+                        title: post.title,
+                        description: post.content.replace(/<[^>]*>?/gm, ""),
+                        keywords: post.tags.toLowerCase().split(" ").join(", "),
+                        trending: data[0].list.trending.blogs[0]
+                    });
                 });
             });
             post.views += 1;
