@@ -69,7 +69,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
     http
         .createServer(function (req, res) {
             res.writeHead(301, {
-                Location: "https://www." + req.headers["host"] + req.url
+                Location: "https://" + req.headers["host"] + req.url
             });
             res.end();
         })
@@ -78,7 +78,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         });
 
     server.use((req, res, next)=>{
-        if (req.headers.host.split("www").length === 1) {
+        if (req.headers.host === "androcrunch.in") {
             res.writeHead(301, {
                 Location: "https://www." + req.headers["host"] + req.url
             });

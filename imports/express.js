@@ -35,6 +35,9 @@ server.use((req, res, next) => {
 
 server.use((req, res, next) => {
     res.setHeader("Cache-Control", "public, max-age=60");
+    if(req.host === "androcrunch.in"){
+        
+    }
     next();
 });
 
