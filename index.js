@@ -78,6 +78,7 @@ if (typeof process.env.NODE_ENV === "undefined") {
         });
 
     server.use((req, res, next)=>{
+        console.log("hit");
         if (req.headers.hostname === "androcrunch.in") {
             console.log("hit")
             res.writeHead(301, {
