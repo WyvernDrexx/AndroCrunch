@@ -36,15 +36,15 @@ server.use((req, res, next) => {
 server.use((req, res, next) => {
     res.setHeader("Cache-Control", "public, max-age=60");
     console.log("hit");
-    if (req.headers.hostname === "androcrunch.in") {
-        console.log("hit");
-        res.writeHead(301, {
-            Location: "https://www." + req.headers["hostname"] + req.url
-        });
-        res.end();
-    }else{
-        next();
-    }
+    // if (req.headers.hostname === "androcrunch.in") {
+    //     console.log("hit");
+    //     res.writeHead(301, {
+    //         Location: "https://www." + req.headers["hostname"] + req.url
+    //     });
+    //     res.end();
+    // }else{
+    //     next();
+    // }
     next();
 });
 
