@@ -42,7 +42,8 @@ router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
                         keywords: image.filename +
                             ", latest, wallpapers,  apps, android, free, download, gta, san andreas, best, high quality, androcrunch",
                         description: image.description,
-                        trending: data[0].list.trending
+                        trending: data[0].list.trending,
+                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name
                     });
                 });
             }
