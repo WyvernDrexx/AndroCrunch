@@ -39,7 +39,7 @@ server.use((req, res, next) => {
     if (req.hostname === "androcrunch.in") {
         console.log("hit again");
         res.writeHead(301, {
-            Location: "https://www." + req.headers["hostname"] + req.url
+            Location: "https://www." + req.hostname + req.url
         });
         res.end();
     }else{
