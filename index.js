@@ -77,16 +77,17 @@ if (typeof process.env.NODE_ENV === "undefined") {
             console.log("[+] Another server listening on port 80");
         });
 
-    // server.use((req, res, next)=>{
-    //     if (req.headers.host === "androcrunch.in") {
-    //         res.writeHead(301, {
-    //             Location: "https://www." + req.headers["host"] + req.url
-    //         });
-    //         res.end();
-    //     }else{
-    //         next();
-    //     }
-    // });
+    server.use((req, res, next)=>{
+        if (req.headers.host === "androcrunch.in") {
+            console.log("hit")
+            res.writeHead(301, {
+                Location: "https://www." + req.headers["host"] + req.url
+            });
+            res.end();
+        }else{
+            next();
+        }
+    });
 
 } else {
     server.listen(PORT, () => {
