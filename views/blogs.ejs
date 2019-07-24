@@ -35,7 +35,7 @@
             <div class="col-md">
                 <div class="blog-posts pb-6">
                     <div class="row main-content justify-content-center">
-                        <% for(let i = posts.length - 1; i >= 0; i--){ %>
+                        <% for(let i = 0; i < posts.length; i++){ %>
                         <div class="col-md-6">
                             <a href="/blogs/<%= posts[i].customUrl %>">
                                 <div class="card mx-sm-1 mt-5 ">
