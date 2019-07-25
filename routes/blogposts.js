@@ -750,6 +750,7 @@ router.get("/blogs/:customUrl", (req, res) => {
                 Data.find({}, (err, data) => {
                     let latest = posts.splice(posts.length - 3, posts.length);
                     res.render("postView", {
+                        canonicalUrl: "https://www.androcrunch.in/blogs/" + customUrl,
                         post,
                         latest,
                         moment,
