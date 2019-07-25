@@ -7,37 +7,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#06c">
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="AndroCrunch - Best place for HD wallpapers , ringtones and android apps" />
-    <% if( typeof ogTitle !== "undefined"){ %>
-    <meta property="og:title" content="<%= ogTitle %>" />
-    <% } %>
-    <% if( typeof ogDescription !== "undefined"){ %>
-    <meta property="og:description" content="<%= ogDescription %>" />
-    <% } %>
-    <% if(typeof canonicalUrl !== "undefined"){ %>
-    <meta property="og:url" content="<%= canonicalUrl %>>" />
-    <% } %>
-    <% if( typeof ogImage !== "undefined"){ %>
-    <meta property="og:image" content="<%= ogImage %>" />
-    <% } %>
-    <% if( typeof ogType !== "undefined"){ %>
-    <meta property="og:type" content="<%= ogType %>" />
-    <% }else{%>
-    <meta property="og:type" content="website" />
-    <% } %>
-    
-    <% if(typeof post !== "undefined"){ %>
-    <meta property='article:author' content='https://www.youtube.com/c/AndroCrunch' />
-    <meta property="article:published_time" content="<%= moment(post.created).utc().format('YYYY-MM-DD') %>" />
-        <% post.tags.split(" ").forEach((tag) => { %>
-    <meta property="article:tag" content="<%= tag.toLowerCase() %>" />
-        <% }); %>
-    <% } %>
-
-
-
     <% if(typeof title !== "undefined"){ %>
     <title><%= title %> </title>
     <% }else{ %>
@@ -65,7 +34,33 @@
     <% if(typeof canonicalUrl !== "undefined"){ %>
     <link rel="canonical" href="<%= canonicalUrl %>" />
     <% }%>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="AndroCrunch - Best place for HD wallpapers , ringtones and android apps" />
+    <% if( typeof ogTitle !== "undefined"){ %>
+    <meta property="og:title" content="<%= ogTitle %>" />
+    <% } %>
+    <% if( typeof ogDescription !== "undefined"){ %>
+    <meta property="og:description" content="<%= ogDescription %>" />
+    <% } %>
+    <% if(typeof canonicalUrl !== "undefined"){ %>
+    <meta property="og:url" content="<%= canonicalUrl %>>" />
+    <% } %>
+    <% if( typeof ogImage !== "undefined"){ %>
+    <meta property="og:image" content="<%= ogImage %>" />
+    <% } %>
+    <% if( typeof ogType !== "undefined"){ %>
+    <meta property="og:type" content="<%= ogType %>" />
+    <% }else{%>
+    <meta property="og:type" content="website" />
+    <% } %>
 
+    <% if(typeof post !== "undefined"){ %>
+    <meta property='article:author' content='https://www.youtube.com/c/AndroCrunch' />
+    <meta property="article:published_time" content="<%= moment(post.created).utc().format('YYYY-MM-DD') %>" />
+        <% post.tags.split(" ").forEach((tag) => { %>
+    <meta property="article:tag" content="<%= tag.toLowerCase() %>" />
+        <% }); %>
+    <% } %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144100001-1"></script>
     <script>
