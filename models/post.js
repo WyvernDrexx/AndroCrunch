@@ -31,7 +31,8 @@ const postSchema = new mongoose.Schema({
     views: {
         type: Number,
         default: 0
-    }
+    },
+    metaDescription: String
 });
 
 const Post = mongoose.model("Post", postSchema);

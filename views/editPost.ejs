@@ -22,6 +22,14 @@
             </div>
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
+                    <span class="input-group-text">Meta Description</span>
+                </div>
+                <input type="text" class="form-control" name="metaDescription"
+                    placeholder="MetaDescription show on Google Search" value="<%= post.metaDescription %>"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
                     <span class="input-group-text">Custom Url</span>
                 </div>
                 <input type="text" class="form-control" name="customUrl"
@@ -98,6 +106,7 @@
         let content = $("textarea[name=content]").val();
         let subtitle = $("input[name=subtitle]").val();
         let customUrl = $("input[name=customUrl]").val();
+        let metaDescription = $("input[name=metaDescription]").val();
         let tags = $("input[name=tags]").val();
         let post = {
             title,
@@ -105,7 +114,8 @@
             image,
             content,
             customUrl,
-            tags
+            tags,
+            metaDescription
         }
         $.ajax("/blogs/edit/<%= status %>/<%= post._id %>?_method=PUT", {
             method: "POST",

@@ -230,7 +230,8 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
             created: post.created,
             tags: post.tags,
             customUrl: post.customUrl,
-            published: true
+            published: true,
+            metaDescription: typeof post.metaDescription !== "undefined" ? post.metaDescription : undefined
         },
             (err, post) => {
                 if (err) {
@@ -281,6 +282,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             if (err) {
                 return onError(res, PAGE_NOT_FOUND, "Couldn't get post for editing. Contact admin.");
             }
+            console.log(post);
             res.render("editPost", {
                 post,
                 status: "unpublished"
@@ -291,6 +293,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             if (err) {
                 return onError(res, PAGE_NOT_FOUND, "Couldn't get post for editing contact admin.");
             }
+            console.log(post);
             res.render("editPost", {
                 post,
                 status: "published"
@@ -307,6 +310,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             if (err) {
                 return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
             }
+            console.log(req.body.metaDescription)
             const post = {
                 title: req.body.title,
                 content: req.body.content,
@@ -315,7 +319,8 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     .split(" ")
                     .join("-")
                     .toLowerCase(),
-                tags: req.body.tags.toUpperCase()
+                tags: req.body.tags.toUpperCase(),
+                metaDescription: req.body.metaDescription
             };
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6 && String(name) !== "tags") {
@@ -368,7 +373,8 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
                     .split(" ")
                     .join("-")
                     .toLowerCase(),
-                tags: req.body.tags.toUpperCase()
+                tags: req.body.tags.toUpperCase(),
+                metaDescription: req.body.metaDescription
             };
             for (const name of Object.keys(post)) {
                 if (post[name].trim().length <= 6 && String(name) !== "tags") {
@@ -508,7 +514,8 @@ router.post("/posts", isLoggedIn, (req, res) => {
             .trim()
             .split(" ")
             .join("-")
-            .toLowerCase()
+            .toLowerCase(),
+        metaDescription: req.body.metaDescription
     };
 
     for (const name of Object.keys(post)) {
@@ -749,7 +756,8 @@ router.get("/blogs/:customUrl", (req, res) => {
                         title: post.title,
                         description: post.content.replace(/<[^>]*>?/gm, ""),
                         keywords: post.tags.toLowerCase().split(" ").join(", "),
-                        trending: data[0].list.trending.blogs[0]
+                        trending: data[0].list.trending.blogs[0],
+                        description: typeof post.metaDescription !== "undefined" ? post.metaDescription : post.content
                     });
                 });
             });
