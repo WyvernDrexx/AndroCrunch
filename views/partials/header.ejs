@@ -70,9 +70,12 @@
             "image": "<%= post.image %>",
             "articleBody": "<%= post.content %>",
             "url": "https://www.androcrunch.in/blogs/<%= post.customUrl %>",
+            "author" : "<%= post.author %>",
+            "headline": "<%= post.title %>"
             "publisher": {
                 "@type": "Organization",
-                "name": "<%= post.author %>"
+                "name": "AndroCrunch",
+                "logo": "https://www.androcrunch.in/imgs/logo.png"
             }
         }
     </script>
