@@ -7,7 +7,8 @@ const methodOverride = require('method-override'),
     cookieSession = require("cookie-session"),
     flash = require("connect-flash"),
     helmet = require("helmet"),
-    compress = require("compression");
+    compress = require("compression"),
+    moment = require("moment");
 server.use(helmet());
 server.use(express.static('public'));
 server.set("view engine", "ejs");
@@ -30,6 +31,7 @@ server.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     res.locals.warning = req.flash("warning");
+    res.locals.moment = moment;
     next();
 });
 
