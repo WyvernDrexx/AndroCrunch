@@ -65,6 +65,8 @@
         {
             "@context": "http://schema.org",
             "@type": "Article",
+            "dateModified": "<%= moment(post.created).utc().format('YYYY-MM-DD') %>",
+            "mainEntityOfPage" : "https://www.androcrunch.in/blogs/<%= post.customUrl %>"
             "name": "<%= post.title %>",
             "datePublished": "<%= moment(post.created).utc().format('YYYY-MM-DD') %>",
             "image": "<%= post.image %>",
