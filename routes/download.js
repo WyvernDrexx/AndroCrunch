@@ -43,7 +43,11 @@ router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
                             ", latest, wallpapers,  apps, android, free, download, gta, san andreas, best, high quality, androcrunch",
                         description: image.description,
                         trending: data[0].list.trending,
-                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name
+                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name,
+                        ogTitle: image.filename,
+                        ogDescription: image.description,
+                        ogImage: "https://www.androcrunch.in/thumbnails/" + image.thumbnail,
+                        ogType: "wallpaper"
                     });
                 });
             }
@@ -72,7 +76,12 @@ router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
                         keywords: audio.filename +
                             " | latest, wallpapers, ringtones,  apps, android, free, download, gta, san andreas, androcrunch",
                         description: audio.description,
-                        trending: data[0].list.trending
+                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name,
+                        trending: data[0].list.trending,
+                        ogTitle: audio.filename,
+                        ogDescription: audio.description,
+                        ogImage: "https://www.androcrunch.in/thumbnails/" + audio.thumbnail,
+                        ogType: "music"
                     });
                 });
             }
@@ -100,8 +109,13 @@ router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
                             " Download lightroom presets and use it to personalize your photo collection",
                         keywords: preset.filename +
                             " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
+                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name,
                         description: preset.description,
-                        trending: data[0].list.trending
+                        trending: data[0].list.trending,
+                        ogTitle: preset.filename,
+                        ogDescription: preset.description,
+                        ogImage: "https://www.androcrunch.in/thumbnails/" + preset.thumbnail,
+                        ogType: "presets"
                     });
                 });
             }
@@ -130,7 +144,12 @@ router.get("/contents/:category/:name", downloadLimiter, (req, res) => {
                         keywords: app.filename +
                             " | latest, wallpapers,  apps, android, free, download, gta, san andreas, ",
                         description: app.description,
-                        trending: data[0].list.trending
+                        canonicalUrl: "https://www.androcrunch.in/contents/" + category + "/" + name,
+                        trending: data[0].list.trending,
+                        ogTitle: app.filename,
+                        ogDescription: app.description,
+                        ogImage: "https://www.androcrunch.in/thumbnails/" + app.thumbnail,
+                        ogType: "application"
                     });
                 });
             }

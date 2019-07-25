@@ -7,6 +7,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#06c">
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="AndroCrunch - Best place for HD wallpapers , ringtones and android apps" />
+    <% if( typeof ogTitle !== "undefined"){ %>
+    <meta property="og:title" content="<%= ogTitle %>" />
+    <% } %>
+    <% if( typeof ogDescription !== "undefined"){ %>
+    <meta property="og:description" content="<%= ogDescription %>" />
+    <% } %>
+    <% if(typeof canonicalUrl !== "undefined"){ %>
+    <meta property="og:url" content="<%= canonicalUrl %>>" />
+    <% } %>
+    <% if( typeof ogImage !== "undefined"){ %>
+    <meta property="og:image" content="<%= ogImage %>" />
+    <% } %>
+    <% if( typeof ogType !== "undefined"){ %>
+    <meta property="og:type" content="<%= ogType %>" />
+    <% }else{%>
+    <meta property="og:type" content="website" />
+    <% } %>
+
     <% if(typeof title !== "undefined"){ %>
     <title><%= title %> </title>
     <% }else{ %>
