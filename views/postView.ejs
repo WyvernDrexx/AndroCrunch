@@ -27,7 +27,12 @@
                 <img class="img-thumbnail" src="/thumbnails/<%= post.image %>">
                 <% } %>
                 <h1 class="post-header"><%= post.title %></h1>
-                <p class="small text-gray">By <%= post.author %>
+                <p class="small text-gray">By
+                    <% if(post.author === 'Admin'){ %>
+                    <a style="text-decoration: underline;" class="text-underline" href="https://twitter.com/pickaboots"><%= post.author %></a>
+                    <% }else{ %>
+                    <%= post.author %>
+                    <% } %>
                     <span class="pl-4"><%= moment.tz(post.created, "Asia/Calcutta").format("MMMM Do YYYY") %></span>
                     <span class="ml-4">
                         <i class="fas fa-eye mr-2"></i><%= post.views %>
@@ -56,13 +61,15 @@
                     <div class="advertisement d-flex justify-content-center mt-0 pt-5">
                         <script type="text/javascript">
                             atOptions = {
-                                'key' : '01092e7c5789e336c51bee341b9581fc',
-                                'format' : 'iframe',
-                                'height' : 300,
-                                'width' : 160,
-                                'params' : {}
+                                'key': '01092e7c5789e336c51bee341b9581fc',
+                                'format': 'iframe',
+                                'height': 300,
+                                'width': 160,
+                                'params': {}
                             };
-                            document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bcloudhost.com/01092e7c5789e336c51bee341b9581fc/invoke.js"></scr' + 'ipt>');
+                            document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol ===
+                                    'https:' ? 's' : '') +
+                                '://www.bcloudhost.com/01092e7c5789e336c51bee341b9581fc/invoke.js"></scr' + 'ipt>');
                         </script>
                     </div>
                 </div>
