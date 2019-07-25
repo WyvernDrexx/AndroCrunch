@@ -10,7 +10,7 @@ const draftPost = require("../models/postDraft"), //Posts model
     onError = require("../middlewares").onError;
 
 const {
-    INTERNAL_SERVER_ERROR, PAGE_NOT_FOUND
+    PAGE_NOT_FOUND
 } = require("../imports/config").errorCodes;
 
 const thumbnailStorage = multer.diskStorage({
@@ -39,7 +39,7 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             res.render("preview", {
@@ -50,7 +50,7 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             res.render("preview", {
@@ -59,7 +59,7 @@ router.get("/blogs/preview/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+        onError(res, PAGE_NOT_FOUND, "Page Not Found");
         return;
     }
 });
@@ -68,7 +68,7 @@ router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             res.render("blogImages", {
@@ -80,7 +80,7 @@ router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             res.render("blogImages", {
@@ -90,7 +90,7 @@ router.get("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        onError(res, INTERNAL_SERVER_ERROR, "Check URL and try again.");
+        onError(res, PAGE_NOT_FOUND, "Check URL and try again.");
     }
 });
 
@@ -105,14 +105,14 @@ router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             if (
                 req.params.index >= post.assets.length ||
                 req.params.length < req.params.length
             ) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             var removed = post.assets.splice(req.params.index, 1);
@@ -127,7 +127,7 @@ router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+                onError(res, PAGE_NOT_FOUND, "Page Not Found");
                 return;
             }
             if (
@@ -148,7 +148,7 @@ router.delete("/blogs/images/:type/:id/:index", isLoggedIn, (req, res) => {
             res.redirect("back");
         });
     } else {
-        onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Please try again later.");
+        onError(res, PAGE_NOT_FOUND, "Page Not Found");
         return;
     }
 });
@@ -157,7 +157,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         upload(req, res, err => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to upload images.");
+                onError(res, PAGE_NOT_FOUND, "Internal Server Error,Unable to upload images.");
                 return;
             } else {
                 draftPost.findOne({
@@ -185,7 +185,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         upload(req, res, err => {
             if (err) {
-                onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error, Unable to upload images.");
+                onError(res, PAGE_NOT_FOUND, "Internal Server Error, Unable to upload images.");
                 return;
             } else {
                 Post.findOne({
@@ -193,7 +193,7 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
                 },
                     (err, post) => {
                         if (err || !post) {
-                            return onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to upload images.");
+                            return onError(res, PAGE_NOT_FOUND, "Internal Server Error,Unable to upload images.");
                         }
 
                         req.files.forEach(file => {
@@ -210,14 +210,14 @@ router.post("/blogs/images/:type/:id", isLoggedIn, (req, res) => {
             }
         });
     } else {
-        return onError(res, INTERNAL_SERVER_ERROR, "Internal Server Error,Unable to find that post.");
+        return onError(res, PAGE_NOT_FOUND, "Internal Server Error,Unable to find that post.");
     }
 });
 
 router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
     draftPost.findById(req.params.id, (err, post) => {
         if (err) {
-            return onError(res, INTERNAL_SERVER_ERROR, "Selected post not found. Message admin.");
+            return onError(res, PAGE_NOT_FOUND, "Selected post not found. Message admin.");
         }
         Post.create({
             author: post.author,
@@ -234,7 +234,7 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
         },
             (err, post) => {
                 if (err) {
-                    return onError(res, INTERNAL_SERVER_ERROR, "Couldn't publish post. Try again later.");
+                    return onError(res, PAGE_NOT_FOUND, "Couldn't publish post. Try again later.");
                 }
 
                 req.flash(
@@ -251,7 +251,7 @@ router.post("/blogs/:id/publish", isLoggedIn, (req, res) => {
 router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
     draftPost.find({}, (err, posts) => {
         if (err) {
-            return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
+            return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
         }
         res.render("postsList", {
             title: "Unpublished Posts",
@@ -264,7 +264,7 @@ router.get("/blogs/list/unpublished", isLoggedIn, isLoggedIn, (req, res) => {
 router.get("/blogs/list/published", isLoggedIn, isLoggedIn, (req, res) => {
     Post.find({}, (err, posts) => {
         if (err) {
-            return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
+            return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
         }
         res.render("postsList", {
             title: "Published Posts",
@@ -279,7 +279,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get post for editing. Contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Couldn't get post for editing. Contact admin.");
             }
             res.render("editPost", {
                 post,
@@ -289,7 +289,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get post for editing contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Couldn't get post for editing contact admin.");
             }
             res.render("editPost", {
                 post,
@@ -297,7 +297,7 @@ router.get("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
             });
         });
     } else {
-        return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
+        return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
     }
 });
 
@@ -305,7 +305,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, returnedPost) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
             }
             const post = {
                 title: req.body.title,
@@ -358,7 +358,7 @@ router.put("/blogs/edit/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, returnedPost) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Couldn't get posts contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Couldn't get posts contact admin.");
             }
             const post = {
                 title: req.body.title,
@@ -414,7 +414,7 @@ router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         draftPost.findById(req.params.id, (err, post) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "The selected post is not present in Database.");
+                return onError(res, PAGE_NOT_FOUND, "The selected post is not present in Database.");
             }
             res.render("deletePost", {
                 id: req.params.id,
@@ -424,7 +424,7 @@ router.get("/blogs/delete/:type/:id", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         Post.findById(req.params.id, (err, post) => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "The selected post is not present in Database.");
+                return onError(res, PAGE_NOT_FOUND, "The selected post is not present in Database.");
             }
             res.render("deletePost", {
                 id: req.params.id,
@@ -556,14 +556,14 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         thumbnail(req, res, err => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Unable to upload file at the moment. Contact admin.");
             } else {
                 draftPost.findOne({
                     _id: id
                 },
                     (err, post) => {
                         if (err) {
-                            return onError(res, INTERNAL_SERVER_ERROR, "Error contacting database. Contact admin.");
+                            return onError(res, PAGE_NOT_FOUND, "Error contacting database. Contact admin.");
                         }
                         post.image = req.file.filename;
                         post.save();
@@ -576,14 +576,14 @@ router.post("/post/:type/:id/upload", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         thumbnail(req, res, err => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Unable to upload file at the moment. Contact admin.");
             } else {
                 Post.findOne({
                     _id: id
                 },
                     (err, post) => {
                         if (err || post) {
-                            return onError(res, INTERNAL_SERVER_ERROR, "The post was not found.");
+                            return onError(res, PAGE_NOT_FOUND, "The post was not found.");
 
                         }
                         post.image = req.file.filename;
@@ -605,14 +605,14 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
     if (req.params.type === "unpublished") {
         thumbnail(req, res, err => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Unable to upload file at the moment. Contact admin.");
             } else {
                 draftPost.findOne({
                     _id: id
                 },
                     (err, post) => {
                         if (err) {
-                            return onError(res, INTERNAL_SERVER_ERROR, "Database Error.");
+                            return onError(res, PAGE_NOT_FOUND, "Database Error.");
                         }
                         if (typeof post.image !== "undefined") {
                             deleteFromSystem("thumbnail", post.image);
@@ -629,14 +629,14 @@ router.post("/post/:type/:id/update/image", isLoggedIn, (req, res) => {
     } else if (req.params.type === "published") {
         thumbnail(req, res, err => {
             if (err) {
-                return onError(res, INTERNAL_SERVER_ERROR, "Unable to upload file at the moment. Contact admin.");
+                return onError(res, PAGE_NOT_FOUND, "Unable to upload file at the moment. Contact admin.");
             } else {
                 Post.findOne({
                     _id: id
                 },
                     (err, post) => {
                         if (err || !post) {
-                            return onError(res, INTERNAL_SERVER_ERROR, "Post not found in Database.");
+                            return onError(res, PAGE_NOT_FOUND, "Post not found in Database.");
                         }
                         if (typeof post.image !== "undefined") {
                             deleteFromSystem("thumbnail", post.image);
@@ -661,7 +661,7 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
         },
             (err, post) => {
                 if (err || !post) {
-                    return onError(res, INTERNAL_SERVER_ERROR, "Post not found.");
+                    return onError(res, PAGE_NOT_FOUND, "Post not found.");
                 }
                 res.render("updatePostImage", {
                     post,
@@ -675,7 +675,7 @@ router.get("/blogs/edit/:type/:id/image", isLoggedIn, (req, res) => {
         },
             (err, post) => {
                 if (err || !post) {
-                    return onError(res, INTERNAL_SERVER_ERROR, "Post not found.");
+                    return onError(res, PAGE_NOT_FOUND, "Post not found.");
                 }
                 res.render("updatePostImage", {
                     post,
@@ -725,7 +725,7 @@ router.get("/blogs", (req, res) => {
                 });
         })
         .catch(err => {
-            return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+            return onError(res, PAGE_NOT_FOUND, "Server Error, Please try again later.");
         });
 });
 
@@ -738,7 +738,7 @@ router.get("/blogs/:customUrl", (req, res) => {
         .then(post => {
             Post.find({}, (err, posts) => {
                 if (err) {
-                    return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+                    return onError(res, PAGE_NOT_FOUND, "Server Error, Please try again later.");
                 }
                 Data.find({}, (err, data) => {
                     let latest = posts.splice(posts.length - 3, posts.length);
@@ -757,7 +757,7 @@ router.get("/blogs/:customUrl", (req, res) => {
             post.save();
         })
         .catch(err => {
-            return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+            return onError(res, PAGE_NOT_FOUND, "Server Error, Please try again later.");
         });
 });
 
@@ -801,7 +801,7 @@ router.get("/blogs/page/:page", (req, res) => {
                 });
             })
             .catch(err => {
-                return onError(res, INTERNAL_SERVER_ERROR, "Server Error, Please try again later.");
+                return onError(res, PAGE_NOT_FOUND, "Server Error, Please try again later.");
             });
     });
 });
