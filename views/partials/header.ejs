@@ -66,13 +66,14 @@
             "@context": "http://schema.org",
             "@type": "Article",
             "dateModified": "<%= moment(post.created).utc().format('YYYY-MM-DD') %>",
-            "mainEntityOfPage" : "https://www.androcrunch.in/blogs/<%= post.customUrl %>",
+            "mainEntityOfPage": "https://www.androcrunch.in/blogs/<%= post.customUrl %>",
             "name": "<%= post.title %>",
             "datePublished": "<%= moment(post.created).utc().format('YYYY-MM-DD') %>",
             "image": "<%= post.image %>",
-            "articleBody": "<%= post.content.replace(/<[^>]*>?/gm, "") %>",
+            "articleBody": "<%= post.content.replace(/<[^>]*>?/gm, "
+            ") %>",
             "url": "https://www.androcrunch.in/blogs/<%= post.customUrl %>",
-            "author" : "<%= post.author %>",
+            "author": "<%= post.author %>",
             "headline": "<%= post.title %>",
             "publisher": {
                 "@type": "Organization",
@@ -88,25 +89,26 @@
         }
     </script>
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Blogs",
-          "item": "https://www.androcrunch.in/blogs"
-        },{
-          "@type": "ListItem",
-          "position": 2,
-          "name": "<%= post.title %>",
-          "item": "https://www.androcrunch.in/blogs/<%= post.customUrl %>"
-        }]
-      }
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Blogs",
+                "item": "https://www.androcrunch.in/blogs"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "<%= post.title %>",
+                "item": "https://www.androcrunch.in/blogs/<%= post.customUrl %>"
+            }]
+        }
     </script>
     <% } %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144100001-1"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140862720-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -115,8 +117,9 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'UA-144100001-1');
+        gtag('config', 'UA-140862720-1');
     </script>
+
 
 
 
