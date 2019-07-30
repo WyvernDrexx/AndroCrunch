@@ -248,6 +248,9 @@ router.get("/:category/:name/download/get", downloadLimiter, (req, res) => {
 });
 
 router.get("/:category/:name/download", (req, res) => {
+    if ( typeof req.headers.referer === "undefined" ) {
+        return res.redirect("/");
+    }
     res.render("download", {
         category: req.params.category.toLowerCase(),
         name: req.params.name.toLowerCase()

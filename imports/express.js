@@ -36,7 +36,7 @@ server.use((req, res, next) => {
 });
 
 server.use((req, res, next) => {
-    res.setHeader("Cache-Control", "public, max-age=60");
+    res.setHeader("Cache-Control", "public, max-age=10");
     console.log("hit");
     if (req.hostname === "androcrunch.in") {
         console.log("hit again");
