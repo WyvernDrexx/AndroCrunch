@@ -56,12 +56,10 @@
 <script>
     blueLinkClick = false;
     function getLink() {
-        window.open('http://deloplen.com/afu.php?zoneid=2717709');
         window.location = "/<%= category %>/<%= name %>/download/get";
     }
     function blueLink(){
         if(!blueLinkClick){
-            window.open("http://deloplen.com/afu.php?zoneid=2717621");
             blueLinkClick = true;
         }
         return;
