@@ -179,6 +179,7 @@ router.get("/:category/:name/download/get", downloadLimiter, (req, res) => {
                     req.flash("error", "Error downloading file!");
                     return res.redirect("back");
                 }
+                
                 var ext = image.referenceFile.split(".");
                 ext = ext[ext.length - 1];
                 let filename = image.filename.trim() + "." + ext;
@@ -196,6 +197,9 @@ router.get("/:category/:name/download/get", downloadLimiter, (req, res) => {
                 if (err || !audio) {
                     req.flash("error", "Error downloading file!");
                     return res.redirect("back");
+                }
+                if ( typeof audio.shortlink !== "undefined" && req.headers.referer !== audio.shortlink) {
+                    return res.redirect("/" + category);
                 }
                 var ext = audio.referenceFile.split(".");
                 ext = ext[ext.length - 1];
