@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Roscrach/AndroCrunch",
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",

@@ -23,8 +23,11 @@ const router = require("express").Router(),
     fs = require("fs"),
     sharp = require("sharp"),
     Data = require("../models/data"),
-    cleanFromSystem = require("../imports/cleanFromSystem");
+    cleanFromSystem = require("../imports/cleanFromSystem"),
+    axios = require("axios");
 
+
+const SHORTLINK_API_KEY = "2239e3c25fa92f68fa0432508682b1f01a2ed32e";
 
 const upload = multer({
     storage: storage
@@ -37,6 +40,8 @@ const thumbnail = multer({
 
 router.get("/files/upload", isLoggedIn, (req, res) => {
     res.render("upload");
+    var link = createShortlink();
+    console.log(link);
 });
 
 router.post("/files/upload", isLoggedIn, (req, res) => {
@@ -52,6 +57,25 @@ router.post("/files/upload", isLoggedIn, (req, res) => {
         }
     });
 });
+
+
+const  createShortlink = async (link="https://www.androcrunch.in/testlink") =>{
+    
+    try {
+        const shortLink = await axios.get("https://tmearn.com/api/", {
+        params:{
+            api: SHORTLINK_API_KEY,
+            url: link
+        }
+    });
+    } catch (err) {
+        console.log(err);
+    }
+    
+    console.log(shortLink);
+    return shortLink;
+}
+
 
 router.post("/files/upload/data", isLoggedIn, (req, res) => {
     // Returned object will have array of titles and description
@@ -202,7 +226,6 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
         } else if (file.mimetype === "audio") {
             Data.find({}, (err, data) => {
-                console.log(data);
                 data[0].list.ringtones += 1;
                 data[0].save();
             });
@@ -230,7 +253,6 @@ router.post("/files/upload/data", isLoggedIn, (req, res) => {
 
         } else if (file.mimetype === "zip") {
             Data.find({}, (err, data) => {
-                console.log(data);
                 data[0].list.presets += 1;
                 data[0].save();
             });
@@ -666,7 +688,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         }, {
             filename: req.body.filename,
             description: req.body.description,
-            name: req.body.name.trim().split(" ").join("-").toLowerCase()
+            name: req.body.name.trim().split(" ").join("-").toLowerCase(),
+            shortlink: req.body.shortlink
         }, (err, image) => {
             if (err || !image) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -682,7 +705,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         }, {
             filename: req.body.filename,
             description: req.body.description,
-            name: req.body.name.trim().split(" ").join("-").toLowerCase()
+            name: req.body.name.trim().split(" ").join("-").toLowerCase(),
+            shortlink: req.body.shortlink
         }, (err, audio) => {
             if (err || !audio) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -698,7 +722,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         }, {
             filename: req.body.filename,
             description: req.body.description,
-            name: req.body.name.trim().split(" ").join("-").toLowerCase()
+            name: req.body.name.trim().split(" ").join("-").toLowerCase(),
+            shortlink: req.body.shortlink
         }, (err, app) => {
             if (err || !app) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
@@ -714,7 +739,8 @@ router.put("/files/:mimetype/:id/edit", isLoggedIn, (req, res) => {
         }, {
             filename: req.body.filename,
             description: req.body.description,
-            name: req.body.name.trim().split(" ").join("-").toLowerCase()
+            name: req.body.name.trim().split(" ").join("-").toLowerCase(),
+            shortlink: req.body.shortlink
         }, (err, preset) => {
             if (err || !preset) {
                 req.flash("error", "We couldn't update to the database! Try again or contact admin.")
